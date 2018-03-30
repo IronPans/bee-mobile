@@ -1,0 +1,272 @@
+const MENUS = [{
+    name: 'Overview',
+    icon: 'subject',
+    path: '/components/overview'
+}, {
+    name: 'ActionSheet',
+    icon: 'call_to_action',
+    path: '/components/actionSheet',
+    docs: '/docs/actionSheet'
+}, {
+    name: 'Accordion',
+    icon: 'clear_all',
+    path: '/components/accordion',
+    docs: '/docs/accordion'
+}, {
+    name: 'Autocomplete',
+    icon: 'power_input',
+    path: '/components/autocomplete',
+    docs: '/docs/autocomplete'
+}, {
+    name: 'Avatar',
+    icon: 'account_circle',
+    path: '/components/avatar',
+    docs: '/docs/avatar'
+}, {
+    name: 'BackTop',
+    icon: 'vertical_align_top',
+    path: '/components/backTop',
+    docs: '/docs/backTop'
+}, {
+    name: 'Badge',
+    icon: 'looks_one',
+    path: '/components/badge',
+    docs: '/docs/badge'
+}, {
+    name: 'Breadcrumb',
+    icon: 'linear_scale',
+    path: '/components/breadcrumb',
+    docs: '/docs/breadcrumb'
+}, {
+    name: 'Button',
+    icon: 'mouse',
+    path: '/components/button',
+    docs: '/docs/button'
+}, {
+    name: 'ButtonNavigation',
+    icon: 'dns',
+    path: '/components/buttonNavigation',
+    docs: '/docs/buttonNavigation'
+}, {
+    name: 'Card',
+    icon: 'panorama_wide_angle',
+    path: '/components/card',
+    docs: '/docs/card'
+}, {
+    name: 'Calendar',
+    icon: 'date_range',
+    path: '/components/calendar',
+    docs: '/docs/calendar'
+}, {
+    name: 'Checkbox',
+    icon: 'check_box',
+    path: '/components/checkbox',
+    docs: '/docs/checkbox'
+}, {
+    name: 'Chip',
+    icon: 'power_input',
+    path: '/components/chip',
+    docs: '/docs/chip'
+}, {
+    name: 'DatetimePicker',
+    icon: 'alarm',
+    path: '/components/datetimePicker',
+    docs: '/docs/datetimePicker'
+}, {
+    name: 'FabButton',
+    icon: 'stop',
+    path: '/components/fab',
+    docs: '/docs/fab'
+}, {
+    name: 'Grid',
+    icon: 'apps',
+    path: '/components/grid',
+    docs: '/docs/grid'
+}, {
+    name: 'HighlightCode',
+    icon: 'inbox',
+    path: '/components/highlightCode'
+}, {
+    name: 'Icon',
+    icon: 'sentiment_very_satisfied',
+    path: '/components/icon',
+    docs: '/docs/icon'
+}, {
+    name: 'ImageView',
+    icon: 'wallpaper',
+    path: '/components/imageView',
+    docs: '/docs/imageView'
+}, {
+    name: 'IndexList',
+    icon: 'chrome_reader_mode',
+    path: '/components/indexList',
+    docs: '/docs/indexList'
+}, {
+    name: 'Indicator',
+    icon: 'rotate_left',
+    path: '/components/indicator',
+    docs: '/docs/indicator'
+}, {
+    name: 'InfiniteScroll',
+    icon: 'play_for_work',
+    path: '/components/infiniteScroll',
+    docs: '/docs/infiniteScroll'
+}, {
+    name: 'InputNumber',
+    icon: 'iso',
+    path: '/components/inputNumber',
+    docs: '/docs/inputNumber'
+}, {
+    name: 'KeyBoard',
+    icon: 'dialpad',
+    path: '/components/keyboard',
+    docs: '/docs/keyboard'
+}, {
+    name: 'Knob',
+    icon: 'data_usage',
+    path: '/components/knob',
+    docs: '/docs/knob'
+}, {
+    name: 'LazyLoad',
+    icon: 'get_app',
+    path: '/components/lazyload',
+    docs: '/docs/lazyload'
+}, {
+    name: 'List',
+    icon: 'list',
+    path: '/components/list',
+    docs: '/docs/list'
+}, {
+    name: 'Locker',
+    icon: 'locker',
+    path: '/components/locker',
+    docs: '/docs/locker'
+}, {
+    name: 'MessageBox',
+    icon: 'chat',
+    path: '/components/messageBox',
+    docs: '/docs/messageBox'
+}, {
+    name: 'Modal',
+    icon: 'flip_to_front',
+    path: '/components/modal',
+    docs: '/docs/modal'
+}, {
+    name: 'Notification',
+    icon: 'video_label',
+    path: '/components/notification',
+    docs: '/docs/notification'
+}, {
+    name: 'NavBar',
+    icon: 'featured_play_list',
+    path: '/components/navBar',
+    docs: '/docs/navBar'
+}, {
+    name: 'Pagination',
+    icon: 'hdr_strong',
+    path: '/components/pagination',
+    docs: '/docs/pagination'
+}, {
+    name: 'Paper',
+    icon: 'layers',
+    path: '/components/paper',
+    docs: '/docs/paper'
+}, {
+    name: 'Picker',
+    icon: 'dns',
+    path: '/components/picker',
+    docs: '/docs/picker'
+}, {
+    name: 'Popover',
+    icon: 'picture_in_picture',
+    path: '/components/popover',
+    docs: '/docs/popover'
+}, {
+    name: 'Popup',
+    icon: 'filter_none',
+    path: '/components/popup',
+    docs: '/docs/popup'
+}, {
+    name: 'Progress',
+    icon: 'brightness_medium',
+    path: '/components/progress',
+    docs: '/docs/progress'
+}, {
+    name: 'PullToRefresh',
+    icon: 'play_for_work',
+    path: '/components/loadmore',
+    docs: '/docs/loadmore'
+}, {
+    name: 'Radio',
+    icon: 'radio_button_checked',
+    path: '/components/radio',
+    docs: '/docs/radio'
+}, {
+    name: 'Rate',
+    icon: 'star',
+    path: '/components/rate',
+    docs: '/docs/rate'
+}, {
+    name: 'Ripple',
+    icon: 'star',
+    path: '/components/ripple',
+    docs: '/docs/ripple'
+}, {
+    name: 'SearchBar',
+    icon: 'search',
+    path: '/components/searchBar',
+    docs: '/docs/searchBar'
+}, {
+    name: 'Slider',
+    icon: 'linear_scale',
+    path: '/components/slider',
+    docs: '/docs/slider'
+}, {
+    name: 'Spin',
+    icon: 'autorenew',
+    path: '/components/spin',
+    docs: '/docs/spin'
+}, {
+    name: 'Switch',
+    icon: 'do_not_disturb_on',
+    path: '/components/switch',
+    docs: '/docs/switch'
+}, {
+    name: 'Swiper',
+    icon: 'view_carousel',
+    path: '/components/swiper',
+    docs: '/docs/swiper'
+}, {
+    name: 'Tabs',
+    icon: 'tab',
+    path: '/components/tabs',
+    docs: '/docs/tabs'
+}, {
+    name: 'Text Field',
+    icon: 'border_color',
+    path: '/components/inputtext',
+    docs: '/docs/inputtext'
+}, {
+    name: 'Textarea',
+    icon: 'border_color',
+    path: '/components/textarea',
+    docs: '/docs/textarea'
+}, {
+    name: 'Timeline',
+    icon: 'timer',
+    path: '/components/timeline',
+    docs: '/docs/timeline'
+}, {
+    name: 'Toast',
+    icon: 'featured_play_list',
+    path: '/components/toast',
+    docs: '/docs/toast'
+}, {
+    name: 'Tooltip',
+    icon: 'picture_in_picture_alt',
+    path: '/components/tooltip',
+    docs: '/docs/tooltip'
+}
+];
+
+export {MENUS};

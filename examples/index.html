@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0,
+      minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="keywords" content="bee-mobile,react,框架,ui框架,framework"/>
+  <meta name="description" content="bee-mobile: UI Components for React."/>
+  <meta name="author" content="TG">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta itemprop="name" content="bee-mobile"/>
+  <meta itemprop="image" content="http://oumfrpm5j.bkt.clouddn.com/freeng_logo.png"/>
+  <meta itemprop="description" content="bee-mobile是一个基于 React 的移动端组件库"/>
+  <base href="/">
+  <title><%= htmlWebpackPlugin.options.title %></title>
+  <link rel="shortcut icon" href="favicon.ico"/>
+  <link href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+  <% if (htmlWebpackPlugin.options.stat) { %>
+  <script id="stat">
+      var _hmt = _hmt || [];
+      (function() {
+          var hm = document.createElement("script");
+          hm.src = "//hm.baidu.com/hm.js?1601f9f33c11466841d8601f14b7da62";
+          var s = document.getElementsByTagName("script")[0];
+          s.parentNode.insertBefore(hm, s);
+      })();
+  </script>
+  <% } %>
+</head>
+<body>
+<div id="root" class="height-100"></div>
+<script>
+     if ('addEventListener' in document) {
+         document.addEventListener('DOMContentLoaded', function() {
+             FastClick.attach(document.body);
+         }, false);
+     }
+</script>
+</body>
+</html>
+
