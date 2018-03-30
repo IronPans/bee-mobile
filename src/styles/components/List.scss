@@ -1,0 +1,103 @@
+.List {
+  padding: 0;
+  margin: 0;
+  border-top: 1px solid $listBorderColor;
+  border-bottom: 1px solid $listBorderColor;
+
+  .List-item {
+    position: relative;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+
+    .List-item-btn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 12px;
+      min-height: 44px;
+      background: $listBg;
+      transition: all .3s;
+      width: 100%;
+      box-sizing: border-box;
+
+      > a {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        box-sizing: border-box;
+      }
+    }
+
+    &:not(:first-child):last-child {
+      &:after {
+        display: none;
+      }
+    }
+
+    &:not(:last-child):after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 16px;
+      right: 0;
+      height: 1px;
+      background: $listBorderColor;
+    }
+
+    &:active {
+      background: transparent;
+    }
+
+    .List-item-text {
+      flex: 1 1 auto;
+      color: $defaultColor;
+      box-sizing: border-box;
+
+      + .ListItemAction {
+        .bm-Icon {
+          margin-right: 0;
+          color: $listIconColor;
+          vertical-align: middle;
+        }
+      }
+
+      > a {
+        box-sizing: border-box;
+      }
+    }
+
+    .ListItemAction {
+      display: flex;
+      align-items: center;
+      box-sizing: border-box;
+    }
+
+    .bm-Avatar {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 40px;
+      height: 40px;
+      overflow: hidden;
+      font-size: 1.25rem;
+      user-select: none;
+      margin-right: 16px;
+    }
+
+    .bm-Icon {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      color: $listIconColor;
+      margin-right: 16px;
+    }
+  }
+}

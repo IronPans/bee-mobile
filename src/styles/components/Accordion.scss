@@ -1,0 +1,74 @@
+
+.bm-AccordionGroup {
+  box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
+  border-top: none;
+
+  .bm-Accordion {
+    background: #fff;
+
+    .bm-AccordionHeader {
+      position: relative;
+      overflow: hidden;
+    }
+
+    &.free-accordion-disabled {
+      .bm-Accordion-toggle {
+        cursor: not-allowed;
+      }
+    }
+
+    &.bm-Accordion-expanded {
+      .bm-Accordion-content {
+        overflow: visible;
+      }
+
+      .bm-AccordionHeader-toggle {
+        color: $accordionHeaderActiveColor;
+        &:after {
+          transform: translate(0, -50%) rotate(-180deg);
+        }
+      }
+    }
+
+    .bm-AccordionHeader-toggle {
+      display: flex;
+      align-items: center;
+      position: relative;
+      min-height: 36px;
+      padding: 10px 20px;
+      color: $accordionHeaderColor;
+      cursor: pointer;
+      background: $accordionHeaderBg;
+      border-top: 1px solid $accordionHeaderBorder;
+      user-select: none;
+      box-sizing: border-box;
+
+      &:after {
+        font: normal normal normal .8rem/1 'Material Icons';
+        content: "expand_more";
+        position: absolute;
+        top: 50%;
+        right: 5px;
+        width: 20px;
+        height: 20px;
+        color: $accordionHeaderColor;
+        text-align: center;
+        line-height: 20px;
+        transform: translate(0, -50%);
+        transition: all .2s linear;
+      }
+    }
+
+    .bm-AccordionContent {
+      position: relative;
+      overflow: hidden;
+      transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+      .bm-AccordionContentInner {
+        padding: 10px;
+        box-sizing: border-box;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,173 @@
+
+.bm-TabsGroup {
+  display: flex;
+  flex-direction: column;
+  background: $tabsBg;
+
+  .bm-Tabs {
+    position: relative;
+    z-index: 2;
+
+    ~ .bm-TabContainer,
+    .bm-Tabs-nav {
+      box-shadow: none;
+    }
+
+    .bm-Tabs-nav {
+      top: 0;
+      border-bottom: 1px solid $tabsBorderColor;
+      background: transparent;
+    }
+  }
+
+  .bm-Tabs-nav {
+    position: relative;
+    display: flex;
+    margin-bottom: 0;
+    margin-left: 0;
+    border: 0;
+    top: 2px;
+    overflow: hidden;
+    border-bottom: 1px solid $tabsBorderColor;
+
+    .bm-Tabs-nav-wrapper {
+      display: flex;
+      position: relative;
+    }
+
+    .bm-Tab {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+
+      .bm-Tab-inner {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: content-box;
+        white-space: nowrap;
+        padding: 0 15px;
+        margin: 0;
+        height: 35px;
+        font-weight: 500;
+        border-top-left-radius: 3px;
+        border-top-right-radius: 3px;
+        opacity: 0.7;
+        transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+      }
+
+      &.bm-Tab-active {
+        .bm-Tab-inner {
+          opacity: 1;
+          border-bottom-color: transparent;
+          z-index: 12;
+          line-height: 16px;
+          margin-top: -2px;
+          color: $tabsActiveColor;
+          border: 0;
+          box-shadow: none;
+        }
+      }
+    }
+  }
+
+  .bm-Tabs-indicator {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    height: 2px;
+    z-index: 100;
+    background-color: $tabsActiveColor;
+    transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    will-change: left, width;
+  }
+
+  .bm-TabContainer {
+    display: none;
+    padding: 16px 12px;
+    position: relative;
+    box-shadow: 1px 0 10px 1px rgba(0,0,0,.3);
+
+    &.bm-TabContainer-active {
+      display: flex;
+    }
+  }
+
+  &.bm-TabsGroup-left,
+  &.bm-TabsGroup-right {
+
+    .bm-Tabs:not(.bm-Tabs-flat) {
+
+      .bm-Tabs-nav {
+        border: none;
+      }
+
+      .bm-Tabs-nav-wrapper {
+        flex-direction: column;
+      }
+
+    }
+
+    .bm-Tabs-indicator {
+      width: 2px;
+    }
+
+    .bm-TabContainer {
+      flex: 1 0 auto;
+    }
+  }
+
+  &.bm-TabsGroup-bottom {
+    flex-direction: column-reverse;
+
+    .bm-Tabs {
+
+      .bm-Tabs-nav {
+        border: none;
+        border-top: 1px solid $tabsBorderColor;
+        background: transparent;
+      }
+    }
+
+    .bm-Tabs-indicator {
+      top: 0;
+      bottom: auto;
+      left: 0;
+    }
+  }
+
+  &.bm-TabsGroup-right {
+    flex-direction: row-reverse;
+
+    .bm-Tabs:not(.bm-Tabs-flat) {
+
+      .bm-Tabs-nav {
+        border-left: 1px solid $tabsBorderColor;
+      }
+
+    }
+
+    .bm-Tabs-indicator {
+      left: 0;
+    }
+  }
+
+  &.bm-TabsGroup-left {
+    flex-direction: row;
+
+    .bm-Tabs:not(.bm-Tabs-flat) {
+
+      .bm-Tabs-nav {
+        border-right: 1px solid $tabsBorderColor;
+      }
+
+    }
+
+    .bm-Tabs-indicator {
+      left: auto;
+      right: 0;
+    }
+  }
+}
+

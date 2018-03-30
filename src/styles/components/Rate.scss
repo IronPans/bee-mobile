@@ -1,0 +1,42 @@
+
+.bm-Rate {
+  display: flex;
+  align-items: center;
+  font-size: 20px;
+
+  .bm-Rate-item {
+    position: relative;
+    cursor: pointer;
+    line-height: 0;
+    color: $rateColor;
+    font: $fontFamily;
+    font-size: inherit;
+
+    div {
+      display: inline-block;
+      padding: 0 .2rem;
+    }
+
+    .bm-Rate-half {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 10;
+      opacity: 0;
+      overflow: hidden;
+      padding-right: 0;
+    }
+
+    .bm-Rate-active {
+      color: $rateActiveColor;
+    }
+  }
+
+  &.bm-Rate-readonly {
+    .bm-Rate-item {
+      cursor: not-allowed;
+    }
+  }
+}

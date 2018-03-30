@@ -1,0 +1,141 @@
+
+.bm-InputNumber {
+  position: relative;
+  display: inline-flex;
+  background: #fff;
+  border: 1px solid $inputBorderColor;
+  border-radius: 2px;
+  overflow: hidden;
+
+  .bm-InputNumber-minus,
+  .bm-InputNumber-add {
+    position: relative;
+    display: inline-flex;
+  }
+
+  &.bm-InputNumber-2 {
+    min-width: 100px;
+    input {
+      text-align: left;
+      padding: 0 10px;
+    }
+  }
+
+  .bm-InputNumber-step {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    opacity: 0;
+    background: #f1f1f1;
+    transition: opacity .3s;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    > span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      width: 2rem;
+      height: 50%;
+      cursor: pointer;
+      color: rgba(0,0,0,.65);
+      transition: opacity .3s;
+
+      svg {
+        height: 100%;
+      }
+
+      &:hover,
+      &:active {
+        background-color: rgba(0,0,0,.05)
+      }
+    }
+  }
+
+  input {
+    background: transparent;
+    border: none;
+    padding: 0 .2rem;
+    box-sizing: border-box;
+    height: 38px;
+    text-align: center;
+    flex: 1 0 auto;
+    box-shadow: inset 0 1px 2px hsla(0,0%,4%,.06);
+
+    &:focus {
+      background-color: #fff;
+      border: 1px solid $inputFocusBorderColor;
+      + .bm-InputNumber-step {
+        opacity: 1;
+      }
+    }
+  }
+
+  .bm-InputNumber-minus,
+  .bm-InputNumber-add {
+    width: 38px;
+    height: 38px;
+    background: #f9f9f9;
+    cursor: pointer;
+    border: none;
+  }
+
+  .bm-InputNumber-minus {
+    border-right: 1px solid $inputBorderColor;
+    &:active {
+      background: #ddd;
+    }
+
+    &.is-disabled {
+      opacity: .8;
+      &:before {
+        background: $inputBtnDisabledColor;
+      }
+    }
+
+  }
+
+  .bm-InputNumber-add {
+    border-left: 1px solid $inputBorderColor;
+    &:active {
+      background: #ddd;
+    }
+
+    &.is-disabled {
+      opacity: .8;
+
+      &:before {
+        background: $inputBtnDisabledColor;
+      }
+
+      &:after {
+        background: $inputBtnDisabledColor;
+      }
+    }
+  }
+
+  .bm-InputNumber-minus:before,
+  .bm-InputNumber-add:before,
+  .bm-InputNumber-add:after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    background: $inputBtnColor;
+    transform: translate3d(-50%, -50%, 0);
+  }
+
+  .bm-InputNumber-minus:before,
+  .bm-InputNumber-add:before {
+    width: .4rem;
+    height: .1em;
+  }
+
+  .bm-InputNumber-add:after {
+    height: .4rem;
+    width: .1em;
+  }
+}

@@ -1,0 +1,36 @@
+.bm-Popup {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 9999;
+
+  .bm-FadeInUp,
+  .MoveInRight {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 99;
+  }
+
+  .bm-Popup-panel {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 11;
+  }
+}
+
+.bm-ios {
+  .bm-Popup {
+    position: absolute;
+  }
+}

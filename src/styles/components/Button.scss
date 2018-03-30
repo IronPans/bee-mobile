@@ -1,0 +1,238 @@
+
+
+a, a:visited, a:link, a:active, a:hover {
+  outline: none;
+}
+
+a:not(.bm-Button):visited, a:not(.bm-Button):link, a:not(.bm-Button):active {
+  color: $primary;
+  text-decoration: none; }
+
+button {
+  outline: none;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+.bm-Button, .bm-Button:focus, .bm-Button:active, .bm-Button:hover {
+  outline: none;
+  border: none;
+}
+
+.bm-Button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  cursor: pointer;
+  touch-action: manipulation;
+  background-image: none;
+  white-space: nowrap;
+  padding: 8px 16px;
+  font-size: 14px;
+  min-height: 36px;
+  min-width: 88px;
+  border-radius: 3px;
+  box-sizing: border-box;
+  outline: none;
+  line-height: 1;
+  user-select: none;
+  text-decoration: none;
+  transition: .3s cubic-bezier(.25,.8,.5,1);
+
+  &:before {
+    background-color: transparent;
+    content: " ";
+    opacity: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+  }
+
+  &[type="button"] {
+    appearance: none;
+  }
+
+  &.bm-Button-float {
+    position: absolute;
+    z-index: 9999;
+
+    &.bm-Button-bottom-right {
+      bottom: 20px;
+      right: 20px;
+    }
+
+    &.bm-Button-top-right {
+      top: 20px;
+      right: 20px;
+    }
+
+    &.bm-Button-bottom-left {
+      bottom: 20px;
+      left: 20px;
+    }
+
+    &.bm-Button-top-left {
+      top: 20px;
+      left: 20px;
+    }
+  }
+}
+
+.bm-Button:not(.is-disabled) {
+  &:active, &.is-active {
+    -webkit-box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)
+  }
+}
+
+.bm-Button.bm-Button-round {
+  border-radius: 1rem;
+}
+
+.bm-Button,
+.bm-Button-group {
+  @include boxShadow();
+}
+
+.bm-Button.is-flat,
+.bm-Button-group.is-flat{
+  box-shadow: none !important;
+}
+
+.bm-Button.bm-Button-block {
+  display: flex;
+  width: 100%;
+}
+
+.bm-Button.bm-Button-lg {
+  padding: 8px 24px;
+  min-width: 112px;
+  font-size: 16px;
+  min-height: 40px;
+
+  &.bm-Button-fab {
+    padding: 0;
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    line-height: 40px;
+  }
+}
+
+.bm-Button.bm-Button-sm {
+  padding: 7px 8px;
+  min-width: 64px;
+  font-size: 13px;
+  min-height: 32px;
+
+  &.bm-Button-fab {
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    line-height: 32px;
+  }
+}
+
+.bm-Button-fab {
+  padding: 0;
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  line-height: 36px;
+  border-radius: 50%;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+}
+
+.bm-Button-default {
+  color: $dark;
+  background-color: #fff;
+}
+
+.bm-Button-primary,
+.bm-Button-success,
+.bm-Button-info,
+.bm-Button-warning,
+.bm-Button-danger {
+  color: white;
+}
+
+@each $name, $color in $theme {
+  .bm-Button.bm-Button-#{$name} {
+    background-color: $color;
+  }
+}
+
+.bm-Button.bm-Button-danger {
+  background-color: $error;
+}
+
+.bm-Button-group {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.bm-Button-group > .bm-Button {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.bm-Button-group > .bm-Button:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.bm-Button-group > .bm-Button:last-child {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.bm-Button.bm-Button-block {
+  display: block;
+}
+
+.bm-Button.is-disabled,
+.bm-Button[disabled] {
+  border: 1px solid #d9d9d9;
+  cursor: not-allowed;
+  opacity: .65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+
+.bm-Button i.free-Button-left {
+  padding-right: 5px;
+}
+
+.bm-Button i.free-Button-right {
+  padding-left: 5px;
+}
+
+.is-flat {
+
+  &.bm-Button {
+    border: 1px solid transparent;
+  }
+
+  &.bm-Button-default {
+    color: $dark;
+    background-color: transparent;
+    border-color: $dark;
+  }
+
+  @each $name, $color in $theme {
+    &.bm-Button-#{$name} {
+      color: $color;
+      background-color: transparent;
+      border-color: $color;
+    }
+  }
+}

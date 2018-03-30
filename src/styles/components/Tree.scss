@@ -1,0 +1,93 @@
+
+.bm-Tree {
+
+  .bm-Tree-inner {
+    > .bm-TreeItem {
+      padding-left: 0 !important;
+    }
+  }
+
+  ul.bm-TreeItem-children,
+  ul.bm-Tree-inner {
+    padding: 0;
+  }
+
+  .bm-TreeItem {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    box-sizing: border-box;
+
+    &.bm-TreeItem-leaf > .bm-TreeItem-content > .bm-TreeItem-toggle {
+      visibility: hidden;
+    }
+
+    .bm-TreeItem-checkbox-icon {
+      margin-right: 8px;
+      i {
+        display: block;
+      }
+    }
+
+    .bm-TreeItem-content,
+    .bm-TreeItem-label {
+      display: flex;
+      align-items: center;
+    }
+
+    .bm-TreeItem-label {
+      svg {
+        display: block;
+      }
+    }
+
+    .bm-TreeItem-content {
+      &.bm-TreeItem-content-selected {
+        .bm-TreeItem-menu-label {
+          color: $treeActiveColor;
+        }
+      }
+    }
+
+    .bm-TreeItem-menu-label {
+      margin-left: 15px;
+      font-weight: 500;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .bm-TreeItem-toggle {
+      vertical-align: middle;
+      color: inherit;
+      outline: none;
+      width: 24px;
+      height: 24px;
+      background: none;
+      margin: 0 8px;
+      border: none;
+      padding: 0;
+      position: relative;
+      cursor: pointer;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent;
+
+      &.bm-TreeItem-expanded {
+        span {
+          transform: rotate(0);
+        }
+      }
+
+      span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 24px;
+        height: 24px;
+        transform: rotate(-90deg);
+        transition: transform 150ms;
+      }
+    }
+  }
+}

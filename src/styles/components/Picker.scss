@@ -1,0 +1,212 @@
+
+.Picker {
+
+  .Picker-input {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 10px;
+    min-height: 38px;
+    border-bottom: 1px solid $borderColor;
+  }
+}
+
+.Picker-panel {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
+
+  .Picker-wrapper {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    color: #ccc;
+    z-index: 10;
+  }
+
+  .Picker-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: rgba(0, 0, 0, .5);
+  }
+
+  .Picker-body,
+  .Picker-footer {
+    display: flex;
+    background: #fff;
+  }
+
+  .Picker-body {
+    position: relative;
+    flex-wrap: wrap;
+    margin: 10px 0;
+    box-sizing: border-box;
+
+    .Picker-top-overlay,
+    .Picker-bottom-overlay {
+      position: absolute;
+      z-index: 10;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      pointer-events: none;
+      transform: translateZ(0)
+    }
+
+    .Picker-top-overlay {
+      bottom: 0;
+      background: -webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,.4)),to(hsla(0,0%,100%,.8)));
+      background: -webkit-linear-gradient(top,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
+      background: linear-gradient(180deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8))
+    }
+
+    .Picker-bottom-overlay {
+      top: 0;
+      background: -webkit-gradient(linear,left bottom,left top,from(hsla(0,0%,100%,.4)),to(hsla(0,0%,100%,.8)));
+      background: -webkit-linear-gradient(bottom,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
+      background: linear-gradient(0deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8))
+    }
+  }
+
+  .Picker-footer {
+    flex-wrap: nowrap;
+  }
+
+  .PickerItem {
+    width: 33.333%;
+    height: 100%;
+    color: #333;
+    user-select: none;
+    box-sizing: border-box;
+  }
+
+  .PickerItem:first-child {
+    padding-left: .25rem;
+  }
+
+  .PickerItem:last-child {
+    padding-right: .25rem;
+  }
+
+  .PickerItem:not(:first-child):not(:last-child) {
+    padding: 0 .25rem;
+  }
+
+  .Picker-body .PickerItem .PickerItem-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-top: .3rem;
+    text-align: center;
+    //background: linear-gradient(0deg, #000, #444, #000);
+    overflow: hidden;
+  }
+
+  .Picker-body .PickerItem-wrapper .PickerItem-scroll .PickerItem-item {
+    height: 40px;
+    line-height: 40px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0 .8rem;
+  }
+
+  .PickerItem-wrapper > .PickerItem-scroll,
+  .PickerItem-overlay {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+
+  .PickerItem-wrapper > .PickerItem-scroll {
+    z-index: 2;
+    margin-top: 40px;
+    transform: translate(0px, 0px);
+    transition-timing-function: cubic-bezier(0.1, 0.57, 0.1, 1);
+    transition-duration: 0ms;
+  }
+
+  .PickerItem-overlay {
+    height: 100%;
+    z-index: 3;
+    //background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(44, 44, 44, 0), rgba(0, 0, 0, 1));
+    //background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(44, 44, 44, 0), rgba(0, 0, 0, 1));
+  }
+
+  .Picker-line {
+    position: absolute;
+    z-index: 1;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 0;
+    margin-top: -1px;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      background: #eee;
+      height: 1px;
+      width: 100%;
+    }
+
+    &:before {
+      top: -20px;
+    }
+
+    &:after {
+      top: 20px;
+    }
+  }
+
+  .PickerItem-label {
+    height: 1.45rem;
+    line-height: 1.45rem;
+    font-size: .85rem;
+    text-align: center;
+    color: #333;
+  }
+
+  .Picker-footer {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid $borderColor;
+    .bm-Button {
+      position: relative;
+      color: #666;
+      box-shadow: none;
+
+      &:last-child {
+        color: $primary;
+      }
+    }
+  }
+
+  .Picker-header {
+    height: 2rem;
+    line-height: 2rem;
+    padding: 0 .5rem;
+    font-size: .75rem;
+    background: $primary;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+  }
+}
+
+.bm-ios {
+  .Picker-panel {
+    position: absolute;
+  }
+}

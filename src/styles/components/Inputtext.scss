@@ -1,0 +1,191 @@
+
+.bm-Inputtext {
+  display: flex;
+  position: relative;
+
+  .bm-Inputtext-startAdorn,
+  .bm-Inputtext-endAdorn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: normal;
+    color: rgba(0, 0, 0, 0.65);
+    position: relative;
+    transition: all .3s;
+  }
+
+  .bm-Inputtext-startAdorn {
+    padding: 0 0 0 5px;
+  }
+
+  .bm-Inputtext-endAdorn {
+    padding: 0 5px 0 0;
+  }
+
+  label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    &:not(:first-child):not(:last-child) {
+      .bm-Inputtext-field {
+        input {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  .bm-Inputtext-label {
+    font-weight: normal;
+    font-size: 13px;
+    vertical-align: middle;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+  }
+
+  &.bm-Inputtext-lg {
+    .bm-Inputtext-field {
+      input {
+        height: 40px;
+      }
+    }
+  }
+
+  &.bm-Inputtext-sm {
+    .bm-Inputtext-field {
+      input {
+        height: 32px;
+      }
+    }
+  }
+
+  &.bm-Inputtext-xs {
+    .bm-Inputtext-field {
+      input {
+        height: 24px;
+      }
+    }
+  }
+
+  .bm-Inputtext-field {
+    position: relative;
+
+    input {
+      font-family: $fontFamily;
+      width: 100%;
+      padding: 0 10px;
+      outline: none;
+      color: $inputColor;
+      border: none;
+      box-sizing: border-box;
+      border-radius: 4px;
+      transition: all 0.3s;
+
+      &[type="text"], &[type="password"], &[type="number"] {
+        -webkit-appearance: none;
+      }
+
+      &::placeholder,
+      &:-moz-placeholder,
+      &::-moz-placeholder,
+      &:-ms-input-placeholder,
+      &::-webkit-input-placeholder{
+        color: $inputPlaceHolderColor;
+      }
+
+      &:disabled,
+      &[disabled]{
+        cursor: not-allowed;
+
+        &::placeholder,
+        &:-moz-placeholder,
+        &::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::-webkit-input-placeholder{
+          color: $inputDisabledColor;
+        }
+      }
+    }
+  }
+
+  &.bm-Inputtext-focus {
+    hr {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  hr {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: $inputBorderColor;
+    border: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 0;
+    transition: all .3s;
+
+    &:after {
+      background: $inputFocusBorderColor;
+      content: "";
+      display: block;
+      height: 2px;
+      transition-duration: .25s;
+      transition-property: width;
+      width: 0;
+      margin: auto;
+    }
+  }
+
+  &.bm-Inputtext-inline {
+    label {
+      flex-direction: row;
+      align-items: center;
+
+      .bm-Inputtext-label {
+        flex: 0 0 auto;
+        margin: 0 5px 0 0;
+      }
+
+      .bm-Inputtext-field {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  &.bm-Inputtext-animated {
+    .bm-Inputtext-field {
+      margin-top: 16px;
+    }
+
+    .bm-Inputtext-label {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      z-index: 10;
+      padding: 0;
+      font-size: .875rem;
+      line-height: 1;
+      margin: 0;
+      transform-origin: top left;
+      transform: translate(0, 24px) scale(1);
+      transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    }
+
+    &.bm-Inputtext-focus,
+    &.bm-Inputtext-noEmpty {
+      .bm-Inputtext-label {
+        transform: translate(0, .5px) scale(0.75);
+      }
+    }
+  }
+}
+

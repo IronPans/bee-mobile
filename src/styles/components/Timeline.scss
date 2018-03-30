@@ -1,0 +1,54 @@
+.bm-Timeline {
+
+  .bm-TimelineItem {
+    position: relative;
+    display: flex;
+    padding-bottom: 30px;
+  }
+
+  .bm-TimelineItem-inner {
+    box-sizing: border-box;
+  }
+
+  .bm-TimelineItem-line {
+    position: relative;
+    color: $timelineColor;
+    text-align: right;
+
+    &:before,
+    &:after {
+      content: "";
+      position: absolute;
+    }
+
+    &:before {
+      width: 1px;
+      height: calc(100% + 23px);
+      background: $timelineLineColor;
+      top: 14px;
+      right: -20px;
+    }
+
+    &:after {
+      top: 2px;
+      right: -26px;
+      width: 13px;
+      height: 13px;
+      background: $timelineCircleColor;
+      border-radius: 50%;
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,.14), 0 1px 5px 0 rgba(0,0,0,.12), 0 3px 1px -2px rgba(0,0,0,.2);
+    }
+  }
+
+  .bm-TimelineItem-body {
+    flex: 1 0 auto;
+    padding-left: 35px;
+    max-width: calc(100% - 35px);
+
+    .bm-TimelineItem-title {
+      font-size: 15px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+  }
+}

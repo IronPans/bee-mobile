@@ -1,0 +1,29 @@
+
+.bm-Knob {
+  position: relative;
+  display: inline-flex;
+  background: $knobBg;
+
+  .bm-Knob-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+
+  .bm-Knob-inner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .bm-Knob-circle-path {
+    stroke: $knobPathColor;
+  }
+
+  .bm-Knob-circle-trail {
+    stroke: $knobTrailColor;
+  }
+}

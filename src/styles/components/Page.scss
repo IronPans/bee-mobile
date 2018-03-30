@@ -1,0 +1,133 @@
+
+.View {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 5000;
+  transition-duration: .4s;
+  transition-property: transform;
+}
+
+.View-overlay,
+.Sidebar-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 5999;
+  display: none;
+  background: rgba(0, 0, 0, 0);
+}
+
+.Page {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  background: #fafafa;
+
+  &.Page-active {
+    transform: translate3d(0, 0, 0);
+  }
+
+  &.Page-on-left {
+    opacity: .9;
+    transform: translate3d(-20%, 0, 0);
+  }
+
+  &.Page-on-right {
+    transform: translate3d(100%, 0, 0)
+  }
+
+  .bm-Content {
+    overflow: auto;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box;
+    height: 100%;
+    position: relative;
+    z-index: 1;
+    padding-top: 1px;
+    contain: layout size style;
+    will-change: scroll-position;
+
+    .bm-Content-preloader {
+      position: relative;
+      height: $NavBarHeight;
+      margin-top: -$NavBarHeight;
+      width: 100%;
+      left: 0;
+      top: 0;
+
+      .bm-Content-preloader-loading {
+        position: absolute;
+        left: 50%;
+        width: 27px;
+        height: 27px;
+        margin-left: -13px;
+        margin-top: -13px;
+        visibility: hidden;
+        top: 50%;
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg%20viewBox%3D'0%200%20120%20120'%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20xmlns%3Axlink%3D'http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink'><defs><line%20id%3D'l'%20x1%3D'60'%20x2%3D'60'%20y1%3D'7'%20y2%3D'27'%20stroke%3D'%236c6c6c'%20stroke-width%3D'11'%20stroke-linecap%3D'round'%2F><%2Fdefs><g><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(30%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(60%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(90%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(120%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.27'%20transform%3D'rotate(150%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.37'%20transform%3D'rotate(180%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.46'%20transform%3D'rotate(210%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.56'%20transform%3D'rotate(240%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.66'%20transform%3D'rotate(270%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.75'%20transform%3D'rotate(300%2060%2C60)'%2F><use%20xlink%3Ahref%3D'%23l'%20opacity%3D'.85'%20transform%3D'rotate(330%2060%2C60)'%2F><%2Fg><%2Fsvg>");
+        background-position: 50%;
+        background-size: 100%;
+        background-repeat: no-repeat;
+        animation: none;
+      }
+
+      .bm-Content-preloader-arrow {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: no-repeat center;
+        z-index: 10;
+        -webkit-transform: rotate(0) translate3d(0,0,0);
+        transform: rotate(0) translate3d(0,0,0);
+        -webkit-transition-duration: .3s;
+        transition-duration: .3s;
+        -webkit-transition-property: -webkit-transform;
+        transition-property: -webkit-transform;
+        transition-property: transform;
+        width: 13px;
+        height: 20px;
+        margin-left: -6px;
+        margin-top: -10px;
+        background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2026%2040'><polygon%20points%3D'9%2C22%209%2C0%2017%2C0%2017%2C22%2026%2C22%2013.5%2C40%200%2C22'%20fill%3D'%238c8c8c'%2F><%2Fsvg>");
+        background-size: 13px 20px;
+        visibility: visible;
+      }
+    }
+
+    .bm-Content-infinite-scroll-preloader {
+      margin-bottom: 10px;
+      padding-top: 10px;
+      text-align: center;
+
+      .fr-preloader {
+        width: 34px;
+        height: 34px;
+      }
+    }
+
+    &.bm-Content-up {
+      .bm-Content-preloader-arrow {
+        transform: rotate(180deg) translate3d(0, 0, 0);
+      }
+    }
+
+    &.bm-Content-refreshing {
+      .bm-Content-preloader-loading {
+        animation: preloader-spin 1s steps(12,end) infinite;
+        visibility: visible;
+      }
+
+      .bm-Content-preloader-arrow {
+        visibility: hidden;
+      }
+    }
+  }
+}
+
+.bm-transitions {
+  transition: all .4s;
+}

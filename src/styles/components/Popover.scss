@@ -1,0 +1,40 @@
+
+.bm-Popover {
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 10010;
+  position: fixed;
+
+  .bm-Popover-inner {
+    position: absolute;
+    min-width: 16px;
+    max-width: calc(100vw - 32px);
+    min-height: 16px;
+    max-height: calc(100vh - 32px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    background: #fff;
+    border-radius: 2px;
+    z-index: 1;
+    transform-origin: 0 0 0;
+    @include boxShadow;
+  }
+
+  .bm-Popover-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0);
+  }
+}
+
+.bm-ios {
+  .bm-Popover {
+    position: absolute;
+  }
+}

@@ -1,0 +1,184 @@
+.bm-Badge {
+  font-size: 14px;
+  color: $badgeColor;
+  box-sizing: border-box;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  line-height: 1;
+
+  &.bm-Badge-sr-only {
+    .bm-Badge-count {
+      position: relative;
+      top: auto;
+      left: 0;
+      transform: none !important;
+    }
+  }
+
+  &.bm-Badge-fixed {
+    .bm-Badge-count {
+      position: absolute;
+      &:not(.bm-Badge-dot) {
+        top: -12px;
+        right: -12px;
+      }
+    }
+  }
+
+  .bm-Badge-count {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: $badgeCountBg;
+    color: $badgeCountColor;
+    font-size: 12px;
+    padding: 2px 4px;
+    white-space: nowrap;
+    transform-origin: -10% center;
+    box-shadow: 0 0 0 1px #fff;
+
+    &.bm-Badge-circle {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+    }
+
+    &:first-child {
+      margin-left: 6px;
+    }
+
+    .bm-Badge-count-inner {
+      position: relative;
+      z-index: 10;
+    }
+
+    &.bm-Badge-notify {
+      &:before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        height: 100%;
+        width: 100%;
+        border: 4px solid $badgeCountBg;
+        border-radius: 70px;
+        animation: heartbit-notify 1s ease-out;
+        animation-iteration-count: infinite;
+      }
+    }
+  }
+
+  span.bm-Badge-dot {
+    transform-origin: 0 center;
+    top: 0;
+    right: -1px;
+    height: 6px;
+    width: 6px;
+    padding: 0;
+    min-width: 6px;
+    border-radius: 100%;
+    z-index: 10;
+
+    @each $name, $color in $theme {
+      &.bm-Badge-#{$name} {
+        background: $color;
+      }
+    }
+
+    &.bm-Badge-default {
+      background: #d9d9d9;
+    }
+  }
+
+  .bm-BadgeItem {
+    display: inline-block;
+    vertical-align: middle;
+    height: 100%;
+    transition: all .25s;
+  }
+}
+
+
+@-moz-keyframes heartbit-notify {
+  0% {
+    -moz-transform: translate(-50%, -50%) scale(0);
+    opacity: 0
+  }
+
+  25% {
+    -moz-transform: translate(-50%, -50%) scale(0.1);
+    opacity: .1
+  }
+
+  50% {
+    -moz-transform: translate(-50%, -50%) scale(0.5);
+    opacity: .3
+  }
+
+  75% {
+    -moz-transform: translate(-50%, -50%) scale(0.8);
+    opacity: .5
+  }
+
+  100% {
+    -moz-transform: translate(-50%, -50%) scale(1);
+    opacity: 0
+  }
+}
+
+@-webkit-keyframes heartbit-notify {
+  0% {
+    -webkit-transform: translate(-50%, -50%) scale(0);
+    opacity: 0
+  }
+
+  25% {
+    -webkit-transform: translate(-50%, -50%) scale(0.1);
+    opacity: .1
+  }
+
+  50% {
+    -webkit-transform: translate(-50%, -50%) scale(0.5);
+    opacity: .3
+  }
+
+  75% {
+    -webkit-transform: translate(-50%, -50%) scale(0.8);
+    opacity: .5
+  }
+
+  100% {
+    -webkit-transform: translate(-50%, -50%) scale(1);
+    opacity: 0
+  }
+}
+
+@-ms-keyframes heartbit-notify {
+  0% {
+    -ms-transform: translate(-50%, -50%) scale(0);
+    opacity: 0
+  }
+
+  25% {
+    -ms-transform: translate(-50%, -50%) scale(0.1);
+    opacity: .1
+  }
+
+  50% {
+    -ms-transform: translate(-50%, -50%) scale(0.5);
+    opacity: .3
+  }
+
+  75% {
+    -ms-transform: translate(-50%, -50%) scale(0.8);
+    opacity: .5
+  }
+
+  100% {
+    -ms-transform: translate(-50%, -50%) scale(1);
+    opacity: 0
+  }
+}

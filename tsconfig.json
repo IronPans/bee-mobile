@@ -1,0 +1,27 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "sourceMap": true,
+    "jsx": "react",
+    "declaration": false,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "typeRoots": [
+    "node_modules/@types", "typings/index.d.ts"
+  ],
+  "exclude": [
+    "node_modules",
+    "config",
+    "dist",
+    "lib",
+    "docs"
+  ]
+}
+

@@ -1,0 +1,160 @@
+.bm-KeyBoard-group {
+  &.Message .MessageItem .MessageItem-inner {
+    display: flex;
+    .bm-FadeInUp {
+      flex: 1 0 auto;
+    }
+  }
+
+  .bm-ActionSheet {
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+
+.bm-KeyBoard {
+  background: $keyBoardBg;
+
+  .bm-KeyBoard-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $keyBoardColor;
+    font-size: .7rem;
+    height: 35px;
+    position: relative;
+    padding: 0 10px;
+
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      border-bottom: 1px solid $keyBoardBorderColor;
+      transform: scaleY(0.5);
+      transform-origin: 0 100%;
+    }
+  }
+
+  .bm-KeyBoard-toolbar {
+    padding: 10px;
+    text-align: right;
+
+    &:empty {
+      display: none;
+    }
+
+    a {
+      color: #666;
+      font-size: .24rem;
+    }
+  }
+
+  .bm-KeyBoard-password {
+    display: flex;
+    width: calc(100% - 20px);
+    position: relative;
+    background-color: $keyBoardGridBg;
+    border: 1px solid $keyBoardBorderColor;
+    margin: 10px 10px 0;
+
+    li {
+      flex: 1;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 35px;
+
+      &:not(:last-child):after {
+        content: '';
+        width: 1px;
+        height: 50%;
+        position: absolute;
+        right: 0;
+        top: 25%;
+        background-color: $keyBoardBorderColor;
+        transform: scaleX(0.5);
+      }
+
+      i {
+        display: none;
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background-color: $keyBoardDotColor;
+      }
+    }
+  }
+
+  .bm-KeyBoard-content {
+    &:before {
+      content: '';
+      position: absolute;
+      z-index: 0;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      border-top: 1px solid $keyBoardBorderColor;
+      transform: scaleY(0.5);
+      transform-origin: 0 0;
+    }
+
+    .bm-KeyBoard-numbers {
+      display: flex;
+      flex-wrap: wrap;
+      span {
+        width: 33.333333%;
+        flex: 1 0 auto;
+        color: #222;
+        height: 35px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $keyBoardGridBg;
+        transition: background .25s;
+
+        &:before {
+          content: '';
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 1px;
+          border-top: 1px solid $keyBoardBorderColor;
+          transform: scaleY(0.5);
+          transform-origin: 0 0;
+        }
+
+        &:not(:last-child):after {
+          content: '';
+          position: absolute;
+          z-index: 0;
+          top: 0;
+          right: 0;
+          height: 100%;
+          border-right: 1px solid $keyBoardBorderColor;
+          transform: scaleX(0.5);
+          transform-origin: 100% 0;
+        }
+
+        &:last-child:after {
+          font-family: 'Material Icons';
+          content: 'backspace';
+          font-size: .6rem;
+        }
+
+        &:active {
+          background: #eee;
+        }
+      }
+    }
+  }
+}

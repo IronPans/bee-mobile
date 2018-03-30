@@ -1,0 +1,151 @@
+
+.Switch {
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  >input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+  }
+
+  input[type='checkbox']:checked ~ .Switch-media .Switch-label {
+    background: $switchActiveColor;
+
+    &:after {
+      background: $switchActiveColor;
+      transform: translate3d(20px, 0, 0);
+    }
+    &:before {
+      border-color: $switchActiveColor;
+    }
+  }
+
+  .Switch-inner:not(:empty) {
+    flex: 1;
+    padding: 0.5rem;
+  }
+
+  .Switch-inner:empty {
+    display: none;
+  }
+
+  .Switch-label {
+    position: relative;
+    display: block;
+    width: 50px;
+    height: 28px;
+    border-radius: 999px;
+    transition: all 0.35s;
+
+    &:before,
+    &:after {
+      content: '';
+      position: absolute;
+      transition: all 0.35s;
+    }
+
+    &:after {
+      top: 4px;
+      left: 4px;
+      bottom: 4px;
+      width: 20px;
+      height: 20px;
+      background: $switchBg;
+      border-radius: 50%;
+      box-shadow: 0 1px 3px rgba(0,0,0,.4);
+      transform: translate3d(0, 0, 0);
+    }
+
+    &:before {
+      background: $switchBg;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border-radius: 999px;
+      border: 2px solid $switchColor;
+    }
+  }
+
+  .Switch-media {
+    order: 2;
+    display: flex;
+    align-items: center;
+    margin-left: 3px;
+  }
+
+  &.Switch-2 {
+    .Switch-label {
+      width: 40px;
+      background: transparent !important;
+
+      &:before {
+        background: rgb(189, 189, 189);
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 14px;
+        border: none;
+        transform: translate(0, -50%);
+      }
+
+      &:after {
+        background: rgb(245, 245, 245);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.28);
+        left: 0;
+      }
+    }
+
+    input[type='checkbox']:checked~.Switch-media .Switch-label {
+      background: $switchBg;
+
+      &:before {
+        background: $switchActiveColor;
+      }
+
+      &:after {
+        background: $switchBg;
+        transform: translate3d(20px, 0, 0);
+      }
+    }
+  }
+
+  &.Switch-3 {
+    .Switch-label {
+      background: $switchBg;
+
+      &:before {
+        background: transparent;
+        border: solid 2px $switchColor;
+      }
+
+      &:after {
+        background: $switchBg;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15);
+      }
+    }
+
+    input[type='checkbox']:checked~.Switch-media .Switch-label {
+      &:after {
+        background: $switchBg;
+        box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15);
+      }
+
+      &:before {
+        border-color: $switchActiveColor;
+      }
+    }
+  }
+
+  input[type='checkbox']:disabled ~ .Switch-media .Switch-label {
+    cursor: not-allowed;
+    opacity: .5;
+  }
+}

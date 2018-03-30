@@ -1,0 +1,28 @@
+.bm-Autocomplete {
+  position: relative;
+
+  .bm-Autocomplete-menus {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 100%;
+    display: none;
+    @include boxShadow();
+
+    &.bm-Autocomplete-scroll {
+      overflow: hidden;
+      overflow-y: auto;
+    }
+
+    &.bm-Autocomplete-menus-active {
+      display: block;
+    }
+  }
+
+  &.bm-Autocomplete-inline {
+    .bm-Autocomplete-menus {
+      position: relative;
+      top: 0;
+    }
+  }
+}

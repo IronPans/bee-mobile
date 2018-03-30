@@ -1,0 +1,50 @@
+.Message.Indicator-group {
+  .Message-mask {
+    background: transparent;
+  }
+}
+
+.Indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  display: block;
+  justify-content: center;
+  z-index: 14;
+
+  .MessageItem-inner {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+  }
+
+  .Indicator-item {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 15px;
+    border-radius: 5px;
+    background: rgba(0,0,0,.7);
+    color: #fff;
+    box-sizing: border-box;
+
+    .Indicator-content:not(:empty) {
+      margin-top: 10px;
+    }
+
+    .bm-Spin {
+      display: flex;
+      .loader {
+        span {
+          background: #fff;
+        }
+      }
+    }
+  }
+}

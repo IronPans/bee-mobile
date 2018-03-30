@@ -1,0 +1,55 @@
+.Message {
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.65);
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: fixed;
+  z-index: 10010;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+
+  &.Message-none {
+    pointer-events: none;
+  }
+
+  .Message-mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,.5);
+  }
+
+  .MessageItem {
+
+    .MessageItem-inner {
+      position: relative;
+      display: inline-flex;
+      align-content: center;
+      line-height: 1.5;
+
+      .Toast-avatar {
+        display: flex;
+        align-content: center;
+        font-size: 1rem;
+        padding-right: .5rem;
+      }
+
+      .Toast-content {
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+.bm-ios {
+  .Message {
+    position: absolute;
+  }
+}

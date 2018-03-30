@@ -1,0 +1,88 @@
+
+.Sidebar {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transform: translate3d(0,0,0);
+  transition: all .3s;
+
+  .Sidebar-inner {
+    position: relative;
+    z-index: 2;
+    background: #fff;
+    color: rgba(0, 0, 0, 0.87);
+    box-sizing: border-box;
+    overflow: hidden;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 260px;
+    height: 100%;
+    transition-duration: .3s;
+  }
+
+  &.Sidebar-drawer {
+    z-index: 9999;
+    pointer-events: none;
+
+    .Sidebar-overlay {
+      display: block;
+      opacity: 0;
+      z-index: 1;
+      background: rgba(0, 0, 0, .5);
+      transition: opacity .1s;
+    }
+
+    &.Sidebar-left-reveal {
+      .Sidebar-inner {
+        transform: translate3d(-100%, 0, 0);
+      }
+    }
+    &.Sidebar-right-reveal {
+      .Sidebar-inner {
+        transform: translate3d(100%, 0, 0);
+      }
+    }
+  }
+
+  &.Sidebar-open {
+    display: block;
+
+    &.Sidebar-drawer {
+      pointer-events: auto;
+      &.Sidebar-left-reveal,
+      &.Sidebar-right-reveal {
+        .Sidebar-inner {
+          transform: translate3d(0, 0, 0);
+        }
+      }
+
+      .Sidebar-overlay {
+        opacity: 1;
+      }
+    }
+
+    &.Sidebar-left-reveal:not(.Sidebar-drawer) {
+      ~ .View {
+        transform: translate3d(260px,0,0);
+      }
+    }
+
+    &.Sidebar-right-reveal:not(.Sidebar-drawer) {
+      ~ .View {
+        transform: translate3d(-260px,0,0)
+      }
+    }
+
+    &.Sidebar-left-reveal:not(.Sidebar-drawer),
+    &.Sidebar-right-reveal:not(.Sidebar-drawer) {
+      ~ .View {
+        .View-overlay {
+          display: block;
+        }
+      }
+    }
+  }
+
+}

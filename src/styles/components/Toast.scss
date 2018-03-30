@@ -1,0 +1,55 @@
+.Message.Toast-group {
+  .Message-mask {
+    background: transparent;
+  }
+}
+
+.Toast {
+  .MessageItem-inner {
+    color: #fff;
+    background: rgba(0, 0, 0, .6);
+    border-radius: 5px;
+    padding: .25rem 1rem;
+    margin-bottom: .5rem;
+    max-width: 15rem;
+    font-size: .7rem;
+  }
+
+  .Toast-item {
+    &.Toast-info {
+      background: $info;
+      color: #fff;
+    }
+    &.Toast-success {
+      background: $success;
+      color: #fff;
+    }
+    &.Toast-warning {
+      background: $warning;
+      color: #fff;
+    }
+    &.Toast-error {
+      background: $error;
+      color: #fff;
+    }
+  }
+}
+
+.Toast-group {
+  .MessageItem {
+    position: absolute;
+    left: 50%;
+  }
+  .Toast-center.MessageItem {
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+  }
+  .Toast-top.MessageItem {
+    top: 50px;
+    transform: translate3d(-50%, 0, 0);
+  }
+  .Toast-bottom.MessageItem {
+    bottom: 50px;
+    transform: translate3d(-50%, 0, 0);
+  }
+}

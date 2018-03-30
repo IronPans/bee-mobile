@@ -1,0 +1,69 @@
+
+.bm-Table {
+  width: 100%;
+  max-width: 100%;
+  border-collapse: collapse;
+  background-color: transparent;
+
+  .bm-Table-head {
+    display: flex;
+    align-items: center;
+
+    &.bm-Table-head-active {
+      color: rgba(0, 0, 0, 0.87);
+
+      .Icon {
+        color: rgba(0, 0, 0, 0.87);
+      }
+    }
+
+    .Icon {
+      padding-right: 5px;
+      transition: all .3s;
+
+      &.bm-Table-head-sort {
+        transform: rotate(180deg);
+      }
+    }
+  }
+
+  .bm-Table-cell {
+    > .Checkbox {
+      padding: 0;
+    }
+  }
+
+}
+
+.bm-Table-bordered, .bm-Table-bordered td, .bm-Table-bordered th {
+  border: 1px solid rgba(224, 224, 224, 1);
+}
+
+.bm-Table td, .bm-Table th {
+  padding: .75rem;
+  vertical-align: top;
+}
+
+.bm-Table td {
+  border-top: 1px solid rgba(224, 224, 224, 1);
+}
+
+.bm-Table thead th {
+  color: rgba(0, 0, 0, 0.54);
+  position: relative;
+  font-weight: 600;
+  background: #F7F7F7;
+  border-bottom: 1px solid rgba(224, 224, 224, 1);
+}
+
+.bm-Table-bordered thead td, .bm-Table-bordered thead th {
+  border-bottom-width: 2px;
+}
+
+.bm-Table-striped tbody tr:nth-of-type(odd) {
+  background-color: rgba(0,0,0,.05);
+}
+
+.bm-Table tbody .bm-Table-row:hover .bm-Table-cell {
+  background-color: #eee
+}

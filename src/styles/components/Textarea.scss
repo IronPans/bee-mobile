@@ -1,0 +1,188 @@
+
+.bm-Textarea {
+  display: flex;
+  position: relative;
+  max-height: 80px;
+  font-size: 14px;
+  line-height: 1.429;
+  transition: height .2s;
+  box-sizing: border-box;
+
+  label,
+  label .bm-Textarea-label,
+  .bm-Textarea-field,
+  .bm-Textarea-field textarea{
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  label {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+
+    &:not(:first-child):not(:last-child) {
+      .bm-Textarea-field {
+        input {
+          border-radius: 0;
+        }
+      }
+    }
+  }
+
+  .bm-Textarea-label {
+    font-weight: normal;
+    font-size: 13px;
+    vertical-align: middle;
+    display: block;
+    max-width: 100%;
+    margin-bottom: 5px;
+  }
+
+  .bm-Textarea-field {
+    position: relative;
+
+    textarea {
+      text-align: left;
+      padding: 5px;
+      font-size: 100%;
+      line-height: inherit;
+      color: #666;
+      background-color: #fff;
+      border-radius: 2px;
+      resize: none;
+      border: none;
+      outline: none;
+      transition: all 0.3s;
+
+      &::placeholder,
+      &:-moz-placeholder,&::-moz-placeholder,
+      &:-ms-input-placeholder,
+      &::-webkit-input-placeholder {
+        color: $inputPlaceHolderColor;
+      }
+
+      &:disabled,
+      &[disabled]{
+        cursor: not-allowed;
+
+        &::placeholder,
+        &:-moz-placeholder,&::-moz-placeholder,
+        &:-ms-input-placeholder,
+        &::-webkit-input-placeholder {
+          color: $inputDisabledColor;
+        }
+      }
+    }
+
+    .bm-Textarea-indicator {
+      position: absolute;
+      bottom: 7px;
+      right: 10px;
+      color: #ccc;
+    }
+  }
+
+  &.bm-Textarea-focus {
+    hr {
+      &:after {
+        width: 100%;
+      }
+    }
+  }
+
+  hr {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: rgba(0,0,0,.12);
+    border: 0;
+    content: "";
+    display: block;
+    height: 1px;
+    margin: 0;
+
+    &:after {
+      background: $primary;
+      content: "";
+      display: block;
+      height: 2px;
+      transition-duration: .15s;
+      transition-property: width;
+      width: 0;
+      margin: auto;
+    }
+  }
+
+  &.bm-Textarea-inline {
+    label {
+      flex-direction: row;
+      align-items: center;
+
+      .bm-Textarea-label {
+        flex: 0 0 auto;
+        margin: 0 5px 0 0;
+      }
+
+      .bm-Textarea-field {
+        flex: 1 1 auto;
+      }
+    }
+  }
+
+  &.bm-Textarea-animated {
+    .bm-Textarea-field {
+      margin-top: 16px;
+    }
+
+    .bm-Textarea-label {
+      position: absolute;
+      top: 0;
+      left: 10px;
+      z-index: 10;
+      color: rgba(0, 0, 0, 0.54);
+      padding: 0;
+      font-size: .875rem;
+      line-height: 1;
+      margin: 0;
+      transform-origin: top left;
+      transform: translate(0, 24px) scale(1);
+      transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
+    }
+
+    &.bm-Textarea-focus,
+    &.bm-Textarea-noEmpty {
+      .bm-Textarea-label {
+        transform: translate(0, 0) scale(0.75);
+      }
+    }
+  }
+
+  &.bm-Textarea-lg {
+    .bm-Textarea-field {
+      input {
+        height: 40px;
+      }
+    }
+  }
+
+  &.bm-Textarea-sm {
+    .bm-Textarea-field {
+      input {
+        height: 32px;
+      }
+    }
+  }
+
+  &.bm-Textarea-xs {
+    .bm-Textarea-field {
+      input {
+        height: 24px;
+      }
+    }
+  }
+}
+

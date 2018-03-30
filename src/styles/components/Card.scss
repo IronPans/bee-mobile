@@ -1,0 +1,145 @@
+.bm-Card {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: $cardBg;
+  @include boxShadow;
+  @include borderRadius(4px);
+  z-index: 20;
+  box-sizing: border-box;
+  transition: all .4s cubic-bezier(.25,.8,.25,1);
+
+  &.bm-Card-horizontal {
+    flex-direction: row;
+
+    .bm-CardHeader {
+      flex: 1 1 auto;
+    }
+
+    .bm-Avatar {
+      margin-right: 0;
+    }
+
+    .bm-CardContent {
+      flex: 0 0 auto;
+    }
+  }
+
+  .bm-CardHeader {
+    &:not(:empty) {
+      padding: 10px;
+    }
+  }
+
+  .bm-CardHeader-avatar {
+    flex: 0 0 auto;
+    width: 40px;
+    height: 40px;
+    margin-right: 16px;
+
+    img {
+      width: 100%;
+      border-radius: 50%;
+    }
+  }
+
+  .bm-CardHeader-title {
+    font-size: .8rem;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.71429em;
+  }
+
+  .bm-CardHeader-subtitle {
+    opacity: .54;
+    font-size: 14px;
+    letter-spacing: .01em;
+    line-height: 20px;
+  }
+
+  .bm-CardContent {
+    flex: 1 1 auto;
+    line-height: 22px;
+    box-sizing: border-box;
+
+    .bm-Avatar {
+      display: flex;
+    }
+  }
+
+  .bm-CardFooter,
+  .bm-CardHeader {
+    box-sizing: border-box;
+  }
+
+  .bm-CardContent + .bm-CardFooter {
+    padding-top: 0;
+  }
+
+  .bm-CardHeader, .bm-CardFooter {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .bm-CardFooter-action {
+    border-top: 1px solid $borderColor;
+    .be-Button {
+      color: rgba(0, 0, 0, 0.45);
+    }
+
+    .bm-Button:not(:first-child):not(:last-child) {
+      border-left: 1px solid $borderColor;
+      border-right: 1px solid $borderColor;
+    }
+  }
+
+  .bm-CardHeader-content {
+    flex: 1 1 auto;
+  }
+
+  .bm-CardHeader-action {
+    flex: 0 0 auto;
+    align-self: flex-start;
+  }
+
+  .bm-CardFooter {
+    .bm-Button {
+      box-shadow: none;
+      border: none;
+    }
+  }
+}
+
+.bm-CardStack {
+  position: relative;
+  .bm-Card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform-origin: 50% 50%;
+
+    &.bm-Card-first {
+      z-index: 4;
+      transform: translate(0,0) scale(1);
+    }
+
+    &.bm-Card-second {
+      z-index: 3;
+      transform: translate(0,30px) scale3d(.95,.95,1.0);
+    }
+
+    &.bm-Card-third {
+      z-index: 2;
+      transform: translate(0,50px) scale3d(.9,.9,1.0);
+
+      &.reveal {
+        transition: transform 300ms cubic-bezier(.0,.0,.2,1.0);
+        transform: translate(0px,50px) scale3d(.9,.9,1.0);
+      }
+    }
+  }
+}

@@ -1,0 +1,589 @@
+.bm-Spin {
+  display: inline-flex;
+
+  .loader {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  &.bm-Spin-lg {
+    transform: scale(1);
+  }
+
+  &.bm-Spin-sm {
+    transform: scale(.5);
+  }
+
+  &.bm-Spin-xs {
+    transform: scale(.25);
+  }
+
+  .loader.circleLine,
+  .loader.circle-round {
+    height: 100%;
+  }
+
+  /*circle-line*/
+
+  .loader.circleLine span {
+    position: absolute;
+    display: inline-block;
+    width: 30%;
+    height: 8%;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    background: $spinColor;
+    opacity: .05;
+    animation: circle-line 1s ease infinite;
+  }
+
+  .loader.circleLine span:nth-child(1) {
+    top: 46%;
+    left: 0;
+    animation-delay: .13s;
+  }
+
+  .loader.circleLine span:nth-child(2) {
+    top: 20%;
+    left: 8%;
+    transform: rotate(45deg);
+    animation-delay: .26s;
+  }
+
+  .loader.circleLine span:nth-child(3) {
+    left: 35%;
+    top: 10%;
+    transform: rotate(90deg);
+    animation-delay: .39s;
+  }
+
+  .loader.circleLine span:nth-child(4) {
+    right: 8%;
+    top: 20%;
+    transform: rotate(145deg);
+    animation-delay: .52s;
+  }
+
+  .loader.circleLine span:nth-child(5) {
+    right: 0;
+    top: 46%;
+    transform: rotate(180deg);
+    animation-delay: .65s;
+  }
+
+  .loader.circleLine span:nth-child(6) {
+    bottom: 20%;
+    right: 8%;
+    transform: rotate(-145deg);
+    animation-delay: .78s;
+  }
+
+  .loader.circleLine span:nth-child(7) {
+    left: 35%;
+    bottom: 10%;
+    transform: rotate(-90deg);
+    animation-delay: .91s;
+  }
+
+  .loader.circleLine span:nth-child(8) {
+    bottom: 20%;
+    left: 8%;
+    transform: rotate(-45deg);
+    animation-delay: 1.04s;
+  }
+
+  @keyframes circle-line {
+    0% {
+      opacity: .05;
+    }
+    100% {
+      opacity: .7;
+    }
+  }
+
+  @-webkit-keyframes circle-line {
+    0% {
+      opacity: .05;
+    }
+    100% {
+      opacity: .7;
+    }
+  }
+
+
+  /*circle-line-spin*/
+
+  .loader.circleLineSpin .circle-line-inner {
+    width: 100%;
+    height: 100%;
+    animation: circle-line-spin 1.5s linear infinite;
+  }
+
+  .loader.circleLineSpin span {
+    position: absolute;
+    display: inline-block;
+    width: 1.5rem;
+    height: .5rem;
+    border-top-left-radius: .25rem;
+    border-bottom-left-radius: .25rem;
+    background: $spinColor;
+    opacity: .7;
+  }
+
+  .loader.circleLineSpin span:nth-child(1) {
+    top: 50%;
+    left: 0;
+    margin-top: -.25rem;
+  }
+
+  .loader.circleLineSpin span:nth-child(2) {
+    top: 1rem;
+    left: .5rem;
+    transform: rotate(45deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(3) {
+    left: 50%;
+    top: .5rem;
+    margin-left: -.75rem;
+    transform: rotate(90deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(4) {
+    right: .5rem;
+    top: 1rem;
+    transform: rotate(145deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(5) {
+    left: 3.5rem;
+    top: 50%;
+    margin-top: -.25rem;
+    transform: rotate(180deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(6) {
+    bottom: 1rem;
+    right: .5rem;
+    transform: rotate(-145deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(7) {
+    left: 50%;
+    bottom: .5rem;
+    margin-left: -15px;
+    transform: rotate(-90deg);
+  }
+
+  .loader.circleLineSpin span:nth-child(8) {
+    bottom: 1rem;
+    left: .5rem;
+    transform: rotate(-45deg);
+  }
+
+  @keyframes circle-line-spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes circle-line-spin {
+    0% {
+      -webkit-transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+
+  /*circle-round*/
+
+  .loader.circleRound span {
+    opacity: .05;
+    animation: circle-round 1s ease infinite;
+  }
+
+  .loader.circleRoundFade span {
+    animation: circle-round-fade 1s ease infinite;
+  }
+
+  .loader.circleRound span,
+  .loader.circleRoundFade span {
+    position: absolute;
+    width: 15%;
+    height: 15%;
+    display: inline-block;
+    border-radius: 50%;
+    background: $spinColor;
+  }
+
+  .loader.circleRound span:nth-child(1),
+  .loader.circleRoundFade span:nth-child(1) {
+    top: 42.5%;
+    left: 0;
+    animation-delay: -1.04s;
+  }
+
+  .loader.circleRound span:nth-child(2),
+  .loader.circleRoundFade span:nth-child(2) {
+    top: 15%;
+    left: 12%;
+    animation-delay: -.91s;
+  }
+
+  .loader.circleRound span:nth-child(3),
+  .loader.circleRoundFade span:nth-child(3) {
+    top: 0;
+    left: 42.5%;
+    animation-delay: -.78s;
+  }
+
+  .loader.circleRound span:nth-child(4),
+  .loader.circleRoundFade span:nth-child(4) {
+    right: 12%;
+    top: 15%;
+    animation-delay: -.65s;
+  }
+
+  .loader.circleRound span:nth-child(5),
+  .loader.circleRoundFade span:nth-child(5) {
+    right: 0;
+    top: 42.5%;
+    animation-delay: -.52s;
+  }
+
+  .loader.circleRound span:nth-child(6),
+  .loader.circleRoundFade span:nth-child(6) {
+    bottom: 16%;
+    right: 12%;
+    animation-delay: -.39s;
+  }
+
+  .loader.circleRound span:nth-child(7),
+  .loader.circleRoundFade span:nth-child(7) {
+    bottom: 0;
+    left: 42.5%;
+    animation-delay: -.26s;
+  }
+
+  .loader.circleRound span:nth-child(8),
+  .loader.circleRoundFade span:nth-child(8) {
+    left: 12%;
+    bottom: 16%;
+    animation-delay: -.13s;
+  }
+
+  @keyframes circle-round {
+    0% {
+      opacity: .05;
+    }
+    100% {
+      opacity: .7;
+    }
+  }
+
+  @-webkit-keyframes circle-round {
+    0% {
+      opacity: .05;
+    }
+    100% {
+      opacity: .7;
+    }
+  }
+
+  @keyframes circle-round-fade {
+    0% {
+      opacity: .25;
+      transform: scale(.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @-webkit-keyframes circle-round-fade {
+    0% {
+      opacity: .25;
+      transform: scale(.2);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+
+  /*lineSquare*/
+
+  .loader.lineSquare {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader.lineSquare span {
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: .8rem;
+    display: inline-block;
+    background: $spinColor;
+    animation: lineSquare 1s ease infinite;
+  }
+
+  .loader.lineSquare span:nth-child(1) {
+    left: 0;
+    animation-delay: .13s;
+  }
+
+  .loader.lineSquare span:nth-child(2) {
+    left: 22.5%;
+    animation-delay: .26s;
+  }
+
+  .loader.lineSquare span:nth-child(3) {
+    left: 45%;
+    animation-delay: .39s;
+  }
+
+  .loader.lineSquare span:nth-child(4) {
+    left: 67.5%;
+    animation-delay: .52s;
+  }
+
+  .loader.lineSquare span:nth-child(5) {
+    left: 90%;
+    animation-delay: .65s;
+  }
+
+  @keyframes lineSquare {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: .2;
+      transform: scale(.2);
+    }
+  }
+
+  @-webkit-keyframes lineSquare {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+    }
+    100% {
+      opacity: .2;
+      transform: scale(.2);
+    }
+  }
+
+
+  /*line-round*/
+
+  .loader.lineRound {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader.lineRound span {
+    position: absolute;
+    top: 0;
+    width: 10%;
+    height: 10%;
+    border-radius: 50%;
+    display: inline-block;
+    background: $spinColor;
+    -webkit-animation: line-round 1s ease infinite;
+    animation: line-round 1s ease infinite;
+  }
+
+  .loader.lineRound span:nth-child(1) {
+    left: 0;
+    -webkit-animation-delay: .13s;
+    animation-delay: .13s;
+  }
+
+  .loader.lineRound span:nth-child(2) {
+    left: 22.5%;
+    -webkit-animation-delay: .26s;
+    animation-delay: .26s;
+  }
+
+  .loader.lineRound span:nth-child(3) {
+    left: 45%;
+    -webkit-animation-delay: .39s;
+    animation-delay: .39s;
+  }
+
+  .loader.lineRound span:nth-child(4) {
+    left: 67.5%;
+    -webkit-animation-delay: .52s;
+    animation-delay: .52s;
+  }
+
+  .loader.lineRound span:nth-child(5) {
+    left: 90%;
+    -webkit-animation-delay: .65s;
+    animation-delay: .65s;
+  }
+
+  @keyframes line-round {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+    }
+    100% {
+      opacity: .2;
+      transform: scale(.2);
+      -webkit-transform: scale(.2);
+    }
+  }
+
+  @-webkit-keyframes line-round {
+    0% {
+      opacity: 1;
+      transform: scale(1.2);
+      -webkit-transform: scale(1.2);
+    }
+    100% {
+      opacity: .2;
+      transform: scale(.2);
+      -webkit-transform: scale(.2);
+    }
+  }
+
+
+  /*line-bounce*/
+
+  .loader.lineBounce {
+    width: 100%;
+    height: 100%;
+  }
+
+  .loader.lineBounce span {
+    position: absolute;
+    top: 0;
+    width: 7%;
+    height: 80%;
+    border-radius:5px;
+    display: inline-block;
+    background: $spinColor;
+    -webkit-animation: line-bounce 1s ease infinite;
+    animation: line-bounce 1s ease infinite;
+  }
+
+  .loader.lineBounce span:nth-child(1) {
+    left: 0;
+    -webkit-animation-delay: -.65s;
+    animation-delay: -.65s;
+  }
+
+  .loader.lineBounce span:nth-child(2) {
+    left: 23.25%;
+    -webkit-animation-delay: -.78s;
+    animation-delay: -.78s;
+  }
+
+  .loader.lineBounce span:nth-child(3) {
+    left: 47%;
+    -webkit-animation-delay: -.91s;
+    animation-delay: -.91s;
+  }
+
+  .loader.lineBounce span:nth-child(4) {
+    left: 70.25%;
+    -webkit-animation-delay: -.78s;
+    animation-delay: -78s;
+  }
+
+  .loader.lineBounce span:nth-child(5) {
+    left: 93%;
+    -webkit-animation-delay: -.65s;
+    animation-delay: -.65s;
+  }
+
+  @keyframes line-bounce {
+    0% {
+      transform: scaleY(1);
+    }
+    50% {
+      transform: scaleY(.3);
+    }
+    100% {
+      transform: scaleY(1);
+    }
+  }
+
+  @-webkit-keyframes line-bounce {
+    0% {
+      -webkit-transform: scaleY(1);
+    }
+    50% {
+      -webkit-transform: scaleY(.3);
+    }
+    100% {
+      -webkit-transform: scaleY(1);
+    }
+  }
+
+
+  /*circle-spin*/
+
+  .loader.circleSpin {
+    border-radius: 50%;
+    border: .2rem solid rgba(0, 0, 0, .05);
+    width: 4rem;
+    height: 4rem;
+    box-sizing: content-box;
+  }
+
+  .loader.circleSpin .loader-placeholder {
+    position: absolute;
+    top: -.2rem;
+    left: -.2rem;
+    border-radius: 50%;
+    border: .2rem solid transparent;
+    border-top-color: $spinColor;
+    width: 4rem;
+    height: 4rem;
+    box-sizing: content-box;
+    -webkit-animation: circle-spin 1s ease infinite;
+    animation: circle-spin 1s ease infinite;
+  }
+
+  @keyframes circle-spin {
+    0% {
+      transform: rotate(0);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  @-webkit-keyframes circle-spin {
+    0% {
+      -webkit-transform: rotate(0);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
+  .bm-Spin-snake {
+    animation: circle-spin .8s infinite linear;
+    border: 4px solid $spinColor;
+    border-radius: 50%;
+    border-right-color: transparent;
+    height: 100%;
+    width: 100%;
+  }
+
+}
+

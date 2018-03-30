@@ -1,0 +1,98 @@
+
+.Chip {
+  position: relative;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.87);
+  border-radius: 32px;
+  transition: all .4s cubic-bezier(.25,.8,.25,1);
+  font-size: 13px;
+  line-height: 16px;
+  white-space: nowrap;
+  box-sizing: border-box;
+  background: rgba(0, 0, 0, .12);
+
+  .Chip-inner {
+    box-sizing: border-box;
+    padding: 5px 10px;
+  }
+
+  .Chip-avatar {
+    display: flex;
+    padding: 3px;
+
+    .bm-Avatar {
+      width: 26px;
+      color: #616161;
+      height: 26px;
+      border-radius: 50%;
+      font-size: 1rem;
+      overflow: hidden;
+    }
+
+    + .Chip-inner {
+      padding: 5px 10px 5px 5px;
+    }
+  }
+
+  .Chip-close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    width: 24px;
+    height: 24px;
+    color: #fff;
+    font-size: 20px;
+    border-radius: 50%;
+    margin-right: 5px;
+    cursor: pointer;
+    transition: background 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+
+    &:hover,
+    &:active {
+      background: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  &.Chip-active:not(.bm-disabled),
+  &:active:not(.bm-disabled),
+  &:focus:not(.bm-disabled) {
+    cursor: pointer;
+    box-shadow: 0 1px 5px rgba(0,0,0,.2),0 2px 2px rgba(0,0,0,.14),0 3px 1px -2px rgba(0,0,0,.12);
+  }
+}
+.ChipGroup {
+  position: relative;
+
+  input {
+    background: none;
+    border: none;
+    height: 32px;
+  }
+
+  &.Chip-input:after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: rgba(0,0,0,.12);
+    -webkit-transition: all .4s cubic-bezier(.25,.8,.25,1);
+    transition: all .4s cubic-bezier(.25,.8,.25,1);
+  }
+
+  &.Chip-input.Chip-focus:after {
+    background: $primary;
+    height: 2px;
+  }
+
+  &.Chip-input .Chip {
+    margin-right: 8px;
+    margin-bottom: 5px;
+  }
+}
+

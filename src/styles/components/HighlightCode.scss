@@ -1,0 +1,53 @@
+.bm-HighlightCode {
+  position: relative;
+
+  code {
+    border-radius: 4px;
+  }
+
+  .bm-HighlightCode-btn {
+    position: absolute;
+    right: 1rem;
+    top: 10px;
+    opacity: 0;
+    color: #fff;
+    z-index: 100;
+    border: none;
+    cursor: pointer;
+    padding: 0 .25rem;
+    border-radius: 3px;
+    transition: opacity .3s;
+  }
+
+  &:hover .bm-HighlightCode-btn {
+    opacity: .7;
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &[lang]:before {
+    position: absolute;
+    top: .25rem;
+    right: .5rem;
+    color: rgba(255, 255, 255, .5);
+    opacity: .5;
+    font-size: .65rem;
+  }
+
+  &[lang="html"]:before {
+    content: "HTML";
+  }
+
+  &[lang="javascript"]:before {
+    content: "Javascript";
+  }
+
+  &[lang="typescript"]:before {
+    content: "Typescript";
+  }
+
+  &[lang="css"]:before {
+    content: "CSS";
+  }
+}

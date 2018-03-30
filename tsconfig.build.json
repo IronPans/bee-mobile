@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es5",
+    "lib": ["es6", "dom"],
+    "jsx": "react",
+    "declaration": true,
+    "moduleResolution": "node",
+    "noImplicitAny": false,
+    "noUnusedParameters": true,
+    "strictNullChecks": true,
+    "experimentalDecorators": true,
+    "allowSyntheticDefaultImports": true
+  },
+  "typeRoots": [
+    "node_modules/@types", "typings/index.d.ts"
+  ],
+  "include": [
+    "src"
+  ]
+}
+

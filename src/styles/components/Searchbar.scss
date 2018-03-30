@@ -1,0 +1,108 @@
+.SearchBar {
+  padding: 8px 0;
+  overflow: hidden;
+  height: 2.2rem;
+  align-items: center;
+
+  &.SearchBar-active .SearchBar-cancel {
+    margin-right: 0;
+    opacity: 1;
+  }
+
+  &.SearchBar-active .SearchBar-cancel + .SearchBar-input {
+    margin-right: 2.5rem;
+  }
+
+  .SearchBar-cancel {
+    margin-right: -3rem;
+    width: 2.2rem;
+    float: right;
+    height: 35px;
+    opacity: 0;
+    line-height: 35px;
+    text-align: center;
+    transition: all .3s;
+    transform: translate3d(0, 0, 0);
+  }
+
+  .SearchBar-clear {
+    position: absolute;
+    display: none;
+    z-index: 3;
+    width: 15px;
+    height: 15px;
+    padding: 6.5px;
+    border-radius: 50%;
+    top: 0;
+    right: 0;
+    box-sizing: content-box;
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 15px 15px;
+    -webkit-transition: all .3s;
+    transition: all .3s;
+    background-image: url("data:image/svg+xml;charset=utf-8,<svg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2028%2028'><circle%20cx%3D'14'%20cy%3D'14'%20r%3D'14'%20fill%3D'%23ccc'%2F><line%20stroke%3D'%23ffffff'%20stroke-width%3D'2'%20stroke-miterlimit%3D'10'%20x1%3D'8'%20y1%3D'8'%20x2%3D'20'%20y2%3D'20'%2F><line%20fill%3D'none'%20stroke%3D'%23ffffff'%20stroke-width%3D'2'%20stroke-miterlimit%3D'10'%20x1%3D'20'%20y1%3D'8'%20x2%3D'8'%20y2%3D'20'%2F><%2Fsvg>");
+
+    &.SearchBar-clear-show {
+      display: block;
+    }
+  }
+
+  .SearchBar-input {
+    position: relative;
+    transform: translate3d(0, 0, 0);
+    margin-right: 0;
+    transition: all .3s;
+
+    .Icon {
+      position: absolute;
+      top: 50%;
+      left: 0.3rem;
+      z-index: 20;
+      font-size: 1rem;
+      color: #b4b4b4;
+      padding: .5rem .1rem;
+      line-height: 1.2rem;
+      transform: translate3D(0, -50%, 0);
+    }
+
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      height: 35px;
+      display: block;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      border-radius: 0.25rem;
+      font-family: inherit;
+      color: #3d4145;
+      font-size: 0.7rem;
+      font-weight: normal;
+      padding: 0 0.5rem;
+      background-color: #fff;
+      border: 1px solid $inputBorderColor;
+
+      &::-webkit-input-placeholder {
+        color: #ccc;
+        opacity: 1;
+      }
+    }
+
+    label {
+      position: absolute;
+      top: 0;
+      left: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 35px;
+      height: 35px;
+    }
+
+    label + input {
+      padding-left: 35px;
+    }
+  }
+}
