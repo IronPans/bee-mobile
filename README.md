@@ -1,7 +1,7 @@
 ## bee-mobile是一个基于 React 的移动端组件库
 
 <div style="text-align: center">
-    <img width="60" height="60" src="http://oumfrpm5j.bkt.clouddn.com/bee-mobile/logo.svg"/>
+    <img width="120" height="120" src="http://oumfrpm5j.bkt.clouddn.com/bee-mobile/logo.svg"/>
 </div>
 
 主页：[Bee Mobile](https://bee-mobiles.github.io)
