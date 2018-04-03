@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
+import {NavLink} from 'react-router-dom';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Timeline, {TimelineItem} from "../../src/components/Timeline";
 import {Content} from "../../src/components/Page";
@@ -35,6 +36,20 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                                </li>
                                <li>
                                    发布 <a href="https://bee-mobiles.github.io">Bee Mobile 首页</a> 和入门文档。
+                               </li>
+                           </ul>
+                       </TimelineItem>
+                       <TimelineItem title={<h3>0.1.1 <span className="title-label">2018-04-03</span></h3>}>
+                           <h4>Bug Fixes</h4>
+                           <ul>
+                               <li>
+                                   修复找不到<NavLink to="/docs/indicator">Indicator</NavLink>、<NavLink to="/docs/messageBox">MessageBox</NavLink>、<NavLink to="/docs/notification">Notification</NavLink>、<NavLink to="/docs/toast">Toast</NavLink>模块。
+                               </li>
+                           </ul>
+                           <h4>Tools</h4>
+                           <ul>
+                               <li>
+                                   <img className="emoji" alt="tada" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"/>发布<NavLink to="/docs/create-bee-mobile">create-bee-mobile</NavLink>脚手架，可快速搭建基于Webpack构建的React项目。
                                </li>
                            </ul>
                        </TimelineItem>

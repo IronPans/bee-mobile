@@ -722,6 +722,17 @@ h6,
   display: inline-flex;
 }
 
+blockquote.bm-blockquote {
+  color: #333;
+  background-color: rgba(25,118,210,.05);
+  border-left: 8px solid $primary;
+  padding: 16px;
+  margin: 0 0 8px 0;
+  display: table;
+  clear: both;
+  width: 100%;
+  box-sizing: border-box;
+}
 
 @-webkit-keyframes preloader-spin {
   100% {

@@ -1,23 +1,20 @@
 const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
-/**
- * Webpack Plugins
- */
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 /**
  * Used to merge webpack configs
  */
 const webpackMerge = require('webpack-merge');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 /**
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || '172.16.5.89'; // 172.17.0.1 172.16.5.89 192.168.1.104
-const PORT = process.env.PORT || 3339;
+const HOST = process.env.HOST || '172.17.0.1'; //192.168.1.104'; // 172.17.0.1 172.16.5.89
+const PORT = process.env.PORT || 8080;
 
 const METADATA = webpackMerge(commonConfig({
     env: ENV
@@ -29,7 +26,7 @@ const METADATA = webpackMerge(commonConfig({
 });
 
 module.exports = (options) => {
-    return webpackMerge(commonConfig({ env: ENV }), {
+    return webpackMerge(commonConfig({env: ENV}), {
         /**
          * Developer tool to enhance debugging
          *
@@ -48,6 +45,71 @@ module.exports = (options) => {
             sourceMapFilename: '[file].map',
             chunkFilename: '[id].chunk.js'
         },
+        module: {
+            rules: [
+                {
+                    oneOf: [
+                        {
+                            test: /\.(jsx?|tsx?)$/,
+                            loaders: ['babel-loader', 'ts-loader'],
+                            exclude: /node_modules/
+                        },
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/media/[name].[hash:8].[ext]',
+                            },
+                        },
+                        {
+                            test: /\.(scss|sass|css)$/,
+                            use: [
+                                require.resolve('style-loader'),
+                                {
+                                    loader: require.resolve('css-loader'),
+                                    options: {
+                                        importLoaders: 1,
+                                    },
+                                },
+                                {
+                                    loader: require.resolve('postcss-loader'),
+                                    options: {
+                                        ident: 'postcss',
+                                        plugins: () => [
+                                            autoprefixer({
+                                                browsers: [
+                                                    'last 2 versions',
+                                                    'Firefox ESR',
+                                                    '> 1%',
+                                                    'ie >= 9',
+                                                    'iOS >= 8',
+                                                    'Android >= 4'
+                                                ]
+                                            }),
+                                            cssnano({
+                                                preset: 'default',
+                                                zindex: false
+                                            }),
+                                        ],
+                                    },
+                                },
+                                {
+                                    loader: 'sass-loader'
+                                }
+                            ]
+                        },
+                        {
+                            exclude: [/\.(js|jsx|tsx|ts)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/media/[name].[hash:8].[ext]',
+                            },
+                        }
+                    ]
+                }
+            ]
+        },
         plugins: [
             new webpack.HotModuleReplacementPlugin(),
             /**
@@ -64,12 +126,7 @@ module.exports = (options) => {
                     ENV: JSON.stringify(METADATA.ENV),
                     NODE_ENV: JSON.stringify(METADATA.ENV)
                 }
-            }),
-            new ExtractTextPlugin({
-                filename: '[name].bundle.css',
-                allChunks: true
-            }),
-            //new BundleAnalyzerPlugin()
+            })
         ],
         /**
          * Webpack Development Server configuration

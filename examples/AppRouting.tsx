@@ -129,6 +129,7 @@ import PortalCase from "./cases/PortalCase";
 import RouteCase from "./cases/RouteCase";
 import InfiniteScrollCase from "./cases/InfiniteScrollCase";
 import InfiniteScrollApi from "./Api/InfiniteScrollApi";
+import BeeCli from "./Api/BeeCli";
 
 export const ROUTE_CONFIG: any = [
     { path: '/components/actionSheet', component: ActionSheetCase },
@@ -202,6 +203,7 @@ export const API_ROUTING = [
     { path: '/docs/autocomplete', component: AutocompleteApi },
     { path: '/docs/backTop', component: BackTopApi},
     { path: '/docs/badge', component: BadgeApi},
+    {path: '/docs/create-bee-mobile', component: BeeCli},
     {path: '/docs/breadcrumb', component: BreadcrumbApi},
     { path: '/docs/button', component: ButtonApi},
     { path: '/docs/buttonNavigation', component: ButtonNavigationApi},

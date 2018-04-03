@@ -1,5 +1,5 @@
 import Accordion, {AccordionGroup} from './Accordion';
-import * as ActionSheet from './ActionSheet';
+import ActionSheet from './ActionSheet';
 import Autocomplete from './Autocomplete';
 import Avatar from './Avatar';
 import BackTop from './BackTop';
@@ -14,7 +14,7 @@ import Row, {Col} from './Grid';
 import HighlightCode from './HighlightCode';
 import FabButton from './FabButton';
 import Icon from './Icon';
-import * as Indicator from './Indicator';
+import Indicator from './Indicator';
 import InputNumber from './InputNumber';
 import Inputtext from './Inputtext';
 import KeyBoard from './KeyBoard';
@@ -23,11 +23,11 @@ import LazyLoad from './LazyLoad';
 import List, {ListItem, ListItemText, ListItemAction} from './List';
 import Locker from './Locker';
 import DatetimePicker from './DatetimePicker';
-import * as MessageBox from './MessageBox';
+import MessageBox from './MessageBox';
 import Modal from './Modal';
 import Picker from './Picker';
 import NavBar from './NavBar';
-import * as Notification from './Notification';
+import Notification from './Notification';
 import Page, {Content} from './Page';
 import Pagination from './Pagination';
 import Panel, {PanelHeader, PanelContent} from './Panel';
@@ -50,7 +50,7 @@ import Table, {TableColumn} from './Table';
 import Tabs, {Tab, TabContainer, TabsGroup} from './Tabs';
 import Textarea from './Textarea';
 import Timeline, {TimelineItem} from './Timeline';
-import * as Toast from './Toast';
+import Toast from './Toast';
 import View from "./View";
 import Tree, {TreeNode} from "./Tree";
 import Tooltip from "./Tooltip";
@@ -142,7 +142,7 @@ export {TransitionGroup};
 export {ZoomIn};
 export {View};
 
-export default {
+export default ({
     AccordionGroup,
     Accordion,
 
@@ -254,4 +254,4 @@ export default {
     ZoomIn,
 
     View
-};
+} as any);

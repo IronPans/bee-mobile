@@ -49,6 +49,19 @@ const App = () => (
 );
 ```
 
+## create-bee-mobile
+
+[create-bee-mobile](https://bee-mobiles.github.io/#/docs/create-bee-mobile)是一个命令行界面工具，它可以创建一个最基本的React项目。
+
+**技术栈**
+
+- React
+- Typescript
+- Sass 预编译工具
+- bee-mobile 移动组件库
+- Webpack 构建工具
+
+
 
 
 

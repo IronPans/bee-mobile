@@ -2,7 +2,7 @@ import * as React from 'react';
 import {BaseProps} from '../common/BaseProps';
 
 export interface PageProps extends BaseProps {
-    isActive: boolean;
+    isActive?: boolean;
 }
 
 export interface ContentProps extends BaseProps {

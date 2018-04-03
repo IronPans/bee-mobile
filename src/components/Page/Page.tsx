@@ -3,6 +3,10 @@ import * as classNames from 'classnames';
 import {PageProps} from './PropsType';
 
 export default class Page extends React.PureComponent<PageProps, {}> {
+    static defaultProps = {
+        isActive: true
+    };
+
     render() {
         const { className, isActive, children } = this.props;
         const styleClass = classNames(

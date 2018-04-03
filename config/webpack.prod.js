@@ -12,6 +12,8 @@ const CompressionPlugin = require('compression-webpack-plugin');
  * Used to merge webpack configs
  */
 const webpackMerge = require('webpack-merge');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
 
 /**
  * Webpack Constants
@@ -28,6 +30,7 @@ const METADATA = webpackMerge(commonConfig({
     ENV: ENV,
     HMR: false
 });
+const projectName = 'examples';
 
 module.exports = (options) => {
     return webpackMerge(commonConfig({ env: ENV }), {
@@ -49,6 +52,78 @@ module.exports = (options) => {
             sourceMapFilename: '[file].map',
             chunkFilename: '[name].[chunkhash].chunk.js'
         },
+        module: {
+            rules: [
+                {
+                    oneOf: [
+                        {
+                            test: /\.(jsx?|tsx?)$/,
+                            loaders: ['babel-loader', 'ts-loader'],
+                            exclude: /node_modules/
+                        },
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/media/[name].[hash:8].[ext]',
+                            },
+                        },
+                        {
+                            test: /\.(scss|sass|css)$/,
+                            loader: ExtractTextPlugin.extract({
+                                fallback: {
+                                    loader: require.resolve('style-loader'),
+                                    options: {
+                                        hmr: false,
+                                    },
+                                },
+                                use: [
+                                    {
+                                        loader: require.resolve('css-loader'),
+                                        options: {
+                                            importLoaders: 1,
+                                        },
+                                    },
+                                    {
+                                        loader: require.resolve('postcss-loader'),
+                                        options: {
+                                            ident: 'postcss',
+                                            plugins: () => [
+                                                autoprefixer({
+                                                    browsers: [
+                                                        'last 2 versions',
+                                                        'Firefox ESR',
+                                                        '> 1%',
+                                                        'ie >= 9',
+                                                        'iOS >= 8',
+                                                        'Android >= 4'
+                                                    ]
+                                                }),
+                                                cssnano({
+                                                    preset: 'default',
+                                                    zindex: false
+                                                }),
+                                            ],
+                                        },
+                                    },
+                                    {
+                                        loader: 'sass-loader'
+                                    }
+                                ]
+                            })
+                        },
+                        {
+                            exclude: [/\.(js|jsx|tsx|ts)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/media/[name].[hash:8].[ext]',
+                            },
+                        }
+                    ]
+                }
+            ]
+        },
         plugins: [
             /**
              * Plugin: DefinePlugin
@@ -66,7 +141,7 @@ module.exports = (options) => {
                 }
             }),
             new ExtractTextPlugin({ // define where to save the file
-                filename: '[name].[chunkhash].bundle.css',
+                filename: 'static/css/[name].[chunkhash].bundle.css',
                 allChunks: true
             }),
             /**
@@ -79,14 +154,15 @@ module.exports = (options) => {
              * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
              */
             new webpack.optimize.UglifyJsPlugin({
-                beautify: false,
-                comments: false,
-                sourceMap: true,
                 compress: {
                     warnings: false,
                     drop_console: true,
                     collapse_vars: true,
-                    reduce_vars: true
+                    reduce_vars: true,
+                },
+                output: {
+                    beautify: false,
+                    comments: false,
                 }
             }),
             /**
@@ -115,7 +191,7 @@ module.exports = (options) => {
              * See: https://www.npmjs.com/package/copy-webpack-plugin
              */
             new CopyWebpackPlugin([{
-                from: 'examples/assets',
+                from: '' + projectName + '/assets',
                 to: 'assets'
             }]
             )

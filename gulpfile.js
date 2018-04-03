@@ -35,7 +35,7 @@ const paths = {
 };
 const banner = ['/**',
     ' * <%= pkg.name %> - <%= pkg.description %>',
-    ' * @authors <%= pkg.authors %>',
+    ' * @author <%= pkg.author %>',
     ' * @version v<%= pkg.version %>',
     ' * @link <%= pkg.homepage %>',
     ' * @license <%= pkg.license %>',
@@ -58,7 +58,7 @@ gulp.task('build:pack', () => {
 });
 
 gulp.task('build:tsx', () => {
-    return gulp.src(['src/components/**/*.tsx', 'src/components/**/*.ts'])
+    return gulp.src(['src/components/**/*.tsx'])
         .pipe($.sourcemaps.init())
         .pipe(tsProject())
         .pipe($.if((file) => {

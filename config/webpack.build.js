@@ -10,7 +10,7 @@ module.exports = {
     },
     externals: [
         {
-            'react': {
+            react: {
                 root: 'React',
                 commonjs2: 'react',
                 commonjs: 'react',
@@ -35,15 +35,10 @@ module.exports = {
     module: {
         loaders: [
             {
-                test: /\.jsx?$/,
-                exclude: /node_modules/,
-                loader: 'babel-loader'
-            },
-            {
-                test: /\.tsx?$/,
+                test: /\.(jsx?|tsx?)$/,
                 loaders: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/
-            }
+            },
         ]
     },
     resolve: {

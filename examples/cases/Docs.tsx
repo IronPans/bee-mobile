@@ -187,6 +187,12 @@ export class Docs extends React.PureComponent<any, DocsState> {
                         </ListItem>
                         <ListItem>
                             <ListItemText>
+                                <NavLink to="/docs/create-bee-mobile"
+                                         activeClassName="active">create-bee-mobile</NavLink>
+                            </ListItemText>
+                        </ListItem>
+                        <ListItem>
+                            <ListItemText>
                                 <NavLink to="/docs/getting-started"
                                          activeClassName="active">快速上手</NavLink>
                             </ListItemText>
@@ -291,7 +297,7 @@ export class Docs extends React.PureComponent<any, DocsState> {
                     </section>
                 </Sidebar>
                 <View reveal={this.state.reveal} onClose={this.toggleSidebar}>
-                    <Page isActive={true} className="ApiPage">
+                    <Page className="ApiPage">
                         <NavBar fixed={true} left={<Button shape="circle" onClick={this.openSidebar}>
                             <Icon icon="menu" style={barStyle}/>
                         </Button>} center={this.state.title}

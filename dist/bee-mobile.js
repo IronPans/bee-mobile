@@ -1,8 +1,8 @@
 /**
  * bee-mobile - UI Components for React
- * @authors 
- * @version v0.1.0
- * @link https://ironpans.github.io/bee-mobile/
+ * @author TG <ghmagical@gmail.com>
+ * @version v0.1.1
+ * @link https://bee-mobiles.github.io
  * @license MIT
  */
 (function webpackUniversalModuleDefinition(root, factory) {
@@ -2870,8 +2870,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var Accordion_1 = __webpack_require__(66);
 exports.Accordion = Accordion_1.default;
 exports.AccordionGroup = Accordion_1.AccordionGroup;
-var ActionSheet = __webpack_require__(76);
-exports.ActionSheet = ActionSheet;
+var ActionSheet_1 = __webpack_require__(76);
+exports.ActionSheet = ActionSheet_1.default;
 var Autocomplete_1 = __webpack_require__(80);
 exports.Autocomplete = Autocomplete_1.default;
 var Avatar_1 = __webpack_require__(86);
@@ -2907,8 +2907,8 @@ var FabButton_1 = __webpack_require__(122);
 exports.FabButton = FabButton_1.default;
 var Icon_1 = __webpack_require__(13);
 exports.Icon = Icon_1.default;
-var Indicator = __webpack_require__(124);
-exports.Indicator = Indicator;
+var Indicator_1 = __webpack_require__(124);
+exports.Indicator = Indicator_1.default;
 var InputNumber_1 = __webpack_require__(127);
 exports.InputNumber = InputNumber_1.default;
 var Inputtext_1 = __webpack_require__(37);
@@ -2928,16 +2928,16 @@ var Locker_1 = __webpack_require__(137);
 exports.Locker = Locker_1.default;
 var DatetimePicker_1 = __webpack_require__(141);
 exports.DatetimePicker = DatetimePicker_1.default;
-var MessageBox = __webpack_require__(144);
-exports.MessageBox = MessageBox;
+var MessageBox_1 = __webpack_require__(144);
+exports.MessageBox = MessageBox_1.default;
 var Modal_1 = __webpack_require__(146);
 exports.Modal = Modal_1.default;
 var Picker_1 = __webpack_require__(148);
 exports.Picker = Picker_1.default;
 var NavBar_1 = __webpack_require__(149);
 exports.NavBar = NavBar_1.default;
-var Notification = __webpack_require__(151);
-exports.Notification = Notification;
+var Notification_1 = __webpack_require__(151);
+exports.Notification = Notification_1.default;
 var Page_1 = __webpack_require__(153);
 exports.Page = Page_1.default;
 exports.Content = Page_1.Content;
@@ -2990,8 +2990,8 @@ exports.Textarea = Textarea_1.default;
 var Timeline_1 = __webpack_require__(209);
 exports.Timeline = Timeline_1.default;
 exports.TimelineItem = Timeline_1.TimelineItem;
-var Toast = __webpack_require__(212);
-exports.Toast = Toast;
+var Toast_1 = __webpack_require__(212);
+exports.Toast = Toast_1.default;
 var View_1 = __webpack_require__(214);
 exports.View = View_1.default;
 var Tree_1 = __webpack_require__(216);
@@ -3011,7 +3011,7 @@ exports.ZoomIn = Transitions_1.ZoomIn;
 exports.default = {
     AccordionGroup: Accordion_1.AccordionGroup,
     Accordion: Accordion_1.default,
-    ActionSheet: ActionSheet,
+    ActionSheet: ActionSheet_1.default,
     Autocomplete: Autocomplete_1.default,
     Avatar: Avatar_1.default,
     BackTop: BackTop_1.default,
@@ -3033,7 +3033,7 @@ exports.default = {
     HighlightCode: HighlightCode_1.default,
     FabButton: FabButton_1.default,
     Icon: Icon_1.default,
-    Indicator: Indicator,
+    Indicator: Indicator_1.default,
     InputNumber: InputNumber_1.default,
     Inputtext: Inputtext_1.default,
     KeyBoard: KeyBoard_1.default,
@@ -3046,9 +3046,9 @@ exports.default = {
     Locker: Locker_1.default,
     DatetimePicker: DatetimePicker_1.default,
     Picker: Picker_1.default,
-    MessageBox: MessageBox,
+    MessageBox: MessageBox_1.default,
     Modal: Modal_1.default,
-    Notification: Notification,
+    Notification: Notification_1.default,
     Popover: Popover_1.default,
     Popup: Popup_1.default,
     NavBar: NavBar_1.default,
@@ -3080,7 +3080,7 @@ exports.default = {
     Textarea: Textarea_1.default,
     Timeline: Timeline_1.default,
     TimelineItem: Timeline_1.TimelineItem,
-    Toast: Toast,
+    Toast: Toast_1.default,
     Tooltip: Tooltip_1.default,
     Tree: Tree_1.default,
     TreeNode: Tree_1.TreeNode,
@@ -11483,6 +11483,9 @@ var Page = /** @class */function (_super) {
             children = _a.children;
         var styleClass = classNames('Page', className, isActive ? 'Page-active' : 'Page-on-right');
         return React.createElement("div", { className: styleClass }, children);
+    };
+    Page.defaultProps = {
+        isActive: true
     };
     return Page;
 }(React.PureComponent);

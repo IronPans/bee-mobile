@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import { Collapse } from '../Transitions';
 import Ripple from '../Ripple';
-import {AccordionProps, AccordionState} from './PropsType';
+import { AccordionProps, AccordionState } from './PropsType';
 
 export default class Accordion extends React.PureComponent<AccordionProps, AccordionState> {
     static defaultProps: AccordionProps = {

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {ViewProps, ViewState} from './PropsType';
+import { ViewProps, ViewState } from './PropsType';
 
 export default class View extends React.PureComponent<ViewProps, ViewState> {
     static defaultProps = {
@@ -17,7 +17,7 @@ export default class View extends React.PureComponent<ViewProps, ViewState> {
     };
 
     componentDidMount() {
-        const {reveal} = this.props;
+        const { reveal } = this.props;
         this.setState({
             reveal: !!reveal
         });

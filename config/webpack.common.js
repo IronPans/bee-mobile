@@ -7,7 +7,8 @@ const path = require('path');
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+
+const projectName = 'examples';
 
 module.exports = (options) => {
     const pkg = require(path.join(process.cwd(), 'package.json'));
@@ -20,53 +21,30 @@ module.exports = (options) => {
          * See: http://webpack.github.io/docs/configuration.html#entry
          */
         entry: {
-            main: helpers.root('./examples/index.tsx'),
-            vendor: helpers.root('./examples/vendor.tsx')
+            main: helpers.root('./' + projectName + '/index.tsx'),
+            vendor: helpers.root('./' + projectName + '/vendor.tsx')
         },
         module: {
+            strictExportPresence: true,
             rules: [
                 {
-                    test: /\.jsx?$/,
-                    exclude: /node_modules/,
-                    loader: 'babel-loader'
+                    test: /\.(tsx|ts|js|jsx)$/,
+                    enforce: 'pre',
+                    use: [
+                        {
+                            options: {
+                                eslintPath: require.resolve('eslint'),
+                                baseConfig: {
+                                    extends: [require.resolve('eslint-config-react-app')],
+                                },
+                                ignore: false,
+                                useEslintrc: false,
+                            },
+                            loader: require.resolve('eslint-loader'),
+                        },
+                    ],
+                    include: ['/examples', 'src'],
                 },
-                {
-                    test: /\.tsx?$/,
-                    loaders: ['babel-loader', 'ts-loader'],
-                    exclude: /node_modules/
-                },
-                {
-                    test: /\.(scss|sass|css)$/,
-                    loader: ExtractTextPlugin.extract({
-                        fallback: 'style-loader',
-                        use: 'css-loader!postcss-loader!sass-loader'
-                    })
-                },
-                /**
-                 * Raw loader support for *.html
-                 * Returns file content as string
-                 *
-                 * See: https://github.com/webpack/raw-loader
-                 */
-                {
-                    test: /\.html$/,
-                    use: 'raw-loader',
-                    exclude: [helpers.root('examples/index.html')]
-                },
-                /**
-                 * File loader for supporting images, for example, in CSS files.
-                 */
-                {
-                    test: /\.(jpg|png|gif)$/,
-                    use: 'file-loader'
-                },
-                /**
-                 * File loader for supporting fonts, for example, in CSS files.
-                 */
-                {
-                    test: /\.(eot|woff2?|svg|ttf)([\?]?.*)$/,
-                    use: 'file-loader'
-                }
             ]
         },
         /**
@@ -75,17 +53,8 @@ module.exports = (options) => {
          * See: http://webpack.github.io/docs/configuration.html#resolve
          */
         resolve: {
-            modules: [helpers.root('./node_modules')],
-            extensions: [
-                '.ts',
-                '.tsx',
-                '.js',
-                '.scss',
-                '.css',
-                '.js',
-                '.jsx',
-                '.json'
-            ],
+            modules: [helpers.root(projectName), helpers.root('./node_modules')],
+            extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
             alias: {
                 [pkg.name]: process.cwd()
             }
@@ -101,19 +70,23 @@ module.exports = (options) => {
                     const entryPoints = ['vendor', 'main'];
                     return entryPoints.indexOf(a.names[0]) - entryPoints.indexOf(b.names[0]);
                 },
-                favicon: './examples/assets/ico/favicon.ico',
+                favicon: './favicon.ico',
                 stat: isProduction,
                 inject: 'body',
-                template: './examples/index.html',
+                template: './' + projectName + '/index.html',
                 hash: true,
                 minify: isProduction ? {
+                    removeComments: true,
                     collapseWhitespace: true,
                     collapseInlineTagWhitespace: true,
                     removeRedundantAttributes: true,
+                    useShortDoctype: true,
                     removeEmptyAttributes: true,
-                    removeScriptTypeAttributes: true,
                     removeStyleLinkTypeAttributes: true,
-                    removeComments: true
+                    keepClosingSlash: true,
+                    minifyJS: true,
+                    minifyCSS: true,
+                    minifyURLs: true,
                 } : null
             }),
             new webpack.BannerPlugin(`${pkg.name} v${pkg.version}`),
@@ -127,6 +100,13 @@ module.exports = (options) => {
                     console.log(chalk.green('\n ☺☺☺ webpack: bundle build is now finished.'));
                 }
             })
-        ]
+        ],
+        node: {
+            dgram: 'empty',
+            fs: 'empty',
+            net: 'empty',
+            tls: 'empty',
+            child_process: 'empty',
+        },
     };
 };

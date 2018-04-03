@@ -66,6 +66,10 @@ export default class Introduce extends React.PureComponent<IntroduceProps, any> 
                         </section>
                     </div>
                 </div>
+                <h2 className="text-center">移动预览</h2>
+                <div className="text-center padding-bottom-20">
+                    <img src="http://oumfrpm5j.bkt.clouddn.com/bee-mobile.png" alt=""/>
+                </div>
             </Content>
         );
     }

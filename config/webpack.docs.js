@@ -76,10 +76,70 @@ module.exports = (options) => {
             }
         ],
         module: {
+            strictExportPresence: true,
             rules: [
                 {
-                    text: /\.md$/,
-                    loader: ''
+                    oneOf: [
+                        {
+                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            loader: require.resolve('url-loader'),
+                            options: {
+                                limit: 10000,
+                                name: 'static/[name].[hash:8].[ext]',
+                            },
+                        },
+                        {
+                            test: /\.(scss|sass|css)$/,
+                            loader: ExtractTextPlugin.extract({
+                                fallback: {
+                                    loader: require.resolve('style-loader'),
+                                    options: {
+                                        hmr: false,
+                                    },
+                                },
+                                use: [
+                                    {
+                                        loader: require.resolve('css-loader'),
+                                        options: {
+                                            importLoaders: 1,
+                                        },
+                                    },
+                                    {
+                                        loader: require.resolve('postcss-loader'),
+                                        options: {
+                                            ident: 'postcss',
+                                            plugins: () => [
+                                                autoprefixer({
+                                                    browsers: [
+                                                        'last 2 versions',
+                                                        'Firefox ESR',
+                                                        '> 1%',
+                                                        'ie >= 9',
+                                                        'iOS >= 8',
+                                                        'Android >= 4'
+                                                    ]
+                                                }),
+                                                cssnano({
+                                                    preset: 'default',
+                                                    zindex: false
+                                                }),
+                                            ],
+                                        },
+                                    },
+                                    {
+                                        loader: 'sass-loader'
+                                    }
+                                ]
+                            })
+                        },
+                        {
+                            exclude: [/\.(js|jsx|tsx|ts)$/, /\.html$/, /\.json$/],
+                            loader: require.resolve('file-loader'),
+                            options: {
+                                name: 'static/[name].[hash:8].[ext]',
+                            },
+                        }
+                    ]
                 }
             ]
         },
