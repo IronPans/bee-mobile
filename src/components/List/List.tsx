@@ -4,13 +4,16 @@ import {ListProps} from './PropsType';
 
 export default class List extends React.PureComponent<ListProps, {}> {
     static defaultProps = {
+        prefixCls: 'bm-List',
         disableRipple: true
     };
 
     render() {
-        const {children: childrenProps, className, disableRipple, ...other} = this.props;
+        const {avatarRight, children: childrenProps, className, disableRipple, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            'List', className
+            prefixCls,
+            avatarRight ? `${prefixCls}-avatar-right` : '',
+            className
         );
         const children = React.Children.map(childrenProps, (child: React.ReactElement<any>, index: number) => {
             if (!React.isValidElement(child)) {

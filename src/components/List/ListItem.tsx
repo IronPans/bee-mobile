@@ -5,6 +5,7 @@ import {ListItemProps} from './PropsType';
 
 export default class ListItem extends React.PureComponent<ListItemProps, any> {
     static defaultProps = {
+        prefixCls: 'bm-List-item',
         disableRipple: false
     };
 
@@ -16,14 +17,15 @@ export default class ListItem extends React.PureComponent<ListItemProps, any> {
     };
 
     render() {
-        const {children, className, disableRipple, index, onClick, ...other} = this.props;
+        const {avatarRight, children, className, disableRipple, index, onClick, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            'List-item',
+            prefixCls,
+            avatarRight ? `${prefixCls}-avatar-right` : '',
             className
         );
         return (
             <li className={styleClass} onClick={this.handleClick} {...other}>
-                <div className="List-item-btn">
+                <div className={`${prefixCls}-btn`}>
                     {children}
                     {!disableRipple ? (<Ripple/>) : null}
                 </div>

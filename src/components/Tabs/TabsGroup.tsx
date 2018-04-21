@@ -5,6 +5,7 @@ import {TabsGroupProps, TabsGroupState} from './PropsType';
 export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsGroupState> {
     static defaultProps: TabsGroupProps = {
         activeIndex: 0,
+        animated: true,
         centerMode: false,
         prefixCls: 'bm-TabsGroup',
         position: 'top',
@@ -14,6 +15,8 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
     state: TabsGroupState = {
         activeIndex: 0
     };
+
+    wrapper: any;
 
     componentDidMount() {
         const {activeIndex}: any = this.props;
@@ -39,9 +42,13 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
         }
     };
 
+    getRef = (node) => {
+        this.wrapper = node;
+    };
+
     render() {
         const {
-            activeIndex: activeIndexProps, centerMode, children, className,
+            animated, activeIndex: activeIndexProps, centerMode, children, className,
             position, prefixCls, onChange, scrollable, ...other
         }: any = this.props;
         const styleClass = classNames(
@@ -73,10 +80,24 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
                 otherChild.push(React.cloneElement(child, props));
             }
         });
+        const x = this.wrapper ? (-(this.wrapper as any).offsetWidth * activeIndex!) : 0;
+        const y = this.wrapper ? (-(this.wrapper as any).offsetHeight * activeIndex!) : 0;
+        const horizontal = position === 'left' || position === 'right';
+        const wrapperStyles = {
+            transform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
+            WebkitTransform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
+            msTransform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
+            WebkitTransition: animated ? '-webkit-transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : '',
+            transition: animated ? 'transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : ''
+        };
         return (
             <div className={styleClass} {...other}>
                 {navChildren}
-                {containerChildren}
+                <div className="bm-TabsContainerBox" ref={this.getRef}>
+                    <div className="bm-TabsContainerWrapper" style={wrapperStyles}>
+                        {containerChildren}
+                    </div>
+                </div>
                 {otherChild}
             </div>
         );

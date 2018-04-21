@@ -9,11 +9,8 @@ export default class SearchBar extends React.PureComponent<SearchBarProps, Searc
         autoFocus: false,
         cancelText: '取消',
         disabled: false,
-        placeholder: '输入关键字...'
-    };
-    state: SearchBarState = {
-        value: '',
-        focus: false
+        placeholder: '输入关键字...',
+        prefixCls: 'bm-SearchBar'
     };
 
     constructor(props: SearchBarProps) {
@@ -84,26 +81,26 @@ export default class SearchBar extends React.PureComponent<SearchBarProps, Searc
     };
 
     render() {
-        const {autoFocus, cancelText, className, disabled, maxLength, ...other} = this.props;
+        const {autoFocus, cancelText, className, disabled, maxLength, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            'SearchBar',
+            prefixCls,
             {
-                'SearchBar-active': this.state.focus!
+                [`${prefixCls}-active`]: this.state.focus!
             },
             className
         );
         const clearClass = classNames(
-            'SearchBar-clear',
+            `${prefixCls}-clear`,
             {
-                'SearchBar-clear-show': !!(this.state.value! && this.state.focus!)
+                [`${prefixCls}-clear-show`]: !!(this.state.value! && this.state.focus!)
             }
         );
         const otherProps: object = getOtherProperties(other,
             ['onCancel', 'onChange', 'onBlur', 'onFocus', 'onSubmit']);
         return (
             <div className={styleClass} {...otherProps}>
-                <a className="SearchBar-cancel" onClick={this.handleCancel}>{cancelText}</a>
-                <div className="SearchBar-input">
+                <a className={`${prefixCls}-cancel`} onClick={this.handleCancel}>{cancelText}</a>
+                <div className={`${prefixCls}-input`}>
                     <label htmlFor="SearchBar"><Icon icon="search"/></label>
                     <input autoFocus={autoFocus} type="text" id="SearchBar" onChange={this.handleChange}
                            disabled={disabled} onKeyUp={this.handleSubmit}

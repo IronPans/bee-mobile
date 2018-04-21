@@ -3,10 +3,13 @@ import * as classNames from 'classnames';
 import {ListItemTextProps} from './PropsType';
 
 export default class ListItemText extends React.PureComponent<ListItemTextProps, {}> {
+    static defaultProps = {
+        prefixCls: 'bm-List-item-text',
+    };
     render() {
-        const { children, className } = this.props;
+        const { children, className, prefixCls } = this.props;
         const styleClass = classNames(
-            'List-item-text',
+            prefixCls,
             className
         );
         return (

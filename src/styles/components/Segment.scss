@@ -1,0 +1,42 @@
+.bm-Segment {
+  display: flex;
+  border-radius: 5px;
+  overflow: hidden;
+  min-height: 27px;
+  opacity: 1;
+
+  .bm-Segment-item {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    color: $primary;
+    font-size: 14px;
+    line-height: 1;
+    transition: background .2s;
+    position: relative;
+    border: 1px solid $primary;
+    width: 100%;
+    box-sizing: border-box;
+    cursor: pointer;
+    border-left-width: 0;
+
+    &:first-child {
+      border-left-width: 1px;
+      border-radius: 5px 0 0 5px;
+    }
+
+    &:last-child {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &.bm-Segment-item-selected {
+      background: $primary;
+      color: #fff;
+    }
+
+    &.bm-Segment-item-disabled {
+      opacity: .5;
+    }
+  }
+}

@@ -106,10 +106,6 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
         }
     };
 
-    done() {
-        this.reset();
-    }
-
     reset() {
         this.setState({
             loading: false,
@@ -118,6 +114,10 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
             x: 0,
             y: 0
         });
+    }
+
+    done() {
+        this.reset();
     }
 
     getPreloaderRef = (node: any) => {
@@ -155,11 +155,6 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
                  onTransitionEnd={this.handleTransitionEnd} onTouchStart={this.handleTouchStart}>
                 {pullToRefresh ? preloaderElem : null}
                 {children}
-                {infiniteScroll ? (
-                    <div className={`${prefixCls}-infinite-scroll-preloader`}>
-                        <div className="fr-preloader"/>
-                    </div>
-                ) : null}
             </div>
         );
     }

@@ -2,7 +2,6 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Tabs, {Tab, TabContainer, TabsGroup} from '../../src/components/Tabs';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import Swiper from '../../src/components/Swiper';
 import {Content} from "../../src/components/Page";
 
 interface Props extends BaseProps {
@@ -53,17 +52,21 @@ export default class TabsCase extends React.PureComponent<Props, State> {
                     </TabsGroup>
                 </div>
                 <div className="CasePanel">
-                    <TabsGroup onChange={this.handleChange}>
+                    <TabsGroup animated={false}>
                         <Tabs>
                             <Tab>Home</Tab>
                             <Tab>Article</Tab>
                             <Tab>Personal</Tab>
                         </Tabs>
-                        <Swiper touch={false} pagination={false} activeIndex={this.state.index}>
-                            <div className="box padding-10">Slide1</div>
-                            <div className="box padding-10">Slide2</div>
-                            <div className="box padding-10">Slide3</div>
-                        </Swiper>
+                        {
+                            [0, 1, 2].map((value) => {
+                                return (
+                                    <TabContainer key={value} style={conStyle}>
+                                        {value + 1}
+                                    </TabContainer>
+                                );
+                            })
+                        }
                     </TabsGroup>
                 </div>
                 <div className="CasePanel">

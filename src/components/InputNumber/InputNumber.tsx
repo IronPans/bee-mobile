@@ -26,14 +26,13 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
 
     componentWillReceiveProps(nextProps: InputNumberProps) {
         if ('value' in nextProps && this.props.value !== nextProps.value) {
-            this.setValue();
+            this.setValue(0, nextProps.value);
         }
     }
 
-    setValue(add: number = 0) {
-        const {min, max, step} = this.props;
-        const value = this.state.value;
-        let currentValue = value + add * step!;
+    setValue(add: number = 0, value?: number) {
+        const {min, max, step}: any = this.props;
+        let currentValue = value! + add * step!;
         if (currentValue < min!) {
             currentValue = min!;
         } else if (currentValue > max!) {
@@ -47,8 +46,8 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
     }
 
     spin(add: number, event: Event) {
-        const {onChange} = this.props;
-        const currentValue = this.setValue(add);
+        const {onChange, value} = this.props;
+        const currentValue = this.setValue(add, value);
         if (onChange) {
             onChange(currentValue, event);
         }
@@ -64,6 +63,7 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
             event.preventDefault();
         }
     };
+
     handleKeyPress = (event: any) => {
         const keyPattern: RegExp = /[0-9\+\-]/;
         if (!keyPattern.test(String.fromCharCode(event.charCode)) &&
@@ -72,6 +72,7 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
             event.preventDefault();
         }
     };
+
     handleChange = (event: any) => {
         const inputElem: any = event.target;
         const {onChange} = this.props;

@@ -13,8 +13,8 @@ const cssnano = require('cssnano');
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || '172.17.0.1'; //192.168.1.104'; // 172.17.0.1 172.16.5.89
-const PORT = process.env.PORT || 8080;
+const HOST = process.env.HOST || '172.17.0.1';
+const PORT = process.env.PORT || 8081;
 
 const METADATA = webpackMerge(commonConfig({
     env: ENV

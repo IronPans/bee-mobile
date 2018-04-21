@@ -7,7 +7,10 @@ import {Content} from "../../src/components/Page";
 interface SwiperCaseProps extends BaseProps {
 }
 
-export default class SwiperCase extends React.PureComponent<SwiperCaseProps, any> {
+interface SwiperState {
+}
+
+export default class SwiperCase extends React.PureComponent<SwiperCaseProps, SwiperState> {
     render() {
         const {className, ...other} = this.props;
         const styleClass = classNames(
@@ -49,7 +52,7 @@ export default class SwiperCase extends React.PureComponent<SwiperCaseProps, any
                     </Swiper>
                 </section>
                 <section className="CasePanel">
-                    <Swiper loop={true} effect="fade">
+                    <Swiper loop={true} effect="fade" autoplay={true}>
                         <div className="box blue">Slide1</div>
                         <div className="box red">Slide2</div>
                         <div className="box yellow">Slide3</div>

@@ -93,6 +93,17 @@ function removeClass(elem: any, className: string) {
     }
 }
 
+function parents(elem: any) {
+    const matched: any = [];
+
+    while ( ( elem = elem[ 'parentNode' ] ) && elem.nodeType !== 9 ) {
+        if ( elem.nodeType === 1 ) {
+            matched.push( elem );
+        }
+    }
+    return matched;
+}
+
 function clickOutside(elem: any, source: any, inside?: Function, outside?: Function) {
     let isIn = false;
     while (elem) {
@@ -159,4 +170,4 @@ function getScrollParent(node: any) {
 }
 
 export {addClass, addEventListener, clickOutside, css, hasClass, removeClass, getScrollParent, removeEventListener, animationEnd,
-    setTransform, setTransitionDuration, transitionStart, transitionEnd, deleteTransitionEnd}
+    setTransform, setTransitionDuration, transitionStart, transitionEnd, deleteTransitionEnd, parents}

@@ -12,6 +12,7 @@ interface InputNumberCaseState {
 }
 
 export default class InputNumberCase extends React.PureComponent<InputNumberCaseProps, InputNumberCaseState> {
+
     handleChange = (event: any) => {
         console.log(event);
     };
@@ -21,6 +22,7 @@ export default class InputNumberCase extends React.PureComponent<InputNumberCase
             'InputNumberCase',
             className
         );
+
         return (
             <Content className={styleClass} {...other}>
                 <div className="CasePanel">

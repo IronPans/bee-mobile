@@ -130,6 +130,8 @@ import RouteCase from "./cases/RouteCase";
 import InfiniteScrollCase from "./cases/InfiniteScrollCase";
 import InfiniteScrollApi from "./Api/InfiniteScrollApi";
 import BeeCli from "./Api/BeeCli";
+import SegmentCase from './cases/SegmentCase';
+import SegmentApi from './Api/SegmentApi';
 
 export const ROUTE_CONFIG: any = [
     { path: '/components/actionSheet', component: ActionSheetCase },
@@ -180,6 +182,7 @@ export const ROUTE_CONFIG: any = [
     { path: '/components/route', component: RouteCase },
     { path: '/components/searchBar', component: SearchBarCase },
     { path: '/components/picker', component: PickerCase },
+    { path: '/components/segment', component: SegmentCase },
     { path: '/components/slider', component: SliderCase },
     { path: '/components/spin', component: SpinCase },
     { path: '/components/switch', component: SwitchCase },
@@ -248,6 +251,7 @@ export const API_ROUTING = [
     { path: '/docs/ripple', component: RippleApi },
     { path: '/docs/route', component: RouteApi },
     { path: '/docs/searchBar', component: SearchBarApi },
+    { path: '/docs/segment', component: SegmentApi },
     { path: '/docs/slider', component: SliderApi },
     { path: '/docs/spin', component: SpinApi },
     { path: '/docs/switch', component: SwitchApi },

@@ -8,7 +8,7 @@
     position: relative;
     z-index: 2;
 
-    ~ .bm-TabContainer,
+    ~ .bm-TabsContainerBox .bm-TabContainer,
     .bm-Tabs-nav {
       box-shadow: none;
     }
@@ -83,14 +83,30 @@
     will-change: left, width;
   }
 
+  .bm-TabsContainerBox {
+    flex: 1;
+    overflow: hidden;
+
+    .bm-TabsContainerWrapper {
+      display: flex;
+      flex: 1;
+    }
+
+    .bm-Tabs-nav-wrapper,
+    .bm-TabContainer {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+
   .bm-TabContainer {
-    display: none;
+    flex: 0 0 auto;
     padding: 16px 12px;
     position: relative;
     box-shadow: 1px 0 10px 1px rgba(0,0,0,.3);
 
     &.bm-TabContainer-active {
-      display: flex;
+      display: block;
     }
   }
 
@@ -109,12 +125,18 @@
 
     }
 
+    .bm-TabsContainerWrapper {
+      flex-direction: column;
+      height: 100%;
+    }
+
     .bm-Tabs-indicator {
       width: 2px;
     }
 
     .bm-TabContainer {
-      flex: 1 0 auto;
+      flex: 0 0 auto;
+      height: 100%;
     }
   }
 

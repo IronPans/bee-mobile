@@ -32,6 +32,7 @@ export interface TabsState {
 }
 
 export interface TabsGroupProps extends BaseProps {
+    animated?: boolean;
     activeIndex?: number;
     centerMode?: boolean;
     position?: 'top' | 'right' | 'bottom' | 'left';

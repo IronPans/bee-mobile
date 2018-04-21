@@ -9,7 +9,7 @@ export default class Badge extends React.PureComponent<BadgeProps, {}> {
         fixed: true,
         max: 99,
         prefixCls: 'bm-Badge',
-        status: 'default'
+        status: 'error'
     };
 
     componentWillReceiveProps(nextProps: BadgeProps) {

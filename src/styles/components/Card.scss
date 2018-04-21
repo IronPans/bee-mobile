@@ -87,7 +87,9 @@
 
   .bm-CardFooter-action {
     border-top: 1px solid $borderColor;
-    .be-Button {
+    .bm-Button {
+      box-shadow: none;
+      border: none;
       color: rgba(0, 0, 0, 0.45);
     }
 
@@ -104,13 +106,6 @@
   .bm-CardHeader-action {
     flex: 0 0 auto;
     align-self: flex-start;
-  }
-
-  .bm-CardFooter {
-    .bm-Button {
-      box-shadow: none;
-      border: none;
-    }
   }
 }
 

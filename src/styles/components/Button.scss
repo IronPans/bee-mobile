@@ -42,6 +42,7 @@ button {
   transition: .3s cubic-bezier(.25,.8,.5,1);
 
   &:before {
+    display: none;
     background-color: transparent;
     content: " ";
     opacity: 0;

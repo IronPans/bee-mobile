@@ -191,7 +191,7 @@ module.exports = (options) => {
              * See: https://www.npmjs.com/package/copy-webpack-plugin
              */
             new CopyWebpackPlugin([{
-                from: '' + projectName + '/assets',
+                from: projectName + '/assets',
                 to: 'assets'
             }]
             )

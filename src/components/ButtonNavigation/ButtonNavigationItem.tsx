@@ -16,7 +16,7 @@ export default class ButtonNavigationItem extends React.PureComponent<ButtonNavi
     };
 
     render() {
-        const {active, className, icon, label, onClick, prefixCls, ...other} = this.props;
+        const {active, children, className, icon, label, onClick, prefixCls, ...other} = this.props;
         const styleClass = classNames(
             prefixCls, className,
             {
@@ -29,6 +29,7 @@ export default class ButtonNavigationItem extends React.PureComponent<ButtonNavi
                 <span className={`${prefixCls}-inner`}>
                     {icon}
                     <span>{label}</span>
+                    {children}
                 </span>
             </Button>
         );

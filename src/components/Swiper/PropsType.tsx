@@ -23,6 +23,8 @@ export interface SwiperProps extends BaseProps {
     spaceBetween?: number;
     speed?: number;
     updateOnImagesReady?: boolean;
+    observe?: boolean;
+    observeParents?: boolean;
     on?: {
         init?: Function;
         imagesReady?: Function;

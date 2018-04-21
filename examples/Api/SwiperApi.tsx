@@ -211,13 +211,24 @@ export default class SwiperCase extends React.PureComponent< SwiperCaseProps, an
                 'desc': '设置是否可拖动',
                 'type': 'Boolean',
                 'default': 'true'
+            }, {
+                'attr': 'observe',
+                'desc': '启动动态检查器，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。\n' +
+                '默认false，不开启',
+                'type': 'Boolean',
+                'default': 'false'
+            }, {
+                'attr': 'observeParents',
+                'desc': '将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新。',
+                'type': 'Boolean',
+                'default': 'false'
             }]
         }];
         return (
             <Content className={styleClass}>
                 <PageView title="Swiper 轮播图" code={this.getCode()}
                           data={data} app="适用平台：WEB" frameUrl="#/components/swiper"
-                          description="轮播图，可自定义轮播时间间隔、动画时长等。"/>
+                          description="轮播图，可自定义轮播时间间隔、动画时长等。(注：目前不支持嵌套)"/>
             </Content>
         );
     }

@@ -1,22 +1,29 @@
-.List {
+.bm-List {
   padding: 0;
   margin: 0;
   border-top: 1px solid $listBorderColor;
   border-bottom: 1px solid $listBorderColor;
 
-  .List-item {
+  .bm-List-item {
     position: relative;
     cursor: pointer;
     text-decoration: none;
     list-style: none;
     box-sizing: border-box;
 
-    .List-item-btn {
+    &.bm-List-item-avatar-right {
+      .bm-Avatar {
+        order: 5;
+        margin: 0 0 0 16px;
+      }
+    }
+
+    .bm-List-item-btn {
       position: relative;
       display: flex;
       align-items: center;
       justify-content: flex-start;
-      padding: 12px;
+      padding: 12px 20px;
       min-height: 44px;
       background: $listBg;
       transition: all .3s;
@@ -52,12 +59,13 @@
       background: transparent;
     }
 
-    .List-item-text {
+    .bm-List-item-text {
       flex: 1 1 auto;
       color: $defaultColor;
+      overflow: hidden;
       box-sizing: border-box;
 
-      + .ListItemAction {
+      + .bm-ListItemAction {
         .bm-Icon {
           margin-right: 0;
           color: $listIconColor;
@@ -67,10 +75,11 @@
 
       > a {
         box-sizing: border-box;
+        color: $defaultColor;
       }
     }
 
-    .ListItemAction {
+    .bm-ListItemAction {
       display: flex;
       align-items: center;
       box-sizing: border-box;
@@ -90,14 +99,24 @@
       margin-right: 16px;
     }
 
-    .bm-Icon {
-      display: flex;
-      align-items: center;
-      flex-shrink: 0;
-      width: 24px;
-      height: 24px;
-      color: $listIconColor;
-      margin-right: 16px;
+    .bm-List-item-btn {
+
+      > .bm-Icon {
+        display: flex;
+        align-items: center;
+        flex-shrink: 0;
+        color: #999;
+        margin-right: 16px;
+      }
+    }
+  }
+
+  &.bm-List-avatar-right {
+    .bm-List-item {
+      .bm-Avatar {
+        order: 5;
+        margin: 0 0 0 16px;
+      }
     }
   }
 }

@@ -10,7 +10,8 @@ interface InfiniteScrollCaseProps extends BaseProps {
 }
 
 interface InfiniteScrollCaseState {
-    items?: Array<any>
+    items?: Array<any>;
+    end?: boolean;
 }
 
 export default class InfiniteScrollCase extends React.Component<InfiniteScrollCaseProps, InfiniteScrollCaseState> {
@@ -83,19 +84,27 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
                     avatar: 'assets/images/users/1.jpg',
                     icon: 'home'
                 }
-            ]
+            ],
+            end: false
         };
     }
 
     handleInfinite = (event: any) => {
+        if (this.state.end) {
+            return;
+        }
         const items = [...this.state.items!];
+        let end = false;
         items.push({
             text: 'Lists3',
             path: '/lists',
             avatar: 'assets/images/users/1.jpg',
             icon: 'home'
         });
-        this.setState({items});
+        if (items.length >= 20) {
+            end = true;
+        }
+        this.setState({items, end});
         event.done();
     };
 
@@ -123,6 +132,9 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
                         ))
                     }
                 </List>
+                <div className='bm-Content-infinite-scroll-preloader'>
+                    {this.state.end ? '已经到底了' : (<div className="bm-preloader"/>)}
+                </div>
             </Content>
         );
     }

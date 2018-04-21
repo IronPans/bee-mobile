@@ -217,6 +217,11 @@ const MENUS = [{
     path: '/components/searchBar',
     docs: '/docs/searchBar'
 }, {
+    name: 'Segment',
+    icon: 'view_column',
+    path: '/components/segment',
+    docs: '/docs/segment'
+}, {
     name: 'Slider',
     icon: 'linear_scale',
     path: '/components/slider',

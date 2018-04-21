@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {getOtherProperties} from '../common/Utils';
-import {setTransitionDuration, addEventListener, removeEventListener} from '../common/Dom';
+import {setTransitionDuration, addEventListener, removeEventListener, parents} from '../common/Dom';
 import {preloadImages} from './LoadImage';
 import {SwiperProps, SwiperState} from './PropsType';
 
@@ -16,6 +16,8 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         effect: 'slide',
         initialSlide: 0,
         loop: false,
+        observe: false,
+        observeParents: false,
         on: {},
         pagination: true,
         paginationClickable: false,
@@ -40,8 +42,10 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
     autoPlayTimer: any;
     count: number;
     touches: any = {};
+    isRunning: boolean = false;
     imagesLoaded: number = 0;
     centerOffset: number = 0;
+    observers: Array<any> = [];
 
     constructor(props: SwiperProps) {
         super(props);
@@ -83,6 +87,11 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         this.slider = null;
         this.touches = null;
         this.clearAutoplay();
+        if (this.observers.length) {
+            for (const observer of this.observers) {
+                observer.disconnect();
+            }
+        }
         removeEventListener(window, 'resize', this.onWindowResized);
     }
 
@@ -101,23 +110,32 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
     }
 
     slideTo(index: number, speed: number = this.props.speed!) {
+        this.isRunning = true;
         const {width, height} = this.state;
-        const {loop, spaceBetween} = this.props;
+        const {effect, loop, spaceBetween} = this.props;
         let styles: any;
         if (!loop) {
             index = this.getCurrentSlide(index);
         }
         setTransitionDuration(this.slider, speed);
+        let activeIndex = index;
+        if (effect === 'fade') {
+            if (activeIndex < 0) {
+                activeIndex = this.count - 1;
+            } else if (activeIndex >= this.count) {
+                activeIndex = 0;
+            }
+        }
         if (this.isHorizontal()) {
             styles = {
-                x: -(width + spaceBetween!)! * index + this.centerOffset,
-                activeIndex: index,
+                x: -(width + spaceBetween!)! * activeIndex + this.centerOffset,
+                activeIndex,
                 opacity: 1
             };
         } else {
             styles = {
-                y: -(height! + spaceBetween!) * index,
-                activeIndex: index,
+                y: -(height! + spaceBetween!) * activeIndex,
+                activeIndex,
                 opacity: 1
             };
         }
@@ -166,7 +184,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
     }
 
     swipeStart = (event: any) => {
-        if (this.props.touch) {
+        if (this.props.touch && !this.isRunning) {
             event.stopPropagation();
             const {x, y} = this.getPoint(event);
             this.dragging = true;
@@ -181,7 +199,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
     swipeMove = (event: any) => {
         event.stopPropagation();
-        if (this.dragging) {
+        if (this.dragging && !this.isRunning) {
             let {x, y} = this.getPoint(event);
             const diffX = x - this.touches.startX;
             const diffY = y - this.touches.startY;
@@ -231,8 +249,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
     swipeEnd = (event: any) => {
         event.stopPropagation();
-        if (this.dragging) {
-
+        if (this.dragging && !this.isRunning) {
             let {activeIndex, width, height}: any = this.state;
             const {loop} = this.props;
             const {diffX, diffY} = this.touches;
@@ -268,16 +285,16 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
     };
 
     getBulletItem(bullets: number[]) {
-        const {pagination} = this.props;
+        const {pagination, prefixCls} = this.props;
         return bullets.map((v: number) => {
             if (typeof pagination === 'function') {
                 return pagination(v);
             }
             const styleClass = classNames(
-                'Swiper-pagination-bullet',
+                `${prefixCls}-pagination-bullet`,
                 {
-                    'Swiper-pagination-bullet-active': this.state.activeIndex === v,
-                    'Swiper-pagination-clickable': this.props.paginationClickable
+                    [`${prefixCls}-pagination-bullet-active`]: this.state.activeIndex === v,
+                    [`${prefixCls}-pagination-clickable`]: this.props.paginationClickable
                 }
             );
             let event = {};
@@ -293,27 +310,27 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
     getNavigation() {
         const nav: any = this.props.navigation;
-        const {loop} = this.props;
+        const {loop, prefixCls} = this.props;
         const {activeIndex} = this.state;
         const toPrev: boolean = activeIndex <= 0 && !loop;
         const toNext: boolean = activeIndex >= this.count - 1 && !loop;
         const prevClass = classNames(
-            'Swiper-prev',
+            `${prefixCls}-prev`,
             {
-                'Swiper-disabled': toPrev
+                [`${prefixCls}-disabled`]: toPrev
             }
         );
         const nextClass = classNames(
-            'Swiper-next',
+            `${prefixCls}-next`,
             {
-                'Swiper-disabled': toNext
+                [`${prefixCls}-disabled`]: toNext
             }
         );
-        const prevEvent =  {
+        const prevEvent = {
             onMouseDown: !this.isMobile ? this.handleNavigation.bind(this, toPrev, false) : null,
             onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toPrev, false) : null
         };
-        const nextEvent =  {
+        const nextEvent = {
             onMouseDown: !this.isMobile ? this.handleNavigation.bind(this, toNext, true) : null,
             onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toNext, true) : null
         };
@@ -377,6 +394,9 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             this.reset(() => {
                 this.slideTo(this.getCurrentSlide(initialSlide!), 0);
             });
+            if (this.props.autoplay) {
+                this.observer();
+            }
         }
     };
 
@@ -418,88 +438,125 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         if (this.props.autoplay && !this.props.autoplayDisableOnInteraction) {
             this.startAutoplay();
         }
+        this.isRunning = false;
+    };
+
+    attach(target) {
+        const MutationObserver = window['MutationObserver'] || window['WebKitMutationObserver'] || window['MozMutationObserver'];
+
+        const observer = new MutationObserver((mutations) => {
+            mutations.forEach(() => {
+                this.reset();
+            });
+        });
+
+        // 配置观察选项:
+        const config = { attributes: true, childList: true, characterData: true };
+
+        // 传入目标节点和观察选项
+        observer.observe(target, config);
+        return observer;
+    }
+
+    observer = () => {
+        if (this.props.observe) {
+            // 创建观察者对象
+            this.observers.push(this.attach(this.wrapper.parentNode));
+        }
+
+        if (this.props.observeParents) {
+            const containerParents = parents(this.wrapper);
+            for (let i = 0; i < containerParents.length; i += 1) {
+                this.observers.push(this.attach(containerParents[i]));
+            }
+        }
     };
 
     render() {
         const {
             className, children: childrenProps, direction, easing,
-            effect, loop, navigation, pagination, spaceBetween, speed, ...other
+            effect, loop, navigation, pagination, prefixCls, spaceBetween, speed, ...other
         } = this.props;
         const horizontal: boolean = this.isHorizontal();
-        const styleClass = classNames('Swiper', className, `Swiper-${direction}`);
+        const styleClass = classNames(prefixCls, className, `${prefixCls}-${direction}`);
         const bullets: number[] = [];
         let {activeIndex, width, height, x, y} = this.state;
         this.count = React.Children.count(childrenProps);
         const isFade: boolean = effect === 'fade';
-        const children = React.Children.map(childrenProps, (child: React.ReactElement<any>, index: number) => {
-            if (!React.isValidElement(child)) {
-                return;
-            }
-            let opacity: number = 0;
-            let left: number = horizontal ? index * width! : 0, top: number = !horizontal ? index * height! : 0;
-            const {diffX, diffY} = this.touches, styles: any = {};
-            if (!isFade) {
-                if (loop) {
-                    if (this.count <= activeIndex + 1 && index === 0) {
-                        horizontal ? (left = (width + spaceBetween!) * this.count) : top = height! * this.count;
-                        styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
-                        styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
-                    } else if (activeIndex <= 0 && this.count === index + 1) {
-                        horizontal ? left = -(width + spaceBetween!) * this.count : top = -height! * this.count!;
-                        styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
-                        styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
-                    }
+        const children = React.Children.map(childrenProps,
+            (child: React.ReactElement<any>, index: number) => {
+                if (!React.isValidElement(child)) {
+                    return;
                 }
-                opacity = 1;
-            } else {
-                styles['transform'] = `translate3d(-${left}px, -${top}px, 0)`;
-                styles['WebkitTransform'] = `translate3d(-${left}px, -${top}px, 0)`;
-                if (this.dragging) {
-                    const diff = horizontal ? diffX : diffY;
-                    if (loop && ((activeIndex <= 0 && diff > 0 && this.count === index + 1) ||
-                        (this.count >= activeIndex + 1 && diff < 0 && index === 0))) {
-                        opacity = this.state.opacity!;
+                let opacity: number = 0;
+                let left: number = horizontal ? index * width! : 0,
+                    top: number = !horizontal ? index * height! : 0;
+                const {diffX, diffY} = this.touches, styles: any = {};
+                if (!isFade) {
+                    if (loop && this.count > 2) {
+                        if (this.count <= activeIndex + 1 && index === 0) {
+                            horizontal ? (left = (width + spaceBetween!) * this.count) : top = height! * this.count;
+                            styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
+                            styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
+                        } else if (activeIndex <= 0 && this.count === index + 1) {
+                            horizontal ? left = -(width + spaceBetween!) * this.count : top = -height! * this.count!;
+                            styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
+                            styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
+                        }
                     }
-                    if (diff > 0 && activeIndex > 0 && activeIndex < this.count && activeIndex - 1 === index) {
-                        opacity = this.state.opacity!;
-                    }
-                    if (diff < 0 && activeIndex >= 0 && activeIndex < this.count - 1 && activeIndex + 1 === index) {
-                        opacity = this.state.opacity!;
-                    }
-                }
-                if (index === activeIndex) {
                     opacity = 1;
+                } else {
+                    styles['transform'] = `translate3d(-${left}px, -${top}px, 0)`;
+                    styles['WebkitTransform'] = `translate3d(-${left}px, -${top}px, 0)`;
+                    if (this.dragging) {
+                        const diff = horizontal ? diffX : diffY;
+                        if (loop && ((activeIndex <= 0 && diff > 0 && this.count === index + 1) ||
+                            (this.count >= activeIndex + 1 && diff < 0 && index === 0))) {
+                            opacity = this.state.opacity!;
+                        }
+                        if (diff > 0 && activeIndex > 0 && activeIndex < this.count &&
+                            activeIndex - 1 === index) {
+                            opacity = this.state.opacity!;
+                        }
+                        if (diff < 0 && activeIndex >= 0 && activeIndex < this.count - 1 &&
+                            activeIndex + 1 === index) {
+                            opacity = this.state.opacity!;
+                        }
+                    }
+                    if (index === activeIndex) {
+                        opacity = 1;
+                    }
                 }
-            }
-            styles['width'] = width;
-            styles['opacity'] = opacity;
-            if (isFade) {
-                let duration = speed;
-                if (this.dragging) {
-                    duration = 0;
+                if (isFade) {
+                    let duration = speed;
+                    if (this.dragging) {
+                        duration = 0;
+                    }
+                    styles['transition'] = 'opacity ' + duration + 'ms ' + easing;
+                    styles['WebkitTransition'] = 'opacity ' + duration + 'ms ' + easing;
                 }
-                styles['transition'] = 'opacity ' + duration + 'ms ' + easing;
-                styles['WebkitTransition'] = 'opacity ' + duration + 'ms ' + easing;
-            }
-            const styleClass = classNames(
-                'Swiper-slide',
-                {
-                    'Swiper-slide-active': activeIndex === index
+                const styleClass = classNames(
+                    `${prefixCls}-slide`,
+                    {
+                        [`${prefixCls}-slide-active`]: activeIndex === index
+                    }
+                );
+                if (!isFade && spaceBetween! > 0) {
+                    styles['marginRight'] = spaceBetween;
                 }
-            );
-            if (!isFade && spaceBetween! > 0) {
-                styles['marginRight'] = spaceBetween;
-            }
-            bullets.push(index);
-            return React.cloneElement((<div className={styleClass} key={index} style={styles}>{child}</div>), {});
-        });
+                styles['width'] = width;
+                styles['opacity'] = opacity;
+                bullets.push(index);
+                return React.cloneElement((<div className={styleClass} key={index} style={styles}>
+                    {child}</div>), {});
+            });
         if (isFade) {
             x = y = 0;
         }
         const otherProps: any = getOtherProperties(other,
             ['activeIndex', 'autoplayDisableOnInteraction', 'autoplay', 'centerMode', 'delay',
-                'initialSlide', 'paginationClickable', 'prefixCls', 'slideWidth', 'touchRatio', 'touch']);
-        const styles = {
+                'initialSlide', 'observeParents', 'observe', 'paginationClickable', 'slideWidth', 'touchRatio', 'touch']);
+        const styles = isFade ? {} : {
             transform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             WebkitTransform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             msTransform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
@@ -508,21 +565,28 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         };
         return (
             <div className={styleClass} {...otherProps}>
-                <div className="Swiper-wrapper" ref={this.getWrapperRef}
+                <div className={`${prefixCls}-wrapper`} ref={this.getWrapperRef}
                      style={{height: horizontal ? '100%' : height!}}
-                     onMouseDown={this.isMobile ? () => {} : this.swipeStart}
-                     onMouseMove={this.isMobile ? () => {} : this.swipeMove}
-                     onMouseUp={this.isMobile ? () => {} : this.swipeEnd}
-                     onMouseLeave={this.isMobile ? () => {} : this.swipeEnd}
-                     onTouchStart={this.isMobile ? this.swipeStart : () => {}}
-                     onTouchMove={this.isMobile ? this.swipeMove : () => {}}
-                     onTouchEnd={this.isMobile ? this.swipeEnd : () => {}}>
-                    <div className="Swiper-list" style={styles} onTransitionEnd={this.onTransitionEnd}>
+                     onMouseDown={this.isMobile ? () => {
+                     } : this.swipeStart}
+                     onMouseMove={this.isMobile ? () => {
+                     } : this.swipeMove}
+                     onMouseUp={this.isMobile ? () => {
+                     } : this.swipeEnd}
+                     onMouseLeave={this.isMobile ? () => {
+                     } : this.swipeEnd}
+                     onTouchStart={this.isMobile ? this.swipeStart : () => {
+                     }}
+                     onTouchMove={this.isMobile ? this.swipeMove : () => {
+                     }}
+                     onTouchEnd={this.isMobile ? this.swipeEnd : () => {
+                     }}>
+                    <div className={`${prefixCls}-list`} style={styles} onTransitionEnd={this.onTransitionEnd}>
                         {children}
                     </div>
                 </div>
-                {pagination ? (<div className="Swiper-pagination">
-                    <div className="Swiper-pagination-bullets">{this.getBulletItem(bullets)}</div>
+                {pagination ? (<div className={`${prefixCls}-pagination`}>
+                    <div className={`${prefixCls}-pagination-bullets`}>{this.getBulletItem(bullets)}</div>
                 </div>) : null}
                 {navigation ? (this.getNavigation()) : null}
             </div>

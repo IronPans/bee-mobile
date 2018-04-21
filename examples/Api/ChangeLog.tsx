@@ -29,13 +29,55 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                        <li>主版本号：每月发布一个带有新特性的向下兼容的版本。</li>
                    </ul>
                    <Timeline>
-                       <TimelineItem title={<h3>0.1.0 <span className="title-label">2018-03-10</span></h3>}>
+                       <TimelineItem title={<h3>0.1.3 <span className="title-label">2018-04-21</span></h3>}>
+                           <h4>Bug Fixes</h4>
                            <ul>
                                <li>
-                                   发布第一个公开版本<img className="emoji" alt="tada" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"/>，包含 icon、button、checkbox、radio、switch、slider、input-number、datepicker、select、tabs、breadcrumb、collapse、pagination、modal、message、popover、progress 等组件。
+                                   修复<NavLink to="/docs/inputNumber">InputNumber</NavLink>给value赋值时无效
                                </li>
                                <li>
-                                   发布 <a href="https://bee-mobiles.github.io">Bee Mobile 首页</a> 和入门文档。
+                                   修复当隐藏<NavLink to="/docs/swiper">Swiper</NavLink>，然后显示时，Swiper失效
+                               </li>
+                               <li>
+                                   修复<NavLink to="/docs/button">Button</NavLink>里放置a、NavLink时，无法点击
+                               </li>
+                           </ul>
+                           <h4>Features</h4>
+                           <ul>
+                               <li>
+                                   <NavLink to="/docs/rate">Rate</NavLink>默认颜色调整为#ffa726
+                               </li>
+                               <li>
+                                   新增<NavLink to="/docs/segment">Segment</NavLink>分段器
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/swiper">Swiper</NavLink>新增observe、observeParents属性，用于启动动态检查器，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。
+                               </li>
+                               <li>
+                                   优化Checkbox、Radio、Badge、List、ButtonNavigation的样式
+                               </li>
+                           </ul>
+                       </TimelineItem>
+                       <TimelineItem title={<h3>0.1.2 <span className="title-label">2018-04-16</span></h3>}>
+                           <h4>Bug Fixes</h4>
+                           <ul>
+                               <li>
+                                   修复<NavLink to="/docs/swiper">Swiper</NavLink>当effect为"fade"时，出现空白闪烁
+                               </li>
+                               <li>
+                                   修复在<NavLink to="/docs/tabs">Tabs</NavLink>中使用Swiper时，Swiper会失控
+                               </li>
+                               <li>
+                                   修复<NavLink to="/docs/searchBar">SearchBar</NavLink>样式冲突
+                               </li>
+                           </ul>
+                           <h4>Features</h4>
+                           <ul>
+                               <li>
+                                   <NavLink to="/docs/tabs">Tabs</NavLink>新增animated属性，用于控制是否开启动画
+                               </li>
+                               <li>
+                                   优化样式
                                </li>
                            </ul>
                        </TimelineItem>
@@ -50,6 +92,16 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                            <ul>
                                <li>
                                    <img className="emoji" alt="tada" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"/>发布<NavLink to="/docs/create-bee-mobile">create-bee-mobile</NavLink>脚手架，可快速搭建基于Webpack构建的React项目。
+                               </li>
+                           </ul>
+                       </TimelineItem>
+                       <TimelineItem title={<h3>0.1.0 <span className="title-label">2018-03-10</span></h3>}>
+                           <ul>
+                               <li>
+                                   发布第一个公开版本<img className="emoji" alt="tada" height="20" width="20" src="https://assets-cdn.github.com/images/icons/emoji/unicode/1f389.png"/>，包含 icon、button、checkbox、radio、switch、slider、input-number、datepicker、select、tabs、breadcrumb、collapse、pagination、modal、message、popover、progress 等组件。
+                               </li>
+                               <li>
+                                   发布 <a href="https://bee-mobiles.github.io">Bee Mobile 首页</a> 和入门文档。
                                </li>
                            </ul>
                        </TimelineItem>

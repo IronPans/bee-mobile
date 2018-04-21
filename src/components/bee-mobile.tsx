@@ -41,6 +41,7 @@ import Rate from './Rate';
 import Ripple from './Ripple';
 import {AnimatedSwitch} from './Router';
 import SearchBar from './SearchBar';
+import Segment from './Segment';
 import Sidebar from './Sidebar';
 import Slider from './Slider';
 import Spin from './Spin';
@@ -114,6 +115,7 @@ export {Rate};
 export {Ripple};
 export {AnimatedSwitch};
 export {SearchBar};
+export {Segment};
 export {Sidebar};
 export {Slider};
 export {Spin};
@@ -219,6 +221,7 @@ export default ({
     AnimatedSwitch,
 
     SearchBar,
+    Segment,
     Sidebar,
     Slider,
     Spin,

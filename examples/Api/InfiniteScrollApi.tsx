@@ -138,6 +138,9 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
                         ))
                     }
                 </List>
+                <div className='bm-Content-infinite-scroll-preloader'>
+                    <div className="bm-preloader"/>
+                </div>
             </Content>
         );
     }

@@ -75,9 +75,9 @@ body {
     }
   }
 
-  .List {
+  .bm-List {
     border: none;
-    .List-item {
+    .bm-List-item {
       transition: background .25s;
       a {
         color: rgba(0, 0, 0, 0.87);
@@ -95,7 +95,7 @@ body {
         background: #eee;
       }
     }
-    .List-item-btn {
+    .bm-List-item-btn {
       background: transparent;
       padding: 0;
 
@@ -110,8 +110,8 @@ body {
     .bm-AccordionContentInner {
       padding: 0 !important;
 
-      .List {
-        .List-item {
+      .bm-List {
+        .bm-List-item {
           a {
             padding: 14px 20px 14px 40px;
           }
@@ -335,11 +335,11 @@ body {
 }
 
 .OverviewCase {
-  .List-item-btn a {
+  .bm-List-item-btn a {
     > i:first-child {
       color: $primary;
     }
-    .List-item-text {
+    .bm-List-item-text {
       color: rgba(0, 0, 0, .54);
     }
   }
