@@ -151,7 +151,7 @@ $timelineCircleColor: #2185d0;
 $treeActiveColor: $primary;`;
         const css = `@import "custom-theme";
 // bee-mobile 组件样式库        
-@import "~/bee-mobile/lib/scss/bee-mobile";`;
+@import "~bee-mobile/lib/scss/bee-mobile";`;
         return (
             <Content className={styleClass}>
                 <div className="padding-20">

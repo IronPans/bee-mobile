@@ -22,7 +22,7 @@ module.exports = (options) => {
          */
         entry: {
             main: helpers.root('./' + projectName + '/index.tsx'),
-            vendor: helpers.root('./' + projectName + '/vendor.tsx')
+            //vendor: helpers.root('./' + projectName + '/vendor.tsx')
         },
         module: {
             strictExportPresence: true,
@@ -60,10 +60,10 @@ module.exports = (options) => {
             }
         },
         plugins: [
-            new CommonsChunkPlugin({
-                names: ['vendor', 'manifest'],
-                minChunks: Infinity
-            }),
+            // new CommonsChunkPlugin({
+            //     names: ['vendor', 'manifest'],
+            //     minChunks: Infinity
+            // }),
             new HtmlWebpackPlugin({
                 title: 'Bee Mobile',
                 chunksSortMode: function (a, b) {

@@ -50,7 +50,7 @@ module.exports = (options) => {
                 {
                     oneOf: [
                         {
-                            test: /\.(jsx?|tsx?)$/,
+                            test: /\.(tsx|ts|js|jsx)$/,
                             loaders: ['babel-loader', 'ts-loader'],
                             exclude: /node_modules/
                         },

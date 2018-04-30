@@ -15,6 +15,7 @@ import HighlightCode from './HighlightCode';
 import FabButton from './FabButton';
 import Icon from './Icon';
 import Indicator from './Indicator';
+import IndexList, {IndexSection} from './IndexList';
 import InputNumber from './InputNumber';
 import Inputtext from './Inputtext';
 import KeyBoard from './KeyBoard';
@@ -82,6 +83,8 @@ export {Col};
 export {HighlightCode};
 export {FabButton};
 export {Icon};
+export {IndexList};
+export {IndexSection};
 export {Indicator};
 export {InputNumber};
 export {Inputtext};
@@ -178,6 +181,9 @@ export default ({
     HighlightCode,
     FabButton,
     Icon,
+
+    IndexList,
+    IndexSection,
 
     Indicator,
     InputNumber,

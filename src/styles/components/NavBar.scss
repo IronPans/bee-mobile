@@ -39,8 +39,11 @@
 
     a, .bm-Icon {
       display: flex;
-      font-size: 25px;
       color: $navBarColor;
+    }
+
+    .bm-Icon {
+      font-size: 25px;
     }
 
     .bm-NavBar-left, .bm-NavBar-right {

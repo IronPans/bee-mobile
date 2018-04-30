@@ -49,7 +49,8 @@ export class MessageBox {
 
     create() {
         const props = Object.assign({}, this.props);
-        const {inputType = 'text', type, title, message, onClose, placeholder = '',
+        const {inputType = 'text', confirmButtonText = '确认', cancelButtonText = '取消',
+            type, title, message, onClose, placeholder = '',
             showCancelButton, showConfirmButton, visible}: any = props;
         props['message'] = (
             <ZoomIn in={visible}>
@@ -66,9 +67,9 @@ export class MessageBox {
                         </div>
                         <div className="MessageBox-btn-group">
                             {showCancelButton ? (<button className="MessageBox-btn-cancel"
-                                                         onClick={this.handleClose}>取消</button>) : null}
+                                                         onClick={this.handleClose}>{cancelButtonText}</button>) : null}
                             {showConfirmButton ? (<button className="MessageBox-btn-confirm"
-                                                          onClick={this.handleConfirm}>确认</button>) : null}
+                                                          onClick={this.handleConfirm}>{confirmButtonText}</button>) : null}
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,45 @@
+.bm-CellSwipe {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  overflow: hidden;
+
+  .bm-CellSwipe-wrapper {
+    flex: 1 0 100%;
+  }
+
+  .bm-CellSwipe-content {
+    position: relative;
+    width: 100%;
+    cursor: pointer;
+    background-image: linear-gradient(180deg,#d9d9d9,#d9d9d9 50%,transparent 0);
+  background-size: 120% 1px;
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    background-origin: content-box;
+
+    .bm-CellSwipe-mask {
+      position: absolute;
+      top: 0;
+      right: 0;
+      left: 0;
+      bottom: 0;
+      background: transparent;
+    }
+  }
+
+  .bm-CellSwipe-left,
+  .bm-CellSwipe-right {
+    position: absolute;
+    top: 0;
+    height: 100%;
+  }
+
+  .bm-CellSwipe-left {
+    right: 100%;
+  }
+
+  .bm-CellSwipe-right {
+    left: 100%;
+  }
+}

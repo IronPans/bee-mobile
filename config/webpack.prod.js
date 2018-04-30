@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
+const path = require('path');
 /**
  * Webpack Plugins
  */
@@ -57,7 +58,7 @@ module.exports = (options) => {
                 {
                     oneOf: [
                         {
-                            test: /\.(jsx?|tsx?)$/,
+                            test: /\.(tsx|ts|js|jsx)$/,
                             loaders: ['babel-loader', 'ts-loader'],
                             exclude: /node_modules/
                         },
@@ -125,6 +126,10 @@ module.exports = (options) => {
             ]
         },
         plugins: [
+            new webpack.DllReferencePlugin({
+                context: __dirname,
+                manifest: require(path.resolve(process.cwd(), './manifest.json'))
+            }),
             /**
              * Plugin: DefinePlugin
              * Description: Define free variables.

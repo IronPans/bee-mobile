@@ -31,8 +31,8 @@
     display: inline-block;
     width: 30%;
     height: 8%;
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     background: $spinColor;
     opacity: .05;
     animation: circle-line 1s ease infinite;
@@ -123,10 +123,10 @@
   .loader.circleLineSpin span {
     position: absolute;
     display: inline-block;
-    width: 1.5rem;
-    height: .5rem;
-    border-top-left-radius: .25rem;
-    border-bottom-left-radius: .25rem;
+    width: 30px;
+    height: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
     background: $spinColor;
     opacity: .7;
   }
@@ -134,51 +134,51 @@
   .loader.circleLineSpin span:nth-child(1) {
     top: 50%;
     left: 0;
-    margin-top: -.25rem;
+    margin-top: -5px;
   }
 
   .loader.circleLineSpin span:nth-child(2) {
-    top: 1rem;
-    left: .5rem;
+    top: 20px;
+    left: 10px;
     transform: rotate(45deg);
   }
 
   .loader.circleLineSpin span:nth-child(3) {
     left: 50%;
-    top: .5rem;
-    margin-left: -.75rem;
+    top: 10px;
+    margin-left: -15px;
     transform: rotate(90deg);
   }
 
   .loader.circleLineSpin span:nth-child(4) {
-    right: .5rem;
-    top: 1rem;
+    right: 10px;
+    top: 20px;
     transform: rotate(145deg);
   }
 
   .loader.circleLineSpin span:nth-child(5) {
-    left: 3.5rem;
+    left: 310px;
     top: 50%;
-    margin-top: -.25rem;
+    margin-top: -5px;
     transform: rotate(180deg);
   }
 
   .loader.circleLineSpin span:nth-child(6) {
-    bottom: 1rem;
-    right: .5rem;
+    bottom: 20px;
+    right: 10px;
     transform: rotate(-145deg);
   }
 
   .loader.circleLineSpin span:nth-child(7) {
     left: 50%;
-    bottom: .5rem;
+    bottom: 10px;
     margin-left: -15px;
     transform: rotate(-90deg);
   }
 
   .loader.circleLineSpin span:nth-child(8) {
-    bottom: 1rem;
-    left: .5rem;
+    bottom: 20px;
+    left: 10px;
     transform: rotate(-45deg);
   }
 
@@ -330,7 +330,7 @@
     position: absolute;
     top: 0;
     width: 10%;
-    height: .8rem;
+    height: 16px;
     display: inline-block;
     background: $spinColor;
     animation: lineSquare 1s ease infinite;
@@ -538,21 +538,21 @@
 
   .loader.circleSpin {
     border-radius: 50%;
-    border: .2rem solid rgba(0, 0, 0, .05);
-    width: 4rem;
-    height: 4rem;
+    border: 4px solid rgba(0, 0, 0, .05);
+    width: 80px;
+    height: 80px;
     box-sizing: content-box;
   }
 
   .loader.circleSpin .loader-placeholder {
     position: absolute;
-    top: -.2rem;
-    left: -.2rem;
+    top: -4px;
+    left: -4px;
     border-radius: 50%;
-    border: .2rem solid transparent;
+    border: 4px solid transparent;
     border-top-color: $spinColor;
-    width: 4rem;
-    height: 4rem;
+    width: 80px;
+    height: 80px;
     box-sizing: content-box;
     -webkit-animation: circle-spin 1s ease infinite;
     animation: circle-spin 1s ease infinite;

@@ -38,7 +38,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      width: 2rem;
+      width: 40px;
       height: 50%;
       cursor: pointer;
       color: rgba(0,0,0,.65);
@@ -58,7 +58,7 @@
   input {
     background: transparent;
     border: none;
-    padding: 0 .2rem;
+    padding: 0 4px;
     box-sizing: border-box;
     height: 38px;
     text-align: center;
@@ -130,12 +130,12 @@
 
   .bm-InputNumber-minus:before,
   .bm-InputNumber-add:before {
-    width: .4rem;
-    height: .1em;
+    width: 8px;
+    height: 2px;
   }
 
   .bm-InputNumber-add:after {
-    height: .4rem;
+    height: 8px;
     width: .1em;
   }
 }

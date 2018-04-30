@@ -5,6 +5,7 @@ import Avatar from '../../src/components/Avatar';
 import Icon from '../../src/components/Icon';
 import List, {ListItem, ListItemText, ListItemAction} from '../../src/components/List';
 import {Content} from "../../src/components/Page";
+import Spin from '../../src/components/Spin';
 
 interface InfiniteScrollCaseProps extends BaseProps {
 }
@@ -109,7 +110,7 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
     };
 
     render() {
-        const {children, className, prefixCls} = this.props;
+        const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
             className
@@ -133,7 +134,9 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
                     }
                 </List>
                 <div className='bm-Content-infinite-scroll-preloader'>
-                    {this.state.end ? '已经到底了' : (<div className="bm-preloader"/>)}
+                    {this.state.end ? '已经到底了' : (<div className="bm-preloader">
+                        <Spin/>
+                    </div>)}
                 </div>
             </Content>
         );

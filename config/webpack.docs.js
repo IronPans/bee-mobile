@@ -51,30 +51,28 @@ module.exports = (options) => {
             sourceMapFilename: '[file].map',
             chunkFilename: '[id].chunk.js'
         },
-        externals: [
-            {
-                'react': {
-                    root: 'React',
-                    commonjs2: 'react',
-                    commonjs: 'react',
-                    amd: 'react'
-                }
-            }, {
-                'react-dom': {
-                    root: 'ReactDOM',
-                    commonjs2: 'react-dom',
-                    commonjs: 'react-dom',
-                    amd: 'react-dom'
-                }
-            }, {
-                'react-motion': {
-                    root: 'ReactMotion',
-                    commonjs2: 'react-motion',
-                    commonjs: 'react-motion',
-                    amd: 'react-motion'
-                }
+        externals: {
+            react: {
+                root: 'React',
+                commonjs2: 'react',
+                commonjs: 'react',
+                amd: 'react',
+                umd: 'react',
+            },
+            'react-dom': {
+                root: 'ReactDOM',
+                commonjs2: 'react-dom',
+                commonjs: 'react-dom',
+                amd: 'react-dom',
+                umd: 'react-dom',
+            },
+            'react-motion': {
+                root: 'ReactMotion',
+                commonjs2: 'react-motion',
+                commonjs: 'react-motion',
+                amd: 'react-motion'
             }
-        ],
+        },
         module: {
             strictExportPresence: true,
             rules: [

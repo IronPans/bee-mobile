@@ -21,7 +21,7 @@
     justify-content: center;
     align-items: center;
     color: $keyBoardColor;
-    font-size: .7rem;
+    font-size: 14px;
     height: 35px;
     position: relative;
     padding: 0 10px;
@@ -50,7 +50,7 @@
 
     a {
       color: #666;
-      font-size: .24rem;
+      font-size: 10px;
     }
   }
 
@@ -148,7 +148,7 @@
         &:last-child:after {
           font-family: 'Material Icons';
           content: 'backspace';
-          font-size: .6rem;
+          font-size: 12px;
         }
 
         &:active {

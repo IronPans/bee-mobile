@@ -894,6 +894,16 @@ p .code-inline {
   }
 }
 
+.bm-CellSwipeCase {
+  .btn-delete {
+    height: 100%;
+    color: #fff;
+    background: red;
+    box-shadow: none;
+    border-radius: 0;
+  }
+}
+
 @media screen and (max-width: 760px) {
   .bm-content {
     background: #fff;

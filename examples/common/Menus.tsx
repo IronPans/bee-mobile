@@ -53,6 +53,11 @@ const MENUS = [{
     path: '/components/card',
     docs: '/docs/card'
 }, {
+    name: 'CellSwipe',
+    icon: 'panorama_wide_angle',
+    path: '/components/cellSwipe',
+    docs: '/docs/cellSwipe'
+}, {
     name: 'Calendar',
     icon: 'date_range',
     path: '/components/calendar',

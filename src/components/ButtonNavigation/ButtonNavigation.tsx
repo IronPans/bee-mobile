@@ -12,7 +12,7 @@ export default class ButtonNavigation extends React.PureComponent<ButtonNavigati
     constructor(props: ButtonNavigationProps) {
         super(props);
         let activeIndex = 0;
-        if (props.activeIndex! > 0) {
+        if (typeof props.activeIndex! === 'number') {
             activeIndex = props.activeIndex!;
         }
         this.state = {
@@ -23,7 +23,7 @@ export default class ButtonNavigation extends React.PureComponent<ButtonNavigati
     componentWillReceiveProps(nextProps: ButtonNavigationProps) {
         const {activeIndex} = nextProps;
         if ('activeIndex' in nextProps && this.props.activeIndex !== activeIndex) {
-            if (activeIndex! >= 0) {
+            if (typeof activeIndex! === 'number') {
                 this.setState({activeIndex});
             }
         }

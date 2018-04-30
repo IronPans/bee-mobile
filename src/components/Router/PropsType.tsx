@@ -1,4 +1,3 @@
-
 import {BaseProps} from '../common/BaseProps';
 import {PlainStyle} from 'react-motion';
 
@@ -20,4 +19,9 @@ export interface AnimatedSwitchProps extends BaseProps {
         pathname?: string
     };
     onRouteChange?: Function;
+}
+
+export interface AnimatedSwitchState {
+    key?: any;
+    match?: any;
 }

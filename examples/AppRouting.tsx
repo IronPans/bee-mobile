@@ -132,6 +132,8 @@ import InfiniteScrollApi from "./Api/InfiniteScrollApi";
 import BeeCli from "./Api/BeeCli";
 import SegmentCase from './cases/SegmentCase';
 import SegmentApi from './Api/SegmentApi';
+import CellSwipeCase from './cases/CellSwipeCase';
+import CellSwipeApi from './Api/CellSwipeApi';
 
 export const ROUTE_CONFIG: any = [
     { path: '/components/actionSheet', component: ActionSheetCase },
@@ -145,6 +147,7 @@ export const ROUTE_CONFIG: any = [
     { path: '/components/buttonNavigation', component: ButtonNavigationCase},
     { path: '/components/calendar', component: CalendarCase },
     { path: '/components/card', component: CardCase },
+    { path: '/components/cellSwipe', component: CellSwipeCase },
     { path: '/components/checkbox', component: CheckboxCase },
     { path: '/components/chip', component: ChipCase },
     { path: '/components/datetimePicker', component: DatetimePickerCase },
@@ -212,6 +215,7 @@ export const API_ROUTING = [
     { path: '/docs/buttonNavigation', component: ButtonNavigationApi},
     { path: '/docs/calendar', component: CalendarApi },
     { path: '/docs/card', component: CardApi },
+    { path: '/docs/cellSwipe', component: CellSwipeApi },
     { path: '/docs/changelog', component: ChangeLog },
     { path: '/docs/checkbox', component: CheckboxApi },
     { path: '/docs/chip', component: ChipApi },

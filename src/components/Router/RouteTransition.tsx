@@ -8,16 +8,17 @@ export default class RouteTransition extends React.PureComponent<RouteTransition
         prefixCls: 'bm-RouteTransition',
         wrapperComponent: 'div'
     };
+
     getDefaultStyles() {
         const {children, enterStyles}: any = this.props;
         if (!children) {
             return [];
         }
         return [{
-                key: children.key,
-                data: children!,
-                style: enterStyles!,
-            }];
+            key: children.key,
+            data: children!,
+            style: enterStyles!,
+        }];
     }
 
     getStyles() {
@@ -26,10 +27,10 @@ export default class RouteTransition extends React.PureComponent<RouteTransition
             return [];
         }
         return [{
-                key: children.key,
-                data: children!,
-                style: activeStyles!
-            }];
+            key: children.key,
+            data: children!,
+            style: activeStyles!
+        }];
     }
 
     willEnter = (): PlainStyle => {
@@ -66,8 +67,7 @@ export default class RouteTransition extends React.PureComponent<RouteTransition
             <TransitionMotion
                 defaultStyles={this.getDefaultStyles() as TransitionPlainStyle[]}
                 styles={this.getStyles() as TransitionPlainStyle[]}
-                willEnter={this.willEnter}
-                willLeave={this.willLeave}>
+                willEnter={this.willEnter} willLeave={this.willLeave}>
                 {(styles: any) => (
                     <div className={styleClass}>
                         {styles.map(this.renderElement)}

@@ -11,6 +11,10 @@
     list-style: none;
     box-sizing: border-box;
 
+    &:first-child:last-child:after {
+      background: transparent;
+    }
+
     &.bm-List-item-avatar-right {
       .bm-Avatar {
         order: 5;
@@ -94,7 +98,7 @@
       width: 40px;
       height: 40px;
       overflow: hidden;
-      font-size: 1.25rem;
+      font-size: 25px;
       user-select: none;
       margin-right: 16px;
     }

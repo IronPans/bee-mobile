@@ -142,7 +142,11 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         if (this.props.on && this.props.on.transitionStart!) {
             (this.props.on as any)['transitionStart'](index, this);
         }
-        this.setState(styles);
+        this.setState(styles, () => {
+            if (!speed) {
+                this.isRunning = false;
+            }
+        });
     }
 
     slidePrev = (disabled: boolean = true) => {

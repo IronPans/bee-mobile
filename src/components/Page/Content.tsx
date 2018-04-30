@@ -5,6 +5,7 @@ import {ContentProps, ContentState} from './PropsType';
 
 export default class Content extends React.PureComponent<ContentProps, ContentState> {
     static defaultProps: ContentProps = {
+        infiniteScroll: false,
         prefixCls: 'bm-Content',
         pullToRefresh: false
     };
@@ -95,8 +96,8 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
                 }
             }
         }
-        if (this.props.onScroll) {
-            (this.props.onScroll as Function)(event);
+        if (this.props.onContentScroll) {
+            (this.props.onContentScroll as Function)(event);
         }
     };
 
@@ -128,7 +129,7 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
 
     render() {
         const {
-            children, className, infiniteScroll, prefixCls, preloader,
+            children, className, prefixCls, preloader,
             pullToRefresh, style, ...other
         } = this.props;
         const {states, transitions}: any = this.state;
@@ -149,7 +150,7 @@ export default class Content extends React.PureComponent<ContentProps, ContentSt
             ...style
         };
         const otherProps = getOtherProperties(other,
-            ['height', 'onInfinite', 'onPullStart', 'onPullMove', 'onPullEnd', 'onRefresh', 'width']);
+            ['height', 'infiniteScroll', 'onInfinite', 'onContentScroll', 'onPullStart', 'onPullMove', 'onPullEnd', 'onRefresh', 'width']);
         return (
             <div ref={this.getRef} className={styleClass} style={styles} onScroll={this.handleScroll} {...otherProps}
                  onTransitionEnd={this.handleTransitionEnd} onTouchStart={this.handleTouchStart}>

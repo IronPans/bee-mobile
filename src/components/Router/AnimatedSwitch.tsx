@@ -4,13 +4,14 @@ import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import matchPath from 'react-router-dom/matchPath';
 import RouteTransition from "./RouteTransition";
-import {AnimatedSwitchProps} from './PropsType';
+import {AnimatedSwitchProps, AnimatedSwitchState} from './PropsType';
+import {getOtherProperties} from '../common/Utils';
 
 const NO_MATCH = {
     key: 'no-match',
 };
 
-class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, {}> {
+class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSwitchState> {
     static defaultProps = {
         prefixCls: "bm-AnimatedSwitch",
         location: {
@@ -19,10 +20,13 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, {}> {
     };
     matches: number = 0;
 
-    state = {
-        key: this.getLocationKey(this.props.location),
-        match: this.getMatchedRoute(this.props.children, (this.props.location as any).pathname),
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            key: this.getLocationKey(this.props.location),
+            match: this.getMatchedRoute(this.props.children, (this.props.location as any).pathname),
+        };
+    }
 
     componentDidMount() {
         if (this.props.onRouteChange) {
@@ -64,8 +68,9 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, {}> {
         const styleClass = classNames(
             prefixCls, className
         );
+        const otherProps = getOtherProperties(other, ['key', 'match']);
         return (
-            <RouteTransition className={styleClass} {...other}>
+            <RouteTransition className={styleClass} {...otherProps}>
                 <Switch key={this.state.key} location={location}>
                     {children}
                 </Switch>
@@ -77,7 +82,7 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, {}> {
 const RouteWrapper = (props: any) => {
     // When location change, Route always render, so we can get the location
     return (<Route
-        children={({ location }: any) => {
+        children={({location}: any) => {
             return (<AnimatedSwitch location={location} {...props} />);
         }}
     />);

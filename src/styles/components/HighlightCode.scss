@@ -7,14 +7,14 @@
 
   .bm-HighlightCode-btn {
     position: absolute;
-    right: 1rem;
+    right: 20px;
     top: 10px;
     opacity: 0;
     color: #fff;
     z-index: 100;
     border: none;
     cursor: pointer;
-    padding: 0 .25rem;
+    padding: 0 5px;
     border-radius: 3px;
     transition: opacity .3s;
   }
@@ -28,11 +28,11 @@
 
   &[lang]:before {
     position: absolute;
-    top: .25rem;
-    right: .5rem;
+    top: 5px;
+    right: 10px;
     color: rgba(255, 255, 255, .5);
     opacity: .5;
-    font-size: .65rem;
+    font-size: 13px;
   }
 
   &[lang="html"]:before {

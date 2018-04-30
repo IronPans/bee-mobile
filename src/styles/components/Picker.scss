@@ -90,22 +90,22 @@
   }
 
   .PickerItem:first-child {
-    padding-left: .25rem;
+    padding-left: 5px;
   }
 
   .PickerItem:last-child {
-    padding-right: .25rem;
+    padding-right: 5px;
   }
 
   .PickerItem:not(:first-child):not(:last-child) {
-    padding: 0 .25rem;
+    padding: 0 5px;
   }
 
   .Picker-body .PickerItem .PickerItem-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
-    margin-top: .3rem;
+    margin-top: 6px;
     text-align: center;
     //background: linear-gradient(0deg, #000, #444, #000);
     overflow: hidden;
@@ -117,7 +117,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    padding: 0 .8rem;
+    padding: 0 16px;
   }
 
   .PickerItem-wrapper > .PickerItem-scroll,
@@ -172,9 +172,9 @@
   }
 
   .PickerItem-label {
-    height: 1.45rem;
-    line-height: 1.45rem;
-    font-size: .85rem;
+    height: 29px;
+    line-height: 29px;
+    font-size: 17px;
     text-align: center;
     color: #333;
   }
@@ -195,10 +195,10 @@
   }
 
   .Picker-header {
-    height: 2rem;
-    line-height: 2rem;
-    padding: 0 .5rem;
-    font-size: .75rem;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 10px;
+    font-size: 15px;
     background: $primary;
     color: #fff;
     border-bottom: 1px solid #fff;

@@ -9,12 +9,12 @@
   }
 
   &.bm-SearchBar-active .bm-SearchBar-cancel + .bm-SearchBar-input {
-    margin-right: 2.5rem;
+    margin-right: 50px;
   }
 
   .bm-SearchBar-cancel {
-    margin-right: -3rem;
-    width: 2.2rem;
+    margin-right: -60px;
+    width: 44px;
     float: right;
     height: 35px;
     opacity: 0;
@@ -57,12 +57,12 @@
     .bm-Icon {
       position: absolute;
       top: 50%;
-      left: 0.3rem;
+      left: 6px;
       z-index: 20;
-      font-size: 1rem;
+      font-size: 20px;
       color: #b4b4b4;
-      padding: .5rem .1rem;
-      line-height: 1.2rem;
+      padding: 10px 2px;
+      line-height: 24px;
       transform: translate3D(0, -50%, 0);
     }
 
@@ -74,12 +74,12 @@
       -webkit-appearance: none;
       -moz-appearance: none;
       appearance: none;
-      border-radius: 0.25rem;
+      border-radius: 5px;
       font-family: inherit;
       color: #3d4145;
-      font-size: 0.7rem;
+      font-size: 14px;
       font-weight: normal;
-      padding: 0 0.5rem;
+      padding: 0 10px;
       background-color: #fff;
       border: 1px solid $inputBorderColor;
 

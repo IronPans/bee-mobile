@@ -13,7 +13,7 @@ export interface ContentProps extends BaseProps {
     onPullMove?: Function;
     onPullEnd?: Function;
     onRefresh?: Function;
-    onScroll?: Function;
+    onContentScroll?: Function;
     preloader?: React.ReactNode | string;
     pullToRefresh?: boolean;
     width?: number | string;

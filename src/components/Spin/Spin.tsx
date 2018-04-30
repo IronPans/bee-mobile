@@ -1,12 +1,15 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {SPIN_TYPES, SpinProps} from './PropsType';
+import {getOtherProperties} from '../common/Utils';
 
 export default class Spin extends React.PureComponent<SpinProps, any> {
     static defaultProps = {
+        height: 100,
         type: 'circleRound',
         size: 'xs',
-        prefixCls: 'bm-Spin'
+        prefixCls: 'bm-Spin',
+        width: 100
     };
 
     getSpinElement(type: SPIN_TYPES, spanSize: number) {
@@ -40,8 +43,8 @@ export default class Spin extends React.PureComponent<SpinProps, any> {
     }
 
     getSize() {
-        let width = 100, height = 100;
-        switch (this.props.size) {
+        let {height, width, size, type}: any = this.props;
+        switch (size) {
             case 'xs':
                 width *= 0.25;
                 height *= 0.25;
@@ -51,7 +54,7 @@ export default class Spin extends React.PureComponent<SpinProps, any> {
                 height *= 0.5;
                 break;
         }
-        switch (this.props.type) {
+        switch (type) {
             case 'lineSquare':
             case 'lineRound':
             case 'lineBounce':
@@ -62,15 +65,16 @@ export default class Spin extends React.PureComponent<SpinProps, any> {
     }
 
     render() {
-        const {className, prefixCls, size, type, ...other} = this.props;
+        const {className, prefixCls, type, ...other} = this.props;
         const styleClass = classNames(
             prefixCls,
             className
         );
+        const otherProps = getOtherProperties(other, ['height', 'size', 'width']);
         const styles = {...this.getSize()};
         const children: React.ReactNode = this.getSpinElement(type!, styles['width']);
         return (
-            <div className={styleClass} {...other} style={styles}>
+            <div className={styleClass} {...otherProps} style={styles}>
                 {children}
             </div>
         );

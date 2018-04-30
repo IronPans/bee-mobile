@@ -1,5 +1,25 @@
 # Change Log
 
+## 0.1.4(2018-04-30)
+
+**Bug Fixes**
+
+- 修复Swiper无法拖动
+- InfiniteScroll属性onScroll修改为onContentScroll，修复添加onScroll导致无限滚动无效。
+- 修复因使用rem(根元素font-size不一致)时，导致字体大小错乱的问题
+- 修复找不到IndexList、IndexSection组件
+
+**Features**
+
+- 新增CellSwipe组件
+- Spin新增height、width属性，用于控制Spin的大小
+- Spin默认颜色调整为#424242
+- ButtonNavigation可设置为负数或大于子元素个数，表示都不选中
+
+**Documents**
+
+- 修正文档中主题的scss引用路径问题
+
 ## 0.1.3(2018-04-21)
 
 **Bug Fixes**

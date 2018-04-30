@@ -89,7 +89,7 @@
   }
 
   .Checkbox-title {
-    max-width: 10rem;
+    max-width: 200px;
     white-space: nowrap;
   }
 
@@ -98,7 +98,7 @@
   }
 
   .Checkbox-inner:not(:empty) {
-    padding-left: .3rem;
+    padding-left: 6px;
   }
 
 }

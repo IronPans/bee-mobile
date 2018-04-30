@@ -29,6 +29,42 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                        <li>主版本号：每月发布一个带有新特性的向下兼容的版本。</li>
                    </ul>
                    <Timeline>
+                       <TimelineItem title={<h3>0.1.4 <span className="title-label">2018-04-30</span></h3>}>
+                           <h4>Bug Fixes</h4>
+                           <ul>
+                               <li>
+                                   修复<NavLink to="/docs/swiper">Swiper</NavLink>无法拖动
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/infiniteScroll">InfiniteScroll</NavLink>属性onScroll修改为onContentScroll，修复添加onScroll导致无限滚动无效。
+                               </li>
+                               <li>
+                                   修复因使用rem(根元素font-size不一致)时，导致字体大小错乱的问题
+                               </li>
+                               <li>
+                                   修复找不到<NavLink to="/docs/indexList">IndexList、IndexSection</NavLink>组件
+                               </li>
+                           </ul>
+                           <h4>Features</h4>
+                           <ul>
+                               <li>
+                                   新增<NavLink to="/docs/cellSwipe">CellSwipe</NavLink>组件
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/spin">Spin</NavLink>新增height、width属性，用于控制Spin的大小
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/spin">Spin</NavLink>默认颜色调整为#424242
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/buttonNavigation">ButtonNavigation</NavLink>可设置为负数或大于子元素个数，表示都不选中
+                               </li>
+                           </ul>
+                           <h4>Documents</h4>
+                           <ul>
+                               <li>修正文档中主题的scss引用路径问题</li>
+                           </ul>
+                       </TimelineItem>
                        <TimelineItem title={<h3>0.1.3 <span className="title-label">2018-04-21</span></h3>}>
                            <h4>Bug Fixes</h4>
                            <ul>

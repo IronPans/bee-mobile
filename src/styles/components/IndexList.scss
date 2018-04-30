@@ -55,6 +55,8 @@
           position: relative;
           padding: 10px 14px;
           font-size: 15px;
+          line-height: 1.2;
+
           &:not(:first-child):last-child {
             &:after {
               display: none;
@@ -86,6 +88,7 @@
       flex-direction: column;
       align-items: center;
       max-height: 100%;
+
       li.bm-IndexList-nav-item {
         width: 100%;
         box-sizing: border-box;

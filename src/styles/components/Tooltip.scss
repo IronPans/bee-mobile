@@ -6,7 +6,7 @@
     position: absolute;
     z-index: 10;
     font-size: 12px;
-    max-width: 12.5rem;
+    max-width: 250px;
     opacity: 0;
     padding: 5px 8px;
     background: #616161;
@@ -23,19 +23,19 @@
     }
 
     &.bm-Tooltip-right {
-      margin-left: .4rem;
+      margin-left: 8px;
     }
 
     &.bm-Tooltip-left {
-      margin-left: -.4rem;
+      margin-left: -8px;
     }
 
     &.bm-Tooltip-top {
-      margin-top: -.4rem;
+      margin-top: -8px;
     }
 
     &.bm-Tooltip-bottom {
-      margin-top: .4rem;
+      margin-top: 8px;
     }
   }
 }
