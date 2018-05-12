@@ -46,6 +46,7 @@ export default class Main extends React.PureComponent<any, MainState> {
             })
         }
     };
+    version = process.env.VERSION;
 
     state = {
         anchorEl: '',
@@ -93,12 +94,13 @@ export default class Main extends React.PureComponent<any, MainState> {
         this.menus = MENUS.filter((menu: any) => {
             return ['Ripple'].indexOf(menu.name) === -1;
         });
+        console.log(this.version)
         return (
             <div className="Main height-100">
                 <Sidebar reveal={this.state.reveal} className="Page-aside" onClose={this.toggleSidebar}>
                     <div className="Sidebar-header">
                         <h2>bee-mobile</h2>
-                        <p>v0.1.0</p>
+                        <p>v{this.version}</p>
                     </div>
                     <List>
                         {

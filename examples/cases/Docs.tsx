@@ -52,6 +52,7 @@ export class Docs extends React.PureComponent<any, DocsState> {
         reveal: false,
         visible: false
     };
+    version = process.env.VERSION;
 
     toggleSidebar = () => {
         this.setState({
@@ -176,7 +177,7 @@ export class Docs extends React.PureComponent<any, DocsState> {
                 <Sidebar reveal={this.state.reveal} className="Page-aside" onClose={this.toggleSidebar}>
                     <div className="Sidebar-header">
                         <h2>bee-mobile</h2>
-                        <p>v0.1.0</p>
+                        <p>v{this.version}</p>
                     </div>
                     <List>
                         <ListItem>

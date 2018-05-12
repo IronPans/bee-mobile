@@ -34,6 +34,7 @@ const METADATA = webpackMerge(commonConfig({
 const projectName = 'examples';
 
 module.exports = (options) => {
+    const pkg = require(path.join(process.cwd(), 'package.json'));
     return webpackMerge(commonConfig({ env: ENV }), {
         /**
          * Developer tool to enhance debugging
@@ -142,7 +143,8 @@ module.exports = (options) => {
             new webpack.DefinePlugin({
                 'process.env': {
                     ENV: JSON.stringify(METADATA.ENV),
-                    NODE_ENV: JSON.stringify(METADATA.ENV)
+                    NODE_ENV: JSON.stringify(METADATA.ENV),
+                    VERSION: JSON.stringify(pkg.version)
                 }
             }),
             new ExtractTextPlugin({ // define where to save the file

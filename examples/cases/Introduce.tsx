@@ -32,6 +32,7 @@ export default class Introduce extends React.PureComponent<IntroduceProps, any> 
                         </Button>
                     </div>
                     <div className="subtitle github-box">
+                        <img className="margin-right-10" src="https://img.shields.io/npm/v/bee-mobile.svg?style=flat-square" alt="bee-mobile"/>
                         <iframe src="https://ghbtns.com/github-btn.html?user=IronPans&amp;repo=bee-mobile&amp;type=star&amp;count=true"
                             frameBorder="0" scrolling="0" width="110px" height="20px"/>
                     </div>

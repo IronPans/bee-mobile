@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
+const path = require('path');
 
 /**
  * Used to merge webpack configs
@@ -26,6 +27,7 @@ const METADATA = webpackMerge(commonConfig({
 });
 
 module.exports = (options) => {
+    const pkg = require(path.join(process.cwd(), 'package.json'));
     return webpackMerge(commonConfig({env: ENV}), {
         /**
          * Developer tool to enhance debugging
@@ -124,7 +126,8 @@ module.exports = (options) => {
             new webpack.DefinePlugin({
                 'process.env': {
                     ENV: JSON.stringify(METADATA.ENV),
-                    NODE_ENV: JSON.stringify(METADATA.ENV)
+                    NODE_ENV: JSON.stringify(METADATA.ENV),
+                    VERSION: JSON.stringify(pkg.version)
                 }
             })
         ],

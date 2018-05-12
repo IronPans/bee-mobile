@@ -11,10 +11,7 @@ button {
   outline: none;
   -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-.bm-Button, .bm-Button:focus, .bm-Button:active, .bm-Button:hover {
-  outline: none;
-  border: none;
-}
+
 
 .bm-Button {
   position: relative;
@@ -80,19 +77,59 @@ button {
       left: 20px;
     }
   }
-}
 
-.bm-Button:not(.is-disabled) {
-  &:active, &.is-active {
-    -webkit-box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
-    box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)
+  &, &:focus, &:active, &:hover {
+    outline: none;
+    border: none;
   }
-}
 
-.bm-Button.bm-Button-round {
-  border-radius: 20px;
-}
+  &:not(.is-disabled) {
+    &:active, &.is-active {
+      -webkit-box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12);
+      box-shadow: 0 5px 5px -3px rgba(0,0,0,.2),0 8px 10px 1px rgba(0,0,0,.14),0 3px 14px 2px rgba(0,0,0,.12)
+    }
+  }
 
+  &.bm-Button-round {
+    border-radius: 20px;
+  }
+
+  &.bm-Button-block {
+    display: flex;
+    width: 100%;
+  }
+
+  &.bm-Button-lg {
+    padding: 8px 24px;
+    min-width: 112px;
+    font-size: 16px;
+    min-height: 40px;
+
+    &.bm-Button-fab {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      min-width: 40px;
+      line-height: 40px;
+    }
+  }
+
+  &.bm-Button-sm {
+    padding: 7px 8px;
+    min-width: 64px;
+    font-size: 13px;
+    min-height: 32px;
+
+    &.bm-Button-fab {
+      padding: 0;
+      width: 32px;
+      height: 32px;
+      min-width: 32px;
+      line-height: 32px;
+    }
+  }
+
+}
 .bm-Button,
 .bm-Button-group {
   @include boxShadow();
@@ -101,41 +138,6 @@ button {
 .bm-Button.is-flat,
 .bm-Button-group.is-flat{
   box-shadow: none !important;
-}
-
-.bm-Button.bm-Button-block {
-  display: flex;
-  width: 100%;
-}
-
-.bm-Button.bm-Button-lg {
-  padding: 8px 24px;
-  min-width: 112px;
-  font-size: 16px;
-  min-height: 40px;
-
-  &.bm-Button-fab {
-    padding: 0;
-    width: 40px;
-    height: 40px;
-    min-width: 40px;
-    line-height: 40px;
-  }
-}
-
-.bm-Button.bm-Button-sm {
-  padding: 7px 8px;
-  min-width: 64px;
-  font-size: 13px;
-  min-height: 32px;
-
-  &.bm-Button-fab {
-    padding: 0;
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    line-height: 32px;
-  }
 }
 
 .bm-Button-fab {
@@ -177,21 +179,21 @@ button {
   position: relative;
   display: inline-flex;
   align-items: center;
-}
 
-.bm-Button-group > .bm-Button {
-  border-radius: 0;
-  box-shadow: none;
-}
+  > .bm-Button {
+    border-radius: 0;
+    box-shadow: none;
+  }
 
-.bm-Button-group > .bm-Button:first-child {
-  border-top-left-radius: 2px;
-  border-bottom-left-radius: 2px;
-}
+  > .bm-Button:first-child {
+    border-top-left-radius: 2px;
+    border-bottom-left-radius: 2px;
+  }
 
-.bm-Button-group > .bm-Button:last-child {
-  border-top-right-radius: 2px;
-  border-bottom-right-radius: 2px;
+  > .bm-Button:last-child {
+    border-top-right-radius: 2px;
+    border-bottom-right-radius: 2px;
+  }
 }
 
 .bm-Button.bm-Button-block {
@@ -208,11 +210,11 @@ button {
   box-shadow: none;
 }
 
-.bm-Button i.free-Button-left {
+.bm-Button i.bm-Button-left {
   padding-right: 5px;
 }
 
-.bm-Button i.free-Button-right {
+.bm-Button i.bm-Button-right {
   padding-left: 5px;
 }
 
