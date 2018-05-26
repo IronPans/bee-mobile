@@ -27,7 +27,7 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
     }
 
     componentWillReceiveProps(nextProps: any) {
-        if (nextProps.closeOthers && 'expanded' in nextProps &&
+        if ('expanded' in nextProps &&
             this.props.expanded !== nextProps.expanded) {
             this.setState({
                 expanded: nextProps.expanded
@@ -36,20 +36,16 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
     }
 
     handleToggle = (event: any) => {
-        let { closeOthers, disabled, onChange, index } = this.props;
+        let { disabled, onChange, index, name } = this.props;
         if (disabled) {
             return;
         }
         const {expanded} = this.state;
-        this.setState({
-            expanded: !expanded
-        });
-        if (expanded && closeOthers) {
-            index = -1;
-        }
         if (onChange) {
             onChange({
-                event, index
+                event,
+                index: name || index,
+                expanded
             });
         }
     };

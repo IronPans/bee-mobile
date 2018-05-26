@@ -101,13 +101,13 @@ export default class TreeItem extends React.PureComponent<TreeItemProps, {}> {
                 [`${prefixCls}-content-selected`]: this.isSelected()
             }
         );
-        const expandedStyle = {
+        const expandedStyle: any = {
             display: node.expanded ? 'block' : 'none'
         };
         const labelClass = classNames(
             `${prefixCls}-menu-label`
         );
-        const arrowStyle = {
+        const arrowStyle: any = {
             pointerEvents: 'none',
             display: 'block',
             width: '100%',

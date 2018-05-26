@@ -24,9 +24,12 @@ export default class ImageView extends React.PureComponent<ImageViewProps, Image
         if ('visible' in nextProps && this.props.visible !== nextProps.visible) {
             if (nextProps.target) {
                 this.data = [];
-                const imgs = ReactDOM.findDOMNode(nextProps.target).querySelectorAll('img');
-                for (let i = 0; i < imgs.length; i++) {
-                    this.data.push(imgs[i].src);
+                const target: any = ReactDOM.findDOMNode(nextProps.target);
+                if (target.querySelectorAll) {
+                    const imgs = target.querySelectorAll('img');
+                    for (let i = 0; i < imgs.length; i++) {
+                        this.data.push(imgs[i].src);
+                    }
                 }
             }
             this.setState({

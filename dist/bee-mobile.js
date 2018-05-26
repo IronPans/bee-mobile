@@ -1,7 +1,7 @@
 /**
  * bee-mobile - UI Components for React
  * @author TG <ghmagical@gmail.com>
- * @version v0.1.4
+ * @version v0.1.6
  * @link https://bee-mobiles.github.io
  * @license MIT
  */
@@ -324,6 +324,14 @@ function setValueToNumber(value) {
     return num;
 }
 exports.setValueToNumber = setValueToNumber;
+function getSize(val, pix) {
+    if (pix === void 0) {
+        pix = 'px';
+    }
+    var value = typeof val !== 'number' ? val : val + pix;
+    return value;
+}
+exports.getSize = getSize;
 
 /***/ }),
 /* 3 */
@@ -637,6 +645,32 @@ function getScrollParent(node) {
     return node.ownerDocument || node.documentElement || document.documentElement;
 }
 exports.getScrollParent = getScrollParent;
+function on(elem, type, callback, capture) {
+    if (capture === void 0) {
+        capture = false;
+    }
+    if (elem.addEventListener) {
+        elem.addEventListener(type, callback, capture);
+    } else if (elem.attachEvent) {
+        elem.attachEvent(type, callback);
+    }
+}
+exports.on = on;
+function off(elem, type, callback) {
+    if (elem.removeEventListener) {
+        elem.removeEventListener(type, callback);
+    } else if (elem.detachEvent) {
+        elem.detachEvent(type, callback);
+    }
+}
+exports.off = off;
+function listen(elem, type, callback) {
+    on(elem, type, callback);
+    return function () {
+        off(elem, type, callback);
+    };
+}
+exports.listen = listen;
 
 /***/ }),
 /* 8 */
@@ -3161,23 +3195,19 @@ var Accordion = /** @class */function (_super) {
         _this.expanded = false;
         _this.handleToggle = function (event) {
             var _a = _this.props,
-                closeOthers = _a.closeOthers,
                 disabled = _a.disabled,
                 onChange = _a.onChange,
-                index = _a.index;
+                index = _a.index,
+                name = _a.name;
             if (disabled) {
                 return;
             }
             var expanded = _this.state.expanded;
-            _this.setState({
-                expanded: !expanded
-            });
-            if (expanded && closeOthers) {
-                index = -1;
-            }
             if (onChange) {
                 onChange({
-                    event: event, index: index
+                    event: event,
+                    index: name || index,
+                    expanded: expanded
                 });
             }
         };
@@ -3191,7 +3221,7 @@ var Accordion = /** @class */function (_super) {
         return _this;
     }
     Accordion.prototype.componentWillReceiveProps = function (nextProps) {
-        if (nextProps.closeOthers && 'expanded' in nextProps && this.props.expanded !== nextProps.expanded) {
+        if ('expanded' in nextProps && this.props.expanded !== nextProps.expanded) {
             this.setState({
                 expanded: nextProps.expanded
             });
@@ -4021,24 +4051,47 @@ var AccordionGroup = /** @class */function (_super) {
                 onChange = _a.onChange,
                 closeOthers = _a.closeOthers;
             var index = event.index;
+            var expanded = event.expanded;
+            var currentValue = _this.state.currentValue.slice() || [];
             if (closeOthers) {
-                _this.setState({
-                    activeIndex: index
+                currentValue = expanded ? [] : [index];
+            } else if (expanded) {
+                currentValue = currentValue.filter(function (value) {
+                    return index !== value;
                 });
+            } else {
+                currentValue.push(index);
             }
+            _this.setState({
+                currentValue: currentValue
+            });
             if (onChange) {
-                onChange(index);
+                onChange(currentValue);
             }
         };
-        var activeIndex = -1;
-        if (props.activeIndex >= 0) {
-            activeIndex = props.activeIndex;
-        }
         _this.state = {
-            activeIndex: activeIndex
+            currentValue: Array.isArray(props.activeIndex) ? props.activeIndex : [props.activeIndex]
         };
         return _this;
     }
+    AccordionGroup.prototype.componentWillReceiveProps = function (nextProps) {
+        if ('activeIndex' in nextProps && nextProps.activeIndex !== this.props.activeIndex) {
+            this.setState({
+                currentValue: nextProps.activeIndex
+            });
+        }
+    };
+    AccordionGroup.prototype.getCurrentValue = function () {
+        var currentValue = this.state.currentValue || [];
+        var accordion = this.props.closeOthers;
+        if (!Array.isArray(currentValue)) {
+            currentValue = [currentValue];
+        }
+        if (accordion && currentValue.length > 1) {
+            currentValue = [currentValue[currentValue.length - 1]];
+        }
+        return currentValue;
+    };
     AccordionGroup.prototype.render = function () {
         var _this = this;
         var _a = this.props,
@@ -4048,15 +4101,18 @@ var AccordionGroup = /** @class */function (_super) {
             disableRipple = _a.disableRipple,
             prefixCls = _a.prefixCls;
         var styleClass = classNames(prefixCls, className);
-        var activeIndex = this.state.activeIndex;
+        var currentValue = this.getCurrentValue();
         var children = React.Children.map(childrenProp, function (child, index) {
-            var disabled = child.props.disabled;
-            var expanded = index === activeIndex;
+            var _a = child.props,
+                disabled = _a.disabled,
+                name = _a.name;
+            var expanded = currentValue.indexOf(name || index) > -1;
             return React.cloneElement(child, {
                 closeOthers: closeOthers,
                 disableRipple: disableRipple,
                 disabled: disabled,
                 expanded: expanded,
+                name: name,
                 index: index,
                 onChange: _this.handleChange
             });
@@ -4065,7 +4121,7 @@ var AccordionGroup = /** @class */function (_super) {
     };
     AccordionGroup.defaultProps = {
         disableRipple: true,
-        activeIndex: -1,
+        activeIndex: [],
         prefixCls: 'bm-AccordionGroup'
     };
     return AccordionGroup;
@@ -5011,6 +5067,9 @@ var BackTop = /** @class */function (_super) {
     function BackTop() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
         _this.startY = 0;
+        _this.state = {
+            visible: false
+        };
         _this.scroll = function () {
             var _a = _this.props,
                 destination = _a.destination,
@@ -5030,34 +5089,64 @@ var BackTop = /** @class */function (_super) {
             window.requestAnimationFrame(_this.scroll);
         };
         _this.handleClick = function () {
-            var scrollNode = _this.props.scrollNode;
-            if (scrollNode) {
-                _this.scrollNode = scrollNode;
-            } else {
-                _this.scrollNode = Dom_1.getScrollParent(_this.node);
-            }
             _this.startTime = Date.now();
             _this.startY = _this.scrollNode.scrollTop;
             _this.scroll();
         };
         _this.getRef = function (node) {
             _this.node = node;
+            var scrollNode = _this.props.scrollNode;
+            if (scrollNode) {
+                _this.scrollNode = scrollNode;
+            } else {
+                _this.scrollNode = Dom_1.getScrollParent(_this.node);
+            }
         };
         return _this;
     }
+    BackTop.prototype.componentDidMount = function () {
+        var _this = this;
+        this.scrollListener = Dom_1.listen(this.scrollNode, 'scroll', function (e) {
+            var scrollTop = e.target.scrollTop;
+            if (scrollTop > _this.props.destination) {
+                _this.setState({
+                    visible: true
+                });
+            } else {
+                _this.setState({
+                    visible: false
+                });
+            }
+        });
+    };
+    BackTop.prototype.componentWillUnmount = function () {
+        if (this.scrollListener) {
+            this.scrollListener();
+            this.scrollListener = null;
+        }
+    };
     BackTop.prototype.render = function () {
         var _a = this.props,
             className = _a.className,
             children = _a.children,
             prefixCls = _a.prefixCls,
-            other = __rest(_a, ["className", "children", "prefixCls"]);
+            bottom = _a.bottom,
+            right = _a.right,
+            other = __rest(_a, ["className", "children", "prefixCls", "bottom", "right"]);
         var styleClass = classNames(prefixCls, className);
+        var styles = {
+            right: Utils_1.getSize(right),
+            bottom: Utils_1.getSize(bottom),
+            display: this.state.visible ? 'block' : 'none'
+        };
         var otherProps = Utils_1.getOtherProperties(other, ['destination', 'duration', 'easing', 'scrollNode', 'onScrollEnd']);
-        return React.createElement("div", __assign({ className: styleClass, ref: this.getRef }, otherProps, { onClick: this.handleClick }), children);
+        return React.createElement("div", __assign({ className: styleClass, style: styles, ref: this.getRef }, otherProps, { onClick: this.handleClick }), children);
     };
     BackTop.defaultProps = {
         destination: 0,
         duration: 200,
+        right: 30,
+        bottom: 30,
         easing: 'linear',
         prefixCls: 'bm-BackTop'
     };
@@ -8741,7 +8830,9 @@ var Spin = /** @class */function (_super) {
         return _super !== null && _super.apply(this, arguments) || this;
     }
     Spin.prototype.getSpinElement = function (type, spanSize) {
-        var prefixCls = this.props.prefixCls;
+        var _a = this.props,
+            prefixCls = _a.prefixCls,
+            color = _a.color;
         var spans = [];
         var num = 8;
         var height;
@@ -8757,7 +8848,7 @@ var Spin = /** @class */function (_super) {
                 height = spanSize * 0.1;
             }
             for (var i = 0; i < num; i++) {
-                spans.push(React.createElement("span", { key: i, style: { height: height } }));
+                spans.push(React.createElement("span", { key: i, style: { height: height, background: color } }));
             }
         } else {
             spans.push(React.createElement("div", { className: prefixCls + "-snake", key: "snake" }));
@@ -8806,7 +8897,8 @@ var Spin = /** @class */function (_super) {
         type: 'circleRound',
         size: 'xs',
         prefixCls: 'bm-Spin',
-        width: 100
+        width: 100,
+        color: '#303548'
     };
     return Spin;
 }(React.PureComponent);

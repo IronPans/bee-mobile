@@ -80,7 +80,7 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
         const radius = 50 - lineWidth! / 2;
         const len = Math.PI * 2 * radius;
         const dasharray = value! / 100 * len + 'px ' + len + 'px';
-        const trailStyles = {
+        const trailStyles: any = {
             stroke: trackColor!,
             strokeWidth: lineWidth!,
             fillOpacity: 0,
@@ -88,7 +88,7 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
             strokeDashoffset: '-' + gapDegree! / 2 + 'px',
             transition: animated! && 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s'
         };
-        const pathStyles = {
+        const pathStyles: any = {
             stroke: barColor!,
             strokeWidth: lineWidth!,
             strokeLinecap: lineCap!,

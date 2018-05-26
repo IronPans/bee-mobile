@@ -9,11 +9,12 @@ export default class Spin extends React.PureComponent<SpinProps, any> {
         type: 'circleRound',
         size: 'xs',
         prefixCls: 'bm-Spin',
-        width: 100
+        width: 100,
+        color: '#303548'
     };
 
     getSpinElement(type: SPIN_TYPES, spanSize: number) {
-        const {prefixCls} = this.props;
+        const {prefixCls, color} = this.props;
         const spans: any[] = [];
         let num = 8;
         let height;
@@ -29,7 +30,7 @@ export default class Spin extends React.PureComponent<SpinProps, any> {
                 height = spanSize * 0.1;
             }
             for (let i = 0; i < num; i++) {
-                spans.push(<span key={i} style={{height}}/>);
+                spans.push(<span key={i} style={{height, background: color}}/>);
             }
         } else {
             spans.push(<div className={`${prefixCls}-snake`} key="snake"/>)

@@ -169,5 +169,29 @@ function getScrollParent(node: any) {
     return node.ownerDocument || node.documentElement || document.documentElement;
 }
 
-export {addClass, addEventListener, clickOutside, css, hasClass, removeClass, getScrollParent, removeEventListener, animationEnd,
+function on(elem, type, callback, capture = false) {
+    if (elem.addEventListener) {
+        elem.addEventListener(type, callback, capture);
+    } else if (elem.attachEvent) {
+        elem.attachEvent(type, callback);
+    }
+}
+
+function off(elem, type, callback) {
+    if (elem.removeEventListener) {
+        elem.removeEventListener(type, callback);
+    } else if (elem.detachEvent) {
+        elem.detachEvent(type, callback);
+    }
+}
+
+function listen(elem, type, callback) {
+    on(elem, type, callback);
+
+    return () => {
+        off(elem, type, callback);
+    }
+}
+
+export {on, off, listen, addClass, addEventListener, clickOutside, css, hasClass, removeClass, getScrollParent, removeEventListener, animationEnd,
     setTransform, setTransitionDuration, transitionStart, transitionEnd, deleteTransitionEnd, parents}

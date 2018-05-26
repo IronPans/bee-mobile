@@ -45,7 +45,7 @@ export default class TransitionCase extends React.Component<TransitionCaseProps,
             prefixCls,
             className
         );
-        const collapseStyle = {
+        const collapseStyle: any = {
             overflow: 'hidden'
         };
         return (

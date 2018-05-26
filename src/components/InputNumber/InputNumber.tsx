@@ -106,7 +106,7 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
                 'is-disabled': (max!) >= (value!)
             }
         );
-        const arrowStyle = {
+        const arrowStyle: any = {
             pointerEvents: 'none',
             display: 'block',
             fill: 'rgb(117, 117, 117)'

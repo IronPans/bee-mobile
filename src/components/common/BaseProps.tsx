@@ -4,7 +4,7 @@ export type BaseProps =  {
     className?: string;
     children?: React.ReactNode;
     prefixCls?: string;
-    style?: React.CSSProperties | {} | Array<{}>;
+    style?: React.CSSProperties;
 }
 
 export interface Props extends BaseProps {

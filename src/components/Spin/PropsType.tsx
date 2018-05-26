@@ -17,4 +17,5 @@ export interface SpinProps extends BaseProps {
     type?: SPIN_TYPES;
     size?: SPIN_SIZES;
     width?: String | Number;
+    color?: String;
 }

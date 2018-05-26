@@ -189,5 +189,10 @@ function setValueToNumber(value: any) {
     return num;
 }
 
-export {getTouchEvent, getRect, cancelAnimationFrame, requestAnimationFrame,
+function getSize(val, pix = 'px') {
+    const value = typeof val !== 'number' ? val : val + pix;
+    return value;
+}
+
+export {getTouchEvent, getRect, cancelAnimationFrame, requestAnimationFrame, getSize,
     canUseDOM, getOtherProperties, equals, dateFormat, off, on, setValueToNumber}

@@ -1,5 +1,16 @@
 # Change Log
 
+## 0.1.6(2018-05-26)
+
+**Bug Fixes**
+
+- Accordion新增name属性，用于设置自定义索引
+- Spin新增color属性，用于设置颜色
+
+**Features**
+
+- 修复Autocomplete有值时获取焦点无法弹出下拉框
+
 ## 0.1.5(2018-05-12)
 
 **Features**

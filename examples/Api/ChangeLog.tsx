@@ -29,6 +29,23 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                        <li>主版本号：每月发布一个带有新特性的向下兼容的版本。</li>
                    </ul>
                    <Timeline>
+                       <TimelineItem title={<h3>0.1.6 <span className="title-label">2018-05-26</span></h3>}>
+                           <h4>Features</h4>
+                           <ul>
+                               <li>
+                                   <NavLink to="/docs/accordion">Accordion</NavLink>新增name属性，用于设置自定义索引
+                               </li>
+                               <li>
+                                   <NavLink to="/docs/spin">Spin</NavLink>新增color属性，用于设置颜色
+                               </li>
+                           </ul>
+                           <h4>Bug Fixes</h4>
+                           <ul>
+                               <li>
+                                   修复<NavLink to="/docs/autocomplete">Autocomplete</NavLink>有值时获取焦点无法弹出下拉框
+                               </li>
+                           </ul>
+                       </TimelineItem>
                        <TimelineItem title={<h3>0.1.5 <span className="title-label">2018-05-12</span></h3>}>
                            <h4>Features</h4>
                            <ul>

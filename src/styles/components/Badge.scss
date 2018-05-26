@@ -32,12 +32,12 @@
     align-items: center;
     justify-content: center;
     border-radius: 8px;
-    background: $badgeCountBg;
-    color: $badgeCountColor;
     font-size: 12px;
     padding: 2px 4px;
     white-space: nowrap;
     transform-origin: -10% center;
+    background: $badgeCountBg;
+    color: $badgeCountColor;
     box-shadow: 0 0 0 1px #fff;
 
     &.bm-Badge-circle {

@@ -7,6 +7,7 @@ export interface AccordionProps extends BaseProps {
     expanded?: boolean;
     header?: React.ReactNode | string;
     index?: number;
+    name?: string;
     onChange?: (event: any) => {}
 }
 
@@ -17,10 +18,10 @@ export interface AccordionState {
 export interface AccordionGroupProps extends BaseProps {
     closeOthers?: boolean;
     disableRipple?: boolean;
-    activeIndex?: number;
-    onChange?: (index: number) => void;
+    activeIndex?: Array<any> | Number;
+    onChange?: (value: any) => void;
 }
 
 export interface AccordionGroupState {
-    activeIndex: number
+    currentValue: Array<any>
 }
