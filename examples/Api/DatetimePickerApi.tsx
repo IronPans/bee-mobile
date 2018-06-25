@@ -9,7 +9,7 @@ interface DatetimePickerApiProps extends BaseProps {
 
 export default class DatetimePickerApi extends React.PureComponent<DatetimePickerApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-DatetimePickerApi"
+        prefixCls: 'bm-DatetimePickerApi',
     };
 
     getCode() {
@@ -54,60 +54,65 @@ export default class ActionSheetCase extends React.PureComponent< ActionSheetCas
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Badge',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'defaultValue',
-                'desc': '默认日期。',
-                'type': 'Date | string',
-                'default': '当前日期'
+                attr: 'defaultValue',
+                desc: '默认日期。',
+                type: 'Date | string',
+                default: '当前日期',
             }, {
-                'attr': 'minDate',
-                'desc': '设置最小年份。',
-                'type': 'Date | string',
-                'default': '2000/1/1'
+                attr: 'minDate',
+                desc: '设置最小年份。',
+                type: 'Date | string',
+                default: '2000/1/1',
             }, {
-                'attr': 'maxDate',
-                'desc': '设置最大年份。',
-                'type': 'Date | string',
-                'default': '2020/1/1'
+                attr: 'maxDate',
+                desc: '设置最大年份。',
+                type: 'Date | string',
+                default: '2020/1/1',
             }, {
-                'attr': 'visible',
-                'desc': '是否显示',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'visible',
+                desc: '是否显示',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onOk',
-                'desc': '点击选中时执行的回调。',
-                'type': '(value: string) => void',
-                'default': 'noop'
-            }]
+                attr: 'onOk',
+                desc: '点击选中时执行的回调。',
+                type: '(value: string) => void',
+                default: 'noop',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="DatetimePicker 日期选择器" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/datetimePicker"
-                          description="用于选择日期或者时间。"/>
+                <PageView
+                    title="DatetimePicker 日期选择器"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/datetimePicker"
+                    description="用于选择日期或者时间。"
+                />
             </Content>
         );
     }

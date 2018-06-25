@@ -9,7 +9,7 @@ interface SwiperApiProps extends BaseProps {
 
 export default class SwiperApi extends React.PureComponent<SwiperApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-SwiperApi"
+        prefixCls: 'bm-SwiperApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class SwiperApi extends React.PureComponent<SwiperApiProps, {}> {
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Swiper from '../components/Swiper';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface SwiperCaseProps extends BaseProps {
 }
@@ -80,155 +80,159 @@ export default class SwiperCase extends React.PureComponent< SwiperCaseProps, an
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Swiper',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'activeIndex',
-                'desc': '初始显示的轮播图的索引',
-                'type': 'number',
-                'default': '-'
+                attr: 'activeIndex',
+                desc: '初始显示的轮播图的索引',
+                type: 'number',
+                default: '-',
             }, {
-                'attr': 'autoplayDisableOnInteraction',
-                'desc': '展示的数字值',
-                'type': 'number',
-                'default': '-'
+                attr: 'autoplayDisableOnInteraction',
+                desc: '展示的数字值',
+                type: 'number',
+                default: '-',
             }, {
-                'attr': 'autoplay',
-                'desc': '是否自动切换',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'autoplay',
+                desc: '是否自动切换',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'centerMode',
-                'desc': '开启居中模式',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'centerMode',
+                desc: '开启居中模式',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'delay',
-                'desc': '自动切换的时间间隔，单位ms',
-                'type': 'Number',
-                'default': '3000'
+                attr: 'delay',
+                desc: '自动切换的时间间隔，单位ms',
+                type: 'Number',
+                default: '3000',
             }, {
-                'attr': 'direction',
-                'desc': '滑动方向，可设置水平(horizontal)或垂直(vertical)',
-                'type': 'String',
-                'default': 'horizontal'
+                attr: 'direction',
+                desc: '滑动方向，可设置水平(horizontal)或垂直(vertical)',
+                type: 'String',
+                default: 'horizontal',
             }, {
-                'attr': 'easing',
-                'desc': '切换过渡效果',
-                'type': 'String',
-                'default': 'ease'
+                attr: 'easing',
+                desc: '切换过渡效果',
+                type: 'String',
+                default: 'ease',
             }, {
-                'attr': 'effect',
-                'desc': '切换动画效果。可选值：slide | fade',
-                'type': 'String',
-                'default': 'slide'
+                attr: 'effect',
+                desc: '切换动画效果。可选值：slide | fade',
+                type: 'String',
+                default: 'slide',
             }, {
-                'attr': 'initialSlide',
-                'desc': '设定初始化时slide的索引',
-                'type': 'Number',
-                'default': '0'
+                attr: 'initialSlide',
+                desc: '设定初始化时slide的索引',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'loop',
-                'desc': '开启loop模式',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'loop',
+                desc: '开启loop模式',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'navigation',
-                'desc': '使用前进后退按钮。',
-                'type': 'Object',
-                'default': ' navigation: {\n' +
-                '    nextEl: \'.Swiper-next\',\n' +
-                '    prevEl: \'.Swiper-prev\',\n' +
-                '  }'
+                attr: 'navigation',
+                desc: '使用前进后退按钮。',
+                type: 'Object',
+                default: ` navigation: {
+                nextEl: '.Swiper-next',
+                prevEl: '.Swiper-prev',
+                }`,
             }, {
-                'attr': 'pagination',
-                'desc': '使用分页导航。',
-                'type': 'Boolean',
-                'default': 'true'
+                attr: 'pagination',
+                desc: '使用分页导航。',
+                type: 'Boolean',
+                default: 'true',
             }, {
-                'attr': 'paginationClickable',
-                'desc': '分页器是否可点击',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'paginationClickable',
+                desc: '分页器是否可点击',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'slideWidth',
-                'desc': '设置轮播图的宽度',
-                'type': 'Number',
-                'default': '-'
+                attr: 'slideWidth',
+                desc: '设置轮播图的宽度',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'slideHeight',
-                'desc': '设置轮播图的高度',
-                'type': 'Number',
-                'default': '-'
+                attr: 'slideHeight',
+                desc: '设置轮播图的高度',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'spaceBetween',
-                'desc': '轮播图之间的间距',
-                'type': 'Number',
-                'default': '0'
+                attr: 'spaceBetween',
+                desc: '轮播图之间的间距',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'speed',
-                'desc': '切换速度',
-                'type': 'Number',
-                'default': '300'
+                attr: 'speed',
+                desc: '切换速度',
+                type: 'Number',
+                default: '300',
             }, {
-                'attr': 'updateOnImagesReady',
-                'desc': '展示的数字值',
-                'type': 'number',
-                'default': '-'
+                attr: 'updateOnImagesReady',
+                desc: '展示的数字值',
+                type: 'number',
+                default: '-',
             }, {
-                'attr': 'on',
-                'desc': '回调函数',
-                'type': 'Object',
-                'default': '{\n' +
+                attr: 'on',
+                desc: '回调函数',
+                type: 'Object',
+                default: `{\n' +
                 '        init?: Function;\n' +
                 '        imagesReady?: Function;\n' +
                 '        slideChange?: Function;\n' +
                 '        transitionStart?: Function;\n' +
                 '        transitionEnd?: Function;\n' +
-                '    }'
+                '    }`,
             }, {
-                'attr': 'touch',
-                'desc': '设置是否可拖动',
-                'type': 'Boolean',
-                'default': 'true'
+                attr: 'touch',
+                desc: '设置是否可拖动',
+                type: 'Boolean',
+                default: 'true',
             }, {
-                'attr': 'observe',
-                'desc': '启动动态检查器，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。\n' +
-                '默认false，不开启',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'observe',
+                desc: `启动动态检查器，当改变swiper的样式（例如隐藏/显示）或者修改swiper的子元素时，自动初始化swiper。默认false，不开启`,
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'observeParents',
-                'desc': '将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新。',
-                'type': 'Boolean',
-                'default': 'false'
-            }]
+                attr: 'observeParents',
+                desc: '将observe应用于Swiper的父元素。当Swiper的父元素变化时，例如window.resize，Swiper更新。',
+                type: 'Boolean',
+                default: 'false',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Swiper 轮播图" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/swiper"
-                          description="轮播图，可自定义轮播时间间隔、动画时长等。(注：目前不支持嵌套)"/>
+                <PageView
+                    title="Swiper 轮播图"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/swiper"
+                    description="轮播图，可自定义轮播时间间隔、动画时长等。(注：目前不支持嵌套)"
+                />
             </Content>
         );
     }

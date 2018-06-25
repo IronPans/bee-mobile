@@ -21,11 +21,13 @@ export default class BackTop extends React.PureComponent<BackTopProps, BackTopSt
     scrollListener: any;
     state = {
         visible: false
-    }
+    };
+    cancelRequestAnimate: any;
 
     componentDidMount() {
         this.scrollListener = listen(this.scrollNode, 'scroll', (e) => {
-            const scrollTop = e.target.scrollTop;
+            const scrollTop = e.target.scrollTop ||
+            document.documentElement.scrollTop || document.body.scrollTop;
             if (scrollTop > this.props.destination!) {
                 this.setState({
                     visible: true
@@ -45,25 +47,41 @@ export default class BackTop extends React.PureComponent<BackTopProps, BackTopSt
         }
     }
 
-    scroll = () => {
+    scroll = (e) => {
+        if (this.cancelRequestAnimate) {
+            window.cancelAnimationFrame(this.cancelRequestAnimate);
+            this.cancelRequestAnimate = null;
+        }
         const {destination, duration, easing, onScrollEnd}: any = this.props;
         let now = Date.now();
         let time = Math.min(1, (now - this.startTime) / duration);
         let timeFunction = EASINGS[easing](time);
-        this.scrollNode.scrollTop = timeFunction * (destination - this.startY) + this.startY;
-        if (this.scrollNode.scrollTop === destination) {
+        const scrollTop = timeFunction * (destination - this.startY) + this.startY;
+         if (e === window) {
+            window.scrollTo(0, scrollTop);
+        } else {
+            e.scrollTop = scrollTop;
+        }
+        if (scrollTop === destination) {
+            if (this.cancelRequestAnimate) {
+                window.cancelAnimationFrame(this.cancelRequestAnimate);
+                this.cancelRequestAnimate = null;
+            }
             if (onScrollEnd) {
                 onScrollEnd();
             }
             return;
         }
-        window.requestAnimationFrame(this.scroll);
+        this.cancelRequestAnimate = window.requestAnimationFrame(this.scroll.bind(this, e));
     };
 
     handleClick = () => {
         this.startTime = Date.now();
         this.startY = this.scrollNode.scrollTop;
-        this.scroll();
+        if (this.scrollNode === window) {
+            this.startY = document.documentElement.scrollTop || document.body.scrollTop;
+        }
+        this.scroll(this.scrollNode);
     };
 
     getRef = (node: any) => {
@@ -73,6 +91,9 @@ export default class BackTop extends React.PureComponent<BackTopProps, BackTopSt
             this.scrollNode = scrollNode;
         } else {
             this.scrollNode = getScrollParent(this.node);
+        }
+        if (this.scrollNode.nodeType === 9) {
+            this.scrollNode = window;
         }
     };
 

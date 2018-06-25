@@ -9,7 +9,7 @@ interface SwitchApiProps extends BaseProps {
 
 export default class SwitchApi extends React.PureComponent<SwitchApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-SwitchApi"
+        prefixCls: 'bm-SwitchApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class SwitchApi extends React.PureComponent<SwitchApiProps, {}> {
 import * as classNames from 'classnames';
 import Switch from '../components/Switch';
 import {BaseProps} from '../components/common/BaseProps';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface Props extends BaseProps {}
 
@@ -53,60 +53,65 @@ export default class SwitchCase extends React.PureComponent< Props, {}> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Switch',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'checked',
-                'desc': '当前值',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'checked',
+                desc: '当前值',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'defaultChecked',
-                'desc': '是否默认选中',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'defaultChecked',
+                desc: '是否默认选中',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'disabled',
-                'desc': '是否不可修改',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'disabled',
+                desc: '是否不可修改',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'name',
-                'desc': 'switch的name',
-                'type': 'String',
-                'default': '-'
+                attr: 'name',
+                desc: 'switch的name',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'onChange',
-                'desc': 'change 事件触发的回调函数',
-                'type': '(checked: boolean): void',
-                'default': '-'
-            }]
+                attr: 'onChange',
+                desc: 'change 事件触发的回调函数',
+                type: '(checked: boolean): void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Switch 滑动开关" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/switch"
-                          description="开关切换单个设置选项的状态。"/>
+                <PageView
+                    title="Switch 滑动开关"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/switch"
+                    description="开关切换单个设置选项的状态。"
+                />
             </Content>
         );
     }

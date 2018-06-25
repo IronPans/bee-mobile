@@ -2,6 +2,11 @@ const MENUS = [{
     name: 'Overview',
     icon: 'subject',
     path: '/components/overview'
+},{
+    name: 'Alert',
+    icon: 'call_to_action',
+    path: '/components/alert',
+    docs: '/docs/alert'
 }, {
     name: 'ActionSheet',
     icon: 'call_to_action',
@@ -77,6 +82,11 @@ const MENUS = [{
     icon: 'alarm',
     path: '/components/datetimePicker',
     docs: '/docs/datetimePicker'
+}, {
+    name: 'Dropdown',
+    icon: 'alarm',
+    path: '/components/dropdown',
+    docs: '/docs/dropdown'
 }, {
     name: 'FabButton',
     icon: 'stop',

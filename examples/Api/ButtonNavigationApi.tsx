@@ -9,7 +9,7 @@ interface ButtonNavigationApiProps extends BaseProps {
 
 export default class ButtonNavigationApi extends React.PureComponent<ButtonNavigationApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-ButtonNavigationApi"
+        prefixCls: 'bm-ButtonNavigationApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import ButtonNavigation, {ButtonNavigationItem} from '../components/ButtonNavigation';
 import Icon from '../components/Icon';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 import Swiper from '../components/Swiper';
 
 interface ButtonNavigationCaseProps extends BaseProps {
@@ -65,64 +65,69 @@ export default class ButtonNavigationCase extends React.PureComponent< ButtonNav
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'ButtonNavigation',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'fixed',
-                'desc': '是否固定在底部',
-                'type': 'Boolean',
-                'default': 'true'
+                attr: 'fixed',
+                desc: '是否固定在底部',
+                type: 'Boolean',
+                default: 'true',
             }, {
-                'attr': 'activeIndex',
-                'desc': '当前激活的tab',
-                'type': 'Number',
-                'default': '0'
+                attr: 'activeIndex',
+                desc: '当前激活的tab',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'onChange',
-                'desc': 'tab切换的回调函数',
-                'type': '(event, index) => void',
-                'default': 'noop'
-            }]
+                attr: 'onChange',
+                desc: 'tab切换的回调函数',
+                type: '(event, index) => void',
+                default: 'noop',
+            }],
         }, {
             name: 'ButtonNavigationItem',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'label',
-                'desc': '按钮文本描述',
-                'type': 'String',
-                'default': '-'
+                attr: 'label',
+                desc: '按钮文本描述',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'icon',
-                'desc': '设置图标',
-                'type': 'React.ReactNode | string',
-                'default': '-'
-            }]
+                attr: 'icon',
+                desc: '设置图标',
+                type: 'React.ReactNode | string',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="ButtonNavigation 底部导航" code={this.getCode()}
-                          app="适用平台：WEB" data={data} frameUrl="#/components/buttonNavigation"
-                          description="底部导航组件是一个侧边栏的替代方案"/>
+                <PageView
+                    title="ButtonNavigation 底部导航"
+                    code={this.getCode()}
+                    app="适用平台：WEB"
+                    data={data}
+                    frameUrl="#/components/buttonNavigation"
+                    description="底部导航组件是一个侧边栏的替代方案"
+                />
             </Content>
         );
     }

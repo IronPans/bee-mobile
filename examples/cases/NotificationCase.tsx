@@ -4,7 +4,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Notification from '../../src/components/Notification';
 import Button from '../../src/components/Button';
 import Avatar from '../../src/components/Avatar';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface NotificationCaseProps extends BaseProps {
 }
@@ -15,15 +15,15 @@ export default class NotificationCase extends React.PureComponent<NotificationCa
             avatar: (
                 <Avatar src="assets/images/users/1.jpg" className="SmAvatar"/>),
             title: 'Tip',
-            message: '提示信息'
+            message: '提示信息',
         });
-    };
+    }
 
     render() {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'NotificationCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Autocomplete from '../../src/components/Autocomplete';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface AutocompleteCaseProps extends BaseProps {
 }
@@ -48,7 +48,7 @@ export default class AutocompleteCase extends React.PureComponent<AutocompleteCa
         const {className} = this.props;
         const styleClass = classNames(
             'AutocompleteCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>

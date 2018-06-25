@@ -6,29 +6,48 @@ import {ColProps, ColSize} from './PropsType';
 export default class Col extends React.PureComponent<ColProps, any> {
     render() {
         const {className, children, offset, order, span, ...other} = this.props;
-        let colClass = {};
+        // let colClass = {};
+        // const sizes = ['lg', 'md', 'sm', 'xs'];
+        // sizes.forEach((col: string) => {
+        //     let sizeProps: ColSize = {};
+        //     const colProps = (this.props as any)[col];
+        //     if (typeof colProps === 'number') {
+        //         sizeProps.span = colProps;
+        //     } else if (typeof colProps === 'object') {
+        //         sizeProps = colProps || {};
+        //     }
+        //     colClass = {
+        //         [`Col-${col}-${sizeProps.span}`]: sizeProps.span! >= 0,
+        //         [`Col-${col}-offset-${sizeProps.offset}`]: sizeProps.offset,
+        //         [`Col-order-${sizeProps.order}`]: sizeProps.order
+        //     };
+        // });
+        let colClass: any = [];
         const sizes = ['lg', 'md', 'sm', 'xs'];
-        sizes.forEach((col: string) => {
-            let sizeProps: ColSize = {};
-            const colProps = (this.props as any)[col];
+        for (const col of sizes) {
+            let sizeProps: any = {};
+            const colProps = this.props[col];
+            if (!colProps) {
+                continue;
+            }
             if (typeof colProps === 'number') {
                 sizeProps.span = colProps;
             } else if (typeof colProps === 'object') {
                 sizeProps = colProps || {};
             }
-            colClass = {
-                [`Col-${col}-${sizeProps.span}`]: sizeProps.span! >= 0,
+            colClass.push({
+                [`Col-${col}-${sizeProps.span}`]: sizeProps.span >= 0,
                 [`Col-${col}-offset-${sizeProps.offset}`]: sizeProps.offset,
                 [`Col-order-${sizeProps.order}`]: sizeProps.order
-            };
-        });
+            });
+        }
         const otherProperties = getOtherProperties(other, sizes);
         const styleClass = classNames({
                 [`Col-${span}`]: span! >= 0,
                 [`Col-offset-${offset}`]: !!offset!,
                 [`Col-order-${order}`]: !!order!
             },
-            className, colClass
+            className, ...colClass
         );
         return (
             <div className={styleClass} {...otherProperties}>

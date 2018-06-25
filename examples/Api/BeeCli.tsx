@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import {Content} from '../../src/components/Page';
-import HighlightCode from "../../src/components/HighlightCode";
+import HighlightCode from '../../src/components/HighlightCode';
 import Table, {TableColumn} from '../../src/components/Table';
 
 interface BeeCliProps extends BaseProps {
@@ -10,7 +10,7 @@ interface BeeCliProps extends BaseProps {
 
 export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-BeeCli"
+        prefixCls: 'bm-BeeCli',
     };
     srcAttrs: any[];
     decAttrs: any[];
@@ -19,57 +19,59 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
         super(props);
         this.srcAttrs = [
             {
-                'attr': 'assets/*',
-                'desc': '这个文件夹下你可以放图片等任何东西，在构建应用时，它们全都会拷贝到发布包中。'
+                attr: 'assets/*',
+                desc: '这个文件夹下你可以放图片等任何东西，在构建应用时，它们全都会拷贝到发布包中。',
             }, {
-                'attr': 'App.scss',
-                'desc': '这里是你的全局样式。'
+                attr: 'App.scss',
+                desc: '这里是你的全局样式。',
             }, {
-                'attr': 'App.tsx',
-                'desc': 'App组件'
+                attr: 'App.tsx',
+                desc: 'App组件',
             }, {
-                'attr': 'index.tsx',
-                'desc': '这是应用的主要入口点。'
+                attr: 'index.tsx',
+                desc: '这是应用的主要入口点。',
             }, {
-                'attr': 'index.html',
-                'desc': '这是别人访问你的网站是看到的主页面的 HTML 文件。 大多数情况下你都不用编辑它。 在构建应用时，CLI 会自动把所有 js 和 css 文件添加进去，所以你不必在这里手动添加任何 < script> 或 <link> 标签。'
+                attr: 'index.html',
+                desc: '这是别人访问你的网站是看到的主页面的 HTML 文件。 ' +
+                '大多数情况下你都不用编辑它。 在构建应用时，CLI 会自动把所有 js 和 css 文件添加进去，' +
+                '所以你不必在这里手动添加任何 < script> 或 <link> 标签。',
             }, {
-                'attr': 'vendro.tsx',
-                'desc': '这里放置着公共库。'
-            }
+                attr: 'vendro.tsx',
+                desc: '这里放置着公共库。',
+            },
         ];
         this.decAttrs = [
             {
-                'attr': 'config/helpers.js',
-                'desc': '一些配置工具库。'
+                attr: 'config/helpers.js',
+                desc: '一些配置工具库。',
             }, {
-                'attr': 'config/webpack.common.js',
-                'desc': 'webpack的公共配置。'
+                attr: 'config/webpack.common.js',
+                desc: 'webpack的公共配置。',
             }, {
-                'attr': 'config/webpack.dev.js',
-                'desc': '开发模式的配置'
+                attr: 'config/webpack.dev.js',
+                desc: '开发模式的配置',
             }, {
-                'attr': 'config/webpack.prod.js',
-                'desc': '生产模式的配置。'
+                attr: 'config/webpack.prod.js',
+                desc: '生产模式的配置。',
             }, {
-                'attr': 'node_modules/',
-                'desc': 'Node.js 创建了这个文件夹，并且把 package.json 中列举的所有第三方模块都放在其中。'
+                attr: 'node_modules/',
+                desc: 'Node.js 创建了这个文件夹，并且把 package.json 中列举的所有第三方模块都放在其中。',
             }, {
-                'attr': '.babelrc',
-                'desc': '这是babel的配置文件'
+                attr: '.babelrc',
+                desc: '这是babel的配置文件',
             }, {
-                'attr': 'package.json',
-                'desc': 'npm 配置文件，其中列出了项目使用到的第三方依赖包。 你还可以在这里添加自己的自定义脚本。'
+                attr: 'package.json',
+                desc: 'npm 配置文件，其中列出了项目使用到的第三方依赖包。 你还可以在这里添加自己的自定义脚本。',
             }, {
-                'attr': 'README.md',
-                'desc': '项目的基础文档，预先写入了 CLI 命令的信息。'
+                attr: 'README.md',
+                desc: '项目的基础文档，预先写入了 CLI 命令的信息。',
             }, {
-                'attr': 'tsconfig.json',
-                'desc': 'TypeScript 编译器的配置，你的 IDE 会借助它来给你提供更好的帮助。'
+                attr: 'tsconfig.json',
+                desc: 'TypeScript 编译器的配置，你的 IDE 会借助它来给你提供更好的帮助。',
             }, {
-                'attr': 'webpack.config.js',
-                'desc': 'webpack的默认配置文件。'
-            }
+                attr: 'webpack.config.js',
+                desc: 'webpack的默认配置文件。',
+            },
         ];
     }
 
@@ -77,14 +79,15 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         return (
             <Content className={styleClass}>
                 <div className="padding-20">
                     <h1 className="no-margin-top">create-bee-mobile</h1>
                     <p>
-                        <code className="code-inline">create-bee-mobile</code>是一个命令行界面工具，它可以创建一个最基本的React项目。
+                        <code className="code-inline">create-bee-mobile</code>
+                        是一个命令行界面工具，它可以创建一个最基本的React项目。
                     </p>
                     <h3>技术栈</h3>
                     <ul>
@@ -129,7 +132,10 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
                             npm start
                         </HighlightCode>
                         <p>
-                            <code className="code-inline">npm start</code>命令会自动打开浏览器并访问 <code className="code-inline">http://localhost:4200</code>，并且监听文件变化，并在修改这些文件时重新构建此应用。
+                            <code className="code-inline">npm start</code>
+                            命令会自动打开浏览器并访问
+                            <code className="code-inline">http://localhost:4200</code>，
+                            并且监听文件变化，并在修改这些文件时重新构建此应用。
                         </p>
                         <p>初始应用会用一条消息来跟你打招呼：</p>
                         <div>
@@ -141,7 +147,9 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
 
                         <h3>src 文件夹</h3>
                         <p>
-                            你的应用代码位于 src 文件夹中。 所有的 React 组件、模板、样式、图片以及你的应用所需的任何东西都在那里。 这个文件夹之外的文件都是为构建应用提供支持用的。
+                            你的应用代码位于 src 文件夹中。
+                            所有的 React 组件、模板、样式、图片以及你的应用所需的任何东西都在那里。
+                            这个文件夹之外的文件都是为构建应用提供支持用的。
                         </p>
                         <div className="filetree">
                             <div className="file">src</div>
@@ -158,9 +166,13 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
                             </div>
                         </div>
                         <Table className="bm-Paper-2dp" value={this.srcAttrs}>
-                            <TableColumn field="attr" header="文件" template={(data: any) => {
-                                return (<a>{data['attr']}</a>);
-                            }}/>
+                            <TableColumn
+                                field="attr"
+                                header="文件"
+                                template={(data: any) => {
+                                return (<a>{data.attr}</a>);
+                            }}
+                            />
                             <TableColumn field="desc" header="用途"/>
                         </Table>
                         <h3>
@@ -189,9 +201,13 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
                             </div>
                         </div>
                         <Table className="bm-Paper-2dp" value={this.decAttrs}>
-                            <TableColumn field="attr" header="文件" template={(data: any) => {
-                                return (<a>{data['attr']}</a>);
-                            }}/>
+                            <TableColumn
+                                field="attr"
+                                header="文件"
+                                template={(data: any) => {
+                                return (<a>{data.attr}</a>);
+                            }}
+                            />
                             <TableColumn field="desc" header="用途"/>
                         </Table>
                     </section>

@@ -1,21 +1,21 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import LazyLoad from "../../src/components/LazyLoad";
+import {Content} from '../../src/components/Page';
+import LazyLoad from '../../src/components/LazyLoad';
 
 interface LazyLoadCaseProps extends BaseProps {
 }
 
 export default class LazyLoadCase extends React.PureComponent<LazyLoadCaseProps, {}> {
     static defaultProps: LazyLoadCaseProps = {
-        prefixCls: 'bm-LazyLoadCase'
+        prefixCls: 'bm-LazyLoadCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <Content className={styleClass}>

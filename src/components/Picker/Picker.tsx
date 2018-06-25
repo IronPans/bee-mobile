@@ -1,6 +1,5 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {BaseProps} from '../common/BaseProps';
 import Portal from '../Portal';
 import Button from '../Button';
 import PickerItem from './PickerItem';
@@ -21,8 +20,10 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
     };
     visible: boolean = false;
     lastInputValue: any;
+    bodyOverflow: any = '';
 
     componentDidMount() {
+        this.bodyOverflow = document.body.style.overflow;
         const {data, defaultValue}: any = this.props;
         if ('data' in this.props && Array.isArray(this.props.data!) &&
             data.length > 0) {
@@ -51,6 +52,8 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
                 visible: nextProps.visible!,
                 value,
                 data: nextProps.data!
+            }, () => {
+                this.stopBodyScroll(this.state.visible);
             });
         }
     }
@@ -178,9 +181,22 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
         }
     };
 
+    stopBodyScroll(visible) {
+        if (this.bodyOverflow === 'hidden') {
+            return;
+        }
+        if (visible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = this.bodyOverflow;
+        }
+    }
+
     handleClick = () => {
         this.setState({
             visible: true
+        }, () => {
+            this.stopBodyScroll(this.state.visible);
         });
         if (this.props.onOpen) {
             (this.props.onOpen as Function)();

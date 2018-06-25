@@ -4,21 +4,21 @@ import Avatar from '../../src/components/Avatar';
 import Icon from '../../src/components/Icon/Icon';
 import purple from '../../src/components/colors/purple';
 import blue from '../../src/components/colors/blue';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 export default class AvatarCase extends React.PureComponent {
     render() {
         const styleClass = classNames(
-            'AvatarCase'
+            'AvatarCase',
         );
         const styles = {
             purpleAvatar: {
-                backgroundColor: purple[500], color: '#fff'
+                backgroundColor: purple[500], color: '#fff',
             },
             blueAvatar: {
                 backgroundColor: blue[500],
-                color: '#fff'
-            }
+                color: '#fff',
+            },
         };
         return (
             <Content className={styleClass}>

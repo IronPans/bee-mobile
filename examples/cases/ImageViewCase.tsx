@@ -3,46 +3,46 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import ImageView from '../../src/components/ImageView';
 import Button from '../../src/components/Button';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface ImageViewCaseProps extends BaseProps {
 }
 
 export default class ImageViewCase extends React.PureComponent<ImageViewCaseProps, any> {
     state = {
-        visible: false
+        visible: false,
     };
 
     viewNode: any;
 
     getRef = (node: any) => {
         this.viewNode = node;
-    };
+    }
 
     open = () => {
         this.setState({
-            visible: true
+            visible: true,
         });
-    };
+    }
 
     handleClose = () => {
         this.setState({
-            visible: false
+            visible: false,
         });
-    };
+    }
 
     render() {
         const images = [
             {
-                src: 'assets/images/lists/image1.jpg'
+                src: 'assets/images/lists/image1.jpg',
             }, {
-                src: 'assets/images/lists/image2.jpg'
-            }
+                src: 'assets/images/lists/image2.jpg',
+            },
         ];
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'ImageViewCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>
@@ -54,8 +54,11 @@ export default class ImageViewCase extends React.PureComponent<ImageViewCaseProp
                         })
                     }
                 </section>
-                <ImageView visible={this.state.visible!} target={this.viewNode}
-                           onClose={this.handleClose}/>
+                <ImageView
+                    visible={this.state.visible!}
+                    target={this.viewNode}
+                    onClose={this.handleClose}
+                />
             </Content>
         );
     }

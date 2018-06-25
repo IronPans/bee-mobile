@@ -9,7 +9,7 @@ interface SliderApiProps extends BaseProps {
 
 export default class SliderApi extends React.PureComponent<SliderApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-SliderApi"
+        prefixCls: 'bm-SliderApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class SliderApi extends React.PureComponent<SliderApiProps, {}> {
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Slider from '../components/Slider';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface SliderCaseProps extends BaseProps {
 }
@@ -44,80 +44,85 @@ export default class SliderCase extends React.PureComponent< SliderCaseProps, an
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Slider',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'disabled',
-                'desc': '是否禁用',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'disabled',
+                desc: '是否禁用',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'end',
-                'desc': '前置文本',
-                'type': 'React.ReactNode | string',
-                'default': '-'
+                attr: 'end',
+                desc: '前置文本',
+                type: 'React.ReactNode | string',
+                default: '-',
             }, {
-                'attr': 'max',
-                'desc': '最大值',
-                'type': 'Number',
-                'default': '100'
+                attr: 'max',
+                desc: '最大值',
+                type: 'Number',
+                default: '100',
             }, {
-                'attr': 'min',
-                'desc': '最小值',
-                'type': 'Number',
-                'default': '0'
+                attr: 'min',
+                desc: '最小值',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'start',
-                'desc': '后置文本',
-                'type': 'React.ReactNode | string',
-                'default': '-'
+                attr: 'start',
+                desc: '后置文本',
+                type: 'React.ReactNode | string',
+                default: '-',
             }, {
-                'attr': 'step',
-                'desc': '步长',
-                'type': 'Number',
-                'default': '1'
+                attr: 'step',
+                desc: '步长',
+                type: 'Number',
+                default: '1',
             }, {
-                'attr': 'vertical',
-                'desc': '以垂直模式显示',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'vertical',
+                desc: '以垂直模式显示',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'value',
-                'desc': '设置当前值',
-                'type': 'Number',
-                'default': '0'
+                attr: 'value',
+                desc: '设置当前值',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'onChange',
-                'desc': '值改变的函数',
-                'type': '(index: number) => void',
-                'default': '-'
-            }]
+                attr: 'onChange',
+                desc: '值改变的函数',
+                type: '(index: number) => void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Slider 滑动输入条" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/slider"
-                          description="滑动型输入器，展示当前值和可选范围。"/>
+                <PageView
+                    title="Slider 滑动输入条"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/slider"
+                    description="滑动型输入器，展示当前值和可选范围。"
+                />
             </Content>
         );
     }

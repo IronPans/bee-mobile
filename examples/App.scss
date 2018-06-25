@@ -1,5 +1,5 @@
-@import "../src/styles/common/mixin";
-@import "../src/styles/Normalize";
+@import '../src/styles/common/mixin';
+@import '../src/styles/Normalize';
 
 html, body {
   overflow: hidden;
@@ -15,8 +15,8 @@ body {
   padding: 0;
 }
 
-@import "../node_modules/highlight.js/styles/monokai-sublime.css";
-@import "../src/styles/ui";
+@import '../node_modules/highlight.js/styles/monokai-sublime.css';
+@import '../src/styles/ui';
 
 ::selection {
   background: $primary;

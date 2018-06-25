@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Progress from '../../src/components/Progress';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 import Button from '../../src/components/Button/Button';
 
 interface ProgressCaseProps extends BaseProps {
@@ -10,7 +10,7 @@ interface ProgressCaseProps extends BaseProps {
 
 export default class ProgressCase extends React.PureComponent<ProgressCaseProps, any> {
     state = {
-        value: 0
+        value: 0,
     };
 
     add = () => {
@@ -20,15 +20,15 @@ export default class ProgressCase extends React.PureComponent<ProgressCaseProps,
             value = 0;
         }
         this.setState({
-            value
+            value,
         });
-    };
+    }
 
     render() {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'ProgressCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

@@ -1,5 +1,27 @@
 # Change Log
 
+## 0.3.1(2018-06-25)
+
+**Features**
+
+- 新增Dropdown下拉菜单组件
+
+
+**Bug Fixes**
+
+- 修改BackTop的滚动元素是window时监听不到滚动事件
+- 修复Grid的Col组件设置lg、md等无效
+
+## 0.2.1(2018-06-09)
+
+**Bug Fixes**
+
+- 修改Picker弹出时，底层滚动问题<a href='https://github.com/IronPans/bee-mobile/issues/3'>#3</a>
+
+**Features**
+
+- 新增Alert警告提示组件
+
 ## 0.1.6(2018-05-26)
 
 **Bug Fixes**

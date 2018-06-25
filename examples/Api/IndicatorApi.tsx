@@ -9,7 +9,7 @@ interface IndicatorApiProps extends BaseProps {
 
 export default class IndicatorApi extends React.PureComponent<IndicatorApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-IndicatorApi"
+        prefixCls: 'bm-IndicatorApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Button from '../components/Button';
 import Indicator from '../components/Indicator';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface IndicatorCaseProps extends BaseProps {
 }
@@ -66,66 +66,71 @@ export default class IndicatorCase extends React.PureComponent< IndicatorCasePro
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Indicator.show()',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'delay',
-                'desc': '自动消失的时间',
-                'type': 'Number',
-                'default': '2500'
+                attr: 'delay',
+                desc: '自动消失的时间',
+                type: 'Number',
+                default: '2500',
             }, {
-                'attr': 'message',
-                'desc': '提示内容',
-                'type': 'React.ReactNode | string',
-                'default': '-'
+                attr: 'message',
+                desc: '提示内容',
+                type: 'React.ReactNode | string',
+                default: '-',
             }, {
-                'attr': 'size',
-                'desc': 'spin的尺寸。可选值：lg | sm | xs',
-                'type': 'String',
-                'default': 'xs'
+                attr: 'size',
+                desc: 'spin的尺寸。可选值：lg | sm | xs',
+                type: 'String',
+                default: 'xs',
             }, {
-                'attr': 'type',
-                'desc': 'spin的类型可选值：\'circleRound\'\n' +
-                '    | \'circleLine\'\n' +
-                '    | \'circleRoundFade\'\n' +
-                '    | \'lineSquare\'\n' +
-                '    | \'lineRound\'\n' +
-                '    | \'lineBounce\'\n' +
-                '    | \'snake\'',
-                'type': 'String',
-                'default': 'circleRound'
+                attr: 'type',
+                desc: `spin的类型可选值：'circleRound'
+                | 'circleLine'
+                | 'circleRoundFade'
+                | 'lineSquare'
+                | 'lineRound'
+                | 'lineBounce'
+                | 'snake'`,
+                type: 'String',
+                default: 'circleRound',
             }, {
-                'attr': 'onClose',
-                'desc': '关闭的回调函数',
-                'type': 'Function',
-                'default': '-'
-            }]
+                attr: 'onClose',
+                desc: '关闭的回调函数',
+                type: 'Function',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Indicator 指示器" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/indicator"
-                          description="活动指示器。 表明某个任务正在进行中。"/>
+                <PageView
+                    title="Indicator 指示器"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/indicator"
+                    description="活动指示器。 表明某个任务正在进行中。"
+                />
                 <div className="padding-left-20 padding-right-20">
                     <h3>Indicator.close()</h3>
                 </div>

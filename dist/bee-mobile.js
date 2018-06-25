@@ -2286,6 +2286,7 @@ var Picker = /** @class */function (_super) {
             visible: false
         };
         _this.visible = false;
+        _this.bodyOverflow = '';
         _this.getCurrentIndex = function (data, selectedValue) {
             var value = [];
             if (selectedValue) {
@@ -2345,6 +2346,8 @@ var Picker = /** @class */function (_super) {
         _this.handleClick = function () {
             _this.setState({
                 visible: true
+            }, function () {
+                _this.stopBodyScroll(_this.state.visible);
             });
             if (_this.props.onOpen) {
                 _this.props.onOpen();
@@ -2353,6 +2356,7 @@ var Picker = /** @class */function (_super) {
         return _this;
     }
     Picker.prototype.componentDidMount = function () {
+        this.bodyOverflow = document.body.style.overflow;
         var _a = this.props,
             data = _a.data,
             defaultValue = _a.defaultValue;
@@ -2366,6 +2370,7 @@ var Picker = /** @class */function (_super) {
         }
     };
     Picker.prototype.componentWillReceiveProps = function (nextProps) {
+        var _this = this;
         var _a = this.props,
             data = _a.data,
             visible = _a.visible,
@@ -2380,6 +2385,8 @@ var Picker = /** @class */function (_super) {
                 visible: nextProps.visible,
                 value: value,
                 data: nextProps.data
+            }, function () {
+                _this.stopBodyScroll(_this.state.visible);
             });
         }
     };
@@ -2446,6 +2453,16 @@ var Picker = /** @class */function (_super) {
         return selected.map(function (item) {
             return item[field];
         }).join(seperator);
+    };
+    Picker.prototype.stopBodyScroll = function (visible) {
+        if (this.bodyOverflow === 'hidden') {
+            return;
+        }
+        if (visible) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = this.bodyOverflow;
+        }
     };
     Picker.prototype.render = function () {
         var _a = this.props,

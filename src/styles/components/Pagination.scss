@@ -90,6 +90,12 @@
       }
     }
 
+    &:not(.bm-PaginationItem-active) > span {
+      &:hover {
+        background: #eee;
+      }
+    }
+
     &.bm-PaginationItem-disabled > span {
       opacity: 0.4;
       pointer-events: none;

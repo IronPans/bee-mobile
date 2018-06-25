@@ -9,7 +9,7 @@ interface AvatarApiProps extends BaseProps {
 
 export default class AvatarApi extends React.PureComponent<AvatarApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-AvatarApi"
+        prefixCls: 'bm-AvatarApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import Avatar from '../components/Avatar';
 import Icon from '../components/Icon/Icon';
 import purple from '../components/colors/purple';
 import blue from '../components/colors/blue';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 export default class AvatarCase extends React.PureComponent {
     render() {
@@ -68,65 +68,70 @@ export default class AvatarCase extends React.PureComponent {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Avatar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'alt',
-                'desc': 'img的alt',
-                'type': 'String',
-                'default': '-'
+                attr: 'alt',
+                desc: 'img的alt',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'height',
-                'desc': 'img的height',
-                'type': 'Number',
-                'default': '-'
+                attr: 'height',
+                desc: 'img的height',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'src',
-                'desc': 'img的src',
-                'type': 'String',
-                'default': '-'
+                attr: 'src',
+                desc: 'img的src',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'shape',
-                'desc': '设置形状。可选值：circle',
-                'type': 'String',
-                'default': '-'
+                attr: 'shape',
+                desc: '设置形状。可选值：circle',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'title',
-                'desc': 'img的title',
-                'type': 'String',
-                'default': '-'
+                attr: 'title',
+                desc: 'img的title',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'width',
-                'desc': 'img的width',
-                'type': 'Number',
-                'default': '-'
-            }]
+                attr: 'width',
+                desc: 'img的width',
+                type: 'Number',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Avatar 头像" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/avatar"
-                          description="图像头像。"/>
+                <PageView
+                    title="Avatar 头像"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/avatar"
+                    description="图像头像。"
+                />
             </Content>
         );
     }

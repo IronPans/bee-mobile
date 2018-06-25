@@ -9,13 +9,13 @@ interface ThemesProps extends BaseProps {
 
 export default class Themes extends React.PureComponent<ThemesProps, {}> {
     static defaultProps = {
-        prefixCls: 'bm-Themes'
+        prefixCls: 'bm-Themes',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const varCode = `$defaultColor: rgba(0, 0, 0, .87);
 
@@ -149,9 +149,10 @@ $timelineCircleColor: #2185d0;
 
 // Tree
 $treeActiveColor: $primary;`;
-        const css = `@import "custom-theme";
+
+        const css = `@import 'custom-theme';
 // bee-mobile 组件样式库        
-@import "~bee-mobile/lib/scss/bee-mobile";`;
+@import '~bee-mobile/lib/scss/bee-mobile';`;
         return (
             <Content className={styleClass}>
                 <div className="padding-20">
@@ -161,7 +162,9 @@ $treeActiveColor: $primary;`;
                     </p>
                     <h2>样式变量</h2>
                     <p>
-                        <span className="text-bold">bee-mobile</span>的样式使用了<code className="code-inline">Sass</code> 作为开发语言，并定义了一系列组件的样式变量，你可以根据需求进行相应调整。</p>
+                        <span className="text-bold">bee-mobile</span>的样式使用了
+                        <code className="code-inline">Sass</code> 作为开发语言，
+                        并定义了一系列组件的样式变量，你可以根据需求进行相应调整。</p>
                     <div>
                         <HighlightCode>{varCode}</HighlightCode>
                     </div>

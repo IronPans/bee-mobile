@@ -9,7 +9,7 @@ interface InputtextApiProps extends BaseProps {
 
 export default class InputtextApi extends React.PureComponent<InputtextApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-InputtextApi"
+        prefixCls: 'bm-InputtextApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import {BaseProps} from '../components/common/BaseProps';
 import Inputtext from '../components/Inputtext';
 import Icon from '../components/Icon';
 import Textarea from '../components/Textarea';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface InputtextCaseProps extends BaseProps {
 }
@@ -68,115 +68,120 @@ export default class InputtextCase extends React.PureComponent< InputtextCasePro
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'autoFocus',
-                'desc': '是否自动获取焦点',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'autoFocus',
+                desc: '是否自动获取焦点',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'defaultValue',
-                'desc': '初始化值',
-                'type': 'String',
-                'default': '-'
+                attr: 'defaultValue',
+                desc: '初始化值',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'disabled',
-                'desc': '是否禁用',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'disabled',
+                desc: '是否禁用',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'endAdorn',
-                'desc': '额外的右边',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'endAdorn',
+                desc: '额外的右边',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'id',
-                'desc': '设置id',
-                'type': 'String',
-                'default': '-'
+                attr: 'id',
+                desc: '设置id',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'inline',
-                'desc': '是否内联',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'inline',
+                desc: '是否内联',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'label',
-                'desc': 'label',
-                'type': 'React.ReactNode | String',
-                'default': '-'
+                attr: 'label',
+                desc: 'label',
+                type: 'React.ReactNode | String',
+                default: '-',
             }, {
-                'attr': 'maxLength',
-                'desc': '最大字数',
-                'type': 'Number',
-                'default': '-'
+                attr: 'maxLength',
+                desc: '最大字数',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'placeholder',
-                'desc': 'placeholder',
-                'type': 'String',
-                'default': '-'
+                attr: 'placeholder',
+                desc: 'placeholder',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'readOnly',
-                'desc': '是否只读',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'readOnly',
+                desc: '是否只读',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'size',
-                'desc': '设置尺寸。可选值：lg | sm | xs',
-                'type': 'String',
-                'default': 'sm'
+                attr: 'size',
+                desc: '设置尺寸。可选值：lg | sm | xs',
+                type: 'String',
+                default: 'sm',
             }, {
-                'attr': 'startAdorn',
-                'desc': '额外的左边',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'startAdorn',
+                desc: '额外的左边',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'type',
-                'desc': 'input的类型',
-                'type': 'String',
-                'default': 'text'
+                attr: 'type',
+                desc: 'input的类型',
+                type: 'String',
+                default: 'text',
             }, {
-                'attr': 'onChange',
-                'desc': 'change事件的回调',
-                'type': '(value: string): void',
-                'default': '-'
+                attr: 'onChange',
+                desc: 'change事件的回调',
+                type: '(value: string): void',
+                default: '-',
             }, {
-                'attr': 'onFocus',
-                'desc': 'focus事件的回调',
-                'type': 'Function',
-                'default': '-'
+                attr: 'onFocus',
+                desc: 'focus事件的回调',
+                type: 'Function',
+                default: '-',
             }, {
-                'attr': 'onBlur',
-                'desc': 'blur事件的回调',
-                'type': 'Function',
-                'default': '-'
-            }]
+                attr: 'onBlur',
+                desc: 'blur事件的回调',
+                type: 'Function',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Inputtext 输入框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/inputtext"
-                          description="输入框。"/>
+                <PageView
+                    title="Inputtext 输入框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/inputtext"
+                    description="输入框。"
+                />
             </Content>
         );
     }

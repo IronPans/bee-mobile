@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Swiper from '../../src/components/Swiper';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface SwiperCaseProps extends BaseProps {
 }
@@ -15,7 +15,7 @@ export default class SwiperCase extends React.PureComponent<SwiperCaseProps, Swi
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'SwiperCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

@@ -5,21 +5,21 @@ import { ViewProps, ViewState } from './PropsType';
 export default class View extends React.PureComponent<ViewProps, ViewState> {
     static defaultProps = {
         reveal: false,
-        overlayBackground: 'transparent'
+        overlayBackground: 'transparent',
     };
     state = {
-        reveal: false
+        reveal: false,
     };
     toggleSidebar = () => {
         if (this.props.onClose) {
             this.props.onClose();
         }
-    };
+    }
 
     componentDidMount() {
         const { reveal } = this.props;
         this.setState({
-            reveal: !!reveal
+            reveal: !!reveal,
         });
     }
 
@@ -27,10 +27,10 @@ export default class View extends React.PureComponent<ViewProps, ViewState> {
         const {className, overlayBackground, children} = this.props;
         const styleClass = classNames(
             'View',
-            className
+            className,
         );
         const styles = {
-            background: overlayBackground
+            background: overlayBackground,
         };
         return (
             <div className={styleClass} style={styles}>

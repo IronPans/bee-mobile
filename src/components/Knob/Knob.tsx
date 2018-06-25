@@ -13,7 +13,7 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
         prefixCls: 'bm-Knob',
         size: 100,
         trackColor: '#eee',
-        value: 0
+        value: 0,
     };
 
     constructor(props: KnobProps) {
@@ -23,14 +23,14 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
             value = props.value!;
         }
         this.state = {
-            value
+            value,
         };
     }
 
     componentWillReceiveProps(nextProps: KnobProps) {
         if ('value' in nextProps && nextProps.value !== this.props.value) {
             this.setState({
-                value: nextProps.value!
+                value: nextProps.value!,
             });
         }
     }
@@ -71,11 +71,11 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
         const {animated, barColor, children, className, gapDegree, gapPosition,
             lineCap, lineWidth, prefixCls, size, trackColor, value, ...other} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const styles = {
             width: size,
-            height: size
+            height: size,
         };
         const radius = 50 - lineWidth! / 2;
         const len = Math.PI * 2 * radius;

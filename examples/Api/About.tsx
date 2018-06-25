@@ -1,20 +1,20 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface AboutProps extends BaseProps {
 }
 
 export default class About extends React.PureComponent<AboutProps, {}> {
     static defaultProps = {
-        prefixCls: 'bm-About'
+        prefixCls: 'bm-About',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <Content className={styleClass}>
@@ -28,14 +28,18 @@ export default class About extends React.PureComponent<AboutProps, {}> {
                         兼容到 iOS 6+ 以及 Android 4.0+
                     </p>
                     <p>
-                        因为安卓机型众多，我们无法对每一台机器进行测试，如果你发现在安卓 4.0以上的机器上有bug，可以在 github 上给我们提<a href="https://github.com/IronPans/bee-mobile/issues" target="_blank">issue</a>，或者直接联系我们（联系方式在下面）。
+                        因为安卓机型众多，我们无法对每一台机器进行测试，
+                        如果你发现在安卓 4.0以上的机器上有bug，可以在 github 上给我们提
+                        <a href="https://github.com/IronPans/bee-mobile/issues" target="_blank">
+                            issue</a>，或者直接联系我们（联系方式在下面）。
                     </p>
                     <h2>联系我们</h2>
                     <div>
                         你可以通过以下方式联系我们：
                         <ul>
                             <li>
-                                可以在QQ群 523179693(新) 交流或邮件咨询 <a href="mailto:ghmagical@gmail.com">ghmagical@gmail.com</a>
+                                可以在QQ群 523179693(新) 交流或邮件咨询
+                                <a href="mailto:ghmagical@gmail.com">ghmagical@gmail.com</a>
                             </li>
                         </ul>
                     </div>

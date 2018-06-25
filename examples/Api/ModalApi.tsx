@@ -9,7 +9,7 @@ interface ModalApiProps extends BaseProps {
 
 export default class ModalApi extends React.PureComponent<ModalApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-ModalApi"
+        prefixCls: 'bm-ModalApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import Modal from '../components/Modal';
 import Button from '../components/Button';
 import {BaseProps} from '../components/common/BaseProps';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface Props extends BaseProps {
 }
@@ -67,65 +67,70 @@ export default class ModalCase extends React.PureComponent< Props, State> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Modal',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'header',
-                'desc': 'header标题',
-                'type': 'React.ReactNode | String',
-                'default': '-'
+                attr: 'header',
+                desc: 'header标题',
+                type: 'React.ReactNode | String',
+                default: '-',
             }, {
-                'attr': 'hideBackdrop',
-                'desc': '点击遮罩是否关闭',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'hideBackdrop',
+                desc: '点击遮罩是否关闭',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'maxHeight',
-                'desc': '设置最大高度',
-                'type': 'Number | String',
-                'default': '-'
+                attr: 'maxHeight',
+                desc: '设置最大高度',
+                type: 'Number | String',
+                default: '-',
             }, {
-                'attr': 'visible',
-                'desc': '是否打开',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'visible',
+                desc: '是否打开',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onClose',
-                'desc': '关闭的回调函数',
-                'type': 'Function',
-                'default': '-'
+                attr: 'onClose',
+                desc: '关闭的回调函数',
+                type: 'Function',
+                default: '-',
             }, {
-                'attr': 'onOpen',
-                'desc': '打开的回调函数',
-                'type': 'Function',
-                'default': '-'
-            }]
+                attr: 'onOpen',
+                desc: '打开的回调函数',
+                type: 'Function',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Modal 模态框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/modal"
-                          description="模态对话框。"/>
+                <PageView
+                    title="Modal 模态框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/modal"
+                    description="模态对话框。"
+                />
             </Content>
         );
     }

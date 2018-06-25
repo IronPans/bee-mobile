@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 import Tooltip from '../../src/components/Tooltip';
 import Button from '../../src/components/Button';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface TooltipCaseProp extends BaseProps {
 }
@@ -13,7 +13,7 @@ export default class TooltipCase extends React.PureComponent<TooltipCaseProp, {}
         const {className} = this.props;
         const styleClass = classNames(
             'TooltipCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>
@@ -26,11 +26,9 @@ export default class TooltipCase extends React.PureComponent<TooltipCaseProp, {}
                         <Button theme="primary">Right</Button>
                     </Tooltip>
 
-
                     <Tooltip title="文本提示" dir="left">
                         <Button theme="primary">Left</Button>
                     </Tooltip>
-
 
                     <Tooltip title="文本提示" dir="top">
                         <Button theme="primary">Top</Button>

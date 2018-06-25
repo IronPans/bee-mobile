@@ -4,7 +4,7 @@ import {BaseProps} from '../common/BaseProps';
 export interface ViewProps extends BaseProps {
     reveal?: boolean;
     overlayBackground?: string;
-    onClose?: any
+    onClose?: any;
 }
 
 export interface ViewState {

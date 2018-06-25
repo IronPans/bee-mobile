@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import Button from "../../src/components/Button";
-import {Fade} from "../../src/components/Transitions";
-import Collapse from "../../src/components/Transitions/Collapse";
+import {Content} from '../../src/components/Page';
+import Button from '../../src/components/Button';
+import {Fade} from '../../src/components/Transitions';
+import Collapse from '../../src/components/Transitions/Collapse';
 
 interface TransitionCaseProps extends BaseProps {
 }
@@ -16,7 +16,7 @@ interface TransitionCaseState {
 
 export default class TransitionCase extends React.Component<TransitionCaseProps, TransitionCaseState> {
     static defaultProps: TransitionCaseProps = {
-        prefixCls: 'rf-TransitionCase'
+        prefixCls: 'rf-TransitionCase',
     };
 
     constructor(props: TransitionCaseProps) {
@@ -31,22 +31,22 @@ export default class TransitionCase extends React.Component<TransitionCaseProps,
         this.setState({
             fade: !this.state.fade!
         });
-    };
+    }
 
     handleCollapse = () => {
         this.setState({
             collapse: !this.state.collapse!
         })
-    };
+    }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         const collapseStyle: any = {
-            overflow: 'hidden'
+            overflow: 'hidden',
         };
         return (
             <Content className={styleClass}>

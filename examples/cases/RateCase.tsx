@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Rate from '../../src/components/Rate';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface RateCaseProps extends BaseProps {
 }
@@ -12,7 +12,7 @@ export default class RateCase extends React.PureComponent<RateCaseProps, any> {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'RateCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

@@ -3,15 +3,15 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import {Content} from '../../src/components/Page';
 import PageView from '../components/PageView';
-import ActionSheet from "../../src/components/ActionSheet";
-import HighlightCode from "../../src/components/HighlightCode";
+import ActionSheet from '../../src/components/ActionSheet';
+import HighlightCode from '../../src/components/HighlightCode';
 
 interface ActionSheetApiProps extends BaseProps {
 }
 
 export default class ActionSheetApi extends React.PureComponent<ActionSheetApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-ActionSheetApi"
+        prefixCls: 'bm-ActionSheetApi',
     };
 
     getCode() {
@@ -60,65 +60,70 @@ export default class ActionSheetCase extends React.PureComponent< ActionSheetCas
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'ActionSheet.show()',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'buttons',
-                'desc': '按钮组',
-                'type': 'Array< ActionSheetButton>',
-                'default': '-'
+                attr: 'buttons',
+                desc: '按钮组',
+                type: 'Array< ActionSheetButton>',
+                default: '-',
             }, {
-                'attr': 'cancel',
-                'desc': '是否显示取消按钮',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'cancel',
+                desc: '是否显示取消按钮',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'cancelText',
-                'desc': '自定义取消按钮的文字',
-                'type': 'String',
-                'default': 'cancel'
+                attr: 'cancelText',
+                desc: '自定义取消按钮的文字',
+                type: 'String',
+                default: 'cancel',
             }, {
-                'attr': 'element',
-                'desc': '设置自定义元素',
-                'type': 'React.ReactNode | string',
-                'default': '-'
+                attr: 'element',
+                desc: '设置自定义元素',
+                type: 'React.ReactNode | string',
+                default: '-',
             }, {
-                'attr': 'title',
-                'desc': '头部描述',
-                'type': 'String',
-                'default': '-'
+                attr: 'title',
+                desc: '头部描述',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'onClose',
-                'desc': '关闭的回调函数',
-                'type': 'Function',
-                'default': '-'
-            }]
+                attr: 'onClose',
+                desc: '关闭的回调函数',
+                type: 'Function',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="ActionSheet 动作面板" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/actionSheet"
-                          description="从底部弹出的模态框。"/>
+                <PageView
+                    title="ActionSheet 动作面板"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/actionSheet"
+                    description="从底部弹出的模态框。"
+                />
                 <div className="padding-left-20 padding-right-20">
                     <h3>ActionSheet.close()</h3>
                     <p>关闭方法</p>

@@ -5,28 +5,28 @@ import MotionGroup from './MotionGroup';
 
 export interface FadeInZoomProps extends BaseProps {
     in?: boolean;
-    willEnter?: Function;
-    willLeave?: Function;
+    willEnter?: () => void;
+    willLeave?: () => void;
 }
 
 export default class FadeInZoom extends React.PureComponent<FadeInZoomProps, any> {
     zoomInTransitions: any = {
         enterStyles: {
             opacity: 0,
-            scale: 0
+            scale: 0,
         },
         leaveStyles: {
             opacity: spring(0),
-            scale: spring(0)
+            scale: spring(0),
         },
         activeStyles: {
             opacity: spring(1, {
-                stiffness: 250, damping: 16
+                stiffness: 250, damping: 16,
             }),
             scale: spring(1, {
-                stiffness: 250, damping: 16
-            })
-        }
+                stiffness: 250, damping: 16,
+            }),
+        },
     };
 
     componentDidMount() {
@@ -40,10 +40,14 @@ export default class FadeInZoom extends React.PureComponent<FadeInZoomProps, any
         return (
             <MotionGroup in={inProp} {...this.zoomInTransitions}>
                 {({opacity, scale}: any) => {
-                    return (<div className={className} style={{
-                        opacity: opacity,
-                        transform: 'scale( ' + scale + ',' + scale + ')'
-                    }}>
+                    return (<div
+                        className={className}
+                        {...other}
+                        style={{
+                            opacity: opacity,
+                            transform: `scale( ${scale},${scale})`,
+                        }}
+                    >
                         {children}
                     </div>);
                 }}

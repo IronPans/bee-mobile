@@ -9,7 +9,7 @@ interface TableApiProps extends BaseProps {
 
 export default class TableApi extends React.PureComponent<TableApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-TableApi"
+        prefixCls: 'bm-TableApi',
     };
 
     getCode() {
@@ -54,40 +54,45 @@ export default class ActionSheetCase extends React.PureComponent< ActionSheetCas
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Table',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'count',
-                'desc': '展示的数字值',
-                'type': 'number',
-                'default': '-'
-            }]
+                attr: 'count',
+                desc: '展示的数字值',
+                type: 'number',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Table 数据表格" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/table"
-                          description="数据表格。"/>
+                <PageView
+                    title="Table 数据表格"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/table"
+                    description="数据表格。"
+                />
             </Content>
         );
     }

@@ -27,24 +27,12 @@ module.exports = (options) => {
         module: {
             strictExportPresence: true,
             rules: [
-                {
-                    test: /\.(tsx|ts|js|jsx)$/,
-                    enforce: 'pre',
-                    use: [
-                        {
-                            options: {
-                                eslintPath: require.resolve('eslint'),
-                                baseConfig: {
-                                    extends: [require.resolve('eslint-config-react-app')],
-                                },
-                                ignore: false,
-                                useEslintrc: false,
-                            },
-                            loader: require.resolve('eslint-loader'),
-                        },
-                    ],
-                    include: ['/examples', 'src'],
-                },
+                // {
+                //     test: /\.(jsx?|tsx?)$/,
+                //     enforce: 'pre',
+                //     loader: 'tslint-loader',
+                //     include: [helpers.root('./examples'), helpers.root('./src')]
+                // }
             ]
         },
         /**

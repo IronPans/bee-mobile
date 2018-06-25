@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {NavLink} from 'react-router-dom';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import Button from "../../src/components/Button";
+import {Content} from '../../src/components/Page';
+import Button from '../../src/components/Button';
 
 interface IntroduceProps extends BaseProps {
 }
@@ -13,7 +13,7 @@ export default class Introduce extends React.PureComponent<IntroduceProps, any> 
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'Introduce',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>
@@ -32,9 +32,18 @@ export default class Introduce extends React.PureComponent<IntroduceProps, any> 
                         </Button>
                     </div>
                     <div className="subtitle github-box">
-                        <img className="margin-right-10" src="https://img.shields.io/npm/v/bee-mobile.svg?style=flat-square" alt="bee-mobile"/>
-                        <iframe src="https://ghbtns.com/github-btn.html?user=IronPans&amp;repo=bee-mobile&amp;type=star&amp;count=true"
-                            frameBorder="0" scrolling="0" width="110px" height="20px"/>
+                        <img
+                            className="margin-right-10"
+                            src="https://img.shields.io/npm/v/bee-mobile.svg?style=flat-square"
+                            alt="bee-mobile"
+                        />
+                        <iframe
+                            src="https://ghbtns.com/github-btn.html?user=IronPans&amp;repo=bee-mobile&amp;type=star&amp;count=true"
+                            frameBorder="0"
+                            scrolling="0"
+                            width="110px"
+                            height="20px"
+                        />
                     </div>
                 </section>
                 <div className="margin-top-10 Row justify-center">

@@ -17,14 +17,14 @@ export interface TreeProps extends BaseProps {
     passSelectedUp?: boolean;
     passSelectedDown?: boolean;
     selection?: any;
-    selectionChange?: Function;
+    selectionChange?: () => void;
     selectionMode?: string;
-    template?: Function;
+    template?: () => void;
     value: TreeNode[];
-    onNodeCollapse?: Function;
-    onNodeExpand?: Function;
-    onNodeSelect?: Function;
-    onNodeUnselect?: Function;
+    onNodeCollapse?: () => void;
+    onNodeExpand?: () => void;
+    onNodeSelect?: () => void;
+    onNodeUnselect?: () => void;
 }
 
 export interface TreeState {

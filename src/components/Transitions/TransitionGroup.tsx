@@ -12,12 +12,12 @@ export interface TransitionProps extends BaseProps {
     enterStyles?: Array<any>;
     leaveStyles?: Array<any>;
     activeStyles?: Array<any>;
-    styles?: Function;
+    styles?: () => void;
     transitionName?: string;
     wrapperComponent?: any;
-    willEnter?: Function;
-    willLeave?: Function;
-    didLeave?: Function;
+    willEnter?: () => void;
+    willLeave?: () => void;
+    didLeave?: (style: any) => void;
 }
 
 export interface TransitionState {
@@ -31,7 +31,7 @@ export default class TransitionGroup extends React.PureComponent<TransitionProps
             return [];
         }
 
-        const key = (children as any)['key'];
+        const key = (children as any).key;
         return [
             {
                 key: key,
@@ -47,35 +47,35 @@ export default class TransitionGroup extends React.PureComponent<TransitionProps
             return [];
         }
 
-        const key = (children as any)['key'];
+        const key = (children as any).key;
         return [
             {
                 key: key,
                 data: children!,
-                style: activeStyles!
-            }
+                style: activeStyles!,
+            },
         ];
     }
 
     willEnter = (): any => {
         if (this.props.willEnter) {
-            (this.props.willEnter as Function)();
+            (this.props.willEnter as () => void)();
         }
         return this.props.enterStyles!;
-    };
+    }
 
     willLeave = (): any => {
         if (this.props.willLeave) {
-            (this.props.willLeave as Function)();
+            (this.props.willLeave as () => void)();
         }
         return {...this.props.leaveStyles!};
-    };
+    }
 
     didLeave = (styleThatLeft: object) => {
         if (this.props.didLeave) {
             this.props.didLeave(styleThatLeft);
         }
-    };
+    }
 
     renderElement = (config: any = {}) => {
         const styles: any = this.props.styles;
@@ -87,13 +87,13 @@ export default class TransitionGroup extends React.PureComponent<TransitionProps
         return !!this.props.wrapperComponent !== false
             ? React.createElement(this.props.wrapperComponent, props, config.data)
             : React.cloneElement(config.data, props);
-    };
+    }
 
     render() {
         const {className, transitionName} = this.props;
         const styleClass = classNames(
             transitionName,
-            className
+            className,
         );
         return (
             <TransitionMotion

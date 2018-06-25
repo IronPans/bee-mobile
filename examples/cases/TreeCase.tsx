@@ -13,15 +13,15 @@ export default class TreeCase extends React.PureComponent<TreeCaseProps, any> {
         const {className} = this.props;
         const styleClass = classNames(
             'TreeCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>
                 <div className="CasePanel">
-                    <Tree value={TREES['data']} selectionMode="single"/>
+                    <Tree value={TREES.data} selectionMode="single"/>
                 </div>
                 <div className="CasePanel">
-                    <Tree value={TREES['data']} selectionMode="checkbox"/>
+                    <Tree value={TREES.data} selectionMode="checkbox"/>
                 </div>
             </Content>
         );

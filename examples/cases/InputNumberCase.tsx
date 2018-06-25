@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import InputNumber from '../../src/components/InputNumber';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface InputNumberCaseProps extends BaseProps {
 }
@@ -14,13 +14,14 @@ interface InputNumberCaseState {
 export default class InputNumberCase extends React.PureComponent<InputNumberCaseProps, InputNumberCaseState> {
 
     handleChange = (event: any) => {
-        console.log(event);
-    };
+        const ev = event;
+    }
+
     render() {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'InputNumberCase',
-            className
+            className,
         );
 
         return (

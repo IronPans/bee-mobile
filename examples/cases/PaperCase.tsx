@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Paper from '../../src/components/Paper';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface PaperCaseProps extends BaseProps {
 }
@@ -12,7 +12,7 @@ export default class PaperCase extends React.PureComponent<PaperCaseProps, any> 
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'PaperCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

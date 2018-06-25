@@ -3,35 +3,35 @@ import * as classNames from 'classnames';
 import Modal from '../../src/components/Modal';
 import Button from '../../src/components/Button';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface Props extends BaseProps {
 }
 
 interface State {
-    visible: boolean
+    visible: boolean;
 }
 
 export default class ModalCase extends React.PureComponent<Props, State> {
     state = {
-        visible: false
+        visible: false,
     };
 
     handleOpen = () => {
         this.setState({
-            visible: true
+            visible: true,
         });
-    };
+    }
 
     handleClose = () => {
         this.setState({
-            visible: false
+            visible: false,
         });
-    };
+    }
 
     render() {
         const styleClass = classNames(
-            'ModalCase'
+            'ModalCase',
         );
         return (
             <Content className={styleClass}>

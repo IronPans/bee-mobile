@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Panel, {PanelHeader, PanelContent} from '../../src/components/Panel';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface PanelCaseProps extends BaseProps {
 }
@@ -12,7 +12,7 @@ export default class PanelCase extends React.PureComponent<PanelCaseProps, any> 
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'PanelCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

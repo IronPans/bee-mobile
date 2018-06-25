@@ -9,7 +9,7 @@ interface KnobApiProps extends BaseProps {
 
 export default class KnobApi extends React.PureComponent<KnobApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-KnobApi"
+        prefixCls: 'bm-KnobApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import {BaseProps} from '../components/common/BaseProps';
 import Knob from '../components/Knob';
 import Button from '../components/Button';
 import Icon from '../components/Icon';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface KnobCaseProps extends BaseProps {
 }
@@ -75,65 +75,70 @@ export default class KnobCase extends React.PureComponent< KnobCaseProps, KnobCa
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'animated',
-                'desc': '是否开启加载动画',
-                'type': 'Boolean',
-                'default': 'true'
+                attr: 'animated',
+                desc: '是否开启加载动画',
+                type: 'Boolean',
+                default: 'true',
             }, {
-                'attr': 'barColor',
-                'desc': '设置已加载的进度背景色',
-                'type': 'String',
-                'default': '#5db2ff'
+                attr: 'barColor',
+                desc: '设置已加载的进度背景色',
+                type: 'String',
+                default: '#5db2ff',
             }, {
-                'attr': 'lineWidth',
-                'desc': '进度条线宽',
-                'type': 'number',
-                'default': '6'
+                attr: 'lineWidth',
+                desc: '进度条线宽',
+                type: 'number',
+                default: '6',
             }, {
-                'attr': 'size',
-                'desc': '环形进度条的尺寸',
-                'type': 'number',
-                'default': '100'
+                attr: 'size',
+                desc: '环形进度条的尺寸',
+                type: 'number',
+                default: '100',
             }, {
-                'attr': 'trackColor',
-                'desc': '设置轨道的背景色',
-                'type': 'number',
-                'default': '#eee'
+                attr: 'trackColor',
+                desc: '设置轨道的背景色',
+                type: 'number',
+                default: '#eee',
             }, {
-                'attr': 'value',
-                'desc': '进度百分比',
-                'type': 'number',
-                'default': '0'
-            }]
+                attr: 'value',
+                desc: '进度百分比',
+                type: 'number',
+                default: '0',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Knob 环形进度条" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/knob"
-                          description="表明某个任务的当前进度。"/>
+                <PageView
+                    title="Knob 环形进度条"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/knob"
+                    description="表明某个任务的当前进度。"
+                />
             </Content>
         );
     }

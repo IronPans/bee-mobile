@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Card, { CardHeader, CardContent } from '../../src/components/Card';
-import Collapse from "../../src/components/Transitions/Collapse";
+import Collapse from '../../src/components/Transitions/Collapse';
 import Icon from '../../src/components/Icon';
 import Modal from '../../src/components/Modal';
 
@@ -18,11 +18,11 @@ interface CodeViewState {
 
 export default class CodeView extends React.Component<CodeViewProps, CodeViewState> {
     static defaultProps: CodeViewProps = {
-        prefixCls: 'bm-CodeView'
+        prefixCls: 'bm-CodeView',
     };
 
     state = {
-        showCode: false
+        showCode: false,
     };
 
     constructor(props: CodeViewProps) {
@@ -31,28 +31,30 @@ export default class CodeView extends React.Component<CodeViewProps, CodeViewSta
 
     openCode = () => {
         this.setState({
-            showCode: !this.state.showCode!
+            showCode: !this.state.showCode!,
         });
-    };
+    }
 
     handleClose = () => {
         this.setState({
-            showCode: false
+            showCode: false,
         });
-    };
+    }
 
     render() {
         const {className, code, html, prefixCls, title} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass}>
                 <Card>
-                    <CardHeader title={title} action={
-                        <Icon icon="fullscreen" onClick={this.openCode}/>
-                    }/>
+                    <CardHeader
+                        title={title}
+                        action={
+                        <Icon icon="fullscreen" onClick={this.openCode}/> }
+                    />
                     <CardContent>
                         <Collapse in={true}>
                             <div className="padding-10">

@@ -4,7 +4,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Button from '../../src/components/Button';
 import Popover from '../../src/components/Popover';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 import List, {ListItem, ListItemText} from '../../src/components/List';
 
 interface PopoverCaseProps extends BaseProps {
@@ -18,32 +18,34 @@ interface PopoverCaseState {
 export default class PopoverCase extends React.PureComponent<PopoverCaseProps, PopoverCaseState> {
     state = {
         visible: false,
-        anchorEl: null
+        anchorEl: null,
     };
     button: any;
     handleClickButton = () => {
         this.setState({
             visible: !this.state.visible!,
-            anchorEl: ReactDOM.findDOMNode(this.button)
+            anchorEl: ReactDOM.findDOMNode(this.button),
         });
-    };
+    }
 
     handleClose = () => {
         this.setState({
-            visible: false
+            visible: false,
         });
-    };
+    }
+
     render() {
         const {className} = this.props;
         const styleClass = classNames(
             'PopoverCase',
-            className
+            className,
         );
         const {anchorEl} = this.state;
         return (
             <Content className={styleClass}>
                 <div className="CasePanel">
-                    <Button theme="primary" ref={node => this.button = node} onClick={this.handleClickButton}>Open Popover</Button>
+                    <Button theme="primary" ref={node => this.button = node} onClick={this.handleClickButton}>Open
+                        Popover</Button>
 
                     <Popover anchorEl={anchorEl} visible={this.state.visible} onClose={this.handleClose}>
                         <List>

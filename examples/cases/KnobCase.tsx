@@ -4,18 +4,18 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Knob from '../../src/components/Knob';
 import Button from '../../src/components/Button';
 import Icon from '../../src/components/Icon';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface KnobCaseProps extends BaseProps {
 }
 
 interface KnobCaseState {
-    value: number
+    value: number;
 }
 
 export default class KnobCase extends React.PureComponent<KnobCaseProps, KnobCaseState> {
     state = {
-        value: 0
+        value: 0,
     };
 
     handleLoad = () => {
@@ -25,15 +25,15 @@ export default class KnobCase extends React.PureComponent<KnobCaseProps, KnobCas
             value = 0;
         }
         this.setState({
-            value
+            value,
         });
-    };
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
             'KnobCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import BackTop from "../../src/components/BackTop";
-import Icon from "../../src/components/Icon";
-import Button from "../../src/components/Button";
+import {Content} from '../../src/components/Page';
+import BackTop from '../../src/components/BackTop';
+import Icon from '../../src/components/Icon';
+import Button from '../../src/components/Button';
 
 interface BackTopCaseProps extends BaseProps {
 }
@@ -20,7 +20,7 @@ export default class BackTopCase extends React.PureComponent<BackTopCaseProps, a
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'BackTopCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other} ref={this.getRef}>

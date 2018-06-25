@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import * as React from 'react';
+import * as classNames from 'classnames';
 import Message from '../Message';
 import {FadeInUp} from '../Transitions';
 import {ActionSheetProps} from './PropsType';
@@ -18,17 +18,17 @@ export class ActionSheet {
     currentItem: any;
 
     constructor(props: any) {
-        props['delay'] = 0;
-        props['actionClass'] = props['actionClass'] || 'bm-ActionSheet-group';
-        props['prefixCls'] = 'bm-ActionSheet';
-        props['className'] = props['prefixCls'];
-        props['cancelText'] = props['cancelText'] || 'cancel';
-        props['visible'] = true;
+        props.delay = 0;
+        props.actionClass = props.actionClass || 'bm-ActionSheet-group';
+        props.prefixCls = 'bm-ActionSheet';
+        props.className = props.prefixCls;
+        props.cancelText = props.cancelText || 'cancel';
+        props.visible = true;
         this.props = props;
         actionSheetInstance = getActionSheetInstance({
             hideBackdrop: true,
-            className: props['actionClass'],
-            onClose: props['onClose'] || (() => {})
+            className: props.actionClass,
+            onClose: props.onClose || (() => {}),
         });
         this.currentItem = this.create();
     }
@@ -40,15 +40,15 @@ export class ActionSheet {
     handleClick = (button: any, event: any) => {
         if (button.onClick) {
             button.onClick({
-                button, event
+                button, event,
             });
         }
         this.handleClose();
-    };
+    }
 
     addButtons() {
         const {buttons, prefixCls, title} = this.props;
-        const addGroup = (buttons: Array<any>): any => {
+        const addGroup = (buttons: any): any => {
             let num = 0;
             const children: any = [];
             if (title) {
@@ -58,20 +58,30 @@ export class ActionSheet {
                 if (Array.isArray(button)) {
                     children.push(addGroup(button));
                 } else {
-                    children.push(<div key={`ActionSheetButton${num}`}
-                                       onClick={this.handleClick.bind(button)} className={`${prefixCls}-button`}>
-                        {button.text}</div>);
+                    children.push(
+                        <div
+                            key={`ActionSheetButton${num}`}
+                            onClick={this.handleClick.bind(button)}
+                            className={`${prefixCls}-button`}
+                        >
+                        {button.text}
+                        </div>);
                 }
                 num++;
             }
             if (this.props.cancel) {
                 const cancelClass = classNames(
                     `${prefixCls}-button`,
-                    `${prefixCls}-cancel`
+                    `${prefixCls}-cancel`,
                 );
-                children.push(<div key={`ActionSheetButton-cancel`}
-                                   onClick={this.handleClose} className={cancelClass}>
-                    {this.props.cancelText}</div>);
+                children.push(
+                    <div
+                         key={`ActionSheetButton-cancel`}
+                         onClick={this.handleClose}
+                         className={cancelClass}
+                    >
+                    {this.props.cancelText}
+                    </div>);
             }
             return children;
         };
@@ -82,16 +92,16 @@ export class ActionSheet {
         const props: any = Object.assign({}, this.props);
         const {element, onClose, prefixCls, visible = false} = props;
         const styleClass = classNames(
-            `${prefixCls}-item`
+            `${prefixCls}-item`,
         );
-        props['message'] = (
+        props.message = (
             <FadeInUp in={visible}>
                 <div className={styleClass} key="ActionSheet-item">
                     {element ? element : this.addButtons()}
                 </div>
             </FadeInUp>
         );
-        props['onClose'] = () => {
+        props.onClose = () => {
             if (onClose) {
                 onClose();
             }
@@ -111,3 +121,4 @@ export default {
         }
     },
 }
+

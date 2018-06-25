@@ -10,7 +10,7 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
         disabled: false,
         disableRipple: false,
         expanded: false,
-        prefixCls: 'bm-Accordion'
+        prefixCls: 'bm-Accordion',
     };
 
     expanded: boolean = false;
@@ -22,21 +22,21 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
             expanded = props.expanded;
         }
         this.state = {
-            expanded
-        }
+            expanded,
+        };
     }
 
     componentWillReceiveProps(nextProps: any) {
         if ('expanded' in nextProps &&
             this.props.expanded !== nextProps.expanded) {
             this.setState({
-                expanded: nextProps.expanded
+                expanded: nextProps.expanded,
             });
         }
     }
 
     handleToggle = (event: any) => {
-        let { disabled, onChange, index, name } = this.props;
+        const { disabled, onChange, index, name } = this.props;
         if (disabled) {
             return;
         }
@@ -45,10 +45,10 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
             onChange({
                 event,
                 index: name || index,
-                expanded
+                expanded,
             });
         }
-    };
+    }
 
     render() {
         const { children, className, disableRipple, index, header, prefixCls } = this.props;
@@ -56,9 +56,9 @@ export default class Accordion extends React.PureComponent<AccordionProps, Accor
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-expanded`]: expanded
+                [`${prefixCls}-expanded`]: expanded,
             },
-            className
+            className,
         );
         return (
             <div className={styleClass}>

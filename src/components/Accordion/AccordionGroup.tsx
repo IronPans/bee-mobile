@@ -6,21 +6,21 @@ export default class AccordionGroup extends React.PureComponent<AccordionGroupPr
     static defaultProps = {
         disableRipple: true,
         activeIndex: [],
-        prefixCls: 'bm-AccordionGroup'
+        prefixCls: 'bm-AccordionGroup',
     };
 
     constructor(props: AccordionGroupProps) {
         super(props);
         this.state = {
-            currentValue: Array.isArray(props.activeIndex) ? props.activeIndex : [props.activeIndex]
-        }
+            currentValue: Array.isArray(props.activeIndex) ? props.activeIndex : [props.activeIndex],
+        };
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps(nextProps: any) {
         if ('activeIndex' in nextProps && nextProps.activeIndex !== this.props.activeIndex) {
             this.setState({
-                currentValue: nextProps.activeIndex
-            })
+                currentValue: nextProps.activeIndex,
+            });
         }
     }
 
@@ -54,20 +54,20 @@ export default class AccordionGroup extends React.PureComponent<AccordionGroupPr
             currentValue.push(index);
         }
         this.setState({
-            currentValue
+            currentValue,
         });
         if (onChange) {
             onChange(currentValue);
         }
-    };
+    }
 
     render() {
         const {
             children: childrenProp, className,
-            closeOthers, disableRipple, prefixCls
+            closeOthers, disableRipple, prefixCls,
         } = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const currentValue = this.getCurrentValue();
         const children = React.Children.map(childrenProp, (child: React.ReactElement<any>, index: number) => {
@@ -80,7 +80,7 @@ export default class AccordionGroup extends React.PureComponent<AccordionGroupPr
                 expanded,
                 name,
                 index,
-                onChange: this.handleChange
+                onChange: this.handleChange,
             });
         });
         return (

@@ -9,7 +9,7 @@ interface PaperApiProps extends BaseProps {
 
 export default class PaperApi extends React.PureComponent<PaperApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-PaperApi"
+        prefixCls: 'bm-PaperApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class PaperApi extends React.PureComponent<PaperApiProps, {}> {
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Paper from '../components/Paper';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface PaperCaseProps extends BaseProps {
 }
@@ -54,40 +54,45 @@ export default class PaperCase extends React.PureComponent< PaperCaseProps, any>
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Paper',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'depth',
-                'desc': '阴影深度',
-                'type': 'Number',
-                'default': '1'
-            }]
+                attr: 'depth',
+                desc: '阴影深度',
+                type: 'Number',
+                default: '1',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Paper" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/paper"
-                          description="带阴影的面板。"/>
+                <PageView
+                    title="Paper"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/paper"
+                    description="带阴影的面板。"
+                />
             </Content>
         );
     }

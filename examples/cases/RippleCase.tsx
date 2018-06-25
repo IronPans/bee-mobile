@@ -1,32 +1,32 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import Ripple from "../../src/components/Ripple";
-import Avatar from "../../src/components/Avatar";
-import Icon from "../../src/components/Icon";
+import {Content} from '../../src/components/Page';
+import Ripple from '../../src/components/Ripple';
+import Avatar from '../../src/components/Avatar';
+import Icon from '../../src/components/Icon';
 
 interface RippleCaseProps extends BaseProps {
 }
 
 export default class RippleCase extends React.Component<RippleCaseProps, {}> {
     static defaultProps: RippleCaseProps = {
-        prefixCls: 'rf-RippleCase'
+        prefixCls: 'rf-RippleCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         const fixed: any = {
-            position: 'relative'
+            position: 'relative',
         };
         const iconStyles: any = {
             position: 'relative',
             width: '40px',
-            height: '40px'
+            height: '40px',
         };
         return (
             <Content className={styleClass}>

@@ -15,7 +15,7 @@ export default class OverviewCase extends React.PureComponent<OverviewCaseProps,
         const {className} = this.props;
         const styleClass = classNames(
             'OverviewCase',
-            className
+            className,
         );
         const menus = MENUS.filter((menu) => {
             return ['Overview'].indexOf(menu.name) === -1;

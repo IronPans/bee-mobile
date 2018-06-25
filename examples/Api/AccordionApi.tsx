@@ -9,7 +9,7 @@ interface AccordionApiProps extends BaseProps {
 
 export default class AccordionApi extends React.PureComponent<AccordionApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-AccordionApi"
+        prefixCls: 'bm-AccordionApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class AccordionApi extends React.PureComponent<AccordionApiProps,
 import * as classNames from 'classnames';
 import Accordion, { AccordionGroup } from '../components/Accordion';
 import {BaseProps} from '../components/common/BaseProps';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface AccordionCaseProps extends BaseProps {}
 
@@ -68,65 +68,69 @@ export default class AccordionCase extends React.PureComponent< AccordionCasePro
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'AccordionGroup',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'activeIndex',
-                'desc': '当前激活 tab 面板的index',
-                'type': 'number',
-                'default': '无'
+                attr: 'activeIndex',
+                desc: '当前激活 tab 面板的index',
+                type: 'number',
+                default: '无',
             }, {
-                'attr': 'closeOthers',
-                'desc': '是否开启收风琴模式',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'closeOthers',
+                desc: '是否开启收风琴模式',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onChange',
-                'desc': '面板切换的回调',
-                'type': '(index: number): void',
-                'default': 'noop'
-            }]
+                attr: 'onChange',
+                desc: '面板切换的回调',
+                type: '(index: number): void',
+                default: 'noop',
+            }],
         }, {
             name: 'Accordion',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'header',
-                'desc': '面板头内容',
-                'type': 'React.Element or String',
-                'default': '无'
+                attr: 'header',
+                desc: '面板头内容',
+                type: 'React.Element or String',
+                default: '无',
             }, {
-                'attr': 'disabled',
-                'desc': '是否禁用',
-                'type': 'Boolean',
-                'default': false
-            }]
+                attr: 'disabled',
+                desc: '是否禁用',
+                type: 'Boolean',
+                default: false,
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView data={data} app="适用平台：WEB" title="Accordion 折叠面板"
-                          code={this.getCode()}
-                          frameUrl="#/components/accordion"
-                          description="折叠面板能有效地节省页面的可视面积。"/>
+                <PageView
+                    data={data}
+                    app="适用平台：WEB"
+                    title="Accordion 折叠面板"
+                    code={this.getCode()}
+                    frameUrl="#/components/accordion"
+                    description="折叠面板能有效地节省页面的可视面积。"
+                />
             </Content>
         );
     }

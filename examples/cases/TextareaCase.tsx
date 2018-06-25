@@ -9,13 +9,13 @@ interface TextareaCaseProps extends BaseProps {
 
 export default class TextareaCase extends React.PureComponent<TextareaCaseProps, {}> {
     static defaultProps = {
-        prefixCls: 'bm-TextareaCase'
+        prefixCls: 'bm-TextareaCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <Content className={styleClass}>

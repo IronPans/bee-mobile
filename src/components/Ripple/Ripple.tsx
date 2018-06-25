@@ -40,11 +40,11 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
 
     getUuid = () => {
         return `Ripple-${this.now}_${this.seed++}`;
-    };
+    }
 
     getRef = (node: any) => {
         this.rippleNode = node;
-    };
+    }
 
     getPoint(event: any) {
         event = event || window.event;
@@ -61,7 +61,7 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
         const parentNode = this.rippleNode.parentNode;
         const {offsetWidth, offsetHeight} = parentNode;
         const scale = sizeProps === 'sm' ? 2 : 1;
-        let size = Math.max(offsetWidth, offsetHeight) * 2;
+        const size = Math.max(offsetWidth, offsetHeight) * 2;
         const rect = getRect(parentNode);
         if (!centerMode) {
             x = x - rect.left - size / 2;

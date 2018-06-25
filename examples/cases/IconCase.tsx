@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Icon from '../../src/components/Icon';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 import {ICONS} from '../common/icons';
 
 interface IconCaseProps extends BaseProps {}
@@ -13,20 +13,20 @@ interface IconCaseState {
 
 export default class IconCase extends React.PureComponent<IconCaseProps, IconCaseState> {
     state = {
-        icon: ''
+        icon: '',
     };
 
     handleClick = (icon: string) => {
         this.setState({
-            icon
-        })
-    };
+            icon,
+        });
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
             'IconCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>
@@ -41,7 +41,7 @@ export default class IconCase extends React.PureComponent<IconCaseProps, IconCas
                                     <li key={icon.ligature} onClick={this.handleClick.bind(this, icon.ligature)}>
                                         <Icon icon={icon.ligature}/>
                                     </li>
-                                )
+                                );
                             })
                         }
                     </ul>

@@ -9,15 +9,15 @@ interface LockerApiProps extends BaseProps {
 
 export default class LockerApi extends React.PureComponent<LockerApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-LockerApi"
+        prefixCls: 'bm-LockerApi',
     };
 
     getCode() {
         return `import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
-import Locker from "../components/Locker";
-import {Content} from "../components/Page";
+import Locker from '../components/Locker';
+import {Content} from '../components/Page';
 
 interface LockerCaseProps extends BaseProps {
 }
@@ -28,7 +28,7 @@ interface LockerCaseState {
 
 export default class LockerCase extends React.PureComponent< LockerCaseProps, LockerCaseState> {
     static defaultProps = {
-        prefixCls: "bm-LockerCase"
+        prefixCls: 'bm-LockerCase'
     };
 
     state = {
@@ -87,60 +87,65 @@ export default class LockerCase extends React.PureComponent< LockerCaseProps, Lo
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Locker',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'width',
-                'desc': '设置宽度',
-                'type': 'Number | String',
-                'default': '300'
+                attr: 'width',
+                desc: '设置宽度',
+                type: 'Number | String',
+                default: '300',
             }, {
-                'attr': 'height',
-                'desc': '设置高度',
-                'type': 'Number | String',
-                'default': '300'
+                attr: 'height',
+                desc: '设置高度',
+                type: 'Number | String',
+                default: '300',
             }, {
-                'attr': 'strokeStyle',
-                'desc': '描边色',
-                'type': 'String',
-                'default': 'rgba(0,0,0,.12)'
+                attr: 'strokeStyle',
+                desc: '描边色',
+                type: 'String',
+                default: 'rgba(0,0,0,.12)',
             }, {
-                'attr': 'fillStyle',
-                'desc': '填充色',
-                'type': 'String',
-                'default': '#2196f3'
+                attr: 'fillStyle',
+                desc: '填充色',
+                type: 'String',
+                default: '#2196f3',
             }, {
-                'attr': 'onDone',
-                'desc': '绘制完成的回调',
-                'type': '({points, clear}) => {}',
-                'default': '-'
-            }]
+                attr: 'onDone',
+                desc: '绘制完成的回调',
+                type: '({points, clear}) => {}',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Locker 手势密码" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/locker"
-                          description="手势密码解锁。"/>
+                <PageView
+                    title="Locker 手势密码"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/locker"
+                    description="手势密码解锁。"
+                />
             </Content>
         );
     }

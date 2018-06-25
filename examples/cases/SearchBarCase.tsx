@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import SearchBar from '../../src/components/SearchBar';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface SearchBarCaseProps extends BaseProps {
 }
@@ -12,7 +12,7 @@ export default class SearchBarCase extends React.PureComponent<SearchBarCaseProp
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'SearchBarCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

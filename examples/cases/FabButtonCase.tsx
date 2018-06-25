@@ -10,13 +10,13 @@ interface FabButtonCaseProps extends BaseProps {
 
 export default class FabButtonCase extends React.PureComponent<FabButtonCaseProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-FabButtonCase"
+        prefixCls: 'bm-FabButtonCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <Content className={styleClass}>

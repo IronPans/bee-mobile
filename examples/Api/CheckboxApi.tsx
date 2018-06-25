@@ -9,7 +9,7 @@ interface CheckboxApiProps extends BaseProps {
 
 export default class CheckboxApi extends React.PureComponent<CheckboxApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-CheckboxApi"
+        prefixCls: 'bm-CheckboxApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class CheckboxApi extends React.PureComponent<CheckboxApiProps, {
 import * as classNames from 'classnames';
 import Checkbox from '../components/Checkbox';
 import {BaseProps} from '../components/common/BaseProps';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface CheckboxProps extends BaseProps {
 }
@@ -89,55 +89,65 @@ export default class CheckboxCase extends React.PureComponent< CheckboxProps, {}
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
-        const data = [{
+        const data: any = [{
             name: 'Checkbox',
             fields: this.getFields(),
-            attributes: [{
-                'attr': 'checked',
-                'desc': '指定当前是否选中',
-                'type': 'Boolean',
-                'default': '-'
-            }, {
-                'attr': 'defaultChecked',
-                'desc': '初始是否选中',
-                'type': 'Boolean',
-                'default': '-'
-            }, {
-                'attr': 'disabled',
-                'desc': '是否禁用',
-                'type': 'Boolean',
-                'default': 'false'
-            }, {
-                'attr': 'onChange',
-                'desc': 'change 事件触发的回调函数',
-                'type': '({checked, value}, event) => void',
-                'default': '-'
-            }]
+            attributes: [
+                {
+                    attr: 'checked',
+                    desc: '指定当前是否选中',
+                    type: 'Boolean',
+                    default: '-',
+                },
+                {
+                    attr: 'defaultChecked',
+                    desc: '初始是否选中',
+                    type: 'Boolean',
+                    default: '-',
+                },
+                {
+                    attr: 'disabled',
+                    desc: '是否禁用',
+                    type: 'Boolean',
+                    default: 'false',
+                },
+                {
+                    attr: 'onChange',
+                    desc: 'change 事件触发的回调函数',
+                    type: '({checked, value}, event) => void',
+                    default: '-',
+                },
+            ],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Checkbox 复选框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/checkbox"
-                          description="复选框。"/>
+                <PageView
+                    title="Checkbox 复选框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/checkbox"
+                    description="复选框。"
+                />
             </Content>
         );
     }

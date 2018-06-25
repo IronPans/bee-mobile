@@ -1,6 +1,6 @@
 {
   "name": "bee-mobile",
-  "version": "0.1.6",
+  "version": "0.3.1",
   "license": "MIT",
   "description": "UI Components for React",
   "homepage": "https://bee-mobiles.github.io",
@@ -114,6 +114,9 @@
     "source-map-loader": "^0.2.3",
     "style-loader": "^0.20.3",
     "ts-loader": "^3.2.0",
+    "tslint": "^5.10.0",
+    "tslint-loader": "^3.6.0",
+    "tslint-react": "^3.6.0",
     "typescript": "^2.6.2",
     "typescript-eslint-parser": "^14.0.0",
     "url-loader": "^1.0.1",

@@ -2,34 +2,34 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Tabs, {Tab, TabContainer, TabsGroup} from '../../src/components/Tabs';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface Props extends BaseProps {
 }
 
 interface State {
-    index: number
+    index: number;
 }
 
 export default class TabsCase extends React.PureComponent<Props, State> {
     state: State = {
-        index: 0
+        index: 0,
     };
 
     handleChange = (index: any) => {
         this.setState({
-            index
+            index,
         });
-    };
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
             'TabsCase',
-            className
+            className,
         );
         const conStyle = {
-            padding: 10
+            padding: 10,
         };
         return (
             <Content className={styleClass}>

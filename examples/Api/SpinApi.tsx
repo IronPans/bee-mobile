@@ -9,7 +9,7 @@ interface SpinApiProps extends BaseProps {
 
 export default class SpinApi extends React.PureComponent<SpinApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-SpinApi"
+        prefixCls: 'bm-SpinApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Spin from '../components/Spin';
 import List, {ListItem, ListItemText, ListItemAction} from '../components/List';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface SpinCaseProps extends BaseProps {
 }
@@ -58,51 +58,56 @@ export default class SpinCase extends React.PureComponent< SpinCaseProps, any> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Spin',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'size',
-                'desc': '设置尺寸。可选值：lg | sm | xs',
-                'type': 'String',
-                'default': 'xs'
+                attr: 'size',
+                desc: '设置尺寸。可选值：lg | sm | xs',
+                type: 'String',
+                default: 'xs',
             }, {
-                'attr': 'type',
-                'desc': '加载的类型。可选值：\'circleRound\'\n' +
-                '    | \'circleLine\'\n' +
-                '    | \'circleRoundFade\'\n' +
-                '    | \'lineSquare\'\n' +
-                '    | \'lineRound\'\n' +
-                '    | \'lineBounce\'\n' +
-                '    | \'snake\'',
-                'type': 'String',
-                'default': 'circleRound'
-            }]
+                attr: 'type',
+                desc: `加载的类型。可选值：'circleRound'
+                | 'circleLine'
+                | 'circleRoundFade'
+                | 'lineSquare'
+                | 'lineRound'
+                | 'lineBounce'
+                | 'snake'`,
+                type: 'String',
+                default: 'circleRound',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Spin 加载中" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/spin"
-                          description="用于页面和区块的加载中状态。"/>
+                <PageView
+                    title="Spin 加载中"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/spin"
+                    description="用于页面和区块的加载中状态。"
+                />
             </Content>
         );
     }

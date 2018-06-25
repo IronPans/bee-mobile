@@ -9,7 +9,7 @@ interface AutocompleteApiProps extends BaseProps {
 
 export default class AutocompleteApi extends React.PureComponent<AutocompleteApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-AutocompleteApi"
+        prefixCls: 'bm-AutocompleteApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class AutocompleteApi extends React.PureComponent<AutocompleteApi
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Autocomplete from '../components/Autocomplete';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface AutocompleteCaseProps extends BaseProps {
 }
@@ -79,70 +79,75 @@ export default class AutocompleteCase extends React.PureComponent< AutocompleteC
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Autocomplete',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'data',
-                'desc': '数据源',
-                'type': 'Array',
-                'default': '-'
+                attr: 'data',
+                desc: '数据源',
+                type: 'Array',
+                default: '-',
             }, {
-                'attr': 'count',
-                'desc': '显示多少条。当设为-1时，表示显示所有',
-                'type': 'Number',
-                'default': '5'
+                attr: 'count',
+                desc: '显示多少条。当设为-1时，表示显示所有',
+                type: 'Number',
+                default: '5',
             }, {
-                'attr': 'inline',
-                'desc': '是否内联',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'inline',
+                desc: '是否内联',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'maxHeight',
-                'desc': '当设置maxHeight时，会自动出现滚动条',
-                'type': 'Number | String',
-                'default': '-'
+                attr: 'maxHeight',
+                desc: '当设置maxHeight时，会自动出现滚动条',
+                type: 'Number | String',
+                default: '-',
             }, {
-                'attr': 'startAdorn',
-                'desc': '额外的左边',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'startAdorn',
+                desc: '额外的左边',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'onChange',
-                'desc': 'change 事件触发的回调函数',
-                'type': '(value: string) => void',
-                'default': 'noop'
+                attr: 'onChange',
+                desc: 'change 事件触发的回调函数',
+                type: '(value: string) => void',
+                default: 'noop',
             }, {
-                'attr': 'onSelect',
-                'desc': '选择建议项的回调函数',
-                'type': '(value: any) => void',
-                'default': 'noop'
-            }]
+                attr: 'onSelect',
+                desc: '选择建议项的回调函数',
+                type: '(value: any) => void',
+                default: 'noop',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView data={data} app="适用平台：WEB" title="Autocomplete 自动完成"
-                          code={this.getCode()} frameUrl="#/components/autocomplete"
-                          description="输入框自动完成。"/>
+                <PageView
+                    data={data}
+                    app="适用平台：WEB"
+                    title="Autocomplete 自动完成"
+                    code={this.getCode()}
+                    frameUrl="#/components/autocomplete"
+                    description="输入框自动完成。"
+                />
             </Content>
         );
     }

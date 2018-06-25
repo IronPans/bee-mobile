@@ -9,7 +9,7 @@ interface CalendarApiProps extends BaseProps {
 
 export default class CalendarApi extends React.PureComponent<CalendarApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-CalendarApi"
+        prefixCls: 'bm-CalendarApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class CalendarApi extends React.PureComponent<CalendarApiProps, {
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Calendar from '../components/Calendar';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface CalendarCaseProps extends BaseProps {
 }
@@ -51,66 +51,70 @@ export default class CalendarCase extends React.PureComponent< CalendarCaseProps
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'defaultValue',
-                'desc': '默认日期',
-                'type': 'String',
-                'default': '-'
+                attr: 'defaultValue',
+                desc: '默认日期',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'format',
-                'desc': '日期格式',
-                'type': 'String',
-                'default': 'yyyy-MM-dd'
+                attr: 'format',
+                desc: '日期格式',
+                type: 'String',
+                default: 'yyyy-MM-dd',
             }, {
-                'attr': 'minDate',
-                'desc': '最小日期',
-                'type': 'String',
-                'default': '-'
+                attr: 'minDate',
+                desc: '最小日期',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'maxDate',
-                'desc': '最大日期',
-                'type': 'String',
-                'default': '-'
+                attr: 'maxDate',
+                desc: '最大日期',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'visible',
-                'desc': '是否显示',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'visible',
+                desc: '是否显示',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onChange',
-                'desc': '选择日期时触发的回调',
-                'type': '(value: string): void',
-                'default': '-'
-            }]
+                attr: 'onChange',
+                desc: '选择日期时触发的回调',
+                type: '(value: string): void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Calendar 日期选择器" code={this.getCode()}
-                          data={data} app="适用平台：WEB"
-                          frameUrl="#/components/calendar"
-                          description="日期选择器提供了常用的日期选择功能。"/>
+                <PageView
+                    title="Calendar 日期选择器"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/calendar"
+                    description="日期选择器提供了常用的日期选择功能。"
+                />
             </Content>
         );
     }

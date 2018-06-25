@@ -9,7 +9,7 @@ interface ListApiProps extends BaseProps {
 
 export default class ListApi extends React.PureComponent<ListApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-ListApi"
+        prefixCls: 'bm-ListApi',
     };
 
     getCode() {
@@ -20,7 +20,7 @@ import {BaseProps} from '../components/common/BaseProps';
 import Avatar from '../components/Avatar';
 import Icon from '../components/Icon';
 import Switch from '../components/Switch';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface ListCaseProps extends BaseProps {}
 
@@ -110,40 +110,44 @@ export default class ListCase extends React.PureComponent< ListCaseProps, {}> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'count',
-                'desc': '展示的数字值',
-                'type': 'number',
-                'default': '-'
-            }]
+                attr: 'count',
+                desc: '展示的数字值',
+                type: 'number',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="List 列表" code={this.getCode()}
-                          app="适用平台：WEB" frameUrl="#/components/list"
-                          description="单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。"/>
+                <PageView
+                    title="List 列表"
+                    code={this.getCode()}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/list"
+                    description="单个连续模块垂直排列，显示当前的内容、状态和可进行的操作。"
+                />
                 <div className="padding-left-20 padding-right-20">
                     <h3 className="no-margin-top">List</h3>
                     <p>列表组</p>

@@ -4,18 +4,18 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Icon from '../../src/components/Icon';
 import Avatar from '../../src/components/Avatar';
 import List, {ListItem, ListItemText, ListItemAction} from '../../src/components/List';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface PullToRefreshCaseProps extends BaseProps {
 }
 
 interface PullToRefreshCaseState {
-    items?: Array<any>
+    items?: Array<any>;
 }
 
 export default class PullToRefreshCase extends React.PureComponent<PullToRefreshCaseProps, PullToRefreshCaseState> {
     static defaultProps: PullToRefreshCaseProps = {
-        prefixCls: 'bm-PullToRefreshCase'
+        prefixCls: 'bm-PullToRefreshCase',
     };
 
     constructor(props: PullToRefreshCaseProps) {
@@ -26,64 +26,64 @@ export default class PullToRefreshCase extends React.PureComponent<PullToRefresh
                     text: 'Grid',
                     path: '/gird',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Lists',
                     path: '/lists',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
+                    icon: 'home',
                 }, {
                     text: 'Buttons',
                     path: '/buttons',
                     avatar: 'assets/images/users/1.jpg',
-                    icon: 'home'
-                }
-            ]
+                    icon: 'home',
+                },
+            ],
         };
     }
 
@@ -93,17 +93,17 @@ export default class PullToRefreshCase extends React.PureComponent<PullToRefresh
             text: 'Lists2',
             path: '/lists',
             avatar: 'assets/images/users/1.jpg',
-            icon: 'home'
+            icon: 'home',
         });
         this.setState({items});
         event.done();
-    };
+    }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <Content pullToRefresh={true} onRefresh={this.handleRefresh} className={styleClass}>

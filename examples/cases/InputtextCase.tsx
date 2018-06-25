@@ -4,7 +4,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Inputtext from '../../src/components/Inputtext';
 import Icon from '../../src/components/Icon';
 import Textarea from '../../src/components/Textarea';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface InputtextCaseProps extends BaseProps {
 }
@@ -14,7 +14,7 @@ export default class InputtextCase extends React.PureComponent<InputtextCaseProp
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'InputtextCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

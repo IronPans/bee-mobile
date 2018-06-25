@@ -9,7 +9,7 @@ interface InfiniteScrollApiProps extends BaseProps {
 
 export default class InfiniteScrollApi extends React.PureComponent<InfiniteScrollApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-InfiniteScrollApi"
+        prefixCls: 'bm-InfiniteScrollApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Avatar from '../../src/components/Avatar';
 import Icon from '../../src/components/Icon';
 import List, {ListItem, ListItemText, ListItemAction} from '../../src/components/List';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface InfiniteScrollCaseProps extends BaseProps {
 }
@@ -150,45 +150,50 @@ export default class InfiniteScrollCase extends React.Component<InfiniteScrollCa
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Content',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'infiniteScroll',
-                'desc': '开启无限滚动',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'infiniteScroll',
+                desc: '开启无限滚动',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onInfinite',
-                'desc': '触发刷新的回调函数。传入一个Content作为参数，每次加载数据后，都需要手动触发一次done()方法',
-                'type': '(target): void',
-                'default': '-'
-            }]
+                attr: 'onInfinite',
+                desc: '触发刷新的回调函数。传入一个Content作为参数，每次加载数据后，都需要手动触发一次done()方法',
+                type: '(target): void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Content 无限滚动" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/infiniteScroll"
-                          description="无限滚动允许加载额外的内容或在页面滚动接近底部时执行任何其他所需的操作。"/>
+                <PageView
+                    title="Content 无限滚动"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/infiniteScroll"
+                    description="无限滚动允许加载额外的内容或在页面滚动接近底部时执行任何其他所需的操作。"
+                />
             </Content>
         );
     }

@@ -9,7 +9,7 @@ interface PanelApiProps extends BaseProps {
 
 export default class PanelApi extends React.PureComponent<PanelApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-PanelApi"
+        prefixCls: 'bm-PanelApi',
     };
 
     getCode() {
@@ -54,40 +54,45 @@ export default class ActionSheetCase extends React.PureComponent< ActionSheetCas
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'count',
-                'desc': '展示的数字值',
-                'type': 'number',
-                'default': '-'
-            }]
+                attr: 'count',
+                desc: '展示的数字值',
+                type: 'number',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Accordion 折叠面板" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/panel"
-                          description="折叠面板能有效地节省页面的可视面积。"/>
+                <PageView
+                    title="Accordion 折叠面板"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/panel"
+                    description="折叠面板能有效地节省页面的可视面积。"
+                />
             </Content>
         );
     }

@@ -11,7 +11,7 @@ const Device = (function Device() {
         iphoneX: false,
         ipod: false,
         ipad: false,
-        statusbar: ''
+        statusbar: '',
     };
 
     const windows = ua.match(/(Windows Phone);?[\s\/]+([\d.]+)?/); // eslint-disable-line

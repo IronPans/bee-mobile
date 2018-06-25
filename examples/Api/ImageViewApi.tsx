@@ -9,7 +9,7 @@ interface ImageViewApiProps extends BaseProps {
 
 export default class ImageViewApi extends React.PureComponent<ImageViewApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-ImageViewApi"
+        prefixCls: 'bm-ImageViewApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import ImageView from '../components/ImageView';
 import Button from '../components/Button';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface ImageViewCaseProps extends BaseProps {
 }
@@ -80,45 +80,50 @@ export default class ImageViewCase extends React.PureComponent< ImageViewCasePro
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'ImageView',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'target',
-                'desc': '设置需要获取图片的容器',
-                'type': 'React.ReactNode',
-                'default': 'document.body'
+                attr: 'target',
+                desc: '设置需要获取图片的容器',
+                type: 'React.ReactNode',
+                default: 'document.body',
             }, {
-                'attr': 'visible',
-                'desc': '是否显示',
-                'type': 'Boolean',
-                'default': 'false'
-            }]
+                attr: 'visible',
+                desc: '是否显示',
+                type: 'Boolean',
+                default: 'false',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="ImageView 图片浏览器" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/imageView"
-                          description="可自动获取一个容器里的所有图片来浏览。"/>
+                <PageView
+                    title="ImageView 图片浏览器"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/imageView"
+                    description="可自动获取一个容器里的所有图片来浏览。"
+                />
             </Content>
         );
     }

@@ -12,7 +12,7 @@ export default class HighlightCodeCase extends React.PureComponent<HighlightCode
         const {className} = this.props;
         const styleClass = classNames(
             'HighlightCodeCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>

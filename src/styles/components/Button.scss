@@ -49,6 +49,11 @@ button {
     position: absolute;
   }
 
+ &:hover {
+    text-decoration: none;
+    opacity: .8;
+  }
+
   &[type="button"] {
     appearance: none;
   }

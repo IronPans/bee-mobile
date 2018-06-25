@@ -1,0 +1,89 @@
+.bm-Alert {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  border-radius: 4px;
+
+  .bm-Alert-title {
+    font-size: 14px;
+    display: block;
+    color: rgba(0,0,0,.85);
+  }
+
+  .bm-Alert-desc {
+    display: block;
+    font-size: 12px;
+    color: rgba(0,0,0,.65);
+  }
+
+  .bm-Alert-icon {
+    font-size: 14px;
+    padding-right: 10px;
+    font-style: normal;
+  }
+
+  .bm-Alert-with-desc {
+    padding: 16px;
+  }
+
+  &.bm-Alert-with-close {
+    padding-right: 48px;
+  }
+
+  .bm-Alert-close {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    overflow: hidden;
+    cursor: pointer;
+    font-style: normal;
+
+    .bm-Icon {
+      font-size: 12px;
+    }
+  }
+
+  &.bm-Alert-with-icon.bm-Alert-with-desc {
+    .bm-Alert-icon {
+      font-size: 28px;
+      padding-right: 16px;
+    }
+  }
+
+  &.bm-Alert-success {
+    border: 1px solid #d1f2e1;
+    background-color: #e8f9f0;
+
+    .bm-Alert-icon {
+      color: #19be6b
+    }
+  }
+
+  &.bm-Alert-info {
+    border: 1px solid #d5e8fc;
+    background-color: #eaf4fe;
+
+    .bm-Alert-icon {
+      color: #2d8cf0
+    }
+  }
+
+  &.bm-Alert-warning {
+    border: 1px solid #ffebcc;
+    background-color: #fff5e6;
+
+    .bm-Alert-icon {
+      color: #f90
+    }
+  }
+
+  &.bm-Alert-error {
+    border: 1px solid #fbd9d0;
+    background-color: #fdece8;
+
+    .bm-Alert-icon {
+      color: #ed3f14
+    }
+  }
+}

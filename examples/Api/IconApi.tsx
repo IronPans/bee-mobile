@@ -9,7 +9,7 @@ interface IconApiProps extends BaseProps {
 
 export default class IconApi extends React.PureComponent<IconApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-IconApi"
+        prefixCls: 'bm-IconApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class IconApi extends React.PureComponent<IconApiProps, {}> {
 import * as classNames from 'classnames';
 import Icon from '../components/Icon';
 import {BaseProps} from '../components/common/BaseProps';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 import {ICONS} from './common/icons';
 
 interface IconCaseProps extends BaseProps {}
@@ -70,55 +70,60 @@ export default class IconCase extends React.PureComponent< IconCaseProps, IconCa
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Icon',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'icon',
-                'desc': '图标',
-                'type': 'String',
-                'default': '-'
+                attr: 'icon',
+                desc: '图标',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'rotate',
-                'desc': '设置旋转值。可选值：rotate-90 | rotate-180 | rotate-270 | flip-horizontal | flip-vertical',
-                'type': 'String',
-                'default': '-'
+                attr: 'rotate',
+                desc: '设置旋转值。可选值：rotate-90 | rotate-180 | rotate-270 | flip-horizontal | flip-vertical',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'spin',
-                'desc': '设置loading',
-                'type': 'Boolean',
-                'default': '-'
+                attr: 'spin',
+                desc: '设置loading',
+                type: 'Boolean',
+                default: '-',
             }, {
-                'attr': 'size',
-                'desc': '设置尺寸。可选值：lg | 1x | 2x | 3x | 4x | 5x',
-                'type': 'String',
-                'default': '-'
-            }]
+                attr: 'size',
+                desc: '设置尺寸。可选值：lg | 1x | 2x | 3x | 4x | 5x',
+                type: 'String',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Icon 图标" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/icon"
-                          description={(<span>语义化的矢量图形。依赖<code className='code-inline'>Material Icon</code>图标库。</span>)}/>
+                <PageView
+                    title="Icon 图标"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/icon"
+                    description={(<span>语义化的矢量图形。依赖<code className="code-inline">Material Icon</code>图标库。</span>)}
+                />
             </Content>
         );
     }

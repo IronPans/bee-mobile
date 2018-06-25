@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Pagination from '../../src/components/Pagination';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface PaginationCaseProps extends BaseProps {
 }
@@ -12,7 +12,7 @@ export default class PaginationCase extends React.PureComponent<PaginationCasePr
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'PaginationCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

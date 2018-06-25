@@ -2,37 +2,39 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Radio from '../../src/components/Radio';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
-interface Props extends BaseProps {}
+interface Props extends BaseProps {
+}
 
 export default class RadioCase extends React.PureComponent<Props, {}> {
     state = {
-        value: ''
+        value: '',
     };
     radios = [
         {
             value: 'Movie',
-            label: 'Movie'
+            label: 'Movie',
         }, {
             value: 'Food',
-            label: 'Food'
+            label: 'Food',
         }, {
             value: 'Game',
-            label: 'Game'
-        }
+            label: 'Game',
+        },
     ];
 
     handleChange = (value: any) => {
         this.setState({
-            value
+            value,
         });
-    };
+    }
+
     render() {
         const {className} = this.props;
         const styleClass = classNames(
             'RadioCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>
@@ -40,8 +42,13 @@ export default class RadioCase extends React.PureComponent<Props, {}> {
                     {
                         this.radios.map((radio, i) => {
                             return (
-                                <Radio key={i} name="love" value={radio.value} checked={radio.value === this.state.value}
-                                       onChange={this.handleChange.bind(this)}>
+                                <Radio
+                                    key={i}
+                                    name="love"
+                                    value={radio.value}
+                                    checked={radio.value === this.state.value}
+                                    onChange={this.handleChange}
+                                >
                                     {radio.label}
                                 </Radio>
                             );

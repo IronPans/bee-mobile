@@ -9,7 +9,7 @@ interface CardApiProps extends BaseProps {
 
 export default class CardApi extends React.PureComponent<CardApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-CardApi"
+        prefixCls: 'bm-CardApi',
     };
 
     getCode() {
@@ -20,7 +20,7 @@ import Card, { CardHeader, CardContent, CardFooter } from '../components/Card';
 import Avatar from '../components/Avatar';
 import Icon from '../components/Icon';
 import Button from '../components/Button';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface CardCaseProps extends BaseProps {
 }
@@ -120,73 +120,78 @@ export default class CardCase extends React.PureComponent< CardCaseProps, any> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Card',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'dir',
-                'desc': '卡片的排列方向。可选值：horizontal | vertical',
-                'type': 'String',
-                'default': 'vertical'
-            }]
+                attr: 'dir',
+                desc: '卡片的排列方向。可选值：horizontal | vertical',
+                type: 'String',
+                default: 'vertical',
+            }],
         }, {
             name: 'CardHeader',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'avatar',
-                'desc': '头像',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'avatar',
+                desc: '头像',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'action',
-                'desc': '右侧辅助按钮',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'action',
+                desc: '右侧辅助按钮',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'title',
-                'desc': '标题' ,
-                'type': 'React.ReactNode | String',
-                'default': '-'
+                attr: 'title',
+                desc: '标题' ,
+                type: 'React.ReactNode | String',
+                default: '-',
             }, {
-                'attr': 'subTitle',
-                'desc': '子标题',
-                'type': 'React.ReactNode | String',
-                'default': '-'
-            }]
+                attr: 'subTitle',
+                desc: '子标题',
+                type: 'React.ReactNode | String',
+                default: '-',
+            }],
         }, {
             name: 'CardFooter',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'action',
-                'desc': '当需要为页面添加额外按钮时',
-                'type': 'Boolean',
-                'default': 'false'
-            }]
+                attr: 'action',
+                desc: '当需要为页面添加额外按钮时',
+                type: 'Boolean',
+                default: 'false',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Card 卡片" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/card"
-                          description="卡片。"/>
+                <PageView
+                    title="Card 卡片"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/card"
+                    description="卡片。"
+                />
                 <div className="padding-left-20 padding-right-20">
                     <h3>CardContent</h3>
                     <p>主体内容</p>

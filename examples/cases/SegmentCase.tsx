@@ -9,13 +9,13 @@ interface SegmentCaseProps extends BaseProps {
 
 export default class SegmentCase extends React.PureComponent<SegmentCaseProps, {}> {
     static defaultProps = {
-        prefixCls: 'bm-SegmentCase'
+        prefixCls: 'bm-SegmentCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <Content className={styleClass}>

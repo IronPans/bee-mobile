@@ -10,7 +10,7 @@ interface PortalCaseState {
 
 export default class PortalCase extends React.Component<PortalCaseProps, PortalCaseState> {
     static defaultProps: PortalCaseProps = {
-        prefixCls: 'rf-PortalCase'
+        prefixCls: 'rf-PortalCase',
     };
 
     constructor(props: PortalCaseProps) {
@@ -21,7 +21,7 @@ export default class PortalCase extends React.Component<PortalCaseProps, PortalC
         const {children, className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass}>

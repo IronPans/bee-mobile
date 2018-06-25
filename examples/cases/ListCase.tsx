@@ -5,7 +5,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Avatar from '../../src/components/Avatar';
 import Icon from '../../src/components/Icon';
 import Switch from '../../src/components/Switch';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface ListCaseProps extends BaseProps {}
 
@@ -14,27 +14,27 @@ export default class ListCase extends React.PureComponent<ListCaseProps, {}> {
         const {className} = this.props;
         const styleClass = classNames(
             'ListCase',
-            className
+            className,
         );
         const menus = [
             {
                 text: 'Grid',
                 path: '/gird',
                 avatar: 'assets/images/users/1.jpg',
-                icon: 'home'
+                icon: 'home',
             },
             {
                 text: 'Buttons',
                 path: '/buttons',
                 avatar: 'assets/images/users/1.jpg',
-                icon: 'home'
+                icon: 'home',
             },
             {
                 text: 'Lists',
                 path: '/lists',
                 avatar: 'assets/images/users/1.jpg',
-                icon: 'home'
-            }
+                icon: 'home',
+            },
         ];
         return (
             <Content className={styleClass}>

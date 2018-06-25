@@ -10,6 +10,7 @@ import Calendar from './Calendar';
 import Card, {CardHeader, CardContent, CardFooter} from './Card';
 import Checkbox from './Checkbox';
 import Chip, {ChipGroup} from './Chip';
+import Dropdown from './Dropdown';
 import Row, {Col} from './Grid';
 import HighlightCode from './HighlightCode';
 import FabButton from './FabButton';
@@ -53,9 +54,9 @@ import Tabs, {Tab, TabContainer, TabsGroup} from './Tabs';
 import Textarea from './Textarea';
 import Timeline, {TimelineItem} from './Timeline';
 import Toast from './Toast';
-import View from "./View";
-import Tree, {TreeNode} from "./Tree";
-import Tooltip from "./Tooltip";
+import View from './View';
+import Tree, {TreeNode} from './Tree';
+import Tooltip from './Tooltip';
 import {Collapse, Fade, FadeInDown, FadeInUp, FadeInZoom,
     MotionGroup, TransitionGroup, ZoomIn} from './Transitions';
 
@@ -80,6 +81,7 @@ export {Chip};
 export {ChipGroup};
 export {Row};
 export {Col};
+export {Dropdown};
 export {HighlightCode};
 export {FabButton};
 export {Icon};
@@ -178,6 +180,8 @@ export default ({
     Row,
     Col,
 
+    Dropdown,
+
     HighlightCode,
     FabButton,
     Icon,
@@ -262,5 +266,5 @@ export default ({
     TransitionGroup,
     ZoomIn,
 
-    View
+    View,
 } as any);

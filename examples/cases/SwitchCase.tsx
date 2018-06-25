@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Switch from '../../src/components/Switch';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface Props extends BaseProps {}
 
@@ -11,7 +11,7 @@ export default class SwitchCase extends React.PureComponent<Props, {}> {
         const {className} = this.props;
         const styleClass = classNames(
             'SwitchCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass}>

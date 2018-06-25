@@ -6,8 +6,8 @@ import MotionGroup from './MotionGroup';
 
 export interface FadeProps extends BaseProps {
     in?: boolean;
-    onEnter?: Function;
-    onLeave?: Function;
+    onEnter?: () => void;
+    onLeave?: () => void;
 }
 
 export default class Fade extends React.PureComponent<FadeProps, {}> {
@@ -18,15 +18,15 @@ export default class Fade extends React.PureComponent<FadeProps, {}> {
         leaveStyles: {
             opacity: spring(0, {
                 stiffness: 170,
-                damping: 26
+                damping: 26,
             }),
         },
         activeStyles: {
             opacity: spring(1, {
                 stiffness: 170,
-                damping: 26
+                damping: 26,
             }),
-        }
+        },
     };
 
     componentDidMount() {
@@ -39,11 +39,15 @@ export default class Fade extends React.PureComponent<FadeProps, {}> {
         const {className, children, in: inProp, onEnter, onLeave, ...other}: any = this.props;
         const styleClass = classNames(
             'bm-Fade',
-            className
+            className,
         );
         return (
-            <MotionGroup in={inProp} onEnter={onEnter} onLeave={onLeave}
-                         {...this.fadeTransitions}>
+            <MotionGroup
+                in={inProp}
+                onEnter={onEnter}
+                onLeave={onLeave}
+                {...this.fadeTransitions}
+            >
                 {({opacity}: any) => {
                     return (<div className={styleClass} {...other} style={{opacity: opacity}}>
                         {children}

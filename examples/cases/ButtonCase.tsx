@@ -1,12 +1,12 @@
 import * as React from 'react';
 import Button, { ButtonGroup } from '../../src/components/Button';
 import Icon from '../../src/components/Icon';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 export default class ButtonCase extends React.PureComponent {
     render() {
         return (
-            <Content className="ButtonCase">
+            <Content className="ButtonCase ">
                 <div className="CasePanel">
                     <Button>Default</Button>
                     <Button theme="primary">Primary</Button>

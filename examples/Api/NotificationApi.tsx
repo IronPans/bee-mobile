@@ -9,7 +9,7 @@ interface NotificationApiProps extends BaseProps {
 
 export default class NotificationApi extends React.PureComponent<NotificationApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-NotificationApi"
+        prefixCls: 'bm-NotificationApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import {BaseProps} from '../components/common/BaseProps';
 import Notification from '../components/Notification';
 import Button from '../components/Button';
 import Avatar from '../components/Avatar';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface NotificationCaseProps extends BaseProps {
 }
@@ -54,65 +54,70 @@ export default class NotificationCase extends React.PureComponent< NotificationC
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Notification',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'avatar',
-                'desc': '设置额外信息',
-                'type': 'React.ReactNode',
-                'default': '-'
+                attr: 'avatar',
+                desc: '设置额外信息',
+                type: 'React.ReactNode',
+                default: '-',
             }, {
-                'attr': 'delay',
-                'desc': '自动消失的延迟时间。若为0则不会自动消失',
-                'type': 'Number',
-                'default': '2500'
+                attr: 'delay',
+                desc: '自动消失的延迟时间。若为0则不会自动消失',
+                type: 'Number',
+                default: '2500',
             }, {
-                'attr': 'message',
-                'desc': '文字描述',
-                'type': 'React.ReactNode | string',
-                'default': '-'
+                attr: 'message',
+                desc: '文字描述',
+                type: 'React.ReactNode | string',
+                default: '-',
             }, {
-                'attr': 'position',
-                'desc': '设置位置。可选值： top | bottom',
-                'type': 'String',
-                'default': 'top'
+                attr: 'position',
+                desc: '设置位置。可选值： top | bottom',
+                type: 'String',
+                default: 'top',
             }, {
-                'attr': 'type',
-                'desc': '设置主题。可选值：default | info | success | warning | error',
-                'type': 'String',
-                'default': '-'
+                attr: 'type',
+                desc: '设置主题。可选值：default | info | success | warning | error',
+                type: 'String',
+                default: '-',
             }, {
-                'attr': 'onClose',
-                'desc': '关闭的回调',
-                'type': 'Function',
-                'default': '-'
-            }]
+                attr: 'onClose',
+                desc: '关闭的回调',
+                type: 'Function',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Notification 消息提醒框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/notification"
-                          description="消息提醒框。"/>
+                <PageView
+                    title="Notification 消息提醒框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/notification"
+                    description="消息提醒框。"
+                />
             </Content>
         );
     }

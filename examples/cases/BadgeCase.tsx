@@ -4,7 +4,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Badge from '../../src/components/Badge';
 import Icon from '../../src/components/Icon';
 import Button from '../../src/components/Button';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface BadgeCaseProps extends BaseProps {
 }
@@ -14,7 +14,7 @@ export default class BadgeCase extends React.PureComponent<BadgeCaseProps, {}> {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'BadgeCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

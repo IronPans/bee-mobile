@@ -7,10 +7,10 @@ export interface MotionGroupProps extends BaseProps {
     enterStyles?: PlainStyle;
     leaveStyles?: object;
     activeStyles?: object;
-    children?: Function;
-    styles?: Function;
-    onEnter?: Function;
-    onLeave?: Function;
+    children?: () => void;
+    styles?: () => void;
+    onEnter?: (style: any) => void;
+    onLeave?: (style: any) => void;
 }
 
 export default class MotionGroup extends React.PureComponent<MotionGroupProps, any> {
@@ -43,22 +43,25 @@ export default class MotionGroup extends React.PureComponent<MotionGroupProps, a
                 this.props.onLeave(inProps);
             }
         }
-    };
+    }
 
     renderElement = (style: any = {}) => {
         const styles: any = this.props.styles;
         const props = {
-            style: styles(style)!
+            style: styles(style)!,
         };
         return React.cloneElement(<div className="bm-MotionGroup">{this.props.children}</div>, props);
-    };
+    }
 
     render() {
         const {children: childrenProps} = this.props;
         const children: any = childrenProps!;
         return (
-            <Motion defaultStyle={this.getDefaultStyles() as any} onRest={this.onRest}
-                    style={this.getStyles() as any}>
+            <Motion
+                defaultStyle={this.getDefaultStyles() as any}
+                onRest={this.onRest}
+                style={this.getStyles() as any}
+            >
                 {style => {
                     return (typeof children === 'function' ?
                         children(style) : this.renderElement(style));

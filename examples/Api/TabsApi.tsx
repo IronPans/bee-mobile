@@ -9,7 +9,7 @@ interface TabsApiProps extends BaseProps {
 
 export default class TabsApi extends React.PureComponent<TabsApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-TabsApi"
+        prefixCls: 'bm-TabsApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import Tabs, {Tab, TabContainer, TabsGroup} from '../components/Tabs';
 import {BaseProps} from '../components/common/BaseProps';
 import Swiper from '../components/Swiper';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface Props extends BaseProps {
 }
@@ -133,60 +133,65 @@ export default class TabsCase extends React.PureComponent< Props, State> {
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'TabsGroup',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'activeIndex',
-                'desc': '当前激活 tab 面板的 index',
-                'type': 'Number',
-                'default': '0'
+                attr: 'activeIndex',
+                desc: '当前激活 tab 面板的 index',
+                type: 'Number',
+                default: '0',
             }, {
-                'attr': 'centerMode',
-                'desc': '展示的数字值',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'centerMode',
+                desc: '展示的数字值',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'scrollable',
-                'desc': '是否开启滚动',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'scrollable',
+                desc: '是否开启滚动',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'position',
-                'desc': '页签位置，可选值有 top right bottom left',
-                'type': 'String',
-                'default': 'top'
+                attr: 'position',
+                desc: '页签位置，可选值有 top right bottom left',
+                type: 'String',
+                default: 'top',
             }, {
-                'attr': 'onChange',
-                'desc': 'tab变化时触发',
-                'type': '(index: any, event: any) => {}',
-                'default': '-'
-            }]
+                attr: 'onChange',
+                desc: 'tab变化时触发',
+                type: '(index: any, event: any) => {}',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Tabs 标签页" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/tabs"
-                          description="用于让用户在不同的视图中进行切换。"/>
+                <PageView
+                    title="Tabs 标签页"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/tabs"
+                    description="用于让用户在不同的视图中进行切换。"
+                />
                 <div className="padding-left-20 padding-right-20">
                     <h3>Tabs</h3>
                     <p>Tab标签组</p>

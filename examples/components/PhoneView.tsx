@@ -9,13 +9,13 @@ interface PhoneViewProps extends BaseProps {
 
 export default class PhoneView extends React.PureComponent<PhoneViewProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-PhoneView"
+        prefixCls: 'bm-PhoneView',
     };
 
     render() {
         const {className, frameUrl, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <div className={styleClass}>
@@ -27,11 +27,9 @@ export default class PhoneView extends React.PureComponent<PhoneViewProps, {}> {
                     </div>
                 </div>
                 <div className="device-container">
-                    <iframe src={frameUrl} frameBorder="0" width='318' height="502"/>
+                    <iframe src={frameUrl} frameBorder="0" width="318" height="502"/>
                 </div>
-                <div className="device-footer">
-
-                </div>
+                <div className="device-footer"/>
             </div>
         );
     }

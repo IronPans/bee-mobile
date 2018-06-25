@@ -10,7 +10,7 @@ interface RouteCaseState {
 
 export default class RouteCase extends React.Component<RouteCaseProps, RouteCaseState> {
     static defaultProps: RouteCaseProps = {
-        prefixCls: 'rf-RouteCase'
+        prefixCls: 'rf-RouteCase',
     };
 
     constructor(props: RouteCaseProps) {
@@ -21,7 +21,7 @@ export default class RouteCase extends React.Component<RouteCaseProps, RouteCase
         const {children, className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass}>

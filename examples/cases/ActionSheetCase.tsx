@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import ActionSheet from '../../src/components/ActionSheet'
+import ActionSheet from '../../src/components/ActionSheet';
 import {Content} from '../../src/components/Page';
 import Button from '../../src/components/Button';
 
@@ -14,20 +14,20 @@ export default class ActionSheetCase extends React.PureComponent<ActionSheetCase
         ActionSheet.show({
             buttons: [
                 {
-                    text: '拍照'
+                    text: '拍照',
                 }, {
-                    text: '从相册中选择'
-                }
+                    text: '从相册中选择',
+                },
             ],
             cancel: true,
-            title: 'Message'
-        })
-    };
+            title: 'Message',
+        });
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
-            'ActionSheetCase', className
+            'ActionSheetCase', className,
         );
         return (
             <Content className={styleClass}>

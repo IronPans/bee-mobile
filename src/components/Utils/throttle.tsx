@@ -1,2 +1,3 @@
-import throttle from 'lodash.throttle'
-export default throttle
+import throttle from 'lodash.throttle';
+export default throttle;
+

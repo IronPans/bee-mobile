@@ -9,7 +9,7 @@ interface InputnumberApiProps extends BaseProps {
 
 export default class InputnumberApi extends React.PureComponent<InputnumberApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-InputnumberApi"
+        prefixCls: 'bm-InputnumberApi',
     };
 
     getCode() {
@@ -17,7 +17,7 @@ export default class InputnumberApi extends React.PureComponent<InputnumberApiPr
 import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import InputNumber from '../components/InputNumber';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 
 interface InputNumberCaseProps extends BaseProps {
 }
@@ -62,70 +62,75 @@ export default class InputNumberCase extends React.PureComponent< InputNumberCas
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Calendar',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'defaultValue',
-                'desc': '初始值',
-                'type': 'Number',
-                'default': '-'
+                attr: 'defaultValue',
+                desc: '初始值',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'min',
-                'desc': '最小值',
-                'type': 'Number',
-                'default': 'Infinity'
+                attr: 'min',
+                desc: '最小值',
+                type: 'Number',
+                default: 'Infinity',
             }, {
-                'attr': 'max',
-                'desc': '最大值',
-                'type': 'Number',
-                'default': 'Infinity'
+                attr: 'max',
+                desc: '最大值',
+                type: 'Number',
+                default: 'Infinity',
             }, {
-                'attr': 'step',
-                'desc': '步长，可以为小数',
-                'type': 'Number',
-                'default': '1'
+                attr: 'step',
+                desc: '步长，可以为小数',
+                type: 'Number',
+                default: '1',
             }, {
-                'attr': 'type',
-                'desc': '类型，可选为2',
-                'type': 'Number',
-                'default': '-'
+                attr: 'type',
+                desc: '类型，可选为2',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'value',
-                'desc': '当前值',
-                'type': 'Number',
-                'default': '-'
+                attr: 'value',
+                desc: '当前值',
+                type: 'Number',
+                default: '-',
             }, {
-                'attr': 'onChange',
-                'desc': '变化回调',
-                'type': '(index: number) => void',
-                'default': '-'
-            }]
+                attr: 'onChange',
+                desc: '变化回调',
+                type: '(index: number) => void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="InputNumber 数字输入框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/inputnumber"
-                          description="通过键盘，输入范围内的数值。"/>
+                <PageView
+                    title="InputNumber 数字输入框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/inputnumber"
+                    description="通过键盘，输入范围内的数值。"
+                />
             </Content>
         );
     }

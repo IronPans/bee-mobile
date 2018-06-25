@@ -1,22 +1,22 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
-import IndexList, {IndexSection} from "../../src/components/IndexList";
+import {Content} from '../../src/components/Page';
+import IndexList, {IndexSection} from '../../src/components/IndexList';
 
 interface IndexListCaseProps extends BaseProps {
 }
 
 export default class IndexListCase extends React.Component<IndexListCaseProps, any> {
     static defaultProps: IndexListCaseProps = {
-        prefixCls: 'bm-IndexListCase'
+        prefixCls: 'bm-IndexListCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <Content className={styleClass}>

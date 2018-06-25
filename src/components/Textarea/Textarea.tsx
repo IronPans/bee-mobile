@@ -7,7 +7,7 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
         disabled: false,
         inline: false,
         prefixCls: 'bm-Textarea',
-        size: 'sm'
+        size: 'sm',
     };
 
     constructor(props: TextareaProps) {
@@ -15,14 +15,14 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
         this.state = {
             value: props.defaultValue || '',
             length: props.maxLength,
-            focus: false
+            focus: false,
         };
     }
 
     componentWillReceiveProps(nextProps: TextareaProps) {
         if ('value' in nextProps && this.props.value !== nextProps.value) {
             this.setState({
-                value: nextProps.value!
+                value: nextProps.value!,
             });
         }
     }
@@ -31,35 +31,35 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
         const value: any = event.target.value;
         const {onChange}: any = this.props;
         this.setState({
-            value
+            value,
         });
         if (onChange) {
             onChange(value, event);
         }
-    };
+    }
 
     handleFocus = (event: any) => {
         this.setState({
-            focus: true
+            focus: true,
         });
         if (this.props.onFocus) {
             this.props.onFocus(event);
         }
-    };
+    }
 
     handleBlur = (event: any) => {
         this.setState({
-            focus: false
+            focus: false,
         });
         if (this.props.onBlur) {
             this.props.onBlur(event);
         }
-    };
+    }
 
     render() {
         const {
             autoFocus, animated, className, disabled, id, inline,  maxHeight,
-            label, prefixCls, placeholder, readOnly, rows, size
+            label, prefixCls, placeholder, readOnly, rows, size,
         } = this.props;
         const {focus, length, value} = this.state;
         const styleClass = classNames(
@@ -68,23 +68,31 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
                 [`${prefixCls}-inner`]: inline,
                 [`${prefixCls}-animated`]: animated,
                 [`${prefixCls}-focus`]: focus!,
-                [`${prefixCls}-noEmpty`]: value.trim() !== ''
+                [`${prefixCls}-noEmpty`]: value.trim() !== '',
             },
-            `${prefixCls + '-' + size}`,
-            className
+            `${prefixCls}-${size}`,
+            className,
         );
         const styles = {
-            maxHeight
+            maxHeight,
         };
         return (
             <div className={styleClass} style={styles}>
                 <label htmlFor={id}>
                     {label ? (<div className={`${prefixCls}-label`}>{label}</div>) : null}
                     <div className={`${prefixCls}-field`}>
-                        <textarea autoFocus={autoFocus} rows={rows} id={id} value={value!}
-                                  placeholder={placeholder} disabled={disabled} readOnly={readOnly}
-                                  onChange={this.handleChange} onFocus={this.handleFocus}
-                                  onBlur={this.handleBlur}/>
+                        <textarea
+                            autoFocus={autoFocus}
+                            rows={rows}
+                            id={id}
+                            value={value!}
+                            placeholder={placeholder}
+                            disabled={disabled}
+                            readOnly={readOnly}
+                            onChange={this.handleChange}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                        />
                         <span className={`${prefixCls}-indicator`}>{length}</span>
                     </div>
                 </label>

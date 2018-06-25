@@ -2,8 +2,8 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import {Content} from '../../src/components/Page';
-import HighlightCode from "../../src/components/HighlightCode";
-import {Collapse, Fade, MoveInRight, ZoomIn} from "../../src/components/Transitions";
+import HighlightCode from '../../src/components/HighlightCode';
+import {Collapse, Fade, MoveInRight, ZoomIn} from '../../src/components/Transitions';
 import Table, {TableColumn} from '../../src/components/Table';
 
 interface TransitionApiProps extends BaseProps {
@@ -18,89 +18,89 @@ interface TransitionApiState {
 
 export default class TransitionApi extends React.PureComponent<TransitionApiProps, TransitionApiState> {
     static defaultProps = {
-        prefixCls: "bm-TransitionApi"
+        prefixCls: 'bm-TransitionApi',
     };
 
     state: TransitionApiState = {
         collapse: true,
         fade: true,
         moveInRight: true,
-        zoomIn: true
+        zoomIn: true,
     };
 
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const attributes: any = [{
-            'attr': 'in',
-            'desc': '是否显示',
-            'type': 'Boolean',
-            'default': 'false'
+            attr: 'in',
+            desc: '是否显示',
+            type: 'Boolean',
+            default: 'false',
         }, {
-            'attr': 'onEnter',
-            'desc': '动画显示时触发的回调函数',
-            'type': 'Function',
-            'default': '-'
+            attr: 'onEnter',
+            desc: '动画显示时触发的回调函数',
+            type: 'Function',
+            default: '-',
         }, {
-            'attr': 'onLeave',
-            'desc': '动画隐藏时触发的回调函数',
-            'type': 'Function',
-            'default': '-'
+            attr: 'onLeave',
+            desc: '动画隐藏时触发的回调函数',
+            type: 'Function',
+            default: '-',
         }];
         const customAttributes: any = [{
-            'attr': 'in',
-            'desc': '是否显示',
-            'type': 'Boolean',
-            'default': 'false'
+            attr: 'in',
+            desc: '是否显示',
+            type: 'Boolean',
+            default: 'false',
         }, {
-            'attr': 'activeStyles',
-            'desc': '进入时的动画属性',
-            'type': 'Object',
-            'default': '-'
+            attr: 'activeStyles',
+            desc: '进入时的动画属性',
+            type: 'Object',
+            default: '-',
         }, {
-            'attr': 'enterStyles',
-            'desc': '进入前的动画属性',
-            'type': 'Object',
-            'default': '-'
+            attr: 'enterStyles',
+            desc: '进入前的动画属性',
+            type: 'Object',
+            default: '-',
         }, {
-            'attr': 'leaveStyles',
-            'desc': '离开后的动画属性',
-            'type': 'Object',
-            'default': '-'
+            attr: 'leaveStyles',
+            desc: '离开后的动画属性',
+            type: 'Object',
+            default: '-',
         }, {
-            'attr': 'children',
-            'desc': '必须为函数。会传入一个当前样式对象作为参数，且必须返回一个React Element。',
-            'type': '(style: Object) => ReactElement',
-            'default': '-'
+            attr: 'children',
+            desc: '必须为函数。会传入一个当前样式对象作为参数，且必须返回一个React Element。',
+            type: '(style: Object) => ReactElement',
+            default: '-',
         }, {
-            'attr': 'onEnter',
-            'desc': '动画显示时触发的回调函数',
-            'type': 'Function',
-            'default': '-'
+            attr: 'onEnter',
+            desc: '动画显示时触发的回调函数',
+            type: 'Function',
+            default: '-',
         }, {
-            'attr': 'onLeave',
-            'desc': '动画隐藏时触发的回调函数',
-            'type': 'Function',
-            'default': '-'
+            attr: 'onLeave',
+            desc: '动画隐藏时触发的回调函数',
+            type: 'Function',
+            default: '-',
         }];
         const code = `< Fade/> <FadeInDown/> <FadeInUp/> <Collapse/> <MoveInRight/> <ZoomIn/>`;
         const fields: any = this.getFields();
@@ -108,7 +108,7 @@ export default class TransitionApi extends React.PureComponent<TransitionApiProp
 import * as classNames from 'classnames';
 import {BaseProps} from '../../components/common/BaseProps';
 import {Content} from '../../components/Page';
-import {Fade} from "../../components/Transitions";
+import {Fade} from '../../components/Transitions';
 
 interface TransitionApiProps extends BaseProps {
 }
@@ -119,7 +119,7 @@ interface TransitionApiState {
 
 export default class TransitionApi extends React.PureComponent< TransitionApiProps, TransitionApiState> {
     static defaultProps = {
-        prefixCls: "bm-TransitionApi"
+        prefixCls: 'bm-TransitionApi'
     };
 
     state: TransitionApiState = {
@@ -153,7 +153,7 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
 import * as classNames from 'classnames';
 import {BaseProps} from '../../components/common/BaseProps';
 import {Content} from '../../components/Page';
-import {ZoomIn} from "../../components/Transitions";
+import {ZoomIn} from '../../components/Transitions';
 
 interface TransitionApiProps extends BaseProps {
 }
@@ -164,7 +164,7 @@ interface TransitionApiState {
 
 export default class TransitionApi extends React.PureComponent< TransitionApiProps, TransitionApiState> {
     static defaultProps = {
-        prefixCls: "bm-TransitionApi"
+        prefixCls: 'bm-TransitionApi'
     };
 
     state: TransitionApiState = {
@@ -199,7 +199,7 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
 import * as classNames from 'classnames';
 import {BaseProps} from '../../components/common/BaseProps';
 import {Content} from '../../components/Page';
-import {ZoomIn} from "../../components/Transitions";
+import {ZoomIn} from '../../components/Transitions';
 
 interface TransitionApiProps extends BaseProps {
 }
@@ -210,7 +210,7 @@ interface TransitionApiState {
 
 export default class TransitionApi extends React.PureComponent< TransitionApiProps, TransitionApiState> {
     static defaultProps = {
-        prefixCls: "bm-TransitionApi"
+        prefixCls: 'bm-TransitionApi'
     };
 
     state: TransitionApiState = {
@@ -245,7 +245,7 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
 import * as classNames from 'classnames';
 import {BaseProps} from '../../components/common/BaseProps';
 import {Content} from '../../components/Page';
-import {ZoomIn} from "../../components/Transitions";
+import {ZoomIn} from '../../components/Transitions';
 
 interface TransitionApiProps extends BaseProps {
 }
@@ -256,7 +256,7 @@ interface TransitionApiState {
 
 export default class TransitionApi extends React.PureComponent< TransitionApiProps, TransitionApiState> {
     static defaultProps = {
-        prefixCls: "bm-TransitionApi"
+        prefixCls: 'bm-TransitionApi'
     };
 
     state: TransitionApiState = {
@@ -300,11 +300,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                                     {fadeCode}
                                 </HighlightCode>
                             </div>
-                            <div className="Col-4" onMouseDown={() => {
-                                this.setState({
-                                    fade: !this.state.fade
-                                })
-                            }}>
+                            <div
+                                className="Col-4"
+                                onMouseDown={() => {
+                                    this.setState({
+                                        fade: !this.state.fade,
+                                    });
+                                }}
+                            >
                                 <Fade in={this.state.fade}>
                                     <div className="anim-box"/>
                                 </Fade>
@@ -320,11 +323,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                                     {zoomInCode}
                                 </HighlightCode>
                             </div>
-                            <div className="Col-4" onMouseDown={() => {
-                                this.setState({
-                                    zoomIn: !this.state.zoomIn
-                                })
-                            }}>
+                            <div
+                                className="Col-4"
+                                onMouseDown={() => {
+                                    this.setState({
+                                        zoomIn: !this.state.zoomIn,
+                                    });
+                                }}
+                            >
                                 <ZoomIn in={this.state.zoomIn}>
                                     <div className="anim-box"/>
                                 </ZoomIn>
@@ -340,11 +346,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                                     {moveInCode}
                                 </HighlightCode>
                             </div>
-                            <div className="Col-4" onMouseDown={() => {
-                                this.setState({
-                                    moveInRight: !this.state.moveInRight
-                                })
-                            }}>
+                            <div
+                                className="Col-4"
+                                onMouseDown={() => {
+                                    this.setState({
+                                        moveInRight: !this.state.moveInRight,
+                                    });
+                                }}
+                            >
                                 <MoveInRight in={this.state.moveInRight}>
                                     <div className="anim-box"/>
                                 </MoveInRight>
@@ -360,11 +369,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                                     {collapseCode}
                                 </HighlightCode>
                             </div>
-                            <div className="Col-4" onMouseDown={() => {
-                                this.setState({
-                                    collapse: !this.state.collapse
-                                })
-                            }}>
+                            <div
+                                className="Col-4"
+                                onMouseDown={() => {
+                                    this.setState({
+                                        collapse: !this.state.collapse,
+                                    });
+                                }}
+                            >
                                 <Collapse in={this.state.collapse}>
                                     <div className="anim-box"/>
                                 </Collapse>
@@ -381,10 +393,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                         {
                             fields.map((row: any, index: number) => {
                                 return (
-                                    <TableColumn key={index} field={row.field} header={row.header}
-                                                 template={(data: any) => {
-                                                     return data[row.field];
-                                                 }}/>
+                                    <TableColumn
+                                        key={index}
+                                        field={row.field}
+                                        header={row.header}
+                                        template={(data: any) => {
+                                            return data[row.field];
+                                        }}
+                                    />
                                 );
                             })
                         }
@@ -399,10 +415,14 @@ export default class TransitionApi extends React.PureComponent< TransitionApiPro
                         {
                             fields.map((row: any, index: number) => {
                                 return (
-                                    <TableColumn key={index} field={row.field} header={row.header}
-                                                 template={(data: any) => {
-                                                     return data[row.field];
-                                                 }}/>
+                                    <TableColumn
+                                        key={index}
+                                        field={row.field}
+                                        header={row.header}
+                                        template={(data: any) => {
+                                            return data[row.field];
+                                        }}
+                                    />
                                 );
                             })
                         }

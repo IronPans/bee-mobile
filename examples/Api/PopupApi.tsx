@@ -9,7 +9,7 @@ interface PopupApiProps extends BaseProps {
 
 export default class PopupApi extends React.PureComponent<PopupApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-PopupApi"
+        prefixCls: 'bm-PopupApi',
     };
 
     getCode() {
@@ -18,7 +18,7 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../components/common/BaseProps';
 import Button from '../components/Button';
 import Popup from '../components/Popup';
-import {Content} from "../components/Page";
+import {Content} from '../components/Page';
 import NavBar from '../components/NavBar';
 import Icon from '../components/Icon';
 import List, {ListItem, ListItemText, ListItemAction} from '../components/List';
@@ -110,45 +110,50 @@ export default class PopupCase extends React.PureComponent< PopupCaseProps, Popu
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Popup',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'direction',
-                'desc': '进入动画。可选值：up | right',
-                'type': 'String',
-                'default': 'up'
+                attr: 'direction',
+                desc: '进入动画。可选值：up | right',
+                type: 'String',
+                default: 'up',
             }, {
-                'attr': 'visible',
-                'desc': '是否打开',
-                'type': 'Boolean',
-                'default': 'false'
-            }]
+                attr: 'visible',
+                desc: '是否打开',
+                type: 'Boolean',
+                default: 'false',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Popup 弹出框" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/popup"
-                          description="弹出框，可自定义内容。"/>
+                <PageView
+                    title="Popup 弹出框"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/popup"
+                    description="弹出框，可自定义内容。"
+                />
             </Content>
         );
     }

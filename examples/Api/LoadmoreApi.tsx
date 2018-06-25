@@ -9,7 +9,7 @@ interface LoadmoreApiProps extends BaseProps {
 
 export default class LoadmoreApi extends React.PureComponent<LoadmoreApiProps, {}> {
     static defaultProps = {
-        prefixCls: "bm-LoadmoreApi"
+        prefixCls: 'bm-LoadmoreApi',
     };
 
     getCode() {
@@ -19,7 +19,7 @@ import {BaseProps} from '../../src/components/common/BaseProps';
 import Icon from '../../src/components/Icon';
 import Avatar from '../../src/components/Avatar';
 import List, {ListItem, ListItemText, ListItemAction} from '../../src/components/List';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface PullToRefreshCaseProps extends BaseProps {
 }
@@ -146,45 +146,50 @@ export default class PullToRefreshCase extends React.PureComponent<PullToRefresh
     getFields() {
         return [{
             field: 'attr',
-            header: '属性'
+            header: '属性',
         }, {
             field: 'desc',
-            header: '说明'
+            header: '说明',
         }, {
             field: 'type',
-            header: '类型'
+            header: '类型',
         }, {
             field: 'default',
-            header: '默认值'
-        }]
+            header: '默认值',
+        }];
     }
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls, className,
-            'ApiContent'
+            'ApiContent',
         );
         const data = [{
             name: 'Content',
             fields: this.getFields(),
             attributes: [{
-                'attr': 'pullToRefresh',
-                'desc': '开启下拉刷新',
-                'type': 'Boolean',
-                'default': 'false'
+                attr: 'pullToRefresh',
+                desc: '开启下拉刷新',
+                type: 'Boolean',
+                default: 'false',
             }, {
-                'attr': 'onRefresh',
-                'desc': '触发刷新的回调函数。传入一个Content作为参数，每次加载数据后，都需要手动触发一次done()方法',
-                'type': '(target): void',
-                'default': '-'
-            }]
+                attr: 'onRefresh',
+                desc: '触发刷新的回调函数。传入一个Content作为参数，每次加载数据后，都需要手动触发一次done()方法',
+                type: '(target): void',
+                default: '-',
+            }],
         }];
         return (
             <Content className={styleClass}>
-                <PageView title="Content 下拉刷新" code={this.getCode()}
-                          data={data} app="适用平台：WEB" frameUrl="#/components/loadmore"
-                          description="可以用来启动刷新页面的内容。"/>
+                <PageView
+                    title="Content 下拉刷新"
+                    code={this.getCode()}
+                    data={data}
+                    app="适用平台：WEB"
+                    frameUrl="#/components/loadmore"
+                    description="可以用来启动刷新页面的内容。"
+                />
             </Content>
         );
     }

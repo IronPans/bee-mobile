@@ -10,7 +10,7 @@ interface RouteApiState {
 
 export default class RouteApi extends React.Component<RouteApiProps, RouteApiState> {
     static defaultProps: RouteApiProps = {
-        prefixCls: 'rf-RouteApi'
+        prefixCls: 'rf-RouteApi',
     };
 
     constructor(props: RouteApiProps) {
@@ -21,7 +21,7 @@ export default class RouteApi extends React.Component<RouteApiProps, RouteApiSta
         const {children, className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass}>

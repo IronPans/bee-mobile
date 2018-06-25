@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import Card, { CardHeader, CardContent, CardFooter } from '../../src/components/Card';
+import Card, {CardHeader, CardContent, CardFooter} from '../../src/components/Card';
 import Avatar from '../../src/components/Avatar';
 import Icon from '../../src/components/Icon';
 import Button from '../../src/components/Button';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface CardCaseProps extends BaseProps {
 }
@@ -15,12 +15,12 @@ export default class CardCase extends React.PureComponent<CardCaseProps, any> {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'CardCase',
-            className
+            className,
         );
         const styles = {
             avatar: {
-                width: 100
-            }
+                width: 100,
+            },
         };
         return (
             <Content className={styleClass} {...other}>
@@ -30,7 +30,8 @@ export default class CardCase extends React.PureComponent<CardCaseProps, any> {
                             <Avatar src="assets/images/landscape.jpg"/>
                             <div className="padding-10">
                                 <h2 className="no-margin">Title</h2>
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                                This impressive paella is a perfect party dish and a fun meal to cook together with your
+                                guests. Add 1 cup of frozen peas along with the mussels, if you like.
                             </div>
                         </CardContent>
                         <CardFooter className="padding-5">
@@ -40,18 +41,23 @@ export default class CardCase extends React.PureComponent<CardCaseProps, any> {
                 </div>
                 <div className="CasePanel">
                     <Card>
-                        <CardHeader avatar={
-                            <Avatar src="assets/images/users/1.jpg"/>
-                        } title="TG" subTitle="September 14, 2016"
-                        action={
-                            <Button shape="circle" className="no-shadow fr-no-active">
-                                <Icon icon="more_vert"/>
-                            </Button>
-                        }/>
+                        <CardHeader
+                            avatar={
+                                <Avatar src="assets/images/users/1.jpg"/>
+                            }
+                            title="TG"
+                            subTitle="September 14, 2016"
+                            action={
+                                <Button shape="circle" className="no-shadow fr-no-active">
+                                    <Icon icon="more_vert"/>
+                                </Button>
+                            }
+                        />
                         <CardContent>
                             <Avatar src="assets/images/landscape.jpg"/>
                             <div className="padding-10">
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                                This impressive paella is a perfect party dish and a fun meal to cook together with your
+                                guests. Add 1 cup of frozen peas along with the mussels, if you like.
                             </div>
                         </CardContent>
                         <CardFooter className="padding-5">
@@ -64,9 +70,13 @@ export default class CardCase extends React.PureComponent<CardCaseProps, any> {
                         <CardContent>
                             <Avatar src="assets/images/landscape.jpg"/>
                         </CardContent>
-                        <CardHeader avatar={
-                            <Avatar src="assets/images/users/1.jpg"/>
-                        } title="TG" subTitle="September 14, 2016"/>
+                        <CardHeader
+                            avatar={
+                                <Avatar src="assets/images/users/1.jpg"/>
+                            }
+                            title="TG"
+                            subTitle="September 14, 2016"
+                        />
                         <CardFooter action={true}>
                             <Button flat={true}>
                                 <Icon icon="favorite"/>

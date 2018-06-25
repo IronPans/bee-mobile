@@ -2,26 +2,26 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Checkbox from '../../src/components/Checkbox';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface CheckboxProps extends BaseProps {
 }
 
 export default class CheckboxCase extends React.PureComponent<CheckboxProps, {}> {
     state = {
-        value: []
+        value: [],
     };
     checkboxs = [
         {
             value: 'Movie',
-            label: 'Movie'
+            label: 'Movie',
         }, {
             value: 'Food',
-            label: 'Food'
+            label: 'Food',
         }, {
             value: 'Game',
-            label: 'Game'
-        }
+            label: 'Game',
+        },
     ];
 
     handleChange = (event: any) => {
@@ -32,17 +32,17 @@ export default class CheckboxCase extends React.PureComponent<CheckboxProps, {}>
         } else {
             selectedValue = selectedValue.filter((v: any) => {
                 return v !== value;
-            })
+            });
         }
         this.setState({
-            value: selectedValue
+            value: selectedValue,
         });
-    };
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
-            'CheckboxCase', className
+            'CheckboxCase', className,
         );
         return (
             <Content className={styleClass}>
@@ -50,7 +50,7 @@ export default class CheckboxCase extends React.PureComponent<CheckboxProps, {}>
                     {
                         this.checkboxs.map((radio, i) => {
                             return (
-                                <Checkbox key={i} value={radio.value} onChange={this.handleChange.bind(this)}>
+                                <Checkbox key={i} value={radio.value} onChange={this.handleChange}>
                                     {radio.label}
                                 </Checkbox>
                             );
@@ -60,7 +60,7 @@ export default class CheckboxCase extends React.PureComponent<CheckboxProps, {}>
                         当前选中值：
                         {
                             this.state.value.map((value: string) => {
-                                return (<span key={value} className="padding-left-10">{value}</span>)
+                                return (<span key={value} className="padding-left-10">{value}</span>);
                             })
                         }
                     </div>

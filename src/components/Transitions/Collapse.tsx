@@ -2,17 +2,17 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {spring} from 'react-motion';
 import {BaseProps} from '../common/BaseProps';
-import MotionGroup from "./MotionGroup";
-import {getOtherProperties} from "../common/Utils";
+import MotionGroup from './MotionGroup';
+import {getOtherProperties} from '../common/Utils';
 
 export interface CollapseProps extends BaseProps {
     in?: boolean;
     springConfig?: {
-        stiffness?: number,
-        damping?: number
+        stiffness?: number;
+        damping?: number;
     };
-    onEnter?: Function;
-    onLeave?: Function;
+    onEnter?: () => void;
+    onLeave?: () => void;
 }
 
 export interface CollapseState {
@@ -24,32 +24,32 @@ export default class Collapse extends React.PureComponent<CollapseProps, Collaps
         in: false,
         springConfig: {
             stiffness: 170,
-            damping: 26
-        }
+            damping: 26,
+        },
     };
     wrapper: any;
 
     collapseTransitions: any = {
         enterStyles: {
-            height: 0
+            height: 0,
         },
         leaveStyles: {
-            height: spring(0, this.props.springConfig)
+            height: spring(0, this.props.springConfig),
         },
         activeStyles: {
-            height: spring(this.measureHeight(), this.props.springConfig)
-        }
+            height: spring(this.measureHeight(), this.props.springConfig),
+        },
     };
 
     state = {
-        expanded: false
+        expanded: false,
     };
 
     componentDidMount() {
         this.collapseTransitions.activeStyles = this.getActiveStyle();
         if (this.props.in) {
             this.setState({
-                expanded: this.props.in
+                expanded: this.props.in,
             });
         }
     }
@@ -58,16 +58,16 @@ export default class Collapse extends React.PureComponent<CollapseProps, Collaps
         if ('in' in nextProps && nextProps.in !== this.props.in) {
             this.collapseTransitions.activeStyles = this.getActiveStyle();
             this.setState({
-                expanded: nextProps.in
+                expanded: nextProps.in,
             });
         }
     }
 
     getActiveStyle(): any {
         return {
-            height: spring(this.measureHeight(), this.props.springConfig)
-        }
-    };
+            height: spring(this.measureHeight(), this.props.springConfig),
+        };
+    }
 
     measureHeight() {
         let collapsedHeight = 0;
@@ -84,17 +84,21 @@ export default class Collapse extends React.PureComponent<CollapseProps, Collaps
 
     getCollapseRef = (node: any) => {
         this.wrapper = node;
-    };
+    }
 
     render() {
         const {children, className, onEnter, onLeave, ...other} = this.props;
         const styleClass = classNames(
-            'bm-Collapse', className
+            'bm-Collapse', className,
         );
         const otherProps = getOtherProperties(other, ['in', 'springConfig']);
         return (
-            <MotionGroup onEnter={onEnter} onLeave={onLeave}
-                         in={this.state.expanded} {...this.collapseTransitions}>
+            <MotionGroup
+                onEnter={onEnter}
+                onLeave={onLeave}
+                in={this.state.expanded}
+                {...this.collapseTransitions}
+            >
                 {({height}: any) => (
                     <div className={styleClass} {...otherProps}>
                         <div ref={this.getCollapseRef} style={{height}}>{children}</div>

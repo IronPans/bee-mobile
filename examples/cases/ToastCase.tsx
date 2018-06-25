@@ -3,31 +3,31 @@ import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
 import Button from '../../src/components/Button';
 import Toast from '../../src/components/Toast';
-import {Content} from "../../src/components/Page";
+import {Content} from '../../src/components/Page';
 
 interface ToastCaseProps extends BaseProps {
-    messages?: Array<object>
+    messages?: Array<object>;
 }
 
 interface ToastCaseState {
-    messages: Array<object>
+    messages: Array<object>;
 }
 
 export default class ToastCase extends React.PureComponent<ToastCaseProps, ToastCaseState> {
     state: ToastCaseState = {
-        messages: []
+        messages: [],
     };
     handleClick = () => {
         Toast.show({
-            message: '提示信息'
+            message: '提示信息',
         });
-    };
+    }
 
     render() {
         const {className, ...other} = this.props;
         const styleClass = classNames(
             'ToastCase',
-            className
+            className,
         );
         return (
             <Content className={styleClass} {...other}>

@@ -1,22 +1,22 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
 import {BaseProps} from '../../src/components/common/BaseProps';
-import Timeline, {TimelineItem} from "../../src/components/Timeline";
-import {Content} from "../../src/components/Page";
+import Timeline, {TimelineItem} from '../../src/components/Timeline';
+import {Content} from '../../src/components/Page';
 
 interface TimelineCaseProps extends BaseProps {
 }
 
 export default class TimelineCase extends React.PureComponent<TimelineCaseProps, {}> {
     static defaultProps: TimelineCaseProps = {
-        prefixCls: 'bm-TimelineCase'
+        prefixCls: 'bm-TimelineCase',
     };
 
     render() {
         const {className, prefixCls} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <Content className={styleClass}>
