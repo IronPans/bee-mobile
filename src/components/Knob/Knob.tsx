@@ -59,17 +59,19 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
                 break;
             default:
         }
-        const pathString = 'M 50,50 m ' + beginPositionX + ',' + beginPositionY + '\n     a ' +
-            radius + ',' + radius + ' 0 1 1 ' + endPositionX + ',' + -endPositionY + '\n     a ' +
-            radius + ',' + radius + ' 0 1 1 ' + -endPositionX + ',' + endPositionY;
+        const pathString = `M 50,50 m ${beginPositionX},${beginPositionY}     a
+                ${radius} ,${radius} 0 1 1 ${endPositionX},${-endPositionY}      a
+                ${radius} ,${radius} 0 1 1 ${-endPositionX},${endPositionY}`;
         return {
-            pathString
+            pathString,
         };
     }
 
     render() {
-        const {animated, barColor, children, className, gapDegree, gapPosition,
-            lineCap, lineWidth, prefixCls, size, trackColor, value, ...other} = this.props;
+        const {
+            animated, barColor, children, className, gapDegree, gapPosition,
+            lineCap, lineWidth, prefixCls, size, trackColor, value, ...other,
+        } = this.props;
         const styleClass = classNames(
             prefixCls, className,
         );
@@ -79,23 +81,23 @@ export default class Knob extends React.PureComponent<KnobProps, KnobState> {
         };
         const radius = 50 - lineWidth! / 2;
         const len = Math.PI * 2 * radius;
-        const dasharray = value! / 100 * len + 'px ' + len + 'px';
+        const dasharray = `${value! / 100 * len}px ${len}px`;
         const trailStyles: any = {
             stroke: trackColor!,
             strokeWidth: lineWidth!,
             fillOpacity: 0,
-            strokeDasharray: len - gapDegree! + 'px ' + len + 'px',
-            strokeDashoffset: '-' + gapDegree! / 2 + 'px',
-            transition: animated! && 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s'
+            strokeDasharray: `${len - gapDegree!}px ${len}px`,
+            strokeDashoffset: `-${gapDegree! / 2}px`,
+            transition: animated! && 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s',
         };
         const pathStyles: any = {
             stroke: barColor!,
             strokeWidth: lineWidth!,
             strokeLinecap: lineCap!,
             fillOpacity: 0,
-            strokeDasharray: value! / 100 * (len - gapDegree!) + 'px ' + len + 'px',
-            strokeDashoffset: '-' + gapDegree! / 2 + 'px',
-            transition: animated! && 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s'
+            strokeDasharray: `${value! / 100 * (len - gapDegree!)}px ${len}px`,
+            strokeDashoffset: `-${gapDegree! / 2}px`,
+            transition: animated! && 'stroke-dashoffset .3s ease 0s, stroke-dasharray .3s ease 0s, stroke .3s, stroke-width .06s ease .3s',
         };
         const strokeMessage = this.getStrokeMessage(radius, gapPosition!);
         return (

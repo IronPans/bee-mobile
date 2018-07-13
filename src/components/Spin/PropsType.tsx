@@ -13,9 +13,9 @@ export type SPIN_TYPES =
 export type SPIN_SIZES = 'lg' | 'sm' | 'xs';
 
 export interface SpinProps extends BaseProps {
-    height?: String | Number;
+    height?: string | number;
     type?: SPIN_TYPES;
     size?: SPIN_SIZES;
-    width?: String | Number;
-    color?: String;
+    width?: string | number;
+    color?: string;
 }

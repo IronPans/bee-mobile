@@ -8,14 +8,14 @@ import {TableProps, TableState} from './PropsType';
 export default class Table extends React.PureComponent<TableProps, TableState> {
     static defaultProps: TableProps = {
         prefixCls: 'bm-Table',
-        value: []
+        value: [],
     };
 
     state: TableState = {
         activeIndex: 0,
         currentValue: [],
         selectedItem: [],
-        value: []
+        value: [],
     };
     fieldProps: any[] = [];
     currentField: string;
@@ -25,14 +25,14 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
         const value = this.props.value!;
         if (value && value.length > 0) {
             this.setState({
-                value
+                value,
             }, () => {
                 this.changePage();
             });
         }
         if (this.props.activeIndex) {
             this.setState({
-                activeIndex: this.props.activeIndex!
+                activeIndex: this.props.activeIndex!,
             });
         }
     }
@@ -40,7 +40,7 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
     componentWillReceiveProps(nextProps: TableProps) {
         if ('value' in nextProps.value && this.props.value !== nextProps.value) {
             this.setState({
-                value: this.props.value!
+                value: this.props.value!,
             }, () => {
                 this.changePage();
             });
@@ -55,12 +55,12 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
                 (this.state.activeIndex! + 1) * row!);
         }
         this.setState({
-            currentValue: value
+            currentValue: value,
         });
-    };
+    }
 
     filterValue = (field: string) => {
-        let currentValue = [...this.state.currentValue!];
+        const currentValue = [...this.state.currentValue!];
         this.sort = this.sort === 'desc' ? 'asc' : 'desc'; // desc 2 1; asc 1 2
         currentValue.sort((a: any, b: any) => {
             const desc = this.sort === 'desc';
@@ -72,21 +72,24 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
             return 0;
         });
         this.setState({currentValue});
-    };
+    }
 
     handleHeaderClick = (props: any) => {
         if (props.sort) {
             this.currentField = props.field;
             this.filterValue(props.field);
         }
-    };
+    }
 
     drawRow = (rowData: any, index: number) => {
-        return (<tr key={index} className="Table-row">
-            {this.props.selectionMode === 'multiple' ? <td className="Table-cell">{this.createCheckbox({index, rowData})}</td> : null}
+        return (
+            <tr key={index} className="Table-row">
+            {this.props.selectionMode === 'multiple' ?
+                <td className="Table-cell">{this.createCheckbox({index, rowData})}</td> : null}
             {
                 this.fieldProps.map((props: any, i: number) => {
-                    return (<td className="Table-cell" key={`td-${i}`}>
+                    return (
+                        <td className="Table-cell" key={`td-${i}`}>
                         {(() => {
                             if (typeof props.template === 'function') {
                                 return props.template(rowData, props.field, index);
@@ -95,11 +98,12 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
                             }
                             return rowData[props.field];
                         })()}
-                    </td>)
+                    </td>);
                 })
             }
-        </tr>);
-    };
+        </tr>
+        );
+    }
 
     handleChange = (props: any, event: any) => {
         let selectedItem = [...this.state.selectedItem!];
@@ -123,13 +127,13 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
             }
         }
         this.setState({
-            selectedItem
+            selectedItem,
         }, () => {
             if (this.props.onSelect) {
-                (this.props.onSelect as Function)(selectedItem);
+                (this.props.onSelect as (event: any) => void)(selectedItem);
             }
         });
-    };
+    }
 
     createCheckbox(props: any = {checked: false}) {
         let isSelected = false;
@@ -139,32 +143,35 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
             if (selectedItem.indexOf(props.rowData) !== -1) {
                 isSelected = true;
             }
-        } else if(selectedItem.length === currentValue.length) {
+        } else if (selectedItem.length === currentValue.length) {
             isSelected = true;
         }
         return (
-           <Checkbox checked={isSelected} onChange={this.handleChange.bind(this, props)}/>
+            <Checkbox checked={isSelected} onChange={this.handleChange.bind(this, props)}/>
         );
     }
 
     render() {
-        const {className, children: childrenProps,
-            hover, prefixCls, selectionMode, striped, ...other} = this.props;
+        const {
+            className, children: childrenProps,
+            hover, prefixCls, selectionMode, striped, ...other,
+        } = this.props;
         const styleClass = classNames(
             prefixCls,
             {
                 [`${prefixCls}-striped`]: striped,
-                [`${prefixCls}-hover`]: hover
+                [`${prefixCls}-hover`]: hover,
             },
-            className
+            className,
         );
         const thead: any = [];
         if (selectionMode === 'multiple') {
-            thead.push(<th key="total-checkbox" className={`${prefixCls}-cell`}>
-                {this.createCheckbox({
-                    index: -1
-                })}
-            </th>);
+            thead.push(
+                <th key="total-checkbox" className={`${prefixCls}-cell`}>
+                    {this.createCheckbox({
+                        index: -1,
+                    })}
+                </th>);
         }
         this.fieldProps = [];
         React.Children.forEach(childrenProps, (child: any, index: number) => {
@@ -173,23 +180,24 @@ export default class Table extends React.PureComponent<TableProps, TableState> {
             }
             const type: any = child.type;
             const fnName = type.fnName;
-            const otherProps = getOtherProperties(child.props, []);
+            const childProps = getOtherProperties(child.props, []);
             switch (fnName) {
                 case 'TableColumn':
                     const {field} = child.props as any;
                     const headClass = classNames(
                         `${prefixCls}-head`,
                         {
-                            [`${prefixCls}-head-active`]: this.currentField === field
-                        }
+                            [`${prefixCls}-head-active`]: this.currentField === field,
+                        },
                     );
                     const sortClass = (this.sort === 'asc' && field === this.currentField) ? `${prefixCls}-head-sort` : '';
-                    const th = (<th key={index} onClick={this.handleHeaderClick.bind(this, otherProps)}>
-                        <div className={headClass}>
-                            {otherProps.sort ? <Icon className={sortClass} icon="arrow_upward" size="1x"/> : null}
-                            {otherProps.header}
-                        </div>
-                    </th>);
+                    const th = (
+                        <th key={index} onClick={this.handleHeaderClick.bind(this, childProps)}>
+                            <div className={headClass}>
+                                {childProps.sort ? <Icon className={sortClass} icon="arrow_upward" size="1x"/> : null}
+                                {childProps.header}
+                            </div>
+                        </th>);
                     this.fieldProps.push(child.props);
                     const column = React.cloneElement(th as React.ReactElement<any>);
                     thead.push(column);

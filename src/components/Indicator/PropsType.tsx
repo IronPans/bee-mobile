@@ -5,5 +5,5 @@ export interface IndicatorProps {
     message: React.ReactNode;
     size?: any;
     type: any;
-    onClose?: Function;
+    onClose?: () => void;
 }

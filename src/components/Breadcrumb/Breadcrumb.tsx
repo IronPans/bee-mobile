@@ -5,13 +5,13 @@ import {BreadcrumbItem, BreadcrumbProps} from './PropsType';
 export default class Breadcrumb extends React.Component<BreadcrumbProps, {}> {
     static defaultProps: BreadcrumbProps = {
         prefixCls: 'bm-Breadcrumb',
-        separator: '/'
+        separator: '/',
     };
 
     render() {
         const {className, menus, prefixCls, separator} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <ol className={styleClass}>
@@ -25,13 +25,12 @@ export default class Breadcrumb extends React.Component<BreadcrumbProps, {}> {
                                 {
                                     index === 0 ? null : (<span className={`${prefixCls}-separator`}>
                                         {menu.separator || separator}
-                                    </span>)
-                                }
+                                    </span>)}
                                 <span className={`${prefixCls}-title`}>
                                     {menu.name}
                                 </span>
                             </li>
-                        )
+                        );
                     })
                 }
             </ol>

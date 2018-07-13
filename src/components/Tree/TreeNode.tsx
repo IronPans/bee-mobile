@@ -9,7 +9,7 @@ export interface TreeNode {
     expanded?: boolean;
     parent?: TreeNode;
     partialSelected?: boolean;
-    style?: string,
+    style?: string;
     styleClass?: string;
     selectable?: boolean;
     children?: TreeNode[];

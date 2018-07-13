@@ -1,4 +1,4 @@
-const Device = (function Device() {
+const Device = (() => {
     const ua = window.navigator.userAgent;
 
     const device: any = {
@@ -79,7 +79,7 @@ const Device = (function Device() {
     }
 
     // Check for status bar and fullscreen app mode
-    device.needsStatusbarOverlay = function needsStatusbarOverlay() {
+    device.needsStatusbarOverlay = () => {
         if (device.webView &&
             (window.innerWidth * window.innerHeight === window.screen.width * window.screen.height)) {
             return !(device.iphoneX && (window.orientation === 90 || window.orientation === -90));
@@ -93,4 +93,4 @@ const Device = (function Device() {
 
     // Export object
     return device;
-}());
+})();

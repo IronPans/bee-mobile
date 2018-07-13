@@ -5,8 +5,8 @@ export interface PaginationItemProps extends BaseProps {
     active?: boolean;
     index?: number;
     disabled?: boolean;
-    component?: React.ReactNode,
-    onClick?: Function
+    component?: React.ReactNode;
+    onClick?: () => void;
 }
 
 export interface PaginationItemState {
@@ -17,7 +17,7 @@ export interface PaginationItemState {
 export interface PaginationProps extends BaseProps {
     maxPage?: number;
     pageSize?: number;
-    onPageChange?: Function;
+    onPageChange?: (event: any) => void;
     shape?: string;
     total?: number;
     value?: number;

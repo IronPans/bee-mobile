@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import Icon from '../Icon';
 import {getOtherProperties} from '../common/Utils';
-import Ripple from "../Ripple";
+import Ripple from '../Ripple';
 import {RateProps, RateState} from './PropsType';
 
 export default class Rate extends React.PureComponent<RateProps, RateState> {
@@ -12,7 +12,7 @@ export default class Rate extends React.PureComponent<RateProps, RateState> {
         defaultValue: 0,
         readOnly: false,
         disableRipple: true,
-        prefixCls: 'bm-Rate'
+        prefixCls: 'bm-Rate',
     };
 
     constructor(props: RateProps) {
@@ -22,14 +22,14 @@ export default class Rate extends React.PureComponent<RateProps, RateState> {
             value = props.defaultValue!;
         }
         this.state = {
-            value
+            value,
         };
     }
 
     componentWillReceiveProps(nextProps: RateProps) {
         if ('value' in nextProps && this.props.value !== nextProps.value) {
             this.setState({
-                value: nextProps.value!
+                value: nextProps.value!,
             });
         }
     }
@@ -57,7 +57,7 @@ export default class Rate extends React.PureComponent<RateProps, RateState> {
                 _value -= 0.5;
             }
             this.setState({
-                value: _value
+                value: _value,
             });
             if (onChange) {
                 onChange(_value);
@@ -66,8 +66,10 @@ export default class Rate extends React.PureComponent<RateProps, RateState> {
     }
 
     render() {
-        const {allowHalf, className, template,
-            count, disableRipple, prefixCls, ...other} = this.props;
+        const {
+            allowHalf, className, template,
+            count, disableRipple, prefixCls, ...other,
+        } = this.props;
         const styleClass = classNames(prefixCls, className);
         const {value} = this.state;
         const otherProps = getOtherProperties(other,
@@ -77,26 +79,31 @@ export default class Rate extends React.PureComponent<RateProps, RateState> {
             const isActive = v < value;
             const halfClass = classNames(
                 {
-                    [`${prefixCls}-active`]: isActive
+                    [`${prefixCls}-active`]: isActive,
                 },
-                `${prefixCls}-half`
+                `${prefixCls}-half`,
             );
             const styles = {
-                opacity: this.isIn(v) ? 1 : 0
+                opacity: this.isIn(v) ? 1 : 0,
             };
             const iconClass = classNames(
                 {
-                    [`${prefixCls}-active`]: allowHalf ? (!this.isIn(v) && isActive) : isActive
-                }
+                    [`${prefixCls}-active`]: allowHalf ? (!this.isIn(v) && isActive) : isActive,
+                },
             );
             return (
                 <div key={i} className={`${prefixCls}-item`}>
-                    {allowHalf ? (<div className={halfClass} style={styles}
-                                       onClick={this.handleClick.bind(this, i, true)}>
+                    {allowHalf ? (<div
+                        className={halfClass}
+                        style={styles}
+                        onClick={this.handleClick.bind(this, i, true)}
+                    >
                         {component}
                     </div>) : null}
-                    <div className={iconClass}
-                         onClick={this.handleClick.bind(this, i, false)}>
+                    <div
+                        className={iconClass}
+                        onClick={this.handleClick.bind(this, i, false)}
+                    >
                         {component}
                         {!disableRipple ? (
                             <Ripple centerMode={true} hidden={false}/>) : null}

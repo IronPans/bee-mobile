@@ -4,8 +4,8 @@ import {BaseProps} from '../common/BaseProps';
 export interface PanelProps extends BaseProps {
     tool?: boolean;
     expanded?: boolean;
-    onExpand?: Function;
-    onFullscreen?: Function
+    onExpand?: () => void;
+    onFullscreen?: () => void;
 }
 
 export interface PanelState {
@@ -18,6 +18,6 @@ export interface PanelContentProps extends BaseProps {
 
 export interface PanelHeaderProps extends BaseProps {
     tool?: boolean;
-    onExpand?: Function;
-    onFullscreen?: Function
+    onExpand?: () => void;
+    onFullscreen?: () => void;
 }

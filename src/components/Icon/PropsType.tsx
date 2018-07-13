@@ -10,5 +10,5 @@ export interface IconProps extends BaseProps {
     spin?: boolean;
     size?: ICON_SIZE;
     rotate?: ICON_ROTATE;
-    onClick?: Function
+    onClick?: (event: any) => void;
 }

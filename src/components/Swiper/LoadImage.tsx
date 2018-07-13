@@ -1,8 +1,10 @@
-function loadImage(imgElement: any, src: string, srcset: any, checkForComplete: boolean, callback: Function) {
+function loadImage(imgElement: any, src: string, srcset: any, checkForComplete: boolean, callback: () => void) {
     let image;
-    function onReady () {
-        if (callback) callback();
-    }
+    const onReady = () => {
+        if (callback) {
+            callback();
+        }
+    };
     if (!imgElement.complete || !checkForComplete) {
         if (src) {
             image = new Image();
@@ -23,7 +25,7 @@ function loadImage(imgElement: any, src: string, srcset: any, checkForComplete: 
     }
 }
 
-function preloadImages(container: any, imagesLoaded: number, callback: Function, onLoad?: Function) {
+function preloadImages(container: any, imagesLoaded: number, callback: () => void, onLoad?: (loaded: any) => void) {
     const imagesToLoad = container.find('img');
     function _onReady() {
         if (imagesLoaded !== undefined) {
@@ -31,15 +33,17 @@ function preloadImages(container: any, imagesLoaded: number, callback: Function,
             if (onLoad) {
                 onLoad(imagesLoaded);
             }
-        };
+        }
         if (imagesLoaded === imagesToLoad.length) {
            callback();
         }
     }
-    for (let i = 0; i < imagesToLoad.length; i++) {
-        loadImage(imagesToLoad[i], (imagesToLoad[i].currentSrc || imagesToLoad[i].getAttribute('src')),
-            (imagesToLoad[i].srcset || imagesToLoad[i].getAttribute('srcset')), true, _onReady);
+    let i = 0;
+    for (const image of imagesToLoad) {
+        loadImage(image, (image.currentSrc || image.getAttribute('src')),
+            (image.srcset || image.getAttribute('srcset')), true, _onReady);
+        i++;
     }
 }
 
-export {loadImage, preloadImages}
+export {loadImage, preloadImages};

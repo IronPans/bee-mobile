@@ -12,20 +12,20 @@ export interface ChipProps extends BaseProps {
     avatar?: React.ReactNode;
     close?: boolean;
     label?: React.ReactNode | string;
-    onClick?: Function;
-    onDelete?: Function;
+    onClick?: (event: any) => void;
+    onDelete?: (event: any) => void;
     value?: any;
 }
 
 export interface ChipGroupProps extends BaseProps {
     data?: Array<ChipNode>;
-    onClick?: Function;
-    onDelete?: Function;
+    onClick?: (event: any) => void;
+    onDelete?: (event: any) => void;
     placeholder?: string;
 }
 
 export interface ChipGroupState {
     data: Array<ChipNode>;
-    focus?: boolean,
+    focus?: boolean;
     value?: string;
 }

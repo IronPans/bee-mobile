@@ -1,5 +1,4 @@
-import {BaseProps} from "../common/BaseProps";
-
+import {BaseProps} from '../common/BaseProps';
 
 export interface DropdownProps extends BaseProps {
     data?: Array<any>;

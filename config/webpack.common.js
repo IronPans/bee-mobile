@@ -6,8 +6,8 @@ const path = require('path');
  * Webpack Plugins
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CommonsChunkPlugin = require('webpack/lib/optimize/CommonsChunkPlugin');
 
+// root project name
 const projectName = 'examples';
 
 module.exports = (options) => {
@@ -21,18 +21,20 @@ module.exports = (options) => {
          * See: http://webpack.github.io/docs/configuration.html#entry
          */
         entry: {
-            main: helpers.root('./' + projectName + '/index.tsx'),
-            //vendor: helpers.root('./' + projectName + '/vendor.tsx')
+            main: helpers.root('./' + projectName + '/index.tsx')
         },
         module: {
             strictExportPresence: true,
             rules: [
-                // {
-                //     test: /\.(jsx?|tsx?)$/,
-                //     enforce: 'pre',
-                //     loader: 'tslint-loader',
-                //     include: [helpers.root('./examples'), helpers.root('./src')]
-                // }
+                {
+                    test: /\.(tsx?|jsx?)$/,
+                    enforce: 'pre',
+                    loader: 'tslint-loader',
+                    options: {
+                        // typeCheck: true
+                    },
+                    include: [helpers.root('./examples'), helpers.root('./src')]
+                }
             ]
         },
         /**
@@ -42,16 +44,12 @@ module.exports = (options) => {
          */
         resolve: {
             modules: [helpers.root(projectName), helpers.root('./node_modules')],
-            extensions: ['.ts', '.tsx', '.js', '.jsx', '.json'],
+            extensions: ['.tsx', '.ts', '.js', '.jsx', '.json'],
             alias: {
                 [pkg.name]: process.cwd()
             }
         },
         plugins: [
-            // new CommonsChunkPlugin({
-            //     names: ['vendor', 'manifest'],
-            //     minChunks: Infinity
-            // }),
             new HtmlWebpackPlugin({
                 title: 'Bee Mobile',
                 chunksSortMode: function (a, b) {

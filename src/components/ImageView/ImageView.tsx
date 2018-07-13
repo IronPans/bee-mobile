@@ -11,11 +11,11 @@ export default class ImageView extends React.PureComponent<ImageViewProps, Image
     static defaultProps: ImageViewProps = {
         target: document.body,
         prefixCls: 'bm-ImageView',
-        visible: false
+        visible: false,
     };
     state: ImageViewState = {
         activeIndex: 0,
-        visible: false
+        visible: false,
     };
 
     data: Array<string> = [];
@@ -27,35 +27,35 @@ export default class ImageView extends React.PureComponent<ImageViewProps, Image
                 const target: any = ReactDOM.findDOMNode(nextProps.target);
                 if (target.querySelectorAll) {
                     const imgs = target.querySelectorAll('img');
-                    for (let i = 0; i < imgs.length; i++) {
-                        this.data.push(imgs[i].src);
+                    for (const img of imgs) {
+                        this.data.push(img.src);
                     }
                 }
             }
             this.setState({
-                visible: nextProps.visible!
+                visible: nextProps.visible!,
             });
         }
     }
 
     handleClose = () => {
         if (this.props.onClose) {
-            (this.props.onClose as Function)();
+            (this.props.onClose as () => void)();
         }
-    };
+    }
 
     transitionEnd = (activeIndex: number) => {
         if (activeIndex >= 0) {
             this.setState({
-                activeIndex
+                activeIndex,
             });
         }
-    };
+    }
 
     render() {
         const {className, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const otherProps = getOtherProperties(other, ['target', 'visible', 'onClose', 'onOpen']);
         const {activeIndex, visible}: any = this.state;
@@ -68,14 +68,16 @@ export default class ImageView extends React.PureComponent<ImageViewProps, Image
                             {`${activeIndex + 1}/${this.data && this.data.length}`}
                         </div>
                         <div className={`${prefixCls}-container`} key="ImageView">
-                            <Swiper navigation={true} on={
-                                {transitionEnd: this.transitionEnd}
-                            }>
+                            <Swiper
+                                navigation={true}
+                                on={
+                                    {transitionEnd: this.transitionEnd}}
+                            >
                                 {
                                     (this.data as Array<string>).map((src: any, index: number) => {
                                         return (<div className={`${prefixCls}-item`} key={index}>
                                             <img src={src}/>
-                                        </div>)
+                                        </div>);
                                     })
                                 }
                             </Swiper>

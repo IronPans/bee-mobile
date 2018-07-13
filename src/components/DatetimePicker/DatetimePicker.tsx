@@ -10,12 +10,12 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
     static defaultProps: DatetimePickerProps = {
         minDate: '2000/1/1',
         maxDate: '2020/1/1',
-        mode: 'date'
+        mode: 'date',
     };
 
     state: DatetimePickerState = {
         data: [],
-        visible: false
+        visible: false,
     };
 
     value: any;
@@ -25,7 +25,7 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
         this.miniDate = this.getRangeOfDate();
         this.setState({
             visible: this.props.visible!,
-            data: this.getDate()
+            data: this.getDate(),
         });
     }
 
@@ -33,7 +33,7 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
         if ('visible' in nextProps && this.props.visible !== nextProps.visible) {
             this.setState({
                 visible: nextProps.visible!,
-                data: this.getDate()
+                data: this.getDate(),
             });
         }
     }
@@ -42,8 +42,8 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
         const {minDate, maxDate} = this.props;
         return {
             minDate: this.splitDate(minDate),
-            maxDate: this.splitDate(maxDate)
-        }
+            maxDate: this.splitDate(maxDate),
+        };
     }
 
     splitDate(value: any) {
@@ -65,7 +65,7 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
             const value = this.dateEncode(i);
             lists.push({
                 label: value,
-                value: i
+                value: i,
             });
         }
         return lists;
@@ -73,23 +73,23 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
 
     getInitDate() {
         const curDate = new Date();
-        let defaultValue = this.props.defaultValue;
+        const defaultValue = this.props.defaultValue;
         const year: any = curDate.getFullYear(),
             month: any = curDate.getMonth() + 1,
             date: any = curDate.getDate();
-        let value: any[] = defaultValue ? this.splitDate(defaultValue) : [year, month, date];
+        const value: any[] = defaultValue ? this.splitDate(defaultValue) : [year, month, date];
         this.value = (this.value || value).map((v: any) => {
             const label = v.label || v;
-            const value = v.value || v;
+            const newValue = v.value || v;
             return {
                 label: this.dateEncode(label),
-                value
+                value: newValue,
             };
         });
-        let yearValue: number = parseInt(value[0]);
+        const yearValue: number = parseInt(value[0], 10);
         this.value[0] = {
             value: this.value[0] ? this.value[0].value : yearValue,
-            label: this.value[0] ? this.value[0].label : yearValue
+            label: this.value[0] ? this.value[0].label : yearValue,
         };
         return this.countDay(this.value[0].value, this.value[1].value);
     }
@@ -107,7 +107,7 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
         }
         return {
             total,
-            day
+            day,
         };
     }
 
@@ -128,57 +128,64 @@ export default class DatetimePicker extends React.PureComponent<DatetimePickerPr
                     children[month] = {
                         label: this.dateEncode(j),
                         value: j,
-                        children: child
+                        children: child,
                     };
                 }
             }
             lists[i] = {
                 label: year,
                 value: year,
-                children
+                children,
             };
         }
         return lists;
     }
 
     dateEncode(d: any) {
-        d = parseInt(d) >= 10 ? d : '0' + parseInt(d);
+        d = parseInt(d, 10) >= 10 ? d : '0' + parseInt(d, 10);
         return d;
     }
 
     dateDecode(d: any) {
-        return parseInt(String(d.value).replace(/\b(0+)/gi, ''));
+        return parseInt(String(d.value).replace(/\b(0+)/gi, ''), 10);
     }
 
     handleValueChange = (event: any) => {
         this.value[event.index] = event.value;
         const data: any[] = this.getDate();
         this.setState({
-            data
+            data,
         });
-    };
+    }
 
     handleChange = (value: any) => {
         this.setState({
-            value
+            value,
         });
         if (this.props.onOk) {
             this.props.onOk(value);
         }
-    };
+    }
 
     render() {
         const {className, onClose, onOpen, ...other} = this.props;
         const styleClass = classNames(
-            'DatetimePicker', className
+            'DatetimePicker', className,
         );
         const otherProps: any = getOtherProperties(other,
             ['defaultValue', 'children', 'minDate', 'maxDate', 'onOk', 'onOpen', 'onValueChange', 'visible']);
         return (
             <div className={styleClass} {...otherProps}>
-                <Picker data={this.state.data} defaultValue={this.value} value={this.state.value}
-                         onValueChange={this.handleValueChange} visible={this.state.visible}
-                         onChange={this.handleChange} onOpen={onOpen} onClose={onClose}/>
+                <Picker
+                    data={this.state.data}
+                    defaultValue={this.value}
+                    value={this.state.value}
+                    onValueChange={this.handleValueChange}
+                    visible={this.state.visible}
+                    onChange={this.handleChange}
+                    onOpen={onOpen}
+                    onClose={onClose}
+                />
             </div>
         );
     }

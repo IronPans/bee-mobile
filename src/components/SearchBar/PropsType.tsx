@@ -9,11 +9,11 @@ export interface SearchBarProps extends BaseProps {
     maxLength?: number;
     placeholder?: string;
     value?: string;
-    onCancel?: Function;
-    onChange?: Function;
-    onSubmit?: Function;
-    onFocus?: Function;
-    onBlur?: Function;
+    onCancel?: () => void;
+    onChange?: (event: any) => void;
+    onSubmit?: (event: any) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
 }
 
 export interface SearchBarState {

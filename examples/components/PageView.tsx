@@ -20,31 +20,39 @@ export default class PageView extends React.PureComponent<PageViewProps, {}> {
     static defaultProps = {
         data: [],
         lang: 'typescript',
-        prefixCls: 'bm-PageView'
+        prefixCls: 'bm-PageView',
     };
 
     createTable(list: any, index: number) {
-        return (<div key={index}>
-            <h3>{list.name}</h3>
-            <Table className="bm-Paper-2dp" value={list.attributes}>
-                {
-                    list.fields.map((row: any, index: number) => {
-                        return (
-                            <TableColumn key={index} field={row.field} header={row.header} template={(data: any) => {
-                                return data[row.field];
-                            }}/>
-                        );
-                    })
-                }
-            </Table>
-        </div>)
+        return (
+            <div key={index}>
+                <h3>{list.name}</h3>
+                <Table className="bm-Paper-2dp" value={list.attributes}>
+                    {
+                        list.fields.map((row: any, i: number) => {
+                            return (
+                                <TableColumn
+                                    key={i}
+                                    field={row.field}
+                                    header={row.header}
+                                    template={(data: any) => {
+                                        return data[row.field];
+                                    }}
+                                />
+                            );
+                        })
+                    }
+                </Table>
+            </div>);
     }
 
     render() {
-        const {app, data, code, className, description,
-            frameUrl, lang, prefixCls, title}: any = this.props;
+        const {
+            app, data, code, className, description,
+            frameUrl, lang, prefixCls, title,
+        }: any = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <div className={styleClass}>
@@ -54,16 +62,19 @@ export default class PageView extends React.PureComponent<PageViewProps, {}> {
                         <p className="ApiBox-desc">{description}</p>
                         <section className="ApiBox-wrapper">
                             <h3>代码演示</h3>
-                            <CodeView title="基本" code={(
-                                <div>
-                                    <HighlightCode showCopy={true} lang={lang}>{code}</HighlightCode>
-                                </div>
-                            )} html={(
-                                <div className="ApiBox-code">
-                                    <HighlightCode showCopy={true} lang={lang}>{code}</HighlightCode>
-                                </div>
-                            )}>
-                            </CodeView>
+                            <CodeView
+                                title="基本"
+                                code={(
+                                    <div>
+                                        <HighlightCode showCopy={true} lang={lang}>{code}</HighlightCode>
+                                    </div>
+                                )}
+                                html={(
+                                    <div className="ApiBox-code">
+                                        <HighlightCode showCopy={true} lang={lang}>{code}</HighlightCode>
+                                    </div>
+                                )}
+                            />
                         </section>
                     </div>
                     <PhoneView frameUrl={frameUrl}/>
@@ -73,7 +84,7 @@ export default class PageView extends React.PureComponent<PageViewProps, {}> {
                     <p>{app}</p>
                     {
                         data.map((list: any, index: number) => {
-                            return this.createTable(list, index)
+                            return this.createTable(list, index);
                         })
                     }
                 </div>

@@ -6,7 +6,7 @@ export interface LockerProps extends BaseProps {
     height?: number | string;
     strokeStyle?: string;
     fillStyle?: string;
-    onDone?: Function;
+    onDone?: (event: any) => void;
 }
 
 export interface LockerState {

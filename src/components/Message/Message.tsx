@@ -12,6 +12,15 @@ const getUuid = () => {
 };
 
 export default class Message extends React.PureComponent<MessageProps, MessageState> {
+
+    constructor(props: MessageProps) {
+        super(props);
+        this.state = {
+            messages: [],
+            hideBackdrop: false,
+        };
+    }
+
     static create = (props: any = {}) => {
         let div: HTMLDivElement;
         div = document.createElement('div');
@@ -19,8 +28,8 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
 
         const message: any = ReactDOM.render(<Message {...props} />, div);
         return {
-            create(props: any) {
-                return message.add(props);
+            create(params: any) {
+                return message.add(params);
             },
             remove(key: any) {
                 message.remove(key);
@@ -29,15 +38,7 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
                 ReactDOM.unmountComponentAtNode(div);
                 document.body.removeChild(div);
             },
-            component: message
-        }
-    };
-
-    constructor(props: MessageProps) {
-        super(props);
-        this.state = {
-            messages: [],
-            hideBackdrop: false
+            component: message,
         };
     }
 
@@ -59,21 +60,21 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
                 messages.push(messageItem);
                 this.setState({
                     hideBackdrop: hideBackdrop,
-                    messages
-                })
+                    messages,
+                });
             }
         }
         return messageItem;
-    };
+    }
 
     remove = (key: any) => {
         this.setState((previousState: any) => {
             const messages = previousState.messages.filter((message: any) => message.key !== key);
             return {
-                messages
+                messages,
             };
         });
-    };
+    }
 
     getMessageChildren = () => {
         const {messages} = this.state;
@@ -81,15 +82,17 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
         messages.map((message: any) => {
             const close = () => {
                 this.remove(message.key);
-                if (message.onClose) message.onClose();
+                if (message.onClose) {
+                    message.onClose();
+                }
             };
 
             children.push(
-                <MessageItem key={message.key} {...message} onClose={close}/>
+                <MessageItem key={message.key} {...message} onClose={close}/>,
             );
         });
         return children;
-    };
+    }
 
     handleClose = () => {
         const messages = [...this.state.messages];
@@ -97,9 +100,9 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
             this.remove(messages[messages.length - 1].key);
         }
         if (this.props.onClose) {
-            (this.props.onClose as Function)();
+            (this.props.onClose as () => void)();
         }
-    };
+    }
 
     render() {
         const {className, hideBackdrop} = this.props;
@@ -107,14 +110,14 @@ export default class Message extends React.PureComponent<MessageProps, MessageSt
         const styleClass = classNames(
             'Message',
             {
-                'Message-none': messages.length <= 0
+                'Message-none': messages.length <= 0,
             },
-            className
+            className,
         );
         const messagesChildren = this.getMessageChildren();
         return (
             <div className={styleClass}>
-                {(messages.length > 0 && hideBackdrop == true) ?
+                {(messages.length > 0 && hideBackdrop) ?
                     <div onClick={this.handleClose} className="Message-mask"/> : null}
                 {messagesChildren}
             </div>

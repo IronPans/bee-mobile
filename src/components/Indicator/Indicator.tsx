@@ -1,7 +1,7 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import * as React from 'react';
+import * as classNames from 'classnames';
 import Message from '../Message';
-import Spin from "../Spin";
+import Spin from '../Spin';
 import {IndicatorProps} from './PropsType';
 
 let indicatorInstance: any;
@@ -15,9 +15,10 @@ const getIndicatorInstance = () => {
 
 export class Indicator {
     props: IndicatorProps;
+
     constructor(props: any) {
-        props['className'] = 'Indicator';
-        props['size'] = 'xs';
+        props.className = 'Indicator';
+        props.size = 'xs';
         this.props = props;
         indicatorInstance = getIndicatorInstance();
         this.create();
@@ -26,15 +27,17 @@ export class Indicator {
     create() {
         const props = Object.assign({}, this.props);
         const {type, message, onClose, size} = props;
-        props['message'] = (
-            <div className={
-                classNames(['Indicator-item'])
-            }>
+        props.message = (
+            <div
+                className={
+                    classNames(['Indicator-item'])
+                }
+            >
                 <Spin size={size} type={type}/>
                 <div className="Indicator-content">{message}</div>
             </div>
         );
-        props['onClose'] = () => {
+        props.onClose = () => {
             if (onClose) {
                 onClose();
             }
@@ -53,4 +56,4 @@ export default {
             indicatorInstance = null;
         }
     },
-}
+};

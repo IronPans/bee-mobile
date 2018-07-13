@@ -10,7 +10,7 @@ export interface ListItemProps extends BaseProps {
     avatarRight?: boolean;
     disableRipple?: boolean;
     index?: number;
-    onClick?: Function;
+    onClick?: (event: any) => void;
 }
 
 export interface ListItemActionProps extends BaseProps {

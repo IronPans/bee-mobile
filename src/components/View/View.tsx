@@ -10,6 +10,7 @@ export default class View extends React.PureComponent<ViewProps, ViewState> {
     state = {
         reveal: false,
     };
+
     toggleSidebar = () => {
         if (this.props.onClose) {
             this.props.onClose();

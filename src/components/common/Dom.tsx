@@ -1,4 +1,4 @@
-function addEventListener(element: any, type: string, callback: Function, capture: boolean = false) {
+function addEventListener(element: any, type: string, callback: any, capture: boolean = false) {
     if (element.addEventListener) {
         element.addEventListener(type, callback, capture);
     } else if (element.attachEvent) {
@@ -6,7 +6,7 @@ function addEventListener(element: any, type: string, callback: Function, captur
     }
 }
 
-function removeEventListener(element: any, type: string, callback: Function) {
+function removeEventListener(element: any, type: string, callback: any) {
     if (element.removeEventListener) {
         element.removeEventListener(type, callback);
     } else if (element.detachEvent) {
@@ -14,7 +14,7 @@ function removeEventListener(element: any, type: string, callback: Function) {
     }
 }
 
-function animationEnd(element: any, callback: Function): void {
+function animationEnd(element: any, callback: any): void {
     element.addEventListener('animationend', callback, false);
     element.addEventListener('webkitAnimationEnd', callback, false);
     element.addEventListener('mozAnimationEnd', callback, false);
@@ -36,28 +36,28 @@ function setTransitionDuration(element: any, times: number): void {
     element.style.transitionDuration = times + 'ms';
 }
 
-function transitionStart(element: any, callback: Function): void {
+function transitionStart(element: any, callback: any): void {
     element.addEventListener('transitionstart', callback, false);
     element.addEventListener('webkitTransitionStart', callback, false);
     element.addEventListener('mozTransitionStart', callback, false);
     element.addEventListener('oTransitionStart', callback, false);
 }
 
-function transitionEnd(element: any, callback: Function): void {
+function transitionEnd(element: any, callback: any): void {
     element.addEventListener('transitionend', callback, false);
     element.addEventListener('webkitTransitionEnd', callback, false);
     element.addEventListener('mozTransitionEnd', callback, false);
     element.addEventListener('oTransitionEnd', callback, false);
 }
 
-function deleteTransitionEnd(element: any, callback: Function): void {
+function deleteTransitionEnd(element: any, callback: any): void {
     element.removeEventListener('transitionend', callback, false);
     element.removeEventListener('webkitTransitionEnd', callback, false);
     element.removeEventListener('mozTransitionEnd', callback, false);
     element.removeEventListener('oTransitionEnd', callback, false);
 }
 
-function addClass(elem: any, className: any)  {
+function addClass(elem: any, className: any) {
     const classes = className.split(/\s+/);
     for (const cName of classes) {
         elem.classList.add(cName);
@@ -76,7 +76,7 @@ function hasClass(elem: any, className: string) {
     if (elem.classList) {
         return elem.classList.contains(className);
     } else {
-        return new RegExp('(^| )' + className + '( |$)', 'gi').test(elem.className);
+        return new RegExp(`(^| )${className}( |$)`, 'gi').test(elem.className);
     }
 }
 
@@ -95,16 +95,18 @@ function removeClass(elem: any, className: string) {
 
 function parents(elem: any) {
     const matched: any = [];
+    let target: any = elem;
 
-    while ( ( elem = elem[ 'parentNode' ] ) && elem.nodeType !== 9 ) {
-        if ( elem.nodeType === 1 ) {
-            matched.push( elem );
+    while (target && target.nodeType !== 9) {
+        if (target.nodeType === 1) {
+            matched.push(target);
         }
+        target = target.parentNode;
     }
     return matched;
 }
 
-function clickOutside(elem: any, source: any, inside?: Function, outside?: Function) {
+function clickOutside(elem: any, source: any, inside?: any, outside?: any) {
     let isIn = false;
     while (elem) {
         if (typeof source === 'string') {
@@ -169,7 +171,7 @@ function getScrollParent(node: any) {
     return node.ownerDocument || node.documentElement || document.documentElement;
 }
 
-function on(elem, type, callback, capture = false) {
+function on(elem: any, type: string, callback: any, capture: boolean = false) {
     if (elem.addEventListener) {
         elem.addEventListener(type, callback, capture);
     } else if (elem.attachEvent) {
@@ -177,7 +179,7 @@ function on(elem, type, callback, capture = false) {
     }
 }
 
-function off(elem, type, callback) {
+function off(elem: any, type: string, callback: any) {
     if (elem.removeEventListener) {
         elem.removeEventListener(type, callback);
     } else if (elem.detachEvent) {
@@ -185,13 +187,31 @@ function off(elem, type, callback) {
     }
 }
 
-function listen(elem, type, callback) {
+function listen(elem: any, type: string, callback: any) {
     on(elem, type, callback);
 
     return () => {
         off(elem, type, callback);
-    }
+    };
 }
 
-export {on, off, listen, addClass, addEventListener, clickOutside, css, hasClass, removeClass, getScrollParent, removeEventListener, animationEnd,
-    setTransform, setTransitionDuration, transitionStart, transitionEnd, deleteTransitionEnd, parents}
+export {
+    on,
+    off,
+    listen,
+    addClass,
+    addEventListener,
+    clickOutside,
+    css,
+    hasClass,
+    removeClass,
+    getScrollParent,
+    removeEventListener,
+    animationEnd,
+    setTransform,
+    setTransitionDuration,
+    transitionStart,
+    transitionEnd,
+    deleteTransitionEnd,
+    parents,
+};

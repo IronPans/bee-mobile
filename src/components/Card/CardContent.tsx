@@ -4,14 +4,14 @@ import {CardContentProps} from './PropsType';
 
 export default class CardContent extends React.PureComponent<CardContentProps, any> {
     static defaultProps = {
-        prefixCls: 'bm-CardContent'
+        prefixCls: 'bm-CardContent',
     };
 
     render() {
         const {className, children, prefixCls, ...other} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>

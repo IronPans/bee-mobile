@@ -6,8 +6,8 @@ export interface ModalProps extends BaseProps {
     hideBackdrop?: boolean;
     maxHeight?: number | string;
     visible: boolean;
-    onClose?: Function;
-    onOpen?: Function;
+    onClose?: () => void;
+    onOpen?: () => void;
 }
 
 export interface ModalState {

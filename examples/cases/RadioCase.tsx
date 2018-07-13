@@ -24,9 +24,9 @@ export default class RadioCase extends React.PureComponent<Props, {}> {
         },
     ];
 
-    handleChange = (value: any) => {
+    handleChange = (event: any) => {
         this.setState({
-            value,
+            value: event.value,
         });
     }
 

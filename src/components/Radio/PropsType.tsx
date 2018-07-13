@@ -7,10 +7,10 @@ export interface RadioProps extends BaseProps {
     disabled?: boolean;
     disableRipple?: boolean;
     name?: string;
-    onChange?: Function;
-    value?: string
+    onChange?: (event: any) => void;
+    value?: string;
 }
 
 export interface RadioState {
-    checked: boolean,
+    checked: boolean;
 }

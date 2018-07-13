@@ -45,7 +45,9 @@ export default class CardCase extends React.PureComponent< CardCaseProps, any> {
                             <Avatar src="assets/images/landscape.jpg"/>
                             <div className="padding-10">
                                 <h2 className="no-margin">Title</h2>
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                                This impressive paella is a perfect
+                                party dish and a fun meal to cook together with your guests.
+                                Add 1 cup of frozen peas along with the mussels, if you like.
                             </div>
                         </CardContent>
                         <CardFooter className="padding-5">
@@ -66,7 +68,9 @@ export default class CardCase extends React.PureComponent< CardCaseProps, any> {
                         <CardContent>
                             <Avatar src="assets/images/landscape.jpg"/>
                             <div className="padding-10">
-                                This impressive paella is a perfect party dish and a fun meal to cook together with your guests. Add 1 cup of frozen peas along with the mussels, if you like.
+                                This impressive paella is a perfect party
+                                dish and a fun meal to cook together with your guests.
+                                Add 1 cup of frozen peas along with the mussels, if you like.
                             </div>
                         </CardContent>
                         <CardFooter className="padding-5">

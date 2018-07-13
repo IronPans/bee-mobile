@@ -11,7 +11,7 @@ export default class Modal extends React.PureComponent<ModalProps, ModalState> {
     static defaultProps: ModalProps = {
         hideBackdrop: false,
         prefixCls: 'bm-Modal',
-        visible: false
+        visible: false,
     };
 
     constructor(props: ModalProps) {
@@ -26,38 +26,38 @@ export default class Modal extends React.PureComponent<ModalProps, ModalState> {
     componentWillReceiveProps(nextProps: ModalProps) {
         if ('visible' in nextProps && nextProps.visible !== this.props.visible) {
             this.setState({
-                visible: nextProps.visible
-            })
+                visible: nextProps.visible,
+            });
         }
     }
 
     handleClose = () => {
-        (this.props.onClose as Function)();
-    };
+        (this.props.onClose as () => void)();
+    }
 
     handleBackdropClick = () => {
         if (this.props.hideBackdrop) {
-            (this.props.onClose as Function)();
+            (this.props.onClose as () => void)();
         }
-    };
+    }
 
     render() {
         const {className, children, header, maxHeight, prefixCls, visible, ...other}: any = this.props;
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-max`]: maxHeight
+                [`${prefixCls}-max`]: maxHeight,
             },
-            className
+            className,
         );
         const panelClass = classNames(
             `${prefixCls}-panel`,
             {
-                'bm-Scroll': maxHeight
-            }
+                'bm-Scroll': maxHeight,
+            },
         );
         const panelStyles = {
-            maxHeight: setValueToNumber(maxHeight) + 'px'
+            maxHeight: setValueToNumber(maxHeight) + 'px',
         };
         const otherProps = getOtherProperties(other, ['hideBackdrop', 'onClose', 'onOpen']);
         return (

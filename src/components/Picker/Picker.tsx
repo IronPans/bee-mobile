@@ -10,13 +10,13 @@ import {PickerProps, PickerState} from './PropsType';
 export default class Picker extends React.PureComponent<PickerProps, PickerState> {
     static defaultProps: PickerProps = {
         data: [],
-        format: '/'
+        format: '/',
     };
     state: PickerState = {
         data: [],
         inputValue: '',
         value: [],
-        visible: false
+        visible: false,
     };
     visible: boolean = false;
     lastInputValue: any;
@@ -31,7 +31,7 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
                 this.getDefaultValue(data!, defaultValue!)) : [];
             this.setState({
                 data, value,
-                inputValue: defaultValue && this.fetchValue(data, defaultValue, 'label')
+                inputValue: defaultValue && this.fetchValue(data, defaultValue, 'label'),
             });
             this.lastInputValue = value;
         }
@@ -51,7 +51,7 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
             this.setState({
                 visible: nextProps.visible!,
                 value,
-                data: nextProps.data!
+                data: nextProps.data!,
             }, () => {
                 this.stopBodyScroll(this.state.visible);
             });
@@ -63,15 +63,15 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
         if (Array.isArray(defaultValue)) {
             value = defaultValue;
         } else if (typeof defaultValue === 'string') {
-            value = (defaultValue as any).split(this.props.format!).map((value: any) => ({
-                value
+            value = (defaultValue as any).split(this.props.format!).map((v: any) => ({
+                value: v,
             }));
         } else {
             let child: any = [...data];
             while (child && child.length > 0) {
                 value.push({
                     label: child[0].label,
-                    value: child[0].value
+                    value: child[0].value,
                 });
                 child = child[0] && child[0].children;
             }
@@ -96,12 +96,13 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
             });
         }
         return value;
-    };
+    }
 
     getItems(data: any, value: any) {
         const children: any[] = [];
         if (data && data.length > 0) {
-            let num: number = 0, child: any = [...data!];
+            let num = 0;
+            let child: any = [...data!];
             while (child && child.length > 0) {
                 const index: number = (value as any[])[num] || 0;
                 children.push({num, index, child});
@@ -109,10 +110,17 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
                 num++;
             }
             for (let i = 0; i < children.length; i++) {
-                const data: any = children[i];
-                children[i] = (<PickerItem key={data.num} index={data.num} data={data.child}
-                                           style={{width: 100 / children.length + '%'}} disabled={this.props.disabled}
-                                           value={data.index} onValueChange={this.handleValueChange}/>);
+                const childData: any = children[i];
+                children[i] = (
+                    <PickerItem
+                        key={childData.num}
+                        index={childData.num}
+                        data={childData.child}
+                        style={{width: 100 / children.length + '%'}}
+                        disabled={this.props.disabled}
+                        value={childData.index}
+                        onValueChange={this.handleValueChange}
+                    />);
             }
         }
         return children;
@@ -122,13 +130,13 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
         const selected: any = [];
         if (Array.isArray(data) && value) {
             let child: any = data;
-            let i: number = 0;
+            let i = 0;
             while (child && child.length > 0) {
                 child = child[value[i] || 0];
                 if (child) {
                     selected.push({
                         label: child.label,
-                        value: child.value
+                        value: child.value,
                     });
                 }
                 i++;
@@ -143,26 +151,26 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
     handleClose = () => {
         this.setState({
             value: this.lastInputValue,
-            visible: false
+            visible: false,
         });
         if (this.props.onClose) {
             this.props.onClose();
         }
-    };
+    }
 
     handleValueChange = (event: any) => {
         const value: any = [...this.state.value!];
         value[event.index] = event.activeIndex;
         this.setState({
-            value
+            value,
         });
         if (this.props.onValueChange) {
             this.props.onValueChange({
                 value: event.value,
-                index: event.index
+                index: event.index,
             });
         }
-    };
+    }
 
     handleConfirm = () => {
         const value: any = [...this.state.value!];
@@ -170,7 +178,7 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
         this.setState({
             value,
             inputValue,
-            visible: false
+            visible: false,
         });
         this.lastInputValue = value;
         if (this.props.onClose) {
@@ -179,9 +187,9 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
         if (this.props.onChange) {
             this.props.onChange(inputValue);
         }
-    };
+    }
 
-    stopBodyScroll(visible) {
+    stopBodyScroll(visible: boolean) {
         if (this.bodyOverflow === 'hidden') {
             return;
         }
@@ -194,24 +202,24 @@ export default class Picker extends React.PureComponent<PickerProps, PickerState
 
     handleClick = () => {
         this.setState({
-            visible: true
+            visible: true,
         }, () => {
             this.stopBodyScroll(this.state.visible);
         });
         if (this.props.onOpen) {
-            (this.props.onOpen as Function)();
+            (this.props.onOpen as () => void)();
         }
-    };
+    }
 
     render() {
-        const {className,  ...other} = this.props;
+        const {className, ...other} = this.props;
         const {data, inputValue, value, visible}: any = this.state;
         const styleClass = classNames(
             'Picker-panel',
             {
-                'Picker-open': visible
+                'Picker-open': visible,
             },
-            className
+            className,
         );
         const otherProps: object = getOtherProperties(other,
             ['defaultValue', 'children', 'data', 'format', 'onChange', 'onOpen', 'onValueChange', 'visible']);

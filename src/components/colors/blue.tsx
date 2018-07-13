@@ -12,7 +12,7 @@ const blue = {
   A100: '#82b1ff',
   A200: '#448aff',
   A400: '#2979ff',
-  A700: '#2962ff'
+  A700: '#2962ff',
 };
 
 export default blue;

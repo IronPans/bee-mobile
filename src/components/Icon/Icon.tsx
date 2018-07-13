@@ -5,14 +5,14 @@ import {IconProps} from './PropsType';
 export default class Icon extends React.PureComponent<IconProps, {}> {
     static defaultProps = {
         icon: '',
-        prefixCls: 'bm-Icon'
+        prefixCls: 'bm-Icon',
     };
 
     handleClick = (event: any) => {
         if (this.props.onClick) {
             this.props.onClick(event);
         }
-    };
+    }
 
     render() {
         const {children, spin, icon, size, rotate, className, prefixCls, ...other} = this.props;
@@ -22,7 +22,7 @@ export default class Icon extends React.PureComponent<IconProps, {}> {
             (size ? `${prefixCls}-${size}` : ''),
             (rotate ? `${prefixCls}-${rotate}` : ''),
             (spin ? `${prefixCls}-spin` : ''),
-            className
+            className,
         );
         return (
             <i className={styleClass} {...other} onClick={this.handleClick}>{icon}</i>

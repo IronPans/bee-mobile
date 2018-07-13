@@ -4,14 +4,14 @@ import {PageProps} from './PropsType';
 
 export default class Page extends React.PureComponent<PageProps, {}> {
     static defaultProps = {
-        isActive: true
+        isActive: true,
     };
 
     render() {
         const { className, isActive, children } = this.props;
         const styleClass = classNames(
             'Page', className,
-            (isActive ? 'Page-active' : 'Page-on-right')
+            (isActive ? 'Page-active' : 'Page-on-right'),
         );
         return (
             <div className={styleClass}>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {setTransitionDuration} from "../common/Dom";
+import {setTransitionDuration} from '../common/Dom';
 import {TabsProps, TabsState} from './PropsType';
 
 export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
@@ -9,13 +9,13 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
         activeIndex: 0,
         prefixCls: 'bm-Tabs',
         scrollable: false,
-        position: 'top'
+        position: 'top',
     };
 
     state: TabsState = {
         activeIndex: 0,
         x: 0,
-        y: 0
+        y: 0,
     };
     tabNode: any;
     dragging: boolean;
@@ -32,7 +32,7 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
     componentWillReceiveProps(nextProps: TabsProps) {
         if ('activeIndex' in nextProps && this.props.activeIndex !== nextProps.activeIndex) {
             this.setState({
-                activeIndex: nextProps.activeIndex!
+                activeIndex: nextProps.activeIndex!,
             }, () => {
                 if (nextProps.centerMode) {
                     const {width, height, left, top} = this.getLineOffset();
@@ -48,8 +48,8 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
                                 diffHeight = wrapperHeight - navHeight;
                             }
                             this.setState({
-                                y: -diffHeight
-                            })
+                                y: -diffHeight,
+                            });
                         }
                     } else {
                         const navWidth = this.tabNode.offsetWidth;
@@ -64,8 +64,8 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
                             diffWidth = 0;
                         }
                         this.setState({
-                            x: -diffWidth
-                        })
+                            x: -diffWidth,
+                        });
                     }
                 }
             });
@@ -79,12 +79,12 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
 
     handleChange = (activeIndex: number) => {
         this.setState({
-            activeIndex
+            activeIndex,
         });
         if (this.props.onChange) {
             this.props.onChange(activeIndex);
         }
-    };
+    }
 
     getLineOffset = () => {
         const index = this.state.activeIndex!;
@@ -103,9 +103,9 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
             }
         }
         return {
-            width, left, height, top
-        }
-    };
+            width, left, height, top,
+        };
+    }
 
     getRef = (node: any) => {
         if (!node) {
@@ -114,16 +114,16 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
         this.tabNode = node;
         if (this.props.activeIndex! > 0) {
             this.setState({
-                activeIndex: this.props.activeIndex!
+                activeIndex: this.props.activeIndex!,
             });
         }
-    };
+    }
 
     getPoint(e: any) {
         const touchEvent = this.isMobile ? e.changedTouches[0] : e;
         return {
             x: touchEvent.pageX || touchEvent.clientX,
-            y: touchEvent.pageY || touchEvent.clientY
+            y: touchEvent.pageY || touchEvent.clientY,
         };
     }
 
@@ -141,36 +141,36 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
             document.addEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.swipeMove);
             document.addEventListener(this.isMobile ? 'touchend' : 'mouseup', this.swipeEnd);
         }
-    };
+    }
 
     swipeMove = (event: any) => {
         event.stopPropagation();
         if (this.dragging) {
-            let {x, y} = this.getPoint(event);
-            let diffX = x - this.touches.startX + this.state.x!;
-            let diffY = y - this.touches.startY + this.state.y!;
+            const {x, y} = this.getPoint(event);
+            const diffX = x - this.touches.startX + this.state.x!;
+            const diffY = y - this.touches.startY + this.state.y!;
             this.setState({
                 x: Math.max(Math.min(0, diffX), -this.touches.moveWith),
-                y: Math.max(Math.min(0, diffY), -this.touches.moveHeight)
+                y: Math.max(Math.min(0, diffY), -this.touches.moveHeight),
             });
             this.touches.startX = x;
             this.touches.startY = y;
         }
-    };
+    }
 
     swipeEnd = (event: any) => {
         event.stopPropagation();
         this.dragging = false;
         document.removeEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.swipeMove);
         document.removeEventListener(this.isMobile ? 'touchend' : 'mouseup', this.swipeEnd);
-    };
+    }
 
     render() {
         const {children: childrenProp, className, prefixCls, position} = this.props;
         const styleClass = classNames(
             prefixCls,
             `${prefixCls}-${position}`,
-            className
+            className,
         );
         let childIndex = -1;
         const children = React.Children.map(childrenProp, (child: React.ReactElement<any>) => {
@@ -183,32 +183,33 @@ export default class Tabs extends React.PureComponent<TabsProps, TabsState> {
                 index: childIndex,
                 disabled: props.disabled,
                 onChange: this.handleChange,
-                activeIndex: this.state.activeIndex!
+                activeIndex: this.state.activeIndex!,
             });
         });
         const wrapperStyle = {
-            transform: `translate3d(${this.state.x}px, 0, 0)`
+            transform: `translate3d(${this.state.x}px, 0, 0)`,
         };
         const lineRect = this.getLineOffset();
         let lineStyle: any;
         if (position === 'left' || position === 'right') {
             lineStyle = {
                 height: lineRect.height,
-                top: lineRect.top
+                top: lineRect.top,
             };
         } else {
             lineStyle = {
                 width: lineRect.width,
-                left: lineRect.left
+                left: lineRect.left,
             };
         }
         return (
             <div className={styleClass}>
-                <div className={`${prefixCls}-nav`} ref={this.getRef}
-                     onMouseDown={this.isMobile ? () => {
-                     } : this.swipeStart}
-                     onTouchStart={this.isMobile ? this.swipeStart : () => {
-                     }}>
+                <div
+                    className={`${prefixCls}-nav`}
+                    ref={this.getRef}
+                    onMouseDown={this.isMobile ? () => false : this.swipeStart}
+                    onTouchStart={this.isMobile ? this.swipeStart : () => false}
+                >
                     <div className={`${prefixCls}-nav-wrapper`} style={wrapperStyle}>
                         {children}
                         <div className={`${prefixCls}-indicator`} style={lineStyle}/>

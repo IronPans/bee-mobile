@@ -8,7 +8,7 @@ export interface TableColumnProps extends BaseProps {
     index?: number;
     rowspan?: number;
     sort?: boolean;
-    template?: Function | React.ReactNode;
+    template?: any;
 }
 
 export interface TableProps extends BaseProps {
@@ -20,7 +20,7 @@ export interface TableProps extends BaseProps {
     selectionMode?: '' | 'multiple';
     striped?: boolean;
     value?: any;
-    onSelect?: Function;
+    onSelect?: (event: any) => void;
 }
 
 export interface TableState {

@@ -9,5 +9,5 @@ export interface ToastProps {
     message: React.ReactNode | string;
     position?: TOAST_POSITION;
     type?: string;
-    onClose?: Function;
+    onClose?: () => void;
 }

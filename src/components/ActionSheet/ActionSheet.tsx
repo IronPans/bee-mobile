@@ -28,19 +28,19 @@ export class ActionSheet {
         actionSheetInstance = getActionSheetInstance({
             hideBackdrop: true,
             className: props.actionClass,
-            onClose: props.onClose || (() => {}),
+            onClose: props.onClose || (() => false),
         });
         this.currentItem = this.create();
     }
 
     handleClose = () => {
         actionSheetInstance.remove(this.currentItem.key);
-    };
+    }
 
     handleClick = (button: any, event: any) => {
         if (button.onClick) {
             button.onClick({
-                button, event,
+                button, originalEvent: event,
             });
         }
         this.handleClose();
@@ -48,13 +48,13 @@ export class ActionSheet {
 
     addButtons() {
         const {buttons, prefixCls, title} = this.props;
-        const addGroup = (buttons: any): any => {
+        const addGroup = (btns: any): any => {
             let num = 0;
             const children: any = [];
             if (title) {
                 children.push(<div key="title" className="bm-ActionSheet-title">{title}</div>);
             }
-            for (const button of buttons) {
+            for (const button of btns) {
                 if (Array.isArray(button)) {
                     children.push(addGroup(button));
                 } else {
@@ -120,5 +120,4 @@ export default {
             actionSheetInstance = null;
         }
     },
-}
-
+};

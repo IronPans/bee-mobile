@@ -1,4 +1,4 @@
-export const EASINGS:any = {
+export const EASINGS: any = {
     // no easing, no acceleration
     linear(t: number) {
         return t;
@@ -50,5 +50,5 @@ export const EASINGS:any = {
     // acceleration until halfway, then deceleration
     easeInOutQuint(t: number) {
         return t < 0.5 ? 16 * t * t * t * t * t : 1 + 16 * --t * t * t * t * t;
-    }
+    },
 };

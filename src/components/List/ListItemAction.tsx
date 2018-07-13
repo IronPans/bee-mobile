@@ -11,7 +11,7 @@ export default class ListItemAction extends React.PureComponent<ListItemActionPr
         const {className, children, prefixCls, ...other} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>

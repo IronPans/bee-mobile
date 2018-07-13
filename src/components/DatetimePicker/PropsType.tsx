@@ -7,10 +7,10 @@ export interface DatetimePickerProps extends BaseProps {
     minDate?: Date | string;
     maxDate?: Date | string;
     mode?: 'date' | 'time' | 'datetime';
-    onOk?: Function;
-    onClose?: Function;
-    onOpen?: Function;
-    onValueChange?: Function;
+    onOk?: (event: any) => void;
+    onClose?: () => void;
+    onOpen?: () => void;
+    onValueChange?: (event: any) => void;
     visible?: boolean;
 }
 

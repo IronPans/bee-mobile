@@ -8,7 +8,7 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
     static defaultProps: RippleProps = {
         centerMode: false,
         hidden: true,
-        prefixCls: 'bm-Ripple'
+        prefixCls: 'bm-Ripple',
     };
 
     touchEvent: any;
@@ -16,7 +16,7 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
     now: any = new Date();
     seed: number = 0;
     state: RippleState = {
-        children: []
+        children: [],
     };
 
     constructor(props: RippleProps) {
@@ -76,10 +76,10 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
             width: size / scale + 'px',
             height: size / scale + 'px',
             top: y + 'px',
-            left: x + 'px'
+            left: x + 'px',
         });
         addClass(element, `${prefixCls!}-Effect`);
-    };
+    }
 
     handleTouchStart = (event: any) => {
         const children: any = [...this.state.children!];
@@ -92,37 +92,41 @@ export default class Ripple extends React.PureComponent<RippleProps, RippleState
                 this.ripple(event, rippleChild[activeIndex]);
             }
         });
-    };
+    }
 
     handleAnimationEnd = (key: string) => {
         const children: any = (this.state.children as Array<string>).filter((child) => {
             return key !== child;
         });
         this.setState({children});
-    };
+    }
 
     render() {
         const {className, children, hidden, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const groupClass = classNames(
             `${prefixCls}-group`,
             {
-                [`${prefixCls}-hidden`]: hidden
-            }
+                [`${prefixCls}-hidden`]: hidden,
+            },
         );
         const styles = {
-            backgroundColor: this.props.rippleColor!
+            backgroundColor: this.props.rippleColor!,
         };
         const otherProps = getOtherProperties(other, ['centerMode']);
         return (
             <div className={groupClass} ref={this.getRef}>
                 {
                     (this.state.children as Array<string>).map((child: any) => {
-                        return (<div key={child} className={styleClass}
-                                     style={styles} {...otherProps}
-                                     onAnimationEnd={this.handleAnimationEnd.bind(this, child)}>
+                        return (<div
+                            key={child}
+                            className={styleClass}
+                            style={styles}
+                            {...otherProps}
+                            onAnimationEnd={this.handleAnimationEnd.bind(this, child)}
+                        >
                             {children}
                         </div>);
                     })

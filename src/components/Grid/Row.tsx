@@ -9,8 +9,10 @@ if (typeof window !== 'undefined') {
             media: mediaQuery,
             matches: false,
             addListener() {
+                // addListener
             },
             removeListener() {
+                // removeListener
             },
         };
     };
@@ -23,7 +25,7 @@ const responsiveMap: BreakpointMap = {
     xs: '(max-width: 767px)',
     sm: '(min-width: 768px)',
     md: '(min-width: 992px)',
-    lg: '(min-width: 1200px)'
+    lg: '(min-width: 1200px)',
 };
 
 export default class Row extends React.PureComponent<RowProps, RowState> {
@@ -71,6 +73,7 @@ export default class Row extends React.PureComponent<RowProps, RowState> {
                             }));
                         },
                         destroy() {
+                            // destory
                         },
                     },
                 ));
@@ -94,7 +97,7 @@ export default class Row extends React.PureComponent<RowProps, RowState> {
     render() {
         const {className, children: childrenProps, spacing: spacingProps, style, ...other} = this.props;
         const styleClass = classNames(
-            'Row', className
+            'Row', className,
         );
         const spacing = this.getSpacing();
         const halfSpacing: number = spacing / 2;

@@ -2,22 +2,21 @@ import * as React from 'react';
 import * as classNames from 'classnames';
 import {CellSwipeProps, CellSwipeState} from './PropsType';
 import {getTouchEvent} from '../common/Utils';
-import Button from "../Button/Button";
 
 export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellSwipeState> {
     static defaultProps = {
-        prefixCls: 'bm-CellSwipe'
+        prefixCls: 'bm-CellSwipe',
     };
     leftSlotElem: any;
     rightSlotElem: any;
     pageX: number;
     isDragging: boolean;
     wrapperStyle: any = {
-        transitionDuration: 0
+        transitionDuration: 0,
     };
 
     state = {
-        left: 0
+        left: 0,
     };
 
     touchEvent = getTouchEvent();
@@ -30,19 +29,19 @@ export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellS
         this.isDragging = true;
         this.wrapperStyle = {
             ...this.wrapperStyle,
-            transitionDuration: 0
+            transitionDuration: 0,
         };
         this.pageX = e.changedTouches ? e.changedTouches[0].pageX : e.pageX;
         document.body.addEventListener(this.touchEvent.touchmove, this.swipeMove);
         document.body.addEventListener(this.touchEvent.touchend, this.swipeEnd);
-    };
+    }
 
     swipeMove = (e) => {
         if (this.isDragging) {
             const rightWidth = this.rightSlotElem.offsetWidth,
                 leftWidth = this.leftSlotElem.offsetWidth;
             const pageX = e.changedTouches ? e.changedTouches[0].pageX : e.pageX;
-            let diffX = pageX - this.pageX;
+            const diffX = pageX - this.pageX;
             let {left}: any = this.state;
             left = left + diffX;
             if (left <= 0 && Math.abs(left) >= rightWidth) {
@@ -52,10 +51,10 @@ export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellS
             }
             this.pageX = pageX;
             this.setState({
-                left
+                left,
             });
         }
-    };
+    }
 
     swipeEnd = () => {
         if (!this.isDragging) {
@@ -66,39 +65,39 @@ export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellS
         const {left}: any = this.state;
         this.wrapperStyle = {
             ...this.wrapperStyle,
-            transitionDuration: '300ms'
+            transitionDuration: '300ms',
         };
         const halfWidth = (left < 0 ? rightWidth : leftWidth) / 2;
         if (Math.abs(left) > halfWidth && (left < 0 || left > 0)) {
             this.setState({
-                left: left < 0 ? -rightWidth : leftWidth
+                left: left < 0 ? -rightWidth : leftWidth,
             });
         } else if (Math.abs(left) < halfWidth) {
             this.setState({
-                left: 0
+                left: 0,
             });
         }
         this.isDragging = false;
         this.unBindDocumentlistener();
-    };
+    }
 
     getLeftSlotRef = (node) => {
         this.leftSlotElem = node;
-    };
+    }
 
     getRightSlotRef = (node) => {
         this.rightSlotElem = node;
-    };
+    }
 
     close = () => {
         this.wrapperStyle = {
             ...this.wrapperStyle,
-            transitionDuration: '300ms'
+            transitionDuration: '300ms',
         };
         this.setState({
-            left: 0
+            left: 0,
         });
-    };
+    }
 
     unBindDocumentlistener() {
         document.body.removeEventListener(this.touchEvent.touchmove, this.swipeMove);
@@ -110,19 +109,22 @@ export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellS
 
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         const {left} = this.state;
         this.wrapperStyle = {
             ...this.wrapperStyle,
-            transform: `translate3d(${left}px, 0, 0)`
+            transform: `translate3d(${left}px, 0, 0)`,
         };
         const ComponentProp = to ? 'a' : 'div';
         return (
             <div className={styleClass}>
-                <div className={`${prefixCls}-wrapper`} onTouchStart={this.touchEvent.mobile ? this.swipeStart : () => {}}
-                     onMouseDown={!this.touchEvent.mobile ? this.swipeStart : () => {}}
-                     style={this.wrapperStyle}>
+                <div
+                    className={`${prefixCls}-wrapper`}
+                    onTouchStart={this.touchEvent.mobile ? this.swipeStart : () => false}
+                    onMouseDown={!this.touchEvent.mobile ? this.swipeStart : () => false}
+                    style={this.wrapperStyle}
+                >
                     <div className={`${prefixCls}-left`} ref={this.getLeftSlotRef}>
                         {leftSlot}
                     </div>
@@ -135,6 +137,6 @@ export default class CellSwipe extends React.PureComponent<CellSwipeProps, CellS
                     </div>
                 </div>
             </div>
-        )
+        );
     }
 }

@@ -6,33 +6,33 @@ import {ChipProps} from './PropsType';
 
 export default class Chip extends React.PureComponent<ChipProps, any> {
     static defaultProps: ChipProps = {
-        active: false
+        active: false,
     };
     handleDelete = () => {
         if (this.props.onDelete) {
             this.props.onDelete({
                 label: this.props.label!,
-                value: this.props.value!
+                value: this.props.value!,
             });
         }
-    };
+    }
     handleClick = () => {
         if (this.props.onClick) {
             this.props.onClick({
                 label: this.props.label!,
-                value: this.props.value!
+                value: this.props.value!,
             });
         }
-    };
+    }
 
     render() {
         const {active, avatar, className, close, label, ...other} = this.props;
         const styleClass = classNames(
             'Chip',
             {
-                'Chip-active': active
+                'Chip-active': active,
             },
-            className
+            className,
         );
         const otherProps = getOtherProperties(other, ['onClick', 'onDelete']);
         return (

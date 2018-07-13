@@ -11,11 +11,11 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
         prefixCls: 'bm-Slider',
         step: 1,
         value: 0,
-        vertical: false
+        vertical: false,
     };
     state: SliderState = {
         isDragging: false,
-        value: 0
+        value: 0,
     };
     maxPercent: number = 100;
     slider: HTMLDivElement;
@@ -35,7 +35,7 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
         const current = Math.floor(percent * this.slider.offsetWidth);
         this.currentOffset = {
             x: 0,
-            y: this.slider.offsetHeight - this.thumb.offsetHeight
+            y: this.slider.offsetHeight - this.thumb.offsetHeight,
         };
         if (!isNaN(current)) {
             this.setValue(current);
@@ -47,7 +47,7 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
         const touchEvent = this.touch.mobile ? event.changedTouches[0] : event;
         return {
             pageX: touchEvent.pageX,
-            pageY: touchEvent.pageY
+            pageY: touchEvent.pageY,
         };
     }
 
@@ -61,24 +61,24 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
         } else if (offset < 0) {
             offset = 0;
         }
-        let percent = offset / size * 100;
+        const percent = offset / size * 100;
         const currentValue = Math.ceil((max! - min!) * percent / 100) + min!;
         if (vertical) {
-            this.thumb['style'].top = offset + 'px';
-            this.track['style'].top = percent + '%';
+            this.thumb.style.top = offset + 'px';
+            this.track.style.top = percent + '%';
         } else {
-            this.thumb['style'].left = offset + 'px';
-            this.track['style'].right = (this.maxPercent - percent) + '%';
+            this.thumb.style.left = offset + 'px';
+            this.track.style.right = (this.maxPercent - percent) + '%';
         }
         this.currentOffset = {
             x: offset,
-            y: offset
+            y: offset,
         };
         this.setState({
-            value: currentValue
+            value: currentValue,
         });
         if (this.props.onChange) {
-            (this.props.onChange as Function)(currentValue);
+            (this.props.onChange as (value: any) => void)(currentValue);
         }
     }
 
@@ -95,14 +95,14 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
         const point = this.getPoint(event);
         this.startOffset = {
             pageX: point.pageX,
-            pageY: point.pageY
+            pageY: point.pageY,
         };
         this.setState({
-            isDragging: true
+            isDragging: true,
         });
         document.addEventListener(this.touch.touchmove, this.onTouchMove);
         document.addEventListener(this.touch.touchend, this.onTouchEnd);
-    };
+    }
 
     onTouchMove = (event: any) => {
         if (this.state.isDragging) {
@@ -110,54 +110,54 @@ export default class Slider extends React.PureComponent<SliderProps, SliderState
             this.getValue(event);
             this.startOffset = {
                 pageX: point.pageX,
-                pageY: point.pageY
+                pageY: point.pageY,
             };
         }
-    };
+    }
 
     onTouchEnd = () => {
         document.removeEventListener(this.touch.touchmove, this.onTouchMove);
         document.removeEventListener(this.touch.touchend, this.onTouchEnd);
         this.setState({
-            isDragging: false
+            isDragging: false,
         });
-    };
+    }
 
-    getTrackRef = ((node: any) => {
+    getTrackRef = (node: any) => {
         if (node) {
             this.track = node;
             this.slider = node.parentNode;
             this.thumb = node.nextElementSibling;
         }
-    });
+    }
 
     render() {
-        const {className, end, prefixCls,disabled, start, vertical, ...other} = this.props;
+        const {className, end, prefixCls, disabled, start, vertical, ...other} = this.props;
         const isMobile = this.touch.mobile;
         const styleClass = classNames(
             prefixCls,
             {
                 [`${prefixCls}-vertical`]: vertical,
-                [`${prefixCls}-disabled`]: disabled
+                [`${prefixCls}-disabled`]: disabled,
             },
-            className
+            className,
         );
         const otherProps = getOtherProperties(other, ['children', 'handleSize', 'onChange']);
         const activeBarClass = classNames(
-            `${prefixCls}-bar`, `${prefixCls}-bar-active`
+            `${prefixCls}-bar`, `${prefixCls}-bar-active`,
         );
         const knobClass = classNames({
             [`${prefixCls}-knob`]: true,
-            'active': this.state.isDragging!
+            active: this.state.isDragging!,
         });
         return (
             <div className={styleClass} {...otherProps}>
                 {start ? (<div className={`${prefixCls}-start`}>{start}</div>) : null}
-                <div className={`${prefixCls}-wrapper`}
-                     onMouseDown={isMobile ? () => {
-                     } : this.onTouchStart}
-                     onTouchStart={isMobile ? this.onTouchStart : () => {
-                     }}>
+                <div
+                    className={`${prefixCls}-wrapper`}
+                    onMouseDown={isMobile ? () => false : this.onTouchStart}
+                    onTouchStart={isMobile ? this.onTouchStart : () => false}
+                >
                     <div className={`${prefixCls}-bar`}/>
                     <div className={activeBarClass} ref={this.getTrackRef}/>
                     <div className={`${prefixCls}-knob-handle`}>

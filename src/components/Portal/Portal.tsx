@@ -12,7 +12,7 @@ export default class Portal extends React.PureComponent<PortalProps, PortalState
             visible = props.visible;
         }
         this.state = {
-            visible
+            visible,
         };
     }
 
@@ -20,13 +20,13 @@ export default class Portal extends React.PureComponent<PortalProps, PortalState
         if ('visible' in nextProps && this.props.visible !== nextProps.visible) {
             if (nextProps.visible) {
                 this.setState({
-                    visible: nextProps.visible
+                    visible: nextProps.visible,
                 });
             } else {
                 // 为了消失时有动画，必须加一个定时器
                 setTimeout(() => {
                     this.setState({
-                        visible: nextProps.visible
+                        visible: nextProps.visible,
                     });
                 }, 300);
             }

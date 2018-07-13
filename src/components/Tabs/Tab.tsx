@@ -5,7 +5,7 @@ import {TabProps} from './PropsType';
 export default class Tab extends React.PureComponent<TabProps, {}> {
     static defaultProps = {
         disabled: false,
-        prefixCls: 'bm-Tab'
+        prefixCls: 'bm-Tab',
     };
     width: number;
 
@@ -13,7 +13,7 @@ export default class Tab extends React.PureComponent<TabProps, {}> {
         if (!this.props.disabled && this.props.onChange) {
             this.props.onChange(this.props.index!);
         }
-    };
+    }
 
     render() {
         const {children, className, disabled, activeIndex, index, prefixCls} = this.props;
@@ -21,9 +21,9 @@ export default class Tab extends React.PureComponent<TabProps, {}> {
             prefixCls,
             {
                 [`${prefixCls}-active`]: activeIndex === index,
-                [`${prefixCls}-disabled`]: disabled
+                [`${prefixCls}-disabled`]: disabled,
             },
-            className
+            className,
         );
         return (
             <div className={styleClass} onClick={this.handleChange}>

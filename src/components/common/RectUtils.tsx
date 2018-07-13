@@ -1,28 +1,28 @@
 function getOuterWidth(el: any, margin?: boolean) {
-    let width = el.offsetWidth;
+    let offsetWidth = el.offsetWidth;
 
     if (margin) {
         const style = getComputedStyle(el);
-        width += parseFloat(style.marginLeft!) + parseFloat(style.marginRight!);
+        offsetWidth += parseFloat(style.marginLeft!) + parseFloat(style.marginRight!);
     }
 
-    return width;
+    return offsetWidth;
 }
 
 function innerWidth(el: any) {
-    let width = el.offsetWidth;
+    let offsetWidth = el.offsetWidth;
     const style = getComputedStyle(el);
 
-    width += parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!);
-    return width;
+    offsetWidth += parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!);
+    return offsetWidth;
 }
 
 function width(el: any) {
-    let width = el.offsetWidth;
+    let offsetWidth = el.offsetWidth;
     const style = getComputedStyle(el);
 
-    width -= parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!);
-    return width;
+    offsetWidth -= parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!);
+    return offsetWidth;
 }
 
 function getInnerHeight(el: any) {
@@ -54,12 +54,12 @@ function getHeight(el: any) {
 }
 
 function getWidth(el: any): number {
-    let width = el.offsetWidth;
+    let offsetWidth = el.offsetWidth;
     const style = getComputedStyle(el);
-    width -= parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!)
+    offsetWidth -= parseFloat(style.paddingLeft!) + parseFloat(style.paddingRight!)
         + parseFloat(style.borderLeftWidth!) + parseFloat(style.borderRightWidth!);
 
-    return width;
+    return offsetWidth;
 }
 
 function scrollInView(container: any, item: any) {
@@ -73,7 +73,7 @@ function scrollInView(container: any, item: any) {
         (containerRect.top + document.body.scrollTop) - borderTop - paddingTop;
     const scroll = container.scrollTop;
     const elementHeight = container.clientHeight;
-    const itemHeight = this.getOuterHeight(item);
+    const itemHeight = getOuterHeight(item);
 
     if (offset < 0) {
         container.scrollTop = scroll + offset;
@@ -102,5 +102,7 @@ function getElementTop(element: any) {
     return actualTop;
 }
 
-export {getHeight, getInnerHeight, getOuterWidth, getOuterHeight,
-    getWidth, innerWidth, scrollInView, width, getElementLeft, getElementTop}
+export {
+    getHeight, getInnerHeight, getOuterWidth, getOuterHeight,
+    getWidth, innerWidth, scrollInView, width, getElementLeft, getElementTop,
+};

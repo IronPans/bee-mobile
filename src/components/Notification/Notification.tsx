@@ -1,4 +1,4 @@
-import * as React from 'react'
+import * as React from 'react';
 import * as classNames from 'classnames';
 import Message from '../Message';
 import Icon from '../Icon';
@@ -19,27 +19,27 @@ export class Notification {
     props: NotificationProps;
 
     constructor(props: any) {
-        props['prefixCls'] = 'bm-Notification';
-        props['delay'] = 0;
+        props.prefixCls = 'bm-Notification';
+        props.delay = 0;
         this.props = props;
         notificationInstance = getNotificationInstance({
             hideBackdrop: true, className: 'bm-Notification-group',
-            onClose: props['onClose'] || (() => {})
+            onClose: props.onClose || (() => false),
         });
         this.currentItem = this.create();
     }
 
     handleClose = () => {
         notificationInstance.remove(this.currentItem.key);
-    };
+    }
 
     create() {
         const props = Object.assign({}, this.props);
         const {type, avatar, message, onClose, prefixCls, progress, title} = props;
         const notiClass = classNames(
-            `${prefixCls! + type!}`,`${prefixCls}-item`
+            `${prefixCls! + type!}`, `${prefixCls}-item`,
         );
-        props['message'] = (
+        props.message = (
             <FadeInDown in={true}>
                 <div className={notiClass} key="Notification-item">
                     {avatar ? (<div className={`${prefixCls}-avatar`}>{avatar}</div>) : null}
@@ -54,7 +54,7 @@ export class Notification {
                 </div>
             </FadeInDown>
         );
-        props['onClose'] = () => {
+        props.onClose = () => {
             if (onClose) {
                 onClose();
             }
@@ -68,19 +68,19 @@ export default {
         return new Notification({...props});
     },
     info(props: NotificationProps) {
-        props['type'] = 'info';
+        props.type = 'info';
         return new Notification({...props});
     },
     success(props: NotificationProps) {
-        props['type'] = 'success';
+        props.type = 'success';
         return new Notification({...props});
     },
     warning(props: NotificationProps) {
-        props['type'] = 'warning';
+        props.type = 'warning';
         return new Notification({...props});
     },
     error(props: NotificationProps) {
-        props['type'] = 'error';
+        props.type = 'error';
         return new Notification({...props});
     },
     close() {
@@ -89,4 +89,4 @@ export default {
             notificationInstance = null;
         }
     },
-}
+};

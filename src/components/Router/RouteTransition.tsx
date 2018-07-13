@@ -6,7 +6,7 @@ import {RouteTransitionProps} from './PropsType';
 export default class RouteTransition extends React.PureComponent<RouteTransitionProps, any> {
     static defaultProps = {
         prefixCls: 'bm-RouteTransition',
-        wrapperComponent: 'div'
+        wrapperComponent: 'div',
     };
 
     getDefaultStyles() {
@@ -29,23 +29,23 @@ export default class RouteTransition extends React.PureComponent<RouteTransition
         return [{
             key: children.key,
             data: children!,
-            style: activeStyles!
+            style: activeStyles!,
         }];
     }
 
     willEnter = (): PlainStyle => {
         return this.props.enterStyles!;
-    };
+    }
 
     willLeave = (): any => {
         return {...this.props.leaveStyles!};
-    };
+    }
 
     didLeave = (styleThatLeft: object) => {
         if (this.props.didLeave) {
             this.props.didLeave(styleThatLeft);
         }
-    };
+    }
 
     renderElement = (config: any = {}) => {
         const styles: any = this.props.styles;
@@ -56,18 +56,20 @@ export default class RouteTransition extends React.PureComponent<RouteTransition
         return !!this.props.wrapperComponent !== false
             ? React.createElement(this.props.wrapperComponent, props, config.data)
             : React.cloneElement(config.data, props);
-    };
+    }
 
     render() {
         const {className, transitionName, prefixCls} = this.props;
         const styleClass = classNames(
-            prefixCls, className, transitionName
+            prefixCls, className, transitionName,
         );
         return (
             <TransitionMotion
                 defaultStyles={this.getDefaultStyles() as TransitionPlainStyle[]}
                 styles={this.getStyles() as TransitionPlainStyle[]}
-                willEnter={this.willEnter} willLeave={this.willLeave}>
+                willEnter={this.willEnter}
+                willLeave={this.willLeave}
+            >
                 {(styles: any) => (
                     <div className={styleClass}>
                         {styles.map(this.renderElement)}

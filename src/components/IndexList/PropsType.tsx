@@ -1,4 +1,3 @@
-
 import {BaseProps} from '../common/BaseProps';
 
 export interface IndexListProps extends BaseProps {

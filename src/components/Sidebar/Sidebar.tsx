@@ -7,32 +7,35 @@ export default class Sidebar extends React.PureComponent<SidebarProps, SidebarSt
         dir: 'left',
         drawer: true,
         className: '',
-        reveal: false
+        reveal: false,
     };
     state: SidebarState = {
-        reveal: false
+        reveal: false,
     };
+
     componentDidMount() {
-        const { reveal } = this.props;
+        const {reveal} = this.props;
         this.setState({
-            reveal: !!reveal
+            reveal: !!reveal,
         });
     }
+
     toggleSidebar = () => {
         if (this.props.onClose) {
             this.props.onClose();
         }
-    };
+    }
+
     render() {
-        const { className, reveal, drawer, dir, children } = this.props;
+        const {className, reveal, drawer, dir, children} = this.props;
         const styleClass = classNames(
             'Sidebar',
             {
                 'Sidebar-open': reveal,
-                'Sidebar-drawer': drawer
+                'Sidebar-drawer': drawer,
             },
             `Sidebar-${dir}-reveal`,
-            className
+            className,
         );
         return (
             <div className={styleClass}>

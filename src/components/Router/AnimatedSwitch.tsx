@@ -3,7 +3,7 @@ import * as classNames from 'classnames';
 import Route from 'react-router-dom/Route';
 import Switch from 'react-router-dom/Switch';
 import matchPath from 'react-router-dom/matchPath';
-import RouteTransition from "./RouteTransition";
+import RouteTransition from './RouteTransition';
 import {AnimatedSwitchProps, AnimatedSwitchState} from './PropsType';
 import {getOtherProperties} from '../common/Utils';
 
@@ -13,14 +13,14 @@ const NO_MATCH = {
 
 class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSwitchState> {
     static defaultProps = {
-        prefixCls: "bm-AnimatedSwitch",
+        prefixCls: 'bm-AnimatedSwitch',
         location: {
-            pathname: ''
-        }
+            pathname: '',
+        },
     };
     matches: number = 0;
 
-    constructor(props) {
+    constructor(props: AnimatedSwitchProps) {
         super(props);
         this.state = {
             key: this.getLocationKey(this.props.location),
@@ -30,7 +30,7 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSw
 
     componentDidMount() {
         if (this.props.onRouteChange) {
-            (this.props.onRouteChange as Function)(this.props.location);
+            (this.props.onRouteChange as (event: any) => void)(this.props.location);
         }
     }
 
@@ -45,7 +45,7 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSw
                 key: this.getLocationKey(nextProps.location) + ++this.matches,
             });
             if (this.props.onRouteChange) {
-                (this.props.onRouteChange as Function)(nextProps.location);
+                (this.props.onRouteChange as (event: any) => void)(nextProps.location);
             }
         }
     }
@@ -66,7 +66,7 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSw
     render() {
         const {className, children, location, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const otherProps = getOtherProperties(other, ['key', 'match']);
         return (
@@ -81,11 +81,13 @@ class AnimatedSwitch extends React.PureComponent<AnimatedSwitchProps, AnimatedSw
 
 const RouteWrapper = (props: any) => {
     // When location change, Route always render, so we can get the location
-    return (<Route
-        children={({location}: any) => {
-            return (<AnimatedSwitch location={location} {...props} />);
-        }}
-    />);
+    return (
+        <Route
+            children={({location}: any) => {
+                return (<AnimatedSwitch location={location} {...props} />);
+            }}
+        />
+    );
 };
 
 export default RouteWrapper;

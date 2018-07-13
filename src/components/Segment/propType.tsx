@@ -4,7 +4,7 @@ export interface SegmentProps extends BaseProps {
     activeIndex?: number;
     disabled?: boolean;
     value?: Array<string>;
-    onChange?: Function;
+    onChange?: (event: any) => void;
 }
 
 export interface SegmentState {

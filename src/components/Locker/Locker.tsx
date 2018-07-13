@@ -6,16 +6,16 @@ import {LockerProps, LockerState} from './PropsType';
 
 export default class Locker extends React.PureComponent<LockerProps, LockerState> {
     static defaultProps = {
-        prefixCls: "bm-Locker",
+        prefixCls: 'bm-Locker',
         width: 300,
         height: 300,
         fillStyle: '#2196f3',
-        strokeStyle: 'rgba(0,0,0,.12)'
+        strokeStyle: 'rgba(0,0,0,.12)',
     };
 
     state: LockerState = {
         x: 0,
-        y: 0
+        y: 0,
     };
     canvas: HTMLCanvasElement;
     ctx: CanvasRenderingContext2D;
@@ -98,7 +98,7 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
                     x1: circle.cx,
                     y1: circle.cy,
                     x2: nextCircle.cx,
-                    y2: nextCircle.cy
+                    y2: nextCircle.cy,
                 });
             }
             num++;
@@ -109,7 +109,7 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
                 x1: circle.cx,
                 y1: circle.cy,
                 x2: this.lastPoint.x,
-                y2: this.lastPoint.y
+                y2: this.lastPoint.y,
             });
         }
         for (const circle of this.circles) {
@@ -117,7 +117,7 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
         }
         this.requestAnimationFrameId = requestAnimationFrame(() => {
             this.drawLocker();
-        })
+        });
     }
 
     isPointSelect({x, y}: any) {
@@ -162,8 +162,10 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
     getPoint(event: any) {
         const touchEvent = this.isMobile ? event.changedTouches[0] : event;
         return {
-            x: (touchEvent.pageX || touchEvent.clientX + (document.documentElement.scrollLeft || document.body.scrollLeft)) - getElementLeft(this.canvas),
-            y: (touchEvent.pageY || touchEvent.clientY + (document.documentElement.scrollTop || document.body.scrollTop)) - getElementTop((this.canvas))
+            x: (touchEvent.pageX || touchEvent.clientX +
+            (document.documentElement.scrollLeft || document.body.scrollLeft)) - getElementLeft(this.canvas),
+            y: (touchEvent.pageY || touchEvent.clientY +
+            (document.documentElement.scrollTop || document.body.scrollTop)) - getElementTop((this.canvas)),
         };
     }
 
@@ -174,7 +176,7 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
         this.isPointSelect({...this.lastPoint});
         document.addEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.touchMove);
         document.addEventListener(this.isMobile ? 'touchend' : 'mouseup', this.touchEnd);
-    };
+    }
 
     touchMove = (event: any) => {
         event.stopPropagation();
@@ -182,27 +184,28 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
             this.lastPoint = this.getPoint(event);
             this.isPointSelect({...this.lastPoint});
         }
-    };
+    }
 
     touchEnd = (event: any) => {
         event.stopPropagation();
         this.dragging = false;
         if (this.props.onDone) {
-            (this.props.onDone as Function)({
+            (this.props.onDone as (event: any) => void)({
                 points: [...this.value],
-                clear: this.clear.bind(this)
-            }, event);
+                clear: this.clear.bind(this),
+                originalEvent: event,
+            });
         }
         document.removeEventListener(this.isMobile ? 'touchmove' : 'mousemove', this.touchMove);
         document.removeEventListener(this.isMobile ? 'touchend' : 'mouseup', this.touchEnd);
-    };
+    }
 
     getCanvasRef = (node: any) => {
         this.canvas = node;
         if (node) {
             this.ctx = this.canvas.getContext('2d')!;
         }
-    };
+    }
 
     clear() {
         this.value = [];
@@ -214,20 +217,20 @@ export default class Locker extends React.PureComponent<LockerProps, LockerState
     render() {
         const {className, prefixCls, width, height}: any = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const styles = {
-            width, height
+            width, height,
         };
         const cWidth: any = width! - 2, cHeight: any = height! - 2;
         return (
             <div className={styleClass} style={styles}>
                 <canvas ref={this.getCanvasRef} width={cWidth} height={cHeight}/>
-                <div className={`${prefixCls}-mask`}
-                     onMouseDown={this.isMobile ? () => {
-                     } : this.touchStart}
-                     onTouchStart={this.isMobile ? this.touchStart : () => {
-                     }}/>
+                <div
+                    className={`${prefixCls}-mask`}
+                    onMouseDown={this.isMobile ? () => false : this.touchStart}
+                    onTouchStart={this.isMobile ? this.touchStart : () => false}
+                />
             </div>
         );
     }

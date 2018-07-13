@@ -5,20 +5,20 @@ export interface RouteTransitionProps extends BaseProps {
     enterStyles?: PlainStyle;
     leaveStyles?: object;
     activeStyles?: object;
-    willEnter?: Function;
-    willLeave?: Function;
-    didLeave?: Function;
-    styles?: Function;
+    willEnter?: () => void;
+    willLeave?: () => void;
+    didLeave?: (event: any) => void;
+    styles?: any;
     transitionName?: string;
     wrapperComponent?: any;
 }
 
 export interface AnimatedSwitchProps extends BaseProps {
     location?: {
-        key?: string,
-        pathname?: string
+        key?: string;
+        pathname?: string;
     };
-    onRouteChange?: Function;
+    onRouteChange?: (event: any) => void;
 }
 
 export interface AnimatedSwitchState {

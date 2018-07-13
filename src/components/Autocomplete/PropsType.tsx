@@ -7,10 +7,10 @@ export interface AutocompleteProps extends BaseProps {
     inline?: boolean;
     maxHeight?: number | string;
     startAdorn?: React.ReactNode;
-    onChange?: (value: string, event: any) => void;
-    onFocus?: (value: string, event: any) => void;
-    onBlur?: (value: string, event: any) => void;
-    onSelect?: (value: any, event: any) => void;
+    onChange?: (event: any) => void;
+    onFocus?: (event: any) => void;
+    onBlur?: (event: any) => void;
+    onSelect?: (event: any) => void;
 }
 
 export interface AutocompleteState {

@@ -11,5 +11,5 @@ export interface SwitchProps extends BaseProps {
 }
 
 export interface SwitchState {
-    checked: boolean
+    checked: boolean;
 }

@@ -9,11 +9,11 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         maxPage: 5,
         prefixCls: 'bm-Pagination',
         pageSize: 10,
-        value: 1
+        value: 1,
     };
     state: PaginationState = {
         pages: [],
-        value: 1
+        value: 1,
     };
     isFirstPage: boolean = false;
     isLastPage: boolean = false;
@@ -29,7 +29,7 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         const {maxPage, pageSize, total, value}: any = this.props;
         if (value >= 1) {
             this.setState({
-                value: value
+                value: value,
             }, () => {
                 this.totalRecord = total;
                 this.pageCount = Math.ceil(total / pageSize);
@@ -56,7 +56,7 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
                 value = this.pageCount;
             }
             this.setState({
-                value: value
+                value: value,
             });
         }
     }
@@ -68,11 +68,11 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
             pages.push(i + 1);
         }
         this.setState({
-            pages
+            pages,
         });
     }
 
-    changePage(index: number) {
+    changePage = (index?: any) => {
         const {maxPage}: any = this.props;
         const middle = Math.ceil(maxPage / 2);
         if (index <= 1) {
@@ -94,11 +94,11 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         this.countPage(this.end, this.start);
         this.checkStartOrEnd(index);
         this.setState({
-            value: index
+            value: index,
         });
         if (this.props.onPageChange) {
             this.props.onPageChange({
-                value: this.state.value
+                value: this.state.value,
             });
         }
     }
@@ -118,7 +118,7 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         if (maxPage < this.pageCount && !this.isLastPage && this.end !== this.pageCount) {
             this.endEllipsis = true;
         }
-        if (maxPage < this.pageCount && !this.isFirstPage && this.state.value >= maxPage) {
+        if (maxPage < this.pageCount && !this.isFirstPage && index >= maxPage) {
             this.startEllipsis = true;
         }
     }
@@ -131,9 +131,9 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         const {className, maxPage, prefixCls, shape, ...other}: any = this.props;
         const styleClass = classNames(
             prefixCls, {
-                [`${prefixCls}-circle`]: shape === 'circle'
+                [`${prefixCls}-circle`]: shape === 'circle',
             },
-            className
+            className,
         );
         const {pages, value} = this.state;
         const prev = value - 1,
@@ -142,40 +142,78 @@ export default class Pagination extends React.PureComponent<PaginationProps, Pag
         return (
             <div className={styleClass} {...otherProps}>
                 <ul>
-                    <PaginationItem disabled={this.isFirstPage} onClick={this.changePage.bind(this, prev)}
-                                    component={<span className={`${prefixCls}-backward`}>
+                    <PaginationItem
+                        disabled={this.isFirstPage}
+                        onClick={this.changePage.bind(this, prev)}
+                        component={<span className={`${prefixCls}-backward`}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
     <path d="M30.83 32.67l-9.17-9.17 9.17-9.17L28 11.5l-12 12 12 12z"/>
     <path d="M0-.5h48v48H0z" fill="none"/>
 </svg>
-                                    </span>}/>
+                                    </span>}
+                    />
                     { this.startEllipsis ?
-                        <PaginationItem onClick={this.changePage.bind(this, 1)} index={1} component="1"/> : null }
-                    { this.startEllipsis ? <PaginationItem disabled={true} index={1} component={<span
-                        className={`${prefixCls}-number ${prefixCls}-ellipsis`}/>}/> : null }
+                        <PaginationItem
+                            onClick={this.changePage.bind(this, 1)}
+                            index={1}
+                            component={<span className={`${prefixCls}-number`}>
+                                    1
+                                </span>}
+                        /> : null }
+                    { this.startEllipsis ? <PaginationItem
+                        disabled={true}
+                        index={1}
+                        component={<span
+                            className={`${prefixCls}-number ${prefixCls}-ellipsis`}
+                        />}
+                    /> : null }
                     {
                         (pages as Array<number>).map((page) => {
                             return (
-                                <PaginationItem key={page} active={page === this.state.value} index={page}
-                                                onClick={this.changePage.bind(this, page)} component={<span className={`${prefixCls}-number`}>
+                                <PaginationItem
+                                    key={page}
+                                    active={page === this.state.value}
+                                    index={page}
+                                    onClick={this.changePage.bind(this, page)}
+                                    component={<span className={`${prefixCls}-number`}>
                                     {page}
-                                </span>}/>
+                                </span>}
+                                />
                             );
                         })
                     }
                     {this.endEllipsis ?
-                        <PaginationItem disabled={true}
-                                        component={<span className={`${prefixCls}-number ${prefixCls}-ellipsis`}/>}/> : null}
+                        <PaginationItem
+                            disabled={true}
+                            component={<span
+                                className={`${prefixCls}-number ${prefixCls}-ellipsis`}
+                            />}
+                        /> : null}
                     {(this.pageCount > maxPage && !this.isLastPage && this.endEllipsis) ?
-                        <PaginationItem onClick={this.changePage.bind(this)} index={this.pageCount}
-                                        component={<span className={`${prefixCls}-number`}>{this.pageCount}</span>}/> : null}
-                    <PaginationItem disabled={this.isLastPage} onClick={this.changePage.bind(this, next)}
-                                    component={<span className={`${prefixCls}-forward`}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
+                        <PaginationItem
+                            onClick={this.changePage}
+                            index={this.pageCount}
+                            component={<span
+                                className={`${prefixCls}-number`}
+                            >
+                                            {this.pageCount}
+                            </span>}
+                        /> : null}
+                    <PaginationItem
+                        disabled={this.isLastPage}
+                        onClick={this.changePage.bind(this, next)}
+                        component={<span className={`${prefixCls}-forward`}>
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            width="48"
+                                            height="48"
+                                            viewBox="0 0 48 48"
+                                        >
     <path d="M17.17 32.92l9.17-9.17-9.17-9.17L20 11.75l12 12-12 12z"/>
     <path d="M0-.25h48v48H0z" fill="none"/>
-</svg>
-                                    </span>}/>
+                                        </svg>
+                                    </span>}
+                    />
                 </ul>
             </div>
         );

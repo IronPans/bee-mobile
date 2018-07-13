@@ -8,24 +8,26 @@ export default class PanelHeader extends React.PureComponent<PanelHeaderProps, a
         if (this.props.onExpand) {
             this.props.onExpand();
         }
-    };
+    }
+
     handleFullscreenClick = () => {
         if (this.props.onFullscreen) {
             this.props.onFullscreen();
         }
-    };
+    }
+
     render() {
         const {children, className, onExpand, onFullscreen, tool, ...other} = this.props;
         const styleClass = classNames(
             'PanelHeader',
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>
                 {children}
                 {!!tool ? (<div className="PanelHeader-toolbar">
                     <i className="Icon iconfont icon-icon--" onClick={this.handleFullscreenClick}/>
-                    <i className="Icon iconfont icon-jianhao" onClick={this.handleExpandClick} />
+                    <i className="Icon iconfont icon-jianhao" onClick={this.handleExpandClick}/>
                 </div>) : null}
             </div>
         );

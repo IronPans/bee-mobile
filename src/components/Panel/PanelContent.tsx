@@ -7,7 +7,7 @@ export default class PanelContent extends React.PureComponent<PanelContentProps,
         const {className, children, ...other} = this.props;
         const styleClass = classNames(
             'PanelContent',
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>

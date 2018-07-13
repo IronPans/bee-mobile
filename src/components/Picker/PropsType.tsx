@@ -4,16 +4,16 @@ import {BaseProps} from '../common/BaseProps';
 export interface PickerNode {
     label?: string;
     value?: any;
-    children?: any[]
+    children?: any[];
 }
 
 export interface PickerItemProps extends BaseProps {
     disabled?: boolean;
     data: any[];
-    format?: string | Function;
+    format?: string | ((event: any) => void);
     index?: number;
     label?: string;
-    onValueChange?: Function;
+    onValueChange?: (event: any) => void;
     value?: any;
 }
 
@@ -27,12 +27,12 @@ export interface PickerProps extends BaseProps {
     defaultValue?: Array<any> | string;
     disabled?: boolean;
     data?: Array<PickerNode>;
-    format?: string | Function;
+    format?: string | ((event: any) => void);
     placeholder?: string;
-    onChange?: Function;
-    onClose?: Function;
-    onOpen?: Function;
-    onValueChange?: Function;
+    onChange?: ((event: any) => void);
+    onClose?: () => void;
+    onOpen?: () => void;
+    onValueChange?: ((event: any) => void);
     value?: Array<any> | string;
     visible?: boolean;
 }

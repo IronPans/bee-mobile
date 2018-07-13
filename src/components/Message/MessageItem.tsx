@@ -4,7 +4,7 @@ import {MessageItemProps} from './PropsType';
 
 export default class MessageItem extends React.PureComponent<MessageItemProps, any> {
     static defaultProps: MessageItemProps = {
-        delay: 2500
+        delay: 2500,
     };
     timer: any;
 
@@ -26,13 +26,14 @@ export default class MessageItem extends React.PureComponent<MessageItemProps, a
                 this.close();
             }, delay!);
         }
-    };
+    }
+
     close = () => {
         this.clearTimer();
         if (this.props.onClose) {
             this.props.onClose();
         }
-    };
+    }
 
     clearTimer() {
         if (this.timer) {
@@ -45,7 +46,7 @@ export default class MessageItem extends React.PureComponent<MessageItemProps, a
         const {message, className} = this.props;
         const styleClass = classNames(
             'MessageItem',
-            className
+            className,
         );
         return (
             <div className={styleClass}>

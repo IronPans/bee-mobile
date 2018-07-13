@@ -9,7 +9,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
         passSelectedUp: true,
         passSelectedDown: true,
         prefixCls: 'bm-Tree',
-        value: []
+        value: [],
     };
     nodeTouched: boolean = false;
     selection: any = [];
@@ -18,7 +18,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
         super(props);
         this.state = {
             selection: {},
-            value: (props.value as any).length > 0 ? props.value : []
+            value: (props.value as any).length > 0 ? props.value : [],
         };
         this.selection = Array.isArray(props.selection) ? [...props.selection] : props.selection;
     }
@@ -26,7 +26,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
     componentWillReceiveProps(nextProps: TreeProps) {
         if ('value' in nextProps && nextProps.value !== this.props.value!) {
             this.setState({
-                value: nextProps.value
+                value: nextProps.value,
             });
         }
     }
@@ -105,7 +105,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
         }
 
         this.setState({
-            selection: this.selection
+            selection: this.selection,
         });
         this.nodeTouched = false;
     }
@@ -171,7 +171,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
     }
 
     findIndexInSelection(node: TreeNode) {
-        let index: number = -1;
+        let index = -1;
 
         if (this.props.selectionMode && this.selection) {
             if (this.isSingleSelectionMode()) {
@@ -212,7 +212,7 @@ export default class Tree extends React.PureComponent<TreeProps, TreeState> {
     render() {
         const {className, children, emptyMessage, loading, prefixCls, ...other} = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const value: any = this.state.value;
         const selection = Array.isArray(this.state.selection) ?

@@ -7,9 +7,9 @@ export interface BackTopProps extends BaseProps {
     bottom?: number | string;
     right?: number | string;
     scrollNode?: any;
-    onScrollEnd?: Function;
+    onScrollEnd?: () => void;
 }
 
 export interface BackTopState {
-    visible?: boolean
+    visible?: boolean;
 }

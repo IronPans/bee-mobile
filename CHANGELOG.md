@@ -1,11 +1,28 @@
 # Change Log
 
+## 0.4.0(2018-07-14)
+
+**Features**
+
+- 调整ActionSheet的样式
+- 调整Badge使用notify的样式
+
+**Bug Fixes**
+
+- 修复Accordion展开时指示箭头不旋转
+- 修复CellSwipe的属性to类型错误
+- 修复Pagination分页样式错乱
+
+**Tool**
+
+- 优化create-bee-mobile脚手架打包配置
+- 移除eslint代码检查，添加tslint代码检查
+
 ## 0.3.1(2018-06-25)
 
 **Features**
 
 - 新增Dropdown下拉菜单组件
-
 
 **Bug Fixes**
 

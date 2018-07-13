@@ -3,7 +3,7 @@ import {BaseProps} from '../common/BaseProps';
 
 export interface ButtonNavigationProps extends BaseProps {
     fixed?: boolean;
-    onChange?: Function;
+    onChange?: (event: any) => void;
     activeIndex?: number;
 }
 
@@ -15,6 +15,6 @@ export interface ButtonNavigationItemProps extends BaseProps {
     active?: boolean;
     label?: string;
     icon?: React.ReactNode;
-    onClick?: Function;
+    onClick?: (event: any) => void;
     showLabel?: boolean;
 }

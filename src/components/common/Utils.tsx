@@ -6,27 +6,27 @@ function getTouchEvent() {
             touchstart: 'touchstart',
             touchmove: 'touchmove',
             touchend: 'touchend',
-            mobile: true
+            mobile: true,
         };
     } else {
         event = {
             touchstart: 'mousedown',
             touchmove: 'mousemove',
             touchend: 'mouseup',
-            mobile: false
+            mobile: false,
         };
     }
 
     return event;
 }
 
-const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || function (m: Function) {
-    return window.setTimeout(m, 1000 / 60)
-};
+const requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || ( (m: any) => {
+        return window.setTimeout(m, 1000 / 60);
+    });
 
-const cancelAnimationFrame = window.cancelAnimationFrame || function(id) {
-    clearTimeout(id);
-};
+const cancelAnimationFrame = window.cancelAnimationFrame || ((id) => {
+        clearTimeout(id);
+    });
 
 function getRect(elem: any) {
     return elem.getBoundingClientRect();
@@ -39,7 +39,7 @@ const canUseDOM = !!(
 );
 
 function getOtherProperties(target: any, source: string[]) {
-    let obj: any = {};
+    const obj: any = {};
     for (const key in target) {
         if (target.hasOwnProperty(key)) {
             if (source.indexOf(key) === -1) {
@@ -51,10 +51,11 @@ function getOtherProperties(target: any, source: string[]) {
 }
 
 function equals(obj1: any, obj2: any, field?: string): boolean {
-    if (field)
+    if (field) {
         return (resolveFieldData(obj1, field) === resolveFieldData(obj2, field));
-    else
+    } else {
         return equalsByValue(obj1, obj2);
+    }
 }
 
 function equalsByValue(obj1: any, obj2: any, visited?: any[]): boolean {
@@ -65,40 +66,52 @@ function equalsByValue(obj1: any, obj2: any, visited?: any[]): boolean {
         return false;
     }
 
-    if (obj1 == obj2) {
+    if (obj1 === obj2) {
         return true;
     }
 
-    if (typeof obj1 == 'object' && typeof obj2 == 'object') {
+    if (typeof obj1 === 'object' && typeof obj2 === 'object') {
         if (visited) {
-            if (visited.indexOf(obj1) !== -1) return false;
+            if (visited.indexOf(obj1) !== -1) {
+                return false;
+            }
         } else {
             visited = [];
         }
         visited.push(obj1);
 
-        for (var p in obj1) {
-            if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) {
-                return false;
-            }
+        for (const p in obj1) {
+            if (obj1.handleDocumentClick(p)) {
+                if (obj1.hasOwnProperty(p) !== obj2.hasOwnProperty(p)) {
+                    return false;
+                }
 
-            switch (typeof (obj1[p])) {
-                case 'object':
-                    if (!this.equalsByValue(obj1[p], obj2[p], visited)) return false;
-                    break;
+                switch (typeof (obj1[p])) {
+                    case 'object':
+                        if (!equalsByValue(obj1[p], obj2[p], visited)) {
+                            return false;
+                        }
+                        break;
 
-                case 'function':
-                    if (typeof (obj2[p]) == 'undefined' || (p != 'compare' && obj1[p].toString() != obj2[p].toString())) return false;
-                    break;
+                    case 'function':
+                        if (typeof (obj2[p]) === 'undefined' || (p !== 'compare' && obj1[p].toString() !== obj2[p].toString())) {
+                            return false;
+                        }
+                        break;
 
-                default:
-                    if (obj1[p] != obj2[p]) return false;
-                    break;
+                    default:
+                        if (obj1[p] !== obj2[p]) {
+                            return false;
+                        }
+                        break;
+                }
             }
         }
 
-        for (var p in obj2) {
-            if (typeof (obj1[p]) == 'undefined') return false;
+        for (const p1 in obj2) {
+            if (typeof (obj1[p1]) === 'undefined') {
+                return false;
+            }
         }
 
         delete obj1._$visited;
@@ -109,14 +122,13 @@ function equalsByValue(obj1: any, obj2: any, visited?: any[]): boolean {
 }
 
 function resolveFieldData(data: any, field: string): any {
-    if(data && field) {
-        if(field.indexOf('.') == -1) {
+    if (data && field) {
+        if (field.indexOf('.') === -1) {
             return data[field];
-        }
-        else {
-            let fields: string[] = field.split('.');
+        } else {
+            const fields: string[] = field.split('.');
             let value = data;
-            for(var i = 0, len = fields.length; i < len; ++i) {
+            for (let i = 0, len = fields.length; i < len; ++i) {
                 if (value == null) {
                     return null;
                 }
@@ -124,8 +136,7 @@ function resolveFieldData(data: any, field: string): any {
             }
             return value;
         }
-    }
-    else {
+    } else {
         return null;
     }
 }
@@ -138,14 +149,14 @@ function dateFormat(date: any, fmt: string) {
         'm+': date.getMinutes(),
         's+': date.getSeconds(),
         'q+': Math.floor((date.getMonth() + 3) / 3),
-        'S': date.getMilliseconds()
+        'S': date.getMilliseconds(),
     };
     if (/(y+)/.test(fmt)) {
         fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
     }
     for (const k in o) {
         if (o.hasOwnProperty(k)) {
-            const regExp = new RegExp('(' + k + ')');
+            const regExp = new RegExp(`(${k})`);
             if (regExp.test(fmt)) {
                 fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? (o[k]) :
                     (('00' + o[k]).substr(('' + o[k]).length)));
@@ -155,7 +166,7 @@ function dateFormat(date: any, fmt: string) {
     return fmt;
 }
 
-function on(el: any, eventName: string, callback: Function, capture: any = false) {
+function on(el: any, eventName: string, callback: any, capture: any = false) {
     if (el.addEventListener) {
         el.addEventListener(eventName, callback, capture);
     } else if (el.attachEvent) {
@@ -165,7 +176,7 @@ function on(el: any, eventName: string, callback: Function, capture: any = false
     }
 }
 
-function off(el: any, eventName: string, callback: Function, capture: any = false) {
+function off(el: any, eventName: string, callback: any, capture: any = false) {
     if (el.removeEventListener) {
         el.removeEventListener(eventName, callback, capture);
     } else if (el.detachEvent) {
@@ -189,10 +200,38 @@ function setValueToNumber(value: any) {
     return num;
 }
 
-function getSize(val, pix = 'px') {
+function getSize(val: any, pix: string = 'px') {
     const value = typeof val !== 'number' ? val : val + pix;
     return value;
 }
 
-export {getTouchEvent, getRect, cancelAnimationFrame, requestAnimationFrame, getSize,
-    canUseDOM, getOtherProperties, equals, dateFormat, off, on, setValueToNumber}
+function  checkPlatform() {
+    let userAngent = '', isMobile = false;
+    const mobile = /MIDP|SymbianOS|NOKIA|SAMSUNG|LG|NEC|TCL|Alcatel|BIRD|DBTEL|Dopod|PHILIPS|HAIER|LENOVO|MOT-|Nokia|SonyEricsson|SIE-|Amoi|ZTE/;
+    if (/AppleWebKit.*Mobile/i.test(navigator.userAgent) ||
+        (mobile.test(navigator.userAgent))) {
+        try {
+            if (/Android|Windows Phone|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                userAngent = 'mobile';
+            } else if (/iPad/i.test(navigator.userAgent)) {
+                userAngent = 'ipad';
+            }
+            isMobile = true;
+        } catch (e) {
+            // e
+        }
+    } else {
+        isMobile = false;
+        userAngent = 'window';
+    }
+    return {
+        platform: userAngent,
+        mobile: isMobile,
+    };
+}
+
+export {
+    getTouchEvent, getRect, cancelAnimationFrame, requestAnimationFrame, getSize,
+    canUseDOM, getOtherProperties, equals, dateFormat, off, on, setValueToNumber,
+    checkPlatform,
+};

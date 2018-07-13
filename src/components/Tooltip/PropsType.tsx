@@ -8,10 +8,10 @@ export interface TooltipProps extends BaseProps {
     dir?: TOOLTIP_DIRECTION;
     title?: string;
     onOpen?: () => {};
-    onClose?: () => {}
+    onClose?: () => {};
 }
 
 export interface TooltipState {
     tooltipStyle: object;
-    open: boolean
+    open: boolean;
 }

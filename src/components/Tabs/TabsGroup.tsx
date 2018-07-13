@@ -9,11 +9,11 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
         centerMode: false,
         prefixCls: 'bm-TabsGroup',
         position: 'top',
-        scrollable: false
+        scrollable: false,
     };
 
     state: TabsGroupState = {
-        activeIndex: 0
+        activeIndex: 0,
     };
 
     wrapper: any;
@@ -28,33 +28,33 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
     componentWillReceiveProps(nextProps: TabsGroupProps) {
         if ('activeIndex' in nextProps && this.props.activeIndex !== nextProps.activeIndex) {
             this.setState({
-                activeIndex: nextProps.activeIndex!
+                activeIndex: nextProps.activeIndex!,
             });
         }
     }
 
     handleChange = (activeIndex: number) => {
         this.setState({
-            activeIndex
+            activeIndex,
         });
         if (this.props.onChange) {
-            (this.props.onChange as Function)(activeIndex);
+            (this.props.onChange as (index: number) => void)(activeIndex);
         }
-    };
+    }
 
     getRef = (node) => {
         this.wrapper = node;
-    };
+    }
 
     render() {
         const {
             animated, activeIndex: activeIndexProps, centerMode, children, className,
-            position, prefixCls, onChange, scrollable, ...other
+            position, prefixCls, onChange, scrollable, ...other,
         }: any = this.props;
         const styleClass = classNames(
             prefixCls,
             `${prefixCls}-${position}`,
-            className
+            className,
         );
         const {activeIndex} = this.state;
         const navChildren: any = [], containerChildren: any = [], otherChild: any = [];
@@ -63,17 +63,17 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
             const type: any = child.type;
             const fnName = type.fnName;
             const props: any = {...child.props};
-            props['key'] = index;
+            props.key = index;
             if (fnName === 'Tabs') {
-                props['activeIndex'] = activeIndex;
-                props['onChange'] = this.handleChange;
-                props['position'] = position;
-                props['centerMode'] = centerMode;
-                props['scrollable'] = scrollable;
+                props.activeIndex = activeIndex;
+                props.onChange = this.handleChange;
+                props.position = position;
+                props.centerMode = centerMode;
+                props.scrollable = scrollable;
                 navChildren.push(React.cloneElement(child, props));
             } else if (fnName === 'TabContainer') {
-                props['index'] = num;
-                props['activeIndex'] = activeIndex;
+                props.index = num;
+                props.activeIndex = activeIndex;
                 containerChildren.push(React.cloneElement(child, props));
                 num++;
             } else {
@@ -88,7 +88,7 @@ export default class TabsGroup extends React.PureComponent<TabsGroupProps, TabsG
             WebkitTransform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             msTransform: !horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             WebkitTransition: animated ? '-webkit-transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : '',
-            transition: animated ? 'transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : ''
+            transition: animated ? 'transform .3s cubic-bezier(0.35, 0, 0.25, 1)' : '',
         };
         return (
             <div className={styleClass} {...other}>

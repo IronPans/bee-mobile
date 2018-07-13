@@ -6,11 +6,11 @@ export default class TabContainer extends React.PureComponent<TabContainerProps,
     static fnName: string = 'TabContainer';
 
     static defaultProps: TabContainerProps = {
-        prefixCls: 'bm-TabContainer'
+        prefixCls: 'bm-TabContainer',
     };
 
     state: TabContainerProps = {
-        activeIndex: 0
+        activeIndex: 0,
     };
 
     componentDidMount() {
@@ -23,7 +23,7 @@ export default class TabContainer extends React.PureComponent<TabContainerProps,
     componentWillReceiveProps(nextProps: TabContainerProps) {
         if ('activeIndex' in nextProps && this.props.activeIndex !== nextProps.activeIndex) {
             this.setState({
-                activeIndex: nextProps.activeIndex!
+                activeIndex: nextProps.activeIndex!,
             });
         }
     }
@@ -33,9 +33,9 @@ export default class TabContainer extends React.PureComponent<TabContainerProps,
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-active`]: index === activeIndex
+                [`${prefixCls}-active`]: index === activeIndex,
             },
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>

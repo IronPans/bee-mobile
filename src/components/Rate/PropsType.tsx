@@ -6,7 +6,7 @@ export interface RateProps extends BaseProps {
     disableRipple?: boolean;
     count?: number;
     defaultValue?: number;
-    onChange?: Function;
+    onChange?: (event: any) => void;
     readOnly?: boolean;
     template?: React.ReactNode | string;
     value?: number;

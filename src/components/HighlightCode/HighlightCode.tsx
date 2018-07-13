@@ -12,7 +12,7 @@ export default class HighlightCode extends React.PureComponent<HighlightCodeProp
     static defaultProps: HighlightCodeProps = {
         prefixCls: 'bm-HighlightCode',
         lang: 'javascript',
-        showCopy: false
+        showCopy: false,
     };
     code: any;
 
@@ -46,7 +46,7 @@ export default class HighlightCode extends React.PureComponent<HighlightCodeProp
         try {
             selection.removeAllRanges();
         } catch (ex) {
-            (document as any).body['createTextRange']().select();
+            (document as any).body.createTextRange().select();
             (document as any).selection.empty();
         }
     }
@@ -59,18 +59,18 @@ export default class HighlightCode extends React.PureComponent<HighlightCodeProp
         range.setEnd(this.code.lastChild, 0);
         window.getSelection().addRange(range);
         document.execCommand('copy');
-    };
+    }
 
     getRef = (node: any) => {
         this.code = node;
-    };
+    }
 
     render() {
         const {className, children, lang, prefixCls, showCopy, ...other} = this.props;
         const styleClass = classNames(
             prefixCls,
             `${prefixCls}-${lang}`,
-            className
+            className,
         );
         const codeClass = classNames('hljs', lang);
         return (

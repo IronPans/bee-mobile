@@ -10,7 +10,7 @@ export default class Autocomplete extends React.PureComponent<AutocompleteProps,
     static defaultProps: AutocompleteProps = {
         count: 5,
         data: [],
-        prefixCls: 'bm-Autocomplete'
+        prefixCls: 'bm-Autocomplete',
     };
     selfClick: boolean;
 
@@ -23,7 +23,7 @@ export default class Autocomplete extends React.PureComponent<AutocompleteProps,
         this.state = {
             data,
             value: '',
-            visible: false
+            visible: false,
         };
     }
 
@@ -34,7 +34,7 @@ export default class Autocomplete extends React.PureComponent<AutocompleteProps,
     componentWillReceiveProps(nextProps: AutocompleteProps) {
         if ('data' in nextProps && this.props.data !== nextProps.data) {
             this.setState({
-                data: nextProps.data!
+                data: nextProps.data!,
             });
         }
     }
@@ -57,7 +57,7 @@ export default class Autocomplete extends React.PureComponent<AutocompleteProps,
             }
             return keep;
         });
-    };
+    }
 
     handleDomClick = (event: any) => {
         if (this.state.visible) {
@@ -67,74 +67,90 @@ export default class Autocomplete extends React.PureComponent<AutocompleteProps,
             }, () => {
                 this.selfClick = false;
                 this.setState({
-                    visible: false
+                    visible: false,
                 });
             });
         }
-    };
+    }
 
-    handleChange = (value: string, event: any) => {
+    handleChange = (event) => {
         this.setState({
-            value,
-            visible: true
+            value: event.value,
+            visible: true,
         });
         if (this.props.onChange) {
-            (this.props.onChange as Function)(value, event);
+            (this.props.onChange as (event: any) => void)({
+                ...event,
+            });
         }
-    };
+    }
 
-    handleFocus = (value: string, event: any) => {
+    handleFocus = (event: any) => {
         if (this.props.onFocus) {
-            (this.props.onFocus as Function)(value, event);
+            (this.props.onFocus as (event: any) => void)({
+                ...event,
+            });
         }
-    };
+    }
 
-    handleBlur = (value: string, event: any) => {
+    handleBlur = (event: any) => {
         if (this.props.onBlur) {
-            (this.props.onBlur as Function)(value, event);
+            (this.props.onBlur as (event: any) => void)({
+                ...event,
+            });
         }
-    };
+    }
 
     handleItemClick = (item: any, event: any) => {
         if (this.selfClick) {
             this.setState({
                 value: item.label,
-                visible: false
+                visible: false,
             });
             if (this.props.onSelect) {
-                (this.props.onSelect as Function)(item, event);
+                (this.props.onSelect as (event: any) => void)({
+                    item,
+                    originalEvent: event,
+                });
             }
         }
-    };
+    }
 
     render() {
         const {className, inline, maxHeight, prefixCls, startAdorn, ...other}: any = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
-        const {value, visible} = this.state;
+        const {value, visible}: any = this.state;
         const menuClass = classNames(
             `${prefixCls}-menus`,
             {
                 [`${prefixCls}-menus-active`]: visible!,
                 [`${prefixCls}-inline`]: inline!,
-                [`${prefixCls}-scroll`]: maxHeight
-            }
+                [`${prefixCls}-scroll`]: maxHeight,
+            },
         );
         const styles = {
-            maxHeight
+            maxHeight,
         };
         const otherProps = getOtherProperties(other, ['data', 'children', 'onSelect']);
         return (
             <div className={styleClass} {...otherProps}>
-                <Inputtext value={value!} startAdorn={startAdorn}
-                           onFocus={this.handleFocus} onBlur={this.handleBlur} onChange={this.handleChange}/>
+                <Inputtext
+                    value={value}
+                    startAdorn={startAdorn}
+                    onFocus={this.handleFocus}
+                    onBlur={this.handleBlur}
+                    onChange={this.handleChange}
+                />
                 <div className={menuClass} style={styles}>
                     <List>
                         {
                             this.filterValue(value!).map((item: any, index: number) => {
-                                return (<ListItem key={'bm-Autocomplete-item-' + index}
-                                                  onClick={this.handleItemClick.bind(this, item)}>
+                                return (<ListItem
+                                    key={'bm-Autocomplete-item-' + index}
+                                    onClick={this.handleItemClick.bind(this, item)}
+                                >
                                     <ListItemText>{item.label}</ListItemText>
                                 </ListItem>);
                             })

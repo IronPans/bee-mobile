@@ -5,14 +5,14 @@ import {SegmentProps, SegmentState} from './propType';
 export default class Segment extends React.PureComponent<SegmentProps, SegmentState> {
     static defaultProps = {
         prefixCls: 'bm-Segment',
-        value: []
+        value: [],
     };
 
-    constructor(props) {
+    constructor(props: SegmentProps) {
         super(props);
         const {activeIndex = 0} = props;
         this.state = {
-            activeIndex
+            activeIndex,
         };
     }
 
@@ -20,7 +20,7 @@ export default class Segment extends React.PureComponent<SegmentProps, SegmentSt
         if ('activeIndex' in nextProps && nextProps.activeIndex! >= 0 &&
             nextProps.activeIndex !== this.props.activeIndex) {
             this.setState({
-                activeIndex: nextProps.activeIndex!
+                activeIndex: nextProps.activeIndex!,
             });
         }
     }
@@ -31,17 +31,19 @@ export default class Segment extends React.PureComponent<SegmentProps, SegmentSt
             return;
         }
         this.setState({
-            activeIndex: index
+            activeIndex: index,
         });
         if (this.props.onChange) {
-            (this.props.onChange as Function)(index, item);
+            (this.props.onChange as (event: any) => void)({
+                index, item,
+            });
         }
-    };
+    }
 
     render() {
         const {className, disabled, prefixCls, value}: any = this.props;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const {activeIndex} = this.state;
         return (
@@ -52,14 +54,14 @@ export default class Segment extends React.PureComponent<SegmentProps, SegmentSt
                             `${prefixCls}-item`,
                             {
                                 [`${prefixCls}-item-selected`]: activeIndex === index,
-                                [`${prefixCls}-item-disabled`]: disabled
-                            }
+                                [`${prefixCls}-item-disabled`]: disabled,
+                            },
                         );
                         return (
-                            <div className={itemClass} onClick={this.handleClick.bind(this, index, item)}>
+                            <div key={index} className={itemClass} onClick={this.handleClick.bind(this, index, item)}>
                                 {item.toString()}
                             </div>
-                        )
+                        );
                     })
                 }
             </div>

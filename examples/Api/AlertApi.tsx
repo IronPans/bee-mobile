@@ -26,7 +26,6 @@ export default class AlertCase extends React.PureComponent< AlertCaseProps, {}> 
     static defaultProps = {
         prefixCls: 'bm-AlertCase'
     };
-
     render() {
         const {className, children, prefixCls} = this.props;
         const styleClass = classNames(
@@ -50,16 +49,22 @@ export default class AlertCase extends React.PureComponent< AlertCaseProps, {}> 
                     <Alert showIcon closable title="A Info Alert"></Alert>
                 </div>
                 <div className="CasePanel">
-                    <Alert title="A Info Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert className="margin-top-10" type="success" title="A Success Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert className="margin-top-10" type="warning" title="A Warning Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert className="margin-top-10" type="error" title="A Error Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert title="A Info Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."/>
+                    <Alert className="margin-top-10" type="success" title="A Success Alert"
+                    desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert className="margin-top-10" type="warning" title="A Warning Alert"
+                    desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert className="margin-top-10" type="error" title="A Error Alert"
+                    desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
                 </div>
                 <div className="CasePanel">
                     <Alert showIcon title="A Info Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert showIcon className="margin-top-10" type="success" title="A Success Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert showIcon className="margin-top-10" type="warning" title="A Warning Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
-                    <Alert showIcon className="margin-top-10" type="error" title="A Error Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert showIcon className="margin-top-10" type="success"
+                    title="A Success Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert showIcon className="margin-top-10" type="warning"
+                    title="A Warning Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
+                    <Alert showIcon className="margin-top-10" type="error"
+                    title="A Error Alert" desc="Alert Description.Alert Description.Alert Description.Alert Description."></Alert>
                 </div>
             </Content>
         );

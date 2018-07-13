@@ -2,8 +2,8 @@ import * as React from 'react';
 
 export interface MessageBoxProps {
     delay?: number;
-    confirmButtonText?: React.ReactNode | String;
-    cancelButtonText?: React.ReactNode | String;
+    confirmButtonText?: React.ReactNode | string;
+    cancelButtonText?: React.ReactNode | string;
     inputType?: string;
     message: React.ReactNode | string;
     placeholder?: string;
@@ -11,6 +11,6 @@ export interface MessageBoxProps {
     showCancelButton?: boolean;
     title?: React.ReactNode | string;
     type?: string;
-    onConfirm?: Function;
-    onClose?: Function;
+    onConfirm?: (event: any) => void;
+    onClose?: (event: any) => void;
 }

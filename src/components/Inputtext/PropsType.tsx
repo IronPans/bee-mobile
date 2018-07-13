@@ -17,10 +17,10 @@ export interface InputtextProps extends BaseProps {
     startAdorn?: React.ReactNode;
     type?: string;
     value?: string;
-    onChange?: Function;
-    onClick?: Function;
-    onFocus?: Function;
-    onBlur?: Function;
+    onChange?: (event: any) => void;
+    onClick?: () => void;
+    onFocus?: (event: any) => void;
+    onBlur?: (event: any) => void;
 }
 
 export interface InputtextState {

@@ -9,18 +9,23 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
         prefixCls: 'bm-Button',
         type: 'button',
         shape: '',
-        theme: 'default'
+        theme: 'default',
     };
 
     handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
         const onClick = this.props.onClick;
         if (onClick) {
-            onClick(e);
+            onClick({
+                originalEvent: e,
+            });
         }
-    };
+    }
+
     render() {
-        const { disableRipple, to, shape, flat, float, theme, size, block,
-            isActive, disabled, className, children, prefixCls, type, target } = this.props;
+        const {
+            disableRipple, to, shape, flat, float, theme, size, block,
+            isActive, disabled, className, children, prefixCls, type, target,
+        } = this.props;
         const styleClass = classNames(
             prefixCls,
             (float && `${prefixCls}-${float}`),
@@ -32,15 +37,15 @@ export default class Button extends React.PureComponent<ButtonProps, any> {
                 'is-disabled': disabled,
                 'is-flat': flat,
                 [`${prefixCls}-fab`]: shape === 'circle',
-                [`${prefixCls}-float`]: !!float
+                [`${prefixCls}-float`]: !!float,
             },
-            className
+            className,
         );
         const props = {
             className: styleClass,
             type: type,
             target: to && target,
-            href: to
+            href: to,
         };
         let ComponentProp = 'button';
         if (this.props.to) {

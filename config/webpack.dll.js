@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const CompressionPlugin = require('compression-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const vendors = [
     'react',
@@ -11,6 +12,7 @@ const vendors = [
 ];
 
 module.exports = {
+    mode: 'production',
     output: {
         path: path.resolve(process.cwd(), 'build'),
         filename: '[name].js',
@@ -19,23 +21,20 @@ module.exports = {
     entry: {
         'lib': vendors,
     },
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                cache: true,
+                parallel: true,
+                sourceMap: true
+            })
+        ]
+    },
     plugins: [
         new webpack.DllPlugin({
             path: 'manifest.json',
             name: '[name]',
             context: __dirname,
-        }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                drop_console: true,
-                collapse_vars: true,
-                reduce_vars: true,
-            },
-            output: {
-                beautify: false,
-                comments: false,
-            }
         }),
         new CompressionPlugin({
             asset: '[path].gz[query]',

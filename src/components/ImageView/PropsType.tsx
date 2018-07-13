@@ -4,8 +4,8 @@ import {BaseProps} from '../common/BaseProps';
 export interface ImageViewProps extends BaseProps {
     target?: any;
     visible?: boolean;
-    onClose?: Function;
-    onOpen?: Function;
+    onClose?: () => void;
+    onOpen?: () => void;
 }
 
 export interface ImageViewState {

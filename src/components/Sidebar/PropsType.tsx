@@ -2,11 +2,11 @@ import {BaseProps} from '../common/BaseProps';
 
 export interface SidebarProps extends BaseProps {
     reveal?: boolean;
-    onClose?: Function;
+    onClose?: () => void;
     dir?: string;
-    drawer?: boolean,
+    drawer?: boolean;
 }
 
 export interface SidebarState {
-    reveal: boolean
+    reveal: boolean;
 }

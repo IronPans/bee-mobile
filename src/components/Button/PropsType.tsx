@@ -19,15 +19,15 @@ export interface ButtonProps extends BaseProps {
     size?: BUTTON_SIZES;
     target?: string;
     theme?: BUTTON_TYPES;
-    onClick?: Function;
-    onTouchStart?: Function;
-    onTouchMove?: Function;
-    onTouchEnd?: Function;
-    onMouseUp?: Function;
-    onMouseDown?: Function;
+    onClick?: (event: any) => void;
+    onTouchStart?: (event: any) => void;
+    onTouchMove?: (event: any) => void;
+    onTouchEnd?: (event: any) => void;
+    onMouseUp?: (event: any) => void;
+    onMouseDown?: (event: any) => void;
     tabIndex?: number;
 }
 
 export interface ButtonGroupProps extends BaseProps {
-    dir?: string
+    dir?: string;
 }

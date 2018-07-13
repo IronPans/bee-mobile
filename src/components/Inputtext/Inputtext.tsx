@@ -10,7 +10,7 @@ export default class Inputtext extends React.PureComponent<InputtextProps, Input
         prefixCls: 'bm-Inputtext',
         readOnly: false,
         size: 'sm',
-        type: 'text'
+        type: 'text',
     };
 
     constructor(props: InputtextProps) {
@@ -24,14 +24,14 @@ export default class Inputtext extends React.PureComponent<InputtextProps, Input
         }
         this.state = {
             value,
-            focus
+            focus,
         };
     }
 
     componentWillReceiveProps(nextProps: InputtextProps) {
         if ('value' in nextProps && this.props.value !== nextProps.value) {
             this.setState({
-                value: nextProps.value! || ''
+                value: nextProps.value! || '',
             });
         }
     }
@@ -39,47 +39,56 @@ export default class Inputtext extends React.PureComponent<InputtextProps, Input
     handleChange = (event: any) => {
         const target: any = event.target;
         this.setState({
-            value: target.value
+            value: target.value,
         });
         if (this.props.onChange) {
-            this.props.onChange(target.value, event);
+            this.props.onChange({
+                value: target.value,
+                originalEvent: event,
+            });
         }
-    };
+    }
 
     handleFocus = (event: any) => {
         const {readOnly, disabled} = this.props;
         if (!readOnly && !disabled) {
             this.setState({
-                focus: true
+                focus: true,
             });
         }
         if (this.props.onFocus) {
-            this.props.onFocus(event.target.value, event);
+            this.props.onFocus({
+                value: event.target.value,
+                originalEvent: event,
+            });
         }
-    };
+    }
 
     handleBlur = (event: any) => {
         const {readOnly, disabled} = this.props;
         if (!readOnly && !disabled) {
             this.setState({
-                focus: false
+                focus: false,
             });
         }
         if (this.props.onBlur) {
-            this.props.onBlur(event.target.value, event);
+            this.props.onBlur({
+                value: event.target.value,
+                originalEvent: event,
+            });
         }
-    };
+    }
 
     handleClick = () => {
         if (this.props.onClick) {
-            (this.props.onClick as Function)();
+            (this.props.onClick as () => void)();
         }
-    };
+    }
 
     render() {
         const {
             autoFocus, animated, className, disabled, id, endAdorn, maxLength,
-            inline, label, prefixCls, placeholder, readOnly, size, startAdorn, type, ...other
+            inline, label, prefixCls, placeholder, readOnly, size, startAdorn, type, ...other,
         } = this.props;
         const {focus, value} = this.state;
         const styleClass = classNames(
@@ -88,29 +97,38 @@ export default class Inputtext extends React.PureComponent<InputtextProps, Input
                 [`${prefixCls}-inner`]: inline,
                 [`${prefixCls}-animated`]: animated,
                 [`${prefixCls}-focus`]: focus!,
-                [`${prefixCls}-noEmpty`]: value.trim() !== ''
+                [`${prefixCls}-noEmpty`]: value.trim() !== '',
             },
-            `${prefixCls + '-' + size}`,
-            className
+            `${prefixCls}-${size}`,
+            className,
         );
         const otherProps = getOtherProperties(other, ['defaultValue', 'onClick', 'onChange', 'onFocus', 'onBlur', 'value']);
         return (
             <div className={styleClass} {...otherProps}>
-                { startAdorn ? (<div className={`${prefixCls}-startAdorn`}>{startAdorn}</div>) : null }
+                {
+                    startAdorn ? (<div className={`${prefixCls}-startAdorn`}>{startAdorn}</div>) : null}
                 <label htmlFor={id}>
                     {label ? (<div className={`${prefixCls}-label`}>{label}</div>) : null}
                     <div className={`${prefixCls}-field`} onClick={this.handleClick}>
-                        <input type={type} id={id} maxLength={maxLength} value={value!}
-                               autoFocus={autoFocus} placeholder={placeholder}
-                               disabled={disabled} readOnly={readOnly}
-                               onChange={this.handleChange} onFocus={this.handleFocus} onBlur={this.handleBlur}/>
+                        <input
+                            type={type}
+                            id={id}
+                            maxLength={maxLength}
+                            value={value!}
+                            autoFocus={autoFocus}
+                            placeholder={placeholder}
+                            disabled={disabled}
+                            readOnly={readOnly}
+                            onChange={this.handleChange}
+                            onFocus={this.handleFocus}
+                            onBlur={this.handleBlur}
+                        />
                     </div>
                 </label>
                 {
                     endAdorn ? (<div className={`${prefixCls}-endAdorn`}>
                         {endAdorn}
-                    </div>) : null
-                }
+                    </div>) : null}
                 <hr/>
             </div>
         );

@@ -7,7 +7,6 @@ const $ = loadPlugins();
 
 const tsProject = $.typescript.createProject('tsconfig.build.json');
 const buildConfig = require('./config/webpack.build');
-const docsConfig = require('./config/webpack.docs');
 const pkg = require('./package.json');
 
 const prod = process.env.NODE_ENV === 'production';
@@ -45,7 +44,7 @@ const banner = ['/**',
 
 gulp.task('build:pack', () => {
     return gulp.src(paths.src.build)
-        .pipe(webpackStream(buildConfig))
+        .pipe(webpackStream(buildConfig, require("webpack")))
         .pipe($.header(banner, { pkg: pkg }))
         .pipe(gulp.dest(paths.dist.build))
         .pipe($.uglify())

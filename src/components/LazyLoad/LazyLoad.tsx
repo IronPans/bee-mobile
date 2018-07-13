@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {off} from "../common/Utils";
+import {off} from '../common/Utils';
 import {getScrollParent} from '../common/Dom';
 import debounce from 'lodash.debounce';
 import throttle from 'lodash.throttle';
@@ -15,13 +15,14 @@ try {
     const opts = Object.defineProperty({}, 'passive', {
         get() {
             passiveEventSupported = true;
-        }
+        },
     });
-    window.addEventListener('test', () => {}, opts);
+    window.addEventListener('test', () => false, opts);
+} catch (e) {
+    // e
 }
-catch (e) { }
 
-const passiveEvent = passiveEventSupported ? { capture: false, passive: true } : false;
+const passiveEvent = passiveEventSupported ? {capture: false, passive: true} : false;
 
 const checkInView = (component: any) => {
     let scrollNode: any = component.props.scrollNode;
@@ -33,7 +34,7 @@ const checkInView = (component: any) => {
     if (scrollNode === document.body || scrollNode === window || scrollNode === document) {
         inView = inBrowser &&
             (nodeRect.top < wHeight && nodeRect.bottom > 0) &&
-            (nodeRect.left < wWidth && nodeRect.right > 0)
+            (nodeRect.left < wWidth && nodeRect.right > 0);
     } else {
         scrollNode = getScrollParent(node);
         const height = Math.max(scrollNode.offsetHeight, wHeight);
@@ -63,7 +64,7 @@ const lazyLoadHandler = () => {
                 lazyLoadItems.splice(index, 1);
             }
             if (item.props.onLoaded) {
-                (item.props.onLoaded as Function)();
+                (item.props.onLoaded as () => void)();
             }
         }
     }
@@ -74,7 +75,7 @@ let finalLazyLoadHandler: any = null;
 
 export default class LazyLoad extends React.PureComponent<LazyLoadProps, {}> {
     static defaultProps: LazyLoadProps = {
-        prefixCls: 'bm-LazyLoad'
+        prefixCls: 'bm-LazyLoad',
     };
     rect: any;
     loaded: boolean;
@@ -150,7 +151,7 @@ export default class LazyLoad extends React.PureComponent<LazyLoadProps, {}> {
         return (
             this.loaded ? children :
                 (placeholder ? placeholder :
-                    <div style={{ height: this.props.height }} className={`${prefixCls}-placeholder`}/>)
+                    <div style={{height: this.props.height}} className={`${prefixCls}-placeholder`}/>)
         );
     }
 }

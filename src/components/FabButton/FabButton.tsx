@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as classNames from 'classnames';
-import {getOtherProperties} from "../common/Utils";
+import {getOtherProperties} from '../common/Utils';
 import {FabButtonProps, FabButtonState} from './PropsType';
 
 export default class FabButton extends React.PureComponent<FabButtonProps, FabButtonState> {
@@ -10,10 +10,10 @@ export default class FabButton extends React.PureComponent<FabButtonProps, FabBu
         position: 'bottom-right',
         prefixCls: 'bm-FabButton',
         type: 'horizontal',
-        reverse: false
+        reverse: false,
     };
     state: FabButtonState = {
-        visible: false
+        visible: false,
     };
     items: any = [];
     btnNode: any;
@@ -27,9 +27,9 @@ export default class FabButton extends React.PureComponent<FabButtonProps, FabBu
             this.open();
         }
         this.setState({
-            visible: !this.state.visible
+            visible: !this.state.visible,
         });
-    };
+    }
 
     open() {
         const {delay, distance, position, reverse}: any = this.props;
@@ -38,14 +38,20 @@ export default class FabButton extends React.PureComponent<FabButtonProps, FabBu
         switch (this.props.type!) {
             case 'horizontal':
                 for (let i = 0; i < this.items.length; i++) {
-                    const x = op + ((this.itemWidth + distance) * (i + 1)) + 'px';
-                    this.itemsStyle[i] = {'opacity': 1, 'left': x};
+                    const x = `${op + ((this.itemWidth + distance) * (i + 1))}px`;
+                    this.itemsStyle[i] = {
+                        opacity: 1,
+                        left: x,
+                    };
                 }
                 break;
             case 'vertical':
                 for (let i = 0; i < this.items.length; i++) {
-                    const x = op + ((this.itemWidth + distance) * (i + 1)) + 'px';
-                    this.itemsStyle[i] = { 'opacity': 1, 'top': x};
+                    const x = `${op + ((this.itemWidth + distance) * (i + 1))}px`;
+                    this.itemsStyle[i] = {
+                        opacity: 1,
+                        top: x,
+                    };
                 }
                 break;
             case 'circle':
@@ -55,7 +61,7 @@ export default class FabButton extends React.PureComponent<FabButtonProps, FabBu
                     'top-left': -180,
                     'bottom-left': 90,
                     'top-right': -90,
-                    'bottom-right': 0
+                    'bottom-right': 0,
                 };
                 const rotation = dir[position!];
                 for (let i = 0; i < this.items.length; i++) {
@@ -73,33 +79,43 @@ export default class FabButton extends React.PureComponent<FabButtonProps, FabBu
         x = parseFloat(x.toFixed(3));
         y = parseFloat(y.toFixed(3));
         if (delay) {
-            this.itemsStyle[i] = { 'transition-delay': delay * i + 'ms'};
+            this.itemsStyle[i] = {'transition-delay': delay * i + 'ms'};
         }
-        const xy = 'scale(.9) translate(' + x + 'px,' + y + 'px)';
-        this.itemsStyle[i] = {'opacity': 1, 'top': 0, 'transform': xy};
+        const xy = `scale(.9) translate(${x}px,${y}px)`;
+        this.itemsStyle[i] = {
+            opacity: 1,
+            top: 0,
+            transform: xy,
+        };
     }
 
     close() {
         for (let i = 0; i < this.items.length; i++) {
-            this.itemsStyle[i] = {'left': '0px', 'opacity': 0,
-                'top': '0px', 'transform': 'translate(0,0)'};
+            this.itemsStyle[i] = {
+                left: '0px',
+                opacity: 0,
+                top: '0px',
+                transform: 'translate(0,0)',
+            };
         }
     }
 
     getRef = (node: any) => {
         this.btnNode = node;
-    };
+    }
 
     render() {
-        const {className, children: childrenProp,
-            icon, position, prefixCls, ...other} = this.props;
+        const {
+            className, children: childrenProp,
+            icon, position, prefixCls, ...other,
+        } = this.props;
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-open`]: this.state.visible
+                [`${prefixCls}-open`]: this.state.visible,
             },
             `${prefixCls}-${position}`,
-            className
+            className,
         );
         this.items = React.Children.map(childrenProp, (child: React.ReactElement<any>, index: number) => {
             if (!React.isValidElement(child)) {

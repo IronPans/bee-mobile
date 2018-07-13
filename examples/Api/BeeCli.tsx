@@ -84,7 +84,11 @@ export default class BeeCli extends React.PureComponent<BeeCliProps, {}> {
         return (
             <Content className={styleClass}>
                 <div className="padding-20">
-                    <h1 className="no-margin-top">create-bee-mobile</h1>
+                    <h1 className="no-margin-top">create-bee-mobile
+                        <span className="padding-left-10">
+                            <img src="https://img.shields.io/npm/v/create-bee-mobile.svg?style=flat-square" alt=""/>
+                        </span>
+                    </h1>
                     <p>
                         <code className="code-inline">create-bee-mobile</code>
                         是一个命令行界面工具，它可以创建一个最基本的React项目。

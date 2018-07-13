@@ -6,14 +6,14 @@ export interface InputNumberProps extends BaseProps {
     disabled?: boolean;
     min?: number;
     max?: number;
-    onChange?: Function;
-    onFocus?: Function;
-    onBlur?: Function;
+    onChange?: (event: any) => void;
+    onFocus?: () => void;
+    onBlur?: () => void;
     step?: number;
     type?: number;
     value?: number;
 }
 
 export interface InputNumberState {
-    value: number
+    value: number;
 }

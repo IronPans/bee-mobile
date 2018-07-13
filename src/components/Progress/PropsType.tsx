@@ -12,9 +12,9 @@ export interface ProgressProps extends BaseProps {
     striped?: boolean;
     value?: number;
     width?: number | string;
-    onComplete?: () => void
+    onComplete?: () => void;
 }
 
 export interface ProgressState {
-    value: number
+    value: number;
 }

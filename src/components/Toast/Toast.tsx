@@ -1,5 +1,5 @@
-import * as React from 'react'
-import * as classNames from 'classnames'
+import * as React from 'react';
+import * as classNames from 'classnames';
 import Message from '../Message';
 import {ToastProps} from './PropsType';
 
@@ -17,12 +17,12 @@ export class Toast {
 
     constructor(props: any) {
         const position = props.position ? props.position : 'center';
-        props['className'] = `Toast Toast-${position}`;
+        props.className = `Toast Toast-${position}`;
         this.props = props;
         toastInstance = getToastInstance({
             hideBackdrop: true,
             className: 'Toast-group',
-            onClose: props['onClose'] || (() => {})
+            onClose: props.onClose || (() => false),
         });
         this.create();
     }
@@ -30,15 +30,16 @@ export class Toast {
     create() {
         const props = Object.assign({}, this.props);
         const {type, avatar, message, onClose} = props;
-        props['message'] = (
-            <div className={
-                classNames(['Toast-item', `Toast-${type}`])
-            }>
+        props.message = (
+            <div
+                className={
+                    classNames(['Toast-item', `Toast-${type}`])}
+            >
                 {!!avatar ? <div className="Toast-avatar">{avatar}</div> : null}
                 <div className="Toast-content">{message}</div>
             </div>
         );
-        props['onClose'] = () => {
+        props.onClose = () => {
             if (onClose) {
                 onClose();
             }
@@ -52,19 +53,19 @@ export default {
         return new Toast({...props});
     },
     info(props: ToastProps) {
-        props['type'] = 'info';
+        props.type = 'info';
         return new Toast({...props});
     },
     success(props: ToastProps) {
-        props['type'] = 'success';
+        props.type = 'success';
         return new Toast({...props});
     },
     warning(props: ToastProps) {
-        props['type'] = 'warning';
+        props.type = 'warning';
         return new Toast({...props});
     },
     error(props: ToastProps) {
-        props['type'] = 'error';
+        props.type = 'error';
         return new Toast({...props});
     },
     close() {
@@ -73,4 +74,4 @@ export default {
             toastInstance = null;
         }
     },
-}
+};

@@ -17,9 +17,9 @@ export interface TextareaProps extends BaseProps {
     rows?: number;
     size?: string;
     value?: string;
-    onChange?: Function;
-    onFocus?: Function;
-    onBlur?: Function;
+    onChange?: (event: any) => void;
+    onFocus?: (event: any) => void;
+    onBlur?: (event: any) => void;
 }
 
 export interface TextareaState {

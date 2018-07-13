@@ -10,11 +10,13 @@ const webpackMerge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+
 /**
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
-const HOST = process.env.HOST || '172.17.0.1';
+const HOST = process.env.HOST || 'localhost';
 const PORT = process.env.PORT || 8081;
 
 const METADATA = webpackMerge(commonConfig({
@@ -29,6 +31,7 @@ const METADATA = webpackMerge(commonConfig({
 module.exports = (options) => {
     const pkg = require(path.join(process.cwd(), 'package.json'));
     return webpackMerge(commonConfig({env: ENV}), {
+        mode: 'development',
         /**
          * Developer tool to enhance debugging
          *
@@ -57,7 +60,7 @@ module.exports = (options) => {
                             exclude: /node_modules/
                         },
                         {
-                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            test: /\.(bmp|gif|jpe?g|png)$/,
                             loader: require.resolve('url-loader'),
                             options: {
                                 limit: 10000,
@@ -113,6 +116,11 @@ module.exports = (options) => {
             ]
         },
         plugins: [
+            /**
+             * Plugin: webpack-bundle-analyzer
+             * Description: Visualize size of webpack output files with an interactive zoomable treemap.
+             */
+            //new BundleAnalyzerPlugin(),
             new webpack.HotModuleReplacementPlugin(),
             /**
              * Plugin: DefinePlugin

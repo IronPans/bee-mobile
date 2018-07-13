@@ -5,7 +5,7 @@ import {AvatarProps, AvatarState} from './PropsType';
 
 export default class Avatar extends React.PureComponent<AvatarProps, AvatarState> {
     static defaultProps: AvatarProps = {
-        prefixCls: 'bm-Avatar'
+        prefixCls: 'bm-Avatar',
     };
 
     render() {
@@ -15,14 +15,14 @@ export default class Avatar extends React.PureComponent<AvatarProps, AvatarState
             prefixCls,
             className,
             {
-                [`${prefixCls}-circle`]: shape === 'circle'
-            }
+                [`${prefixCls}-circle`]: shape === 'circle',
+            },
         );
         const otherProps = getOtherProperties(other, ['']);
         const src = lazyLoad ? this.state.src! : srcProps;
         const styles = {
             width,
-            height
+            height,
         };
         return (
             <div className={styleClass} {...otherProps}>

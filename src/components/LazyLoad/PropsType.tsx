@@ -8,5 +8,5 @@ export interface LazyLoadProps extends BaseProps {
     scrollNode?: HTMLElement;
     throttle?: number;
     width?: string | number;
-    onLoaded?: Function;
+    onLoaded?: () => void;
 }

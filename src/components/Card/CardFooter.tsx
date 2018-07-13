@@ -4,7 +4,7 @@ import {CardFooterProps} from './PropsType';
 
 export default class CardFooter extends React.PureComponent<CardFooterProps, any> {
     static defaultProps = {
-        prefixCls: 'bm-CardFooter'
+        prefixCls: 'bm-CardFooter',
     };
 
     render() {
@@ -12,9 +12,9 @@ export default class CardFooter extends React.PureComponent<CardFooterProps, any
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-action`]: action
+                [`${prefixCls}-action`]: action,
             },
-            className
+            className,
         );
         return (
             <div className={styleClass} {...other}>

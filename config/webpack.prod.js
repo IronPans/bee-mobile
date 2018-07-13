@@ -2,32 +2,34 @@ const webpack = require('webpack');
 const commonConfig = require('./webpack.common.js');
 const helpers = require('./helpers');
 const path = require('path');
+const os = require('os');
 /**
  * Webpack Plugins
  */
+const webpackMerge = require('webpack-merge');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const CompressionPlugin = require('compression-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
 /**
  * Used to merge webpack configs
  */
-const webpackMerge = require('webpack-merge');
 const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+
+const HappyPack = require('happypack');
+const happyThreadPool = HappyPack.ThreadPool({size: os.cpus().length});
 
 /**
  * Webpack Constants
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
-const HOST = process.env.HOST || 'localhost';
-const PORT = process.env.PORT || 8089;
 
 const METADATA = webpackMerge(commonConfig({
     env: ENV
 }).metadata, {
-    host: HOST,
-    port: PORT,
     ENV: ENV,
     HMR: false
 });
@@ -35,7 +37,8 @@ const projectName = 'examples';
 
 module.exports = (options) => {
     const pkg = require(path.join(process.cwd(), 'package.json'));
-    return webpackMerge(commonConfig({ env: ENV }), {
+    return webpackMerge(commonConfig({env: ENV}), {
+        mode: 'production',
         /**
          * Developer tool to enhance debugging
          *
@@ -54,17 +57,53 @@ module.exports = (options) => {
             sourceMapFilename: '[file].map',
             chunkFilename: '[name].[chunkhash].chunk.js'
         },
+        optimization: {
+            minimizer: [
+                new UglifyJsPlugin({
+                    cache: true,
+                    parallel: true,
+                    sourceMap: true
+                }),
+                new OptimizeCSSAssetsPlugin({})
+            ],
+            splitChunks: {
+                chunks: 'async',
+                minSize: 30000,
+                minChunks: 1,
+                maxAsyncRequests: 5,
+                maxInitialRequests: 3,
+                name: false,
+                cacheGroups: {
+                    vendor: {
+                        name: 'vendor',
+                        chunks: 'initial',
+                        priority: -10,
+                        reuseExistingChunk: false,
+                        test: /node_modules\/(.*)\.js/
+                    },
+                    // styles: {
+                    //     name: 'styles',
+                    //     test: /\.(sass|css)$/,
+                    //     chunks: 'all',
+                    //     minChunks: 1,
+                    //     reuseExistingChunk: true,
+                    //     enforce: true
+                    // }
+                }
+            }
+        },
         module: {
             rules: [
                 {
                     oneOf: [
                         {
                             test: /\.(tsx|ts|js|jsx)$/,
-                            loaders: ['babel-loader', 'ts-loader'],
+                            loader: 'happypack/loader?id=ts',
+                            //loaders: ['babel-loader', 'ts-loader'],
                             exclude: /node_modules/
                         },
                         {
-                            test: [/\.bmp$/, /\.gif$/, /\.jpe?g$/, /\.png$/],
+                            test: /\.(bmp|gif|jpe?g|png)$/,
                             loader: require.resolve('url-loader'),
                             options: {
                                 limit: 10000,
@@ -73,47 +112,10 @@ module.exports = (options) => {
                         },
                         {
                             test: /\.(scss|sass|css)$/,
-                            loader: ExtractTextPlugin.extract({
-                                fallback: {
-                                    loader: require.resolve('style-loader'),
-                                    options: {
-                                        hmr: false,
-                                    },
-                                },
-                                use: [
-                                    {
-                                        loader: require.resolve('css-loader'),
-                                        options: {
-                                            importLoaders: 1,
-                                        },
-                                    },
-                                    {
-                                        loader: require.resolve('postcss-loader'),
-                                        options: {
-                                            ident: 'postcss',
-                                            plugins: () => [
-                                                autoprefixer({
-                                                    browsers: [
-                                                        'last 2 versions',
-                                                        'Firefox ESR',
-                                                        '> 1%',
-                                                        'ie >= 9',
-                                                        'iOS >= 8',
-                                                        'Android >= 4'
-                                                    ]
-                                                }),
-                                                cssnano({
-                                                    preset: 'default',
-                                                    zindex: false
-                                                }),
-                                            ],
-                                        },
-                                    },
-                                    {
-                                        loader: 'sass-loader'
-                                    }
-                                ]
-                            })
+                            loaders: [
+                                MiniCssExtractPlugin.loader,
+                                'happypack/loader?id=scss'
+                            ]
                         },
                         {
                             exclude: [/\.(js|jsx|tsx|ts)$/, /\.html$/, /\.json$/],
@@ -127,9 +129,53 @@ module.exports = (options) => {
             ]
         },
         plugins: [
-            new webpack.DllReferencePlugin({
-                context: __dirname,
-                manifest: require(path.resolve(process.cwd(), './manifest.json'))
+            new MiniCssExtractPlugin({
+                filename: 'app.css',
+                chunkFilename: 'app.[contenthash:12].css'
+            }),
+            new HappyPack({
+                id: 'ts',
+                loaders: [
+                    'babel-loader',
+                    {
+                        path: 'ts-loader',
+                        query: {happyPackMode: true}
+                    }
+                ],
+                threadPool: happyThreadPool,
+                verbose: true
+            }),
+            new HappyPack({
+                id: 'scss',
+                loaders: [
+                    'css-loader',
+                    {
+                        loader: 'postcss-loader',
+                        options: {
+                            ident: 'postcss',
+                            plugins: () => [
+                                autoprefixer({
+                                    browsers: [
+                                        'last 2 versions',
+                                        'Firefox ESR',
+                                        '> 1%',
+                                        'ie >= 9',
+                                        'iOS >= 8',
+                                        'Android >= 4'
+                                    ]
+                                }),
+                                cssnano({
+                                    preset: 'default',
+                                    zindex: false,
+                                    reduceIdents: false
+                                }),
+                            ],
+                            sourceMap: true
+                        },
+                    },
+                    'sass-loader'
+                ],
+                threadPool: happyThreadPool
             }),
             /**
              * Plugin: DefinePlugin
@@ -145,31 +191,6 @@ module.exports = (options) => {
                     ENV: JSON.stringify(METADATA.ENV),
                     NODE_ENV: JSON.stringify(METADATA.ENV),
                     VERSION: JSON.stringify(pkg.version)
-                }
-            }),
-            new ExtractTextPlugin({ // define where to save the file
-                filename: 'static/css/[name].[chunkhash].bundle.css',
-                allChunks: true
-            }),
-            /**
-             * Plugin: UglifyJsPlugin
-             * Description: Minimize all JavaScript output of chunks.
-             * Loaders are switched into minimizing mode.
-             *
-             * See: https://webpack.github.io/docs/list-of-plugins.html#uglifyjsplugin
-             *
-             * NOTE: To debug prod builds uncomment //debug lines and comment //prod lines
-             */
-            new webpack.optimize.UglifyJsPlugin({
-                compress: {
-                    warnings: false,
-                    drop_console: true,
-                    collapse_vars: true,
-                    reduce_vars: true,
-                },
-                output: {
-                    beautify: false,
-                    comments: false,
                 }
             }),
             /**
@@ -198,9 +219,9 @@ module.exports = (options) => {
              * See: https://www.npmjs.com/package/copy-webpack-plugin
              */
             new CopyWebpackPlugin([{
-                from: projectName + '/assets',
-                to: 'assets'
-            }]
+                    from: projectName + '/assets',
+                    to: 'assets'
+                }]
             )
         ]
     });

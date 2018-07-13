@@ -2,7 +2,7 @@ import * as React from 'react';
 import {BaseProps} from '../common/BaseProps';
 
 export interface CellSwipeProps extends BaseProps {
-    to?: String;
+    to?: string;
     leftSlot?: React.ReactNode | Array<React.ReactNode>;
     rightSlot?: React.ReactNode | Array<React.ReactNode>;
 }

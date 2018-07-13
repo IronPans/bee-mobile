@@ -3,6 +3,7 @@ const path = require('path');
 const pkg = require(path.join(process.cwd(), 'package.json'));
 
 module.exports = {
+    mode: 'production',
     output: {
         library: 'Bee',
         libraryTarget: 'umd',
@@ -33,9 +34,9 @@ module.exports = {
         }
     ],
     module: {
-        loaders: [
+        rules: [
             {
-                test: /\.(tsx|ts|js|jsx)$/,
+                test: /\.(tsx?|jsx?)$/,
                 loaders: ['babel-loader', 'ts-loader'],
                 exclude: /node_modules/
             },
@@ -44,8 +45,8 @@ module.exports = {
     resolve: {
         modules: [helpers.root('./node_modules')],
         extensions: [
-            '.ts',
             '.tsx',
+            '.ts',
             '.js',
             '.js',
             '.jsx'

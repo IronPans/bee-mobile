@@ -5,7 +5,7 @@ export type BaseProps =  {
     children?: React.ReactNode;
     prefixCls?: string;
     style?: React.CSSProperties;
-}
+};
 
 export interface Props extends BaseProps {
     onClick?: (event: React.MouseEvent<HTMLElement>) => void;

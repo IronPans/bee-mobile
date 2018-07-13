@@ -10,7 +10,7 @@ export default class Progress extends React.PureComponent<ProgressProps, Progres
         showValue: false,
         striped: false,
         animated: false,
-        prefixCls: 'bm-Progress'
+        prefixCls: 'bm-Progress',
     };
 
     constructor(props: ProgressProps) {
@@ -20,32 +20,33 @@ export default class Progress extends React.PureComponent<ProgressProps, Progres
             value = props.value!;
         }
         this.state = {
-            value
+            value,
         };
     }
 
     componentWillReceiveProps(nextProps: ProgressProps) {
         if ('value' in nextProps && this.props.value !== nextProps.value) {
             this.setState({
-                value: nextProps.value!
+                value: nextProps.value!,
             }, () => {
                 if (this.props.onComplete && nextProps.value === 100) {
-                    (this.props.onComplete as Function)();
+                    (this.props.onComplete as () => void)();
                 }
             });
         }
     }
 
     render() {
-        let {animated, barColor, className, completeColor, children, height, loading,
+        const {animated, className, completeColor, children, height, loading,
             showValue, striped, width, prefixCls, ...other}: any = this.props;
+        let barColor = this.props.barColor;
         const styleClass = classNames(
             prefixCls,
             {
                 [`${prefixCls}-striped`]: striped,
-                [`${prefixCls}-animated`]: animated
+                [`${prefixCls}-animated`]: animated,
             },
-            className
+            className,
         );
         const value: any = this.state.value;
         if (value >= 100) {
@@ -53,7 +54,7 @@ export default class Progress extends React.PureComponent<ProgressProps, Progres
         }
         const barStyle = {
             width: value + '%',
-            background: barColor
+            background: barColor,
         };
         const styles = {width, height};
         const otherProps = getOtherProperties(other, ['onComplete']);

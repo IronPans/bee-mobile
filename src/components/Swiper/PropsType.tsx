@@ -13,10 +13,10 @@ export interface SwiperProps extends BaseProps {
     initialSlide?: number;
     loop?: boolean;
     navigation?: boolean | {
-        nextEl?: React.ReactElement<any>,
-        prevEl?: React.ReactElement<any>
+        nextEl?: React.ReactElement<any>;
+        prevEl?: React.ReactElement<any>;
     };
-    pagination?: boolean | Function;
+    pagination?: boolean | ((event: any) => void);
     paginationClickable?: boolean;
     slideWidth?: number;
     slideHeight?: number;
@@ -26,12 +26,12 @@ export interface SwiperProps extends BaseProps {
     observe?: boolean;
     observeParents?: boolean;
     on?: {
-        init?: Function;
-        imagesReady?: Function;
-        slideChange?: Function;
-        transitionStart?: Function;
-        transitionEnd?: Function;
-    },
+        init?: () => void;
+        imagesReady?: () => void;
+        slideChange?: (index: number, target: any) => void;
+        transitionStart?: (index: number, target: any) => void;
+        transitionEnd?: (index: number, target: any) => void;
+    };
     touch?: boolean;
 }
 

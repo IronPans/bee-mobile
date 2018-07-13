@@ -8,12 +8,12 @@ export interface PageProps extends BaseProps {
 export interface ContentProps extends BaseProps {
     infiniteScroll?: boolean;
     height?: number | string;
-    onInfinite?: Function;
-    onPullStart?: Function;
-    onPullMove?: Function;
-    onPullEnd?: Function;
-    onRefresh?: Function;
-    onContentScroll?: Function;
+    onInfinite?: (event: any) => void;
+    onPullStart?: () => void;
+    onPullMove?: () => void;
+    onPullEnd?: () => void;
+    onRefresh?: (event: any) => void;
+    onContentScroll?: (event: any) => void;
     preloader?: React.ReactNode | string;
     pullToRefresh?: boolean;
     width?: number | string;

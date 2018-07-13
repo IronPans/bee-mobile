@@ -9,7 +9,7 @@ export default class Badge extends React.PureComponent<BadgeProps, {}> {
         fixed: true,
         max: 99,
         prefixCls: 'bm-Badge',
-        status: 'error'
+        status: 'error',
     };
 
     componentWillReceiveProps(nextProps: BadgeProps) {
@@ -25,18 +25,18 @@ export default class Badge extends React.PureComponent<BadgeProps, {}> {
             prefixCls,
             {
                 [`${prefixCls}-sr-only`]: !children,
-                [`${prefixCls}-fixed`]: fixed
+                [`${prefixCls}-fixed`]: fixed,
             },
-            className
+            className,
         );
         const supStyleClass = classNames(
             `${prefixCls}-count`,
             {
                 [`${prefixCls}-dot`]: dot,
                 [`${prefixCls}-notify`]: notify,
-                [`${prefixCls}-circle`]: shape === 'circle'
+                [`${prefixCls}-circle`]: shape === 'circle',
             },
-            `${prefixCls}-${status}`
+            `${prefixCls}-${status}`,
         );
         const currentCount: any = count > max ? (max + '+') : count;
         return (

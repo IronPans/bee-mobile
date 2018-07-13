@@ -25,7 +25,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         spaceBetween: 0,
         speed: 300,
         delay: 3000,
-        touch: true
+        touch: true,
     };
     state: SwiperState = {
         activeIndex: 0,
@@ -33,7 +33,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         opacity: 1,
         x: 0,
         y: 0,
-        width: 0
+        width: 0,
     };
     wrapper: any;
     slider: any;
@@ -54,7 +54,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
     componentWillMount() {
         if (this.props.on && this.props.on.init!) {
-            (this.props.on as any)['init']();
+            (this.props.on as any).init();
         }
         if (this.props.autoplay) {
             this.startAutoplay();
@@ -62,11 +62,11 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         if (this.props.updateOnImagesReady!) {
             preloadImages(this.wrapper, this.imagesLoaded, () => {
                 if (this.props.on && this.props.on.imagesReady!) {
-                    (this.props.on as any)['imagesReady']();
+                    (this.props.on as any).imagesReady();
                 }
             }, (imagesLoaded: number) => {
                 this.imagesLoaded = imagesLoaded;
-            })
+            });
         }
     }
 
@@ -130,17 +130,17 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             styles = {
                 x: -(width + spaceBetween!)! * activeIndex + this.centerOffset,
                 activeIndex,
-                opacity: 1
+                opacity: 1,
             };
         } else {
             styles = {
                 y: -(height! + spaceBetween!) * activeIndex,
                 activeIndex,
-                opacity: 1
+                opacity: 1,
             };
         }
         if (this.props.on && this.props.on.transitionStart!) {
-            (this.props.on as any)['transitionStart'](index, this);
+            (this.props.on as any).transitionStart(index, this);
         }
         this.setState(styles, () => {
             if (!speed) {
@@ -151,21 +151,21 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
     slidePrev = (disabled: boolean = true) => {
         if (disabled) {
-            return
+            return;
         }
         let {activeIndex} = this.state;
         activeIndex--;
         this.slideTo(activeIndex);
-    };
+    }
 
     slideNext = (disabled: boolean = true) => {
         if (disabled) {
-            return
+            return;
         }
         let {activeIndex} = this.state;
         activeIndex++;
         this.slideTo(activeIndex);
-    };
+    }
 
     handleNavigation = (disabled: boolean, next: boolean, event: any) => {
         event.stopPropagation();
@@ -177,13 +177,13 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         } else {
             this.slidePrev(disabled);
         }
-    };
+    }
 
     getPoint(e: any) {
         const touchEvent = this.isMobile ? e.changedTouches[0] : e;
         return {
             x: touchEvent.pageX || touchEvent.clientX,
-            y: touchEvent.pageY || touchEvent.clientY
+            y: touchEvent.pageY || touchEvent.clientY,
         };
     }
 
@@ -199,12 +199,12 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             this.touches.startX = x;
             this.touches.startY = y;
         }
-    };
+    }
 
     swipeMove = (event: any) => {
         event.stopPropagation();
         if (this.dragging && !this.isRunning) {
-            let {x, y} = this.getPoint(event);
+            const {x, y} = this.getPoint(event);
             const diffX = x - this.touches.startX;
             const diffY = y - this.touches.startY;
             const {effect, spaceBetween} = this.props;
@@ -229,19 +229,19 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                 if (this.isHorizontal()) {
                     setPosition(width);
                     this.setState({
-                        x: translate + this.centerOffset
+                        x: translate + this.centerOffset,
                     });
                 } else {
                     setPosition(height);
                     this.setState({
-                        y: translate
+                        y: translate,
                     });
                 }
             } else {
                 const opacity = this.isHorizontal() ?
                     (Math.abs(diffX) / width) : Math.abs(diffY) / height;
                 this.setState({
-                    opacity
+                    opacity,
                 });
             }
             this.touches.diffX = diffX;
@@ -249,12 +249,13 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             this.touches.currentX = x;
             this.touches.currentY = y;
         }
-    };
+    }
 
     swipeEnd = (event: any) => {
         event.stopPropagation();
         if (this.dragging && !this.isRunning) {
-            let {activeIndex, width, height}: any = this.state;
+            const {width, height}: any = this.state;
+            let activeIndex: any = this.state.activeIndex;
             const {loop} = this.props;
             const {diffX, diffY} = this.touches;
             const diffWidth = width / 5;
@@ -274,7 +275,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                 getActiveIndex(diffY, diffHeight);
             }
             if (this.props.on && this.props.on.slideChange!) {
-                (this.props.on as any)['slideChange'](activeIndex, this);
+                (this.props.on as any).slideChange(activeIndex, this);
             }
             if (this.props.effect === 'fade') {
                 if (activeIndex < 0) {
@@ -286,7 +287,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             this.slideTo(activeIndex);
         }
         this.dragging = false;
-    };
+    }
 
     getBulletItem(bullets: number[]) {
         const {pagination, prefixCls} = this.props;
@@ -298,17 +299,17 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                 `${prefixCls}-pagination-bullet`,
                 {
                     [`${prefixCls}-pagination-bullet-active`]: this.state.activeIndex === v,
-                    [`${prefixCls}-pagination-clickable`]: this.props.paginationClickable
-                }
+                    [`${prefixCls}-pagination-clickable`]: this.props.paginationClickable,
+                },
             );
             let event = {};
             if (this.props.paginationClickable) {
                 event = {
                     onMouseDown: !this.isMobile ? this.paginationClick.bind(this, v) : null,
-                    onTouchStart: this.isMobile ? this.paginationClick.bind(this, v) : null
+                    onTouchStart: this.isMobile ? this.paginationClick.bind(this, v) : null,
                 };
             }
-            return (<div key={v} {...event} className={styleClass}/>)
+            return (<div key={v} {...event} className={styleClass}/>);
         });
     }
 
@@ -321,22 +322,22 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         const prevClass = classNames(
             `${prefixCls}-prev`,
             {
-                [`${prefixCls}-disabled`]: toPrev
-            }
+                [`${prefixCls}-disabled`]: toPrev,
+            },
         );
         const nextClass = classNames(
             `${prefixCls}-next`,
             {
-                [`${prefixCls}-disabled`]: toNext
-            }
+                [`${prefixCls}-disabled`]: toNext,
+            },
         );
         const prevEvent = {
             onMouseDown: !this.isMobile ? this.handleNavigation.bind(this, toPrev, false) : null,
-            onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toPrev, false) : null
+            onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toPrev, false) : null,
         };
         const nextEvent = {
             onMouseDown: !this.isMobile ? this.handleNavigation.bind(this, toNext, true) : null,
-            onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toNext, true) : null
+            onTouchStart: this.isMobile ? this.handleNavigation.bind(this, toNext, true) : null,
         };
         const prevEl = (<div key="prev" className={prevClass} {...prevEvent}>{nav.prevEl}</div>);
         const nextEl = (<div key="next" className={nextClass} {...nextEvent}>{nav.nextEl}</div>);
@@ -369,7 +370,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         return slideSize;
     }
 
-    reset(cb?: Function) {
+    reset(cb?: any) {
         if (!this.slider.firstElementChild) {
             return;
         }
@@ -382,7 +383,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         }
         this.setState({
             width: this.updateSize(slideWidth, width),
-            height: this.updateSize(slideHeight, height)
+            height: this.updateSize(slideHeight, height),
         }, () => {
             if (cb) {
                 cb();
@@ -402,7 +403,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                 this.observer();
             }
         }
-    };
+    }
 
     startAutoplay() {
         if (this.autoPlayTimer) {
@@ -426,7 +427,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         this.reset(() => {
             this.slideTo(this.getCurrentSlide(activeIndex), 0);
         });
-    };
+    }
 
     onTransitionEnd = () => {
         let {activeIndex} = this.state;
@@ -436,17 +437,19 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             activeIndex = 0;
         }
         if (this.props.on && this.props.on.transitionEnd!) {
-            (this.props.on as any)['transitionEnd'](activeIndex, this);
+            (this.props.on as any).transitionEnd(activeIndex, this);
         }
         this.slideTo(activeIndex, 0);
         if (this.props.autoplay && !this.props.autoplayDisableOnInteraction) {
             this.startAutoplay();
         }
         this.isRunning = false;
-    };
+    }
 
-    attach(target) {
-        const MutationObserver = window['MutationObserver'] || window['WebKitMutationObserver'] || window['MozMutationObserver'];
+    attach(target: any) {
+        const win: any = window;
+        const MutationObserver = win.MutationObserver ||
+            win.WebKitMutationObserver || win.MozMutationObserver;
 
         const observer = new MutationObserver((mutations) => {
             mutations.forEach(() => {
@@ -455,7 +458,7 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
         });
 
         // 配置观察选项:
-        const config = { attributes: true, childList: true, characterData: true };
+        const config = {attributes: true, childList: true, characterData: true};
 
         // 传入目标节点和观察选项
         observer.observe(target, config);
@@ -470,21 +473,23 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
 
         if (this.props.observeParents) {
             const containerParents = parents(this.wrapper);
-            for (let i = 0; i < containerParents.length; i += 1) {
-                this.observers.push(this.attach(containerParents[i]));
+            for (const container of containerParents) {
+                this.observers.push(this.attach(container));
             }
         }
-    };
+    }
 
     render() {
         const {
             className, children: childrenProps, direction, easing,
-            effect, loop, navigation, pagination, prefixCls, spaceBetween, speed, ...other
+            effect, loop, navigation, pagination, prefixCls, spaceBetween, speed, ...other,
         } = this.props;
         const horizontal: boolean = this.isHorizontal();
         const styleClass = classNames(prefixCls, className, `${prefixCls}-${direction}`);
         const bullets: number[] = [];
-        let {activeIndex, width, height, x, y} = this.state;
+        const {activeIndex, width, height} = this.state;
+        let x: any = this.state.x;
+        let y: any = this.state.y;
         this.count = React.Children.count(childrenProps);
         const isFade: boolean = effect === 'fade';
         const children = React.Children.map(childrenProps,
@@ -492,26 +497,26 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                 if (!React.isValidElement(child)) {
                     return;
                 }
-                let opacity: number = 0;
+                let opacity = 0;
                 let left: number = horizontal ? index * width! : 0,
                     top: number = !horizontal ? index * height! : 0;
-                const {diffX, diffY} = this.touches, styles: any = {};
+                const {diffX, diffY} = this.touches, childStyles: any = {};
                 if (!isFade) {
                     if (loop && this.count > 2) {
                         if (this.count <= activeIndex + 1 && index === 0) {
                             horizontal ? (left = (width + spaceBetween!) * this.count) : top = height! * this.count;
-                            styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
-                            styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
+                            childStyles.transform = `translate3d(${left}px, ${top}px, 0)`;
+                            childStyles.WebkitTransform = `translate3d(${left}px, ${top}px, 0)`;
                         } else if (activeIndex <= 0 && this.count === index + 1) {
                             horizontal ? left = -(width + spaceBetween!) * this.count : top = -height! * this.count!;
-                            styles['transform'] = `translate3d(${left}px, ${top}px, 0)`;
-                            styles['WebkitTransform'] = `translate3d(${left}px, ${top}px, 0)`;
+                            childStyles.transform = `translate3d(${left}px, ${top}px, 0)`;
+                            childStyles.WebkitTransform = `translate3d(${left}px, ${top}px, 0)`;
                         }
                     }
                     opacity = 1;
                 } else {
-                    styles['transform'] = `translate3d(-${left}px, -${top}px, 0)`;
-                    styles['WebkitTransform'] = `translate3d(-${left}px, -${top}px, 0)`;
+                    childStyles.transform = `translate3d(-${left}px, -${top}px, 0)`;
+                    childStyles.WebkitTransform = `translate3d(-${left}px, -${top}px, 0)`;
                     if (this.dragging) {
                         const diff = horizontal ? diffX : diffY;
                         if (loop && ((activeIndex <= 0 && diff > 0 && this.count === index + 1) ||
@@ -536,23 +541,24 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
                     if (this.dragging) {
                         duration = 0;
                     }
-                    styles['transition'] = 'opacity ' + duration + 'ms ' + easing;
-                    styles['WebkitTransition'] = 'opacity ' + duration + 'ms ' + easing;
+                    childStyles.transition = `opacity ${duration}ms ${easing}`;
+                    childStyles.WebkitTransition = `opacity ${duration}ms ${easing}`;
                 }
-                const styleClass = classNames(
+                const childClass = classNames(
                     `${prefixCls}-slide`,
                     {
-                        [`${prefixCls}-slide-active`]: activeIndex === index
-                    }
+                        [`${prefixCls}-slide-active`]: activeIndex === index,
+                    },
                 );
                 if (!isFade && spaceBetween! > 0) {
-                    styles['marginRight'] = spaceBetween;
+                    childStyles.marginRight = spaceBetween;
                 }
-                styles['width'] = width;
-                styles['opacity'] = opacity;
+                childStyles.width = width;
+                childStyles.opacity = opacity;
                 bullets.push(index);
-                return React.cloneElement((<div className={styleClass} key={index} style={styles}>
-                    {child}</div>), {});
+                return React.cloneElement((
+                    <div className={childClass} key={index} style={childStyles}>
+                        {child}</div>), {});
             });
         if (isFade) {
             x = y = 0;
@@ -564,27 +570,23 @@ export default class Swiper extends React.PureComponent<SwiperProps, any> {
             transform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             WebkitTransform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
             msTransform: horizontal ? `translate3d(${x}px, 0, 0)` : `translate3d(0, ${y}px, 0)`,
-            WebkitTransition: '-webkit-transform ' + speed + 'ms ' + easing,
-            transition: 'transform ' + speed + 'ms ' + easing
+            WebkitTransition: `-webkit-transform ${speed}ms ${easing}`,
+            transition: `transform ${speed}ms ${easing}`,
         };
         return (
             <div className={styleClass} {...otherProps}>
-                <div className={`${prefixCls}-wrapper`} ref={this.getWrapperRef}
-                     style={{height: horizontal ? '100%' : height!}}
-                     onMouseDown={this.isMobile ? () => {
-                     } : this.swipeStart}
-                     onMouseMove={this.isMobile ? () => {
-                     } : this.swipeMove}
-                     onMouseUp={this.isMobile ? () => {
-                     } : this.swipeEnd}
-                     onMouseLeave={this.isMobile ? () => {
-                     } : this.swipeEnd}
-                     onTouchStart={this.isMobile ? this.swipeStart : () => {
-                     }}
-                     onTouchMove={this.isMobile ? this.swipeMove : () => {
-                     }}
-                     onTouchEnd={this.isMobile ? this.swipeEnd : () => {
-                     }}>
+                <div
+                    className={`${prefixCls}-wrapper`}
+                    ref={this.getWrapperRef}
+                    style={{height: horizontal ? '100%' : height!}}
+                    onMouseDown={this.isMobile ? () => false : this.swipeStart}
+                    onMouseMove={this.isMobile ? () => false : this.swipeMove}
+                    onMouseUp={this.isMobile ? () => false : this.swipeEnd}
+                    onMouseLeave={this.isMobile ? () => false : this.swipeEnd}
+                    onTouchStart={this.isMobile ? this.swipeStart : () => false}
+                    onTouchMove={this.isMobile ? this.swipeMove : () => false}
+                    onTouchEnd={this.isMobile ? this.swipeEnd : () => false}
+                >
                     <div className={`${prefixCls}-list`} style={styles} onTransitionEnd={this.onTransitionEnd}>
                         {children}
                     </div>

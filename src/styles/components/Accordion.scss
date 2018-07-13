@@ -22,10 +22,10 @@
         overflow: visible;
       }
 
-      > .bm-AccordionHeader-toggle {
+      .bm-AccordionHeader-toggle {
         color: $accordionHeaderActiveColor;
         &:after {
-          transform: translate(0, -50%) rotate(-180deg);
+          transform: translate(0, -50%) rotate(180deg);
         }
       }
     }

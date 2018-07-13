@@ -7,7 +7,7 @@ export interface CheckboxProps extends BaseProps {
     disabled?: boolean;
     inputRef?: (node: any) => {};
     value?: string;
-    onChange?: Function;
+    onChange?: (event: any) => void;
 }
 
 export interface CheckboxState {

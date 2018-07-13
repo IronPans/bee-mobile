@@ -9,11 +9,11 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
         delay: 1000,
         dir: 'bottom',
         title: '',
-        prefixCls: 'bm-Tooltip'
+        prefixCls: 'bm-Tooltip',
     };
     state: TooltipState = {
         tooltipStyle: {},
-        open: false
+        open: false,
     };
     tooltip: any;
     er: any = '';
@@ -26,7 +26,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
 
     close() {
         this.setState({
-            open: false
+            open: false,
         });
         if (this.props.onClose) {
             this.props.onClose();
@@ -35,7 +35,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
 
     show() {
         this.setState({
-            open: true
+            open: true,
         });
         if (this.props.onOpen) {
             this.props.onOpen();
@@ -66,7 +66,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
                     break;
             }
             this.setState({
-                tooltipStyle: {top, left}
+                tooltipStyle: {top, left},
             });
         }
     }
@@ -80,7 +80,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
             clearTimeout(this.timeoutId);
         }
         this.show();
-    };
+    }
 
     handleTouchEnd = () => {
         if (!this.touchEvent.mobile) {
@@ -90,33 +90,44 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
             this.close();
             this.timeoutId = null;
         }, this.props.delay);
-    };
+    }
 
     handleResize = () => {
         this.touchEvent = getTouchEvent();
         this.updateTooltipState();
-    };
+    }
 
     render() {
         const {children, className, dir, prefixCls, title, ...other} = this.props;
         const styleClass = classNames(
             `${prefixCls}-content`,
             `${prefixCls}-${dir}`,
-            (this.state.open && `${prefixCls}-active`)
+            (this.state.open && `${prefixCls}-active`),
         );
         const groupStyle = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         return (
             <EventListener target="window" onResize={this.handleResize}>
-                <div ref={(node) => {
-                    this.er = node;
-                }} className={groupStyle} onTouchStart={this.handleTouchStart}
-                     onTouchEnd={this.handleTouchEnd}>
+                <div
+                    ref={(node) => {
+                        this.er = node;
+                    }}
+                    className={groupStyle}
+                    onTouchStart={this.handleTouchStart}
+                    onTouchEnd={this.handleTouchEnd}
+                >
                     {children}
-                    <div className={styleClass} {...other} ref={node => {
-                        this.tooltip = node;
-                    }} style={this.state.tooltipStyle}>{title}</div>
+                    <div
+                        className={styleClass}
+                        {...other}
+                        ref={node => {
+                            this.tooltip = node;
+                        }}
+                        style={this.state.tooltipStyle}
+                    >
+                        {title}
+                    </div>
                 </div>
             </EventListener>
         );

@@ -5,7 +5,7 @@ export type NOTIFICATION_POSITION = 'top' | 'bottom';
 
 export type NOTIFICATION_TYPE = 'default' | 'success' | 'warning' | 'info' | 'error';
 
-export interface NotificationProps extends BaseProps{
+export interface NotificationProps extends BaseProps {
     avatar?: React.ReactNode;
     hideBackdrop?: boolean;
     delay?: number;
@@ -14,5 +14,5 @@ export interface NotificationProps extends BaseProps{
     progress?: boolean;
     title?: React.ReactNode;
     type?: NOTIFICATION_TYPE;
-    onClose?: Function;
+    onClose?: () => void;
 }

@@ -7,16 +7,16 @@ export default class NavBar extends React.PureComponent<NavBarProps, any> {
         center: '',
         left: '',
         prefixCls: 'bm-NavBar',
-        right: ''
+        right: '',
     };
     render() {
         const { center, className, fixed, left, right, prefixCls } = this.props;
         const styleClass = classNames(
             `${prefixCls}`,
             {
-                [`${prefixCls}-fixed`]: fixed
+                [`${prefixCls}-fixed`]: fixed,
             },
-            className
+            className,
         );
         return (
             <div className={styleClass}>

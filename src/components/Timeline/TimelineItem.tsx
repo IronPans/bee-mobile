@@ -4,14 +4,14 @@ import {TimelineItemProps} from './PropsType';
 
 export default class TimelineItem extends React.PureComponent<TimelineItemProps, {}> {
     static defaultProps: TimelineItemProps = {
-        prefixCls: 'bm-TimelineItem'
+        prefixCls: 'bm-TimelineItem',
     };
 
     render() {
         const {children, className, prefixCls, title} = this.props;
         const styleClass = classNames(
             prefixCls,
-            className
+            className,
         );
         return (
             <div className={styleClass}>

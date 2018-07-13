@@ -34,7 +34,10 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
             value,
         });
         if (onChange) {
-            onChange(value, event);
+            onChange({
+                value,
+                originalEvent: event,
+            });
         }
     }
 
@@ -43,7 +46,9 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
             focus: true,
         });
         if (this.props.onFocus) {
-            this.props.onFocus(event);
+            this.props.onFocus({
+                originalEvent: event,
+            });
         }
     }
 
@@ -52,7 +57,9 @@ export default class Textarea extends React.PureComponent<TextareaProps, Textare
             focus: false,
         });
         if (this.props.onBlur) {
-            this.props.onBlur(event);
+            this.props.onBlur({
+                originalEvent: event,
+            });
         }
     }
 

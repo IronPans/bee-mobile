@@ -9,9 +9,9 @@ export interface CalendarProps extends BaseProps {
     minDate?: string;
     maxDate?: string;
     visible?: boolean;
-    onChange?: Function;
-    onClose?: Function;
-    onOpen?: Function;
+    onChange?: (event: any) => void;
+    onClose?: () => void;
+    onOpen?: () => void;
 }
 
 export interface CalendarState {

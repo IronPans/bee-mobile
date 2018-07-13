@@ -7,20 +7,20 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
         prefixCls: 'bm-InputNumber',
         step: 1,
         type: 1,
-        value: 0
+        value: 0,
     };
     count: number;
 
     constructor(props: InputNumberProps) {
         super(props);
         let value = 0;
-        const step = props.step!.toString().split(".");
+        const step = props.step!.toString().split('.');
         this.count = step[1] ? step[1].length : 0;
         if (typeof props.defaultValue === 'number') {
             value = props.defaultValue!;
         }
         this.state = {
-            value
+            value,
         };
     }
 
@@ -40,7 +40,7 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
         }
         currentValue = Number(currentValue.toFixed(this.count));
         this.setState({
-            value: currentValue
+            value: currentValue,
         });
         return currentValue;
     }
@@ -49,7 +49,10 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
         const {onChange, value} = this.props;
         const currentValue = this.setValue(add, value);
         if (onChange) {
-            onChange(currentValue, event);
+            onChange({
+                value: currentValue,
+                originalEvent: event,
+            });
         }
 
     }
@@ -62,7 +65,7 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
             this.spin(-1, event);
             event.preventDefault();
         }
-    };
+    }
 
     handleKeyPress = (event: any) => {
         const keyPattern: RegExp = /[0-9\+\-]/;
@@ -71,51 +74,59 @@ export default class InputNumber extends React.PureComponent<InputNumberProps, I
             event.keyCode !== 39 && event.keyCode !== 46) {
             event.preventDefault();
         }
-    };
+    }
 
     handleChange = (event: any) => {
         const inputElem: any = event.target;
         const {onChange} = this.props;
         this.setState({
-            value: Number(inputElem.value)
+            value: Number(inputElem.value),
         });
         if (onChange) {
-            onChange(this.state.value, event);
+            onChange({
+                value: this.state.value,
+                originalEvent: event,
+            });
         }
-    };
+    }
 
     render() {
         const {className, min, max, prefixCls, style, type} = this.props;
         const styleClass = classNames(
             prefixCls,
             {
-                [`${prefixCls}-2`]: type === 2
+                [`${prefixCls}-2`]: type === 2,
             },
-            className
+            className,
         );
         const {value} = this.state;
         const minusStyleClass = classNames(
             `${prefixCls}-minus`,
             {
-                'is-disabled': (min!) <= (value!)
-            }
+                'is-disabled': (min!) <= (value!),
+            },
         );
         const addStyleClass = classNames(
             `${prefixCls}-add`,
             {
-                'is-disabled': (max!) >= (value!)
-            }
+                'is-disabled': (max!) >= (value!),
+            },
         );
         const arrowStyle: any = {
             pointerEvents: 'none',
             display: 'block',
-            fill: 'rgb(117, 117, 117)'
+            fill: 'rgb(117, 117, 117)',
         };
         return (
             <div className={styleClass} style={style}>
                 {type !== 2 ? (<button className={minusStyleClass} onClick={this.spin.bind(this, -1)}/>) : null}
-                <input type="text" value={value} onKeyDown={this.handleKeyDown}
-                       onKeyPress={this.handleKeyPress} onChange={this.handleChange}/>
+                <input
+                    type="text"
+                    value={value}
+                    onKeyDown={this.handleKeyDown}
+                    onKeyPress={this.handleKeyPress}
+                    onChange={this.handleChange}
+                />
                 {type !== 2 ? (<button className={addStyleClass} onClick={this.spin.bind(this, 1)}/>) : null}
                 {type === 2 ? (<div className={`${prefixCls}-step`}>
                     <span onClick={this.spin.bind(this, 1)} className="bm-rotate-180">

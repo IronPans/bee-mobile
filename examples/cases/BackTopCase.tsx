@@ -14,7 +14,7 @@ export default class BackTopCase extends React.PureComponent<BackTopCaseProps, a
 
     getRef = (node: any) => {
         this.scrollNode = node;
-    };
+    }
 
     render() {
         const {className, ...other} = this.props;

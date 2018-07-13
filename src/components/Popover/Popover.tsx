@@ -3,7 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as classNames from 'classnames';
 import Portal from '../Portal/Portal';
 import FadeInZoom from '../Transitions/FadeInZoom';
-import {getOtherProperties} from "../common/Utils";
+import {getOtherProperties} from '../common/Utils';
 import {PopoverProps, PopoverState} from './PropsType';
 
 export default class Popover extends React.PureComponent<PopoverProps, PopoverState> {
@@ -11,7 +11,7 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
         anchorEl: null,
         dir: 'bottom-right',
         prefixCls: 'bm-Popover',
-        visible: false
+        visible: false,
     };
 
     transitionEl: any;
@@ -23,7 +23,7 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
             visible = true;
         }
         this.state = {
-            visible
+            visible,
         };
     }
 
@@ -31,7 +31,7 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
         this.setElPositionStyle(ReactDOM.findDOMNode(this.transitionEl));
         if ('visible' in nextProps && this.props.visible !== nextProps.visible) {
             this.setState({
-                visible: nextProps.visible
+                visible: nextProps.visible,
             });
         }
     }
@@ -40,7 +40,7 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
         if (this.transitionEl) {
             this.transitionEl = null;
         }
-    };
+    }
 
     setElPositionStyle = (elem: any) => {
         if (elem && elem.style) {
@@ -49,10 +49,10 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
             elem.style.left = position.left + 'px';
             elem.style.transformOrigin = position.transformOrigin;
         }
-    };
+    }
 
     getElPositionStyle = (elem: any) => {
-        let {anchorEl, dir} = this.props;
+        const {anchorEl, dir} = this.props;
         if (anchorEl) {
             const rect = anchorEl.getBoundingClientRect();
             const width = anchorEl.offsetWidth, height = anchorEl.offsetHeight;
@@ -88,24 +88,24 @@ export default class Popover extends React.PureComponent<PopoverProps, PopoverSt
             }
             return {left, top, transformOrigin: elemWidth + 'px 0 0'};
         }
-    };
+    }
 
     handleClose = () => {
         if (this.props.onClose) {
             this.props.onClose();
         }
-    };
+    }
 
     getPopoverRef = (node: any) => {
         this.transitionEl = ReactDOM.findDOMNode(node);
         this.setElPositionStyle(this.transitionEl);
-    };
+    }
 
     render() {
         const {children, className, prefixCls, ...other} = this.props;
         const {visible} = this.state;
         const styleClass = classNames(
-            prefixCls, className
+            prefixCls, className,
         );
         const otherProps = getOtherProperties(other, ['anchorEl', 'dir', 'onClose', 'visible']);
         return (

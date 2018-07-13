@@ -1,9 +1,8 @@
-
 import {BaseProps} from '../common/BaseProps';
 
 export interface MessageProps extends BaseProps {
     hideBackdrop?: boolean;
-    onClose?: Function;
+    onClose?: () => void;
 }
 
 export interface MessageState {
@@ -14,5 +13,5 @@ export interface MessageState {
 export interface MessageItemProps extends BaseProps {
     delay?: number;
     message?: any;
-    onClose?: Function
+    onClose?: () => void;
 }

@@ -6,18 +6,19 @@ import {AlertProps, AlertState} from './PropsType';
 export default class Alert extends React.PureComponent<AlertProps, AlertState> {
     static defaultProps = {
         prefixCls: 'bm-Alert',
-        type: 'info'
+        type: 'info',
     };
     closed = false;
 
     close = () => {
         this.closed = true;
         this.forceUpdate();
-    };
+    }
 
     render() {
-        let {children, className, showIcon,
-            prefixCls, desc, closable, icon, type, banner, title}: any = this.props;
+        const {children, className, showIcon,
+            prefixCls, desc, closable, icon, banner, title}: any = this.props;
+        let type = this.props.type;
         let alertIcon = icon;
         if (!icon && type) {
             switch (type) {
@@ -37,7 +38,7 @@ export default class Alert extends React.PureComponent<AlertProps, AlertState> {
         }
         if (banner) {
             alertIcon = 'error_outline';
-            type = 'warning'
+            type = 'warning';
         }
         const styleClass = classNames(
             prefixCls,
@@ -45,11 +46,12 @@ export default class Alert extends React.PureComponent<AlertProps, AlertState> {
             {
                 [`${prefixCls}-with-icon`]: alertIcon,
                 [`${prefixCls}-with-desc`]: desc,
-                [`${prefixCls}-with-close`]: closable
+                [`${prefixCls}-with-close`]: closable,
             },
-            className
+            className,
         );
-        const elem = this.closed ? null : (<Fade in={!this.closed}>
+        const elem = this.closed ? null : (
+            <Fade in={!this.closed}>
             <div className={styleClass}>
                 {(showIcon && alertIcon) ? (<span>
                         <i className="bm-Icon bm-Alert-icon">{alertIcon}</i>
@@ -64,7 +66,8 @@ export default class Alert extends React.PureComponent<AlertProps, AlertState> {
             <i className="bm-Icon">clear</i>
             </span>) : null}
             </div>
-        </Fade>);
+        </Fade>
+        );
         return elem;
     }
 }

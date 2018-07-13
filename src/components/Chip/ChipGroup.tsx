@@ -7,7 +7,7 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
     state: ChipGroupState = {
         data: [],
         value: '',
-        focus: false
+        focus: false,
     };
     input: any;
 
@@ -18,7 +18,7 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
             data = props.data!;
         }
         this.state = {
-            data
+            data,
         };
     }
 
@@ -26,7 +26,7 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
         if ('data' in nextProps) {
             const {data} = this.props;
             this.setState({
-                data: data!
+                data: data!,
             });
         }
     }
@@ -36,36 +36,36 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
         const chipToDelete = chipData.indexOf(data);
         chipData.splice(chipToDelete, 1);
         this.setState({
-            data: chipData
+            data: chipData,
         });
         if (this.props.onDelete) {
             this.props.onDelete({
                 label: data.label!,
-                value: data.value!
+                value: data.value!,
             });
         }
-    };
+    }
 
     handleClick = (data: any) => {
         if (this.props.onClick) {
             this.props.onClick({
                 label: data.label!,
-                value: data.value!
+                value: data.value!,
             });
         }
-    };
+    }
 
     handleFocus = () => {
         this.setState({
-            focus: !this.state.focus!
+            focus: !this.state.focus!,
         });
-    };
+    }
 
     handleChange = (event: any) => {
         const target: any = event.target;
         const value = target.value;
         this.setState({value});
-    };
+    }
 
     handleKeyUp = (event: any) => {
         if (event.keyCode === 13) {
@@ -74,12 +74,12 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
             const data = [...this.state.data!];
             data.push({
                 label: value,
-                value: value
+                value: value,
             });
             value = '';
             this.setState({value, data});
         }
-    };
+    }
 
     render() {
         const {className, placeholder} = this.props;
@@ -87,23 +87,34 @@ export default class ChipGroup extends React.PureComponent<ChipGroupProps, ChipG
             'ChipGroup',
             {
                 'Chip-input': !!placeholder,
-                'Chip-focus': this.state.focus
+                'Chip-focus': this.state.focus,
             },
-            className
+            className,
         );
         const chipData = this.state.data;
         return (
             <div className={styleClass}>
                 {
                     chipData.map((node, index) => {
-                        return (<Chip key={index} {...node} onDelete={this.handleDelete.bind(this, node)}
-                                      onClick={this.handleClick.bind(this, node)}/>)
+                        return (<Chip
+                            key={index}
+                            {...node}
+                            onDelete={this.handleDelete.bind(this, node)}
+                            onClick={this.handleClick.bind(this, node)}
+                        />);
                     })
                 }
                 {placeholder ?
-                    (<input value={this.state.value} ref={node => this.input = node} spellCheck={false} type="text"
-                            placeholder={placeholder} onKeyUp={this.handleKeyUp}
-                            onChange={this.handleChange} onFocus={this.handleFocus}/>) : null}
+                    (<input
+                        value={this.state.value}
+                        ref={node => this.input = node}
+                        spellCheck={false}
+                        type="text"
+                        placeholder={placeholder}
+                        onKeyUp={this.handleKeyUp}
+                        onChange={this.handleChange}
+                        onFocus={this.handleFocus}
+                    />) : null}
             </div>
         );
     }

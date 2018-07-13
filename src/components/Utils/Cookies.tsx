@@ -8,10 +8,10 @@ function isString(o: any) {
 
 function set(key: string, value: any, options: any = {}) {
     const d: any = new Date();
-    const expires = options['expires'];
-    const domain = options['domain'];
-    const path = options['path'];
-    let text = key + '=' + value;
+    const expires = options.expires;
+    const domain = options.domain;
+    const path = options.path;
+    let text = `${key}=${value}`;
     let date = expires;
     if (typeof date === 'number') {
         date = new Date();
@@ -29,7 +29,7 @@ function set(key: string, value: any, options: any = {}) {
         text += '; path=' + path;
     }
     // secure
-    if (options['secure']) {
+    if (options.secure) {
         text += '; secure';
     }
     document.cookie = text;
@@ -37,20 +37,22 @@ function set(key: string, value: any, options: any = {}) {
 }
 
 function get(key: string) {
-    const value = key + "=";
+    const value = `${key}=`;
     const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-        const c = cookies[i].trim();
-        if (c.indexOf(value) == 0) {
+    let i = 0;
+    for (const cookie of cookies) {
+        const c = cookie.trim();
+        if (c.indexOf(value) === 0) {
             return c.substring(value.length, c.length);
         }
+        i++;
     }
-    return "";
+    return '';
 }
 
 function remove(key: string, options: any = {}) {
-    options['expires'] = new Date(0);
+    options.expires = new Date(0);
     return set(key, '', options);
-};
+}
 
 export {get, remove, set};

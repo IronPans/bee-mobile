@@ -9,7 +9,7 @@ export interface TabProps extends BaseProps {
 
 export interface TabContainerProps extends BaseProps {
     index?: number;
-    activeIndex?: number
+    activeIndex?: number;
 }
 
 export interface TabContainerState {
@@ -25,7 +25,7 @@ export interface TabsProps extends BaseProps {
 }
 
 export interface TabsState {
-    activeIndex: number,
+    activeIndex: number;
     x: number;
     y: number;
 }

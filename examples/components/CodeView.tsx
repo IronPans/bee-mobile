@@ -53,7 +53,7 @@ export default class CodeView extends React.Component<CodeViewProps, CodeViewSta
                     <CardHeader
                         title={title}
                         action={
-                        <Icon icon="fullscreen" onClick={this.openCode}/> }
+                        <Icon icon="fullscreen" onClick={this.openCode}/>}
                     />
                     <CardContent>
                         <Collapse in={true}>

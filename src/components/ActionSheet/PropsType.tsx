@@ -3,7 +3,7 @@ import * as React from 'react';
 export interface ActionSheetButton {
     color?: string;
     disabled?: boolean;
-    onClick?: Function;
+    onClick?: (event: any) => void;
     style?: object;
     text?: React.ReactNode | string;
 }
@@ -16,5 +16,5 @@ export interface ActionSheetProps {
     element?: React.ReactNode | string;
     prefixCls?: string;
     title?: string;
-    onClose?: Function;
+    onClose?: () => void;
 }

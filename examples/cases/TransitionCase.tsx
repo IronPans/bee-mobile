@@ -23,20 +23,20 @@ export default class TransitionCase extends React.Component<TransitionCaseProps,
         super(props);
         this.state = {
             collapse: false,
-            fade: true
+            fade: true,
         };
     }
 
     handleFade = () => {
         this.setState({
-            fade: !this.state.fade!
+            fade: !this.state.fade!,
         });
     }
 
     handleCollapse = () => {
         this.setState({
-            collapse: !this.state.collapse!
-        })
+            collapse: !this.state.collapse!,
+        });
     }
 
     render() {

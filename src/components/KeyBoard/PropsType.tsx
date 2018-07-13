@@ -6,8 +6,8 @@ export interface KeyBoardProps extends BaseProps {
     count?: number;
     random?: boolean;
     title?: React.ReactNode;
-    onClose?: Function;
-    onFinish?: Function;
+    onClose?: () => void;
+    onFinish?: (event: any) => void;
 }
 
 export interface KeyBoardState {
