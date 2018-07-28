@@ -1,3 +1,5 @@
+@import "../common/variables";
+@import "../common/mixin";
 .bm-Breadcrumb {
   display: flex;
   align-items: center;
@@ -7,10 +9,9 @@
     display: flex;
     align-items: center;
     list-style: none;
-    color: #999;
 
-    > .Icon {
-      font-size: 20px;
+    > .bm-Icon {
+      font-size: 18px;
       padding-right: 5px;
     }
 
@@ -19,10 +20,11 @@
     }
 
     &:last-child .bm-Breadcrumb-title {
-      color: #666;
+      color: #999;
+      cursor: auto;
     }
 
-    .bm-Breadcrumb-title {
+    &:not(:last-child) .bm-Breadcrumb-title {
       cursor: pointer;
 
       &:active,

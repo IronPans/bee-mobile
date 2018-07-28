@@ -1,7 +1,7 @@
 /**
  * bee-mobile - UI Components for React
  * @author TG <ghmagical@gmail.com>
- * @version v0.4.0
+ * @version v0.4.1
  * @link https://bee-mobiles.github.io
  * @license MIT
  */

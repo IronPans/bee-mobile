@@ -31,7 +31,21 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                         <li>主版本号：每月发布一个带有新特性的向下兼容的版本。</li>
                     </ul>
                     <Timeline>
-                        <TimelineItem title={<h3>0.4.0 <span className="title-label">2018-07-14</span></h3>}>
+                        <TimelineItem title={<h3>0.4.1 <span className="title-label">2018-07-28</span></h3>}>
+                            <h4>Features</h4>
+                            <ul>
+                                <li>
+                                    优化<NavLink to="/docs/breadcrumb">Breadcrumb</NavLink> 的样式
+                                </li>
+                            </ul>
+                            <h4>Enhancement</h4>
+                            <ul>
+                                <li>
+                                    更新<NavLink to="/docs/datetimePicker">DatetimePicker</NavLink> 的Api
+                                </li>
+                            </ul>
+                        </TimelineItem>
+                        <TimelineItem title={<h3>0.4.0 <span className="title-label">2018-07-13</span></h3>}>
                             <h4>Features</h4>
                             <ul>
                                 <li>
@@ -50,7 +64,7 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                                     修复<NavLink to="/docs/cellSwipe">CellSwipe</NavLink>的属性to类型错误
                                 </li>
                                 <li>
-                                    修复<NavLink to="/docs/pagination">Pagination</NavLink>分页样式错乱
+                                    修复<NavLink to="/docs/pagination">Pagination</NavLink>分页点击跳转错误
                                 </li>
                             </ul>
                             <h4>Tool</h4>

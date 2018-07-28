@@ -1,5 +1,16 @@
 # Change Log
 
+
+## 0.4.0(2018-07-28)
+
+**Features**
+
+- 优化Breadcrumb的样式
+
+**Enhancement**
+
+- 更新DatetimePicker的Api
+
 ## 0.4.0(2018-07-14)
 
 **Features**

@@ -15,40 +15,61 @@ export default class DatetimePickerApi extends React.PureComponent<DatetimePicke
     getCode() {
         return `import * as React from 'react';
 import * as classNames from 'classnames';
-import {BaseProps&} from '../components/common/BaseProps';
-import ActionSheet from '../components/ActionSheet'
-import {Content&} from '../components/Page';
-import Button from '../components/Button';
+import {BaseProps} from '../../src/components/common/BaseProps';
+import DatetimePicker from '../../src/components/DatetimePicker';
+import {Content} from '../../src/components/Page';
 
-interface ActionSheetCaseProps extends BaseProps {}
+interface DatetimePickerCaseProps extends BaseProps {
+}
 
-export default class ActionSheetCase extends React.PureComponent< ActionSheetCaseProps, {}> {
+interface DatetimePickerCaseState {
+    visible?: boolean;
+}
 
-    handleClick = () => {
-        ActionSheet.show({
-            buttons: [{
-                text: 'Button1'
-            }, {
-                text: 'Button2'
-            }],
-            cancel: true
-        })
+export default class DatetimePickerCase extends React.PureComponent< DatetimePickerCaseProps, DatetimePickerCaseState> {
+    state: DatetimePickerCaseState = {
+        visible: false,
     };
+
+    handleClose = () => {
+        this.setState({
+            visible: false,
+        });
+    }
+
+    handleChange = (event: any) => {
+        const ev = event;
+    }
+
+    handleOpen = () => {
+        this.setState({
+            visible: true,
+        });
+    }
 
     render() {
         const {className} = this.props;
         const styleClass = classNames(
-             'ActionSheetCase', className
+            'DatetimePickerCase',
+            className,
         );
+        const {visible} = this.state;
         return (
             <Content className={styleClass}>
-                <div className="CasePanel">
-                    <Button theme="primary" onClick={this.handleClick}>Show Action Sheet</Button>
-                </div>
+                <section className="CasePanel">
+                    <DatetimePicker
+                        visible={visible}
+                        minDate="2010/1/1"
+                        onOpen={this.handleOpen}
+                        onOk={this.handleChange}
+                        onClose={this.handleClose}
+                    />
+                </section>
             </Content>
         );
     }
-}`;
+}
+`;
     }
 
     getFields() {
