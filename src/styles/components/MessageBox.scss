@@ -1,5 +1,5 @@
-
-.MessageBox {
+$messagebox-prefix: MessageBox;
+.#{$messagebox-prefix} {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -19,11 +19,11 @@
       justify-content: center;
     }
 
-    .MessageBox-item {
+    .#{$messagebox-prefix}-item {
       width: 100%;
       border-radius: 3px;
 
-      .MessageBox-item-wrapper {
+      .#{$messagebox-prefix}-item-wrapper {
         background: #fff;
         color: #222;
         box-shadow: 0 2px 8px rgba(0,0,0,.2);
@@ -31,10 +31,10 @@
     }
   }
 
-  .MessageBox-header {
+  .#{$messagebox-prefix}-header {
     padding: 15px 0 0;
 
-    .MessageBox-header-title {
+    .#{$messagebox-prefix}-header-title {
       padding: 0 20px;
       text-align: left;
       font-size: 20px;
@@ -43,7 +43,7 @@
     }
   }
 
-  .MessageBox-content {
+  .#{$messagebox-prefix}-content {
     padding: 10px 20px 15px;
     text-align: left;
     font-size: 16px;
@@ -71,7 +71,7 @@
     }
   }
 
-  .MessageBox-btn-group {
+  .#{$messagebox-prefix}-btn-group {
     display: flex;
     padding: 0 20px;
     height: 52px;
@@ -95,12 +95,12 @@
       color: #37474f;
       border: none;
 
-      //&.MessageBox-btn-cancel {
+      //&.#{$messagebox-prefix}-btn-cancel {
       //  width: 50%;
       //  border-right: 1px solid #ddd;
       //}
 
-      &.MessageBox-btn-confirm {
+      &.#{$messagebox-prefix}-btn-confirm {
         color: #26a2ff;
         //width: 50%;
       }
@@ -113,7 +113,7 @@
     height: 100%;
   }
 
-  .MessageBox-backdrop {
+  .#{$messagebox-prefix}-backdrop {
     position: absolute;
     top: 0;
     left: 0;

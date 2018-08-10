@@ -1,5 +1,6 @@
+$textarea-prefix: bm-Textarea;
 
-.bm-Textarea {
+.#{$textarea-prefix} {
   display: flex;
   position: relative;
   max-height: 80px;
@@ -9,9 +10,9 @@
   box-sizing: border-box;
 
   label,
-  label .bm-Textarea-label,
-  .bm-Textarea-field,
-  .bm-Textarea-field textarea{
+  label .#{$textarea-prefix}-label,
+  .#{$textarea-prefix}-field,
+  .#{$textarea-prefix}-field textarea{
     height: 100%;
     width: 100%;
     box-sizing: border-box;
@@ -24,7 +25,7 @@
     flex: 1 0 auto;
 
     &:not(:first-child):not(:last-child) {
-      .bm-Textarea-field {
+      .#{$textarea-prefix}-field {
         input {
           border-radius: 0;
         }
@@ -32,7 +33,7 @@
     }
   }
 
-  .bm-Textarea-label {
+  .#{$textarea-prefix}-label {
     font-weight: normal;
     font-size: 13px;
     vertical-align: middle;
@@ -41,7 +42,7 @@
     margin-bottom: 5px;
   }
 
-  .bm-Textarea-field {
+  .#{$textarea-prefix}-field {
     position: relative;
 
     textarea {
@@ -77,7 +78,7 @@
       }
     }
 
-    .bm-Textarea-indicator {
+    .#{$textarea-prefix}-indicator {
       position: absolute;
       bottom: 7px;
       right: 10px;
@@ -85,7 +86,7 @@
     }
   }
 
-  &.bm-Textarea-focus {
+  &.#{$textarea-prefix}-focus {
     hr {
       &:after {
         width: 100%;
@@ -117,28 +118,28 @@
     }
   }
 
-  &.bm-Textarea-inline {
+  &.#{$textarea-prefix}-inline {
     label {
       flex-direction: row;
       align-items: center;
 
-      .bm-Textarea-label {
+      .#{$textarea-prefix}-label {
         flex: 0 0 auto;
         margin: 0 5px 0 0;
       }
 
-      .bm-Textarea-field {
+      .#{$textarea-prefix}-field {
         flex: 1 1 auto;
       }
     }
   }
 
-  &.bm-Textarea-animated {
-    .bm-Textarea-field {
+  &.#{$textarea-prefix}-animated {
+    .#{$textarea-prefix}-field {
       margin-top: 16px;
     }
 
-    .bm-Textarea-label {
+    .#{$textarea-prefix}-label {
       position: absolute;
       top: 0;
       left: 10px;
@@ -153,32 +154,32 @@
       transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     }
 
-    &.bm-Textarea-focus,
-    &.bm-Textarea-noEmpty {
-      .bm-Textarea-label {
+    &.#{$textarea-prefix}-focus,
+    &.#{$textarea-prefix}-noEmpty {
+      .#{$textarea-prefix}-label {
         transform: translate(0, 0) scale(0.75);
       }
     }
   }
 
-  &.bm-Textarea-lg {
-    .bm-Textarea-field {
+  &.#{$textarea-prefix}-lg {
+    .#{$textarea-prefix}-field {
       input {
         height: 40px;
       }
     }
   }
 
-  &.bm-Textarea-sm {
-    .bm-Textarea-field {
+  &.#{$textarea-prefix}-sm {
+    .#{$textarea-prefix}-field {
       input {
         height: 32px;
       }
     }
   }
 
-  &.bm-Textarea-xs {
-    .bm-Textarea-field {
+  &.#{$textarea-prefix}-xs {
+    .#{$textarea-prefix}-field {
       input {
         height: 24px;
       }

@@ -1,10 +1,12 @@
-.bm-List {
+$list-prefix: bm-List;
+
+.#{$list-prefix} {
   padding: 0;
   margin: 0;
   border-top: 1px solid $listBorderColor;
   border-bottom: 1px solid $listBorderColor;
 
-  .bm-List-item {
+  .#{$list-prefix}-item {
     position: relative;
     cursor: pointer;
     text-decoration: none;
@@ -15,14 +17,14 @@
       background: transparent;
     }
 
-    &.bm-List-item-avatar-right {
+    &.#{$list-prefix}-item-avatar-right {
       .bm-Avatar {
         order: 5;
         margin: 0 0 0 16px;
       }
     }
 
-    .bm-List-item-btn {
+    .#{$list-prefix}-item-btn {
       position: relative;
       display: flex;
       align-items: center;
@@ -63,13 +65,13 @@
       background: transparent;
     }
 
-    .bm-List-item-text {
+    .#{$list-prefix}-item-text {
       flex: 1 1 auto;
       color: $defaultColor;
       overflow: hidden;
       box-sizing: border-box;
 
-      + .bm-ListItemAction {
+      + .#{$list-prefix}ItemAction {
         .bm-Icon {
           margin-right: 0;
           color: $listIconColor;
@@ -83,7 +85,7 @@
       }
     }
 
-    .bm-ListItemAction {
+    .#{$list-prefix}ItemAction {
       display: flex;
       align-items: center;
       box-sizing: border-box;
@@ -103,7 +105,7 @@
       margin-right: 16px;
     }
 
-    .bm-List-item-btn {
+    .#{$list-prefix}-item-btn {
 
       > .bm-Icon {
         display: flex;
@@ -115,8 +117,8 @@
     }
   }
 
-  &.bm-List-avatar-right {
-    .bm-List-item {
+  &.#{$list-prefix}-avatar-right {
+    .#{$list-prefix}-item {
       .bm-Avatar {
         order: 5;
         margin: 0 0 0 16px;

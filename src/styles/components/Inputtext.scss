@@ -1,10 +1,11 @@
+$inputtext-prefix: bm-Inputtext;
 
-.bm-Inputtext {
+.#{$inputtext-prefix} {
   display: flex;
   position: relative;
 
-  .bm-Inputtext-startAdorn,
-  .bm-Inputtext-endAdorn {
+  .#{$inputtext-prefix}-startAdorn,
+  .#{$inputtext-prefix}-endAdorn {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,11 +19,11 @@
     }
   }
 
-  .bm-Inputtext-startAdorn {
+  .#{$inputtext-prefix}-startAdorn {
     padding: 0 0 0 5px;
   }
 
-  .bm-Inputtext-endAdorn {
+  .#{$inputtext-prefix}-endAdorn {
     padding: 0 5px 0 0;
   }
 
@@ -33,7 +34,7 @@
     flex: 1 0 auto;
 
     &:not(:first-child):not(:last-child) {
-      .bm-Inputtext-field {
+      .#{$inputtext-prefix}-field {
         input {
           border-radius: 0;
         }
@@ -41,7 +42,7 @@
     }
   }
 
-  .bm-Inputtext-label {
+  .#{$inputtext-prefix}-label {
     font-weight: normal;
     font-size: 13px;
     vertical-align: middle;
@@ -50,31 +51,31 @@
     margin-bottom: 5px;
   }
 
-  &.bm-Inputtext-lg {
-    .bm-Inputtext-field {
+  &.#{$inputtext-prefix}-lg {
+    .#{$inputtext-prefix}-field {
       input {
         height: 40px;
       }
     }
   }
 
-  &.bm-Inputtext-sm {
-    .bm-Inputtext-field {
+  &.#{$inputtext-prefix}-sm {
+    .#{$inputtext-prefix}-field {
       input {
         height: 32px;
       }
     }
   }
 
-  &.bm-Inputtext-xs {
-    .bm-Inputtext-field {
+  &.#{$inputtext-prefix}-xs {
+    .#{$inputtext-prefix}-field {
       input {
         height: 24px;
       }
     }
   }
 
-  .bm-Inputtext-field {
+  .#{$inputtext-prefix}-field {
     position: relative;
 
     input {
@@ -115,7 +116,7 @@
     }
   }
 
-  &.bm-Inputtext-focus {
+  &.#{$inputtext-prefix}-focus {
     hr {
       &:after {
         width: 100%;
@@ -148,28 +149,28 @@
     }
   }
 
-  &.bm-Inputtext-inline {
+  &.#{$inputtext-prefix}-inline {
     label {
       flex-direction: row;
       align-items: center;
 
-      .bm-Inputtext-label {
+      .#{$inputtext-prefix}-label {
         flex: 0 0 auto;
         margin: 0 5px 0 0;
       }
 
-      .bm-Inputtext-field {
+      .#{$inputtext-prefix}-field {
         flex: 1 1 auto;
       }
     }
   }
 
-  &.bm-Inputtext-animated {
-    .bm-Inputtext-field {
+  &.#{$inputtext-prefix}-animated {
+    .#{$inputtext-prefix}-field {
       margin-top: 16px;
     }
 
-    .bm-Inputtext-label {
+    .#{$inputtext-prefix}-label {
       position: absolute;
       top: 0;
       left: 10px;
@@ -183,9 +184,9 @@
       transition: transform 200ms cubic-bezier(0.0, 0, 0.2, 1) 0ms;
     }
 
-    &.bm-Inputtext-focus,
-    &.bm-Inputtext-noEmpty {
-      .bm-Inputtext-label {
+    &.#{$inputtext-prefix}-focus,
+    &.#{$inputtext-prefix}-noEmpty {
+      .#{$inputtext-prefix}-label {
         transform: translate(0, .5px) scale(0.75);
       }
     }

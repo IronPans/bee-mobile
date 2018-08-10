@@ -1,4 +1,6 @@
-.Message {
+$message-prefix: Message;
+
+.#{$message-prefix} {
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.65);
   box-sizing: border-box;
@@ -12,11 +14,11 @@
   top: 0;
   left: 0;
 
-  &.Message-none {
+  &.#{$message-prefix}-none {
     pointer-events: none;
   }
 
-  .Message-mask {
+  .#{$message-prefix}-mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,9 +27,9 @@
     background: rgba(0,0,0,.5);
   }
 
-  .MessageItem {
+  .#{$message-prefix}Item {
 
-    .MessageItem-inner {
+    .#{$message-prefix}Item-inner {
       position: relative;
       display: inline-flex;
       align-content: center;
@@ -49,7 +51,7 @@
 }
 
 .bm-ios {
-  .Message {
+  .#{$message-prefix} {
     position: absolute;
   }
 }

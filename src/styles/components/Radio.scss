@@ -1,5 +1,5 @@
-
-.Radio {
+$radio-prefix: Radio;
+.#{$radio-prefix} {
   position: relative;
   display: flex;
   align-items: center;
@@ -24,29 +24,29 @@
     }
   }
 
-  .Radio-icon {
+  .#{$radio-prefix}-icon {
     position: relative;
     display: inline-flex;
     width: 24px;
     height: 24px;
   }
 
-  &.Radio-active {
+  &.#{$radio-prefix}-active {
     color: $radioCheckedColor;
   }
 
-  &.Radio-disabled {
+  &.#{$radio-prefix}-disabled {
     color: $radioDisabledColor;
   }
 
-  .Radio-inner {
+  .#{$radio-prefix}-inner {
     display: flex;
     cursor: pointer;
     align-items: center;
     color: $radioColor;
   }
 
-  .Radio-inner {
+  .#{$radio-prefix}-inner {
     padding-right: 6px;
   }
 
@@ -58,7 +58,7 @@
     height: 100%;
     opacity: 0;
 
-    ~ .Radio-icon svg {
+    ~ .#{$radio-prefix}-icon svg {
       fill: currentColor;
       position: absolute;
       top: 0;
@@ -69,23 +69,23 @@
       user-select: none;
       flex-shrink: 0;
 
-      &.Radio-checked {
+      &.#{$radio-prefix}-checked {
         transform: scale(0);
       }
     }
 
-    &:checked ~ .Radio-icon {
-      .Radio-noChecked {
+    &:checked ~ .#{$radio-prefix}-icon {
+      .#{$radio-prefix}-noChecked {
         transform: scale(0);
       }
 
-      .Radio-checked {
+      .#{$radio-prefix}-checked {
         transform: scale(1);
       }
     }
   }
 
-  .Radio-inner:not(:empty) {
+  .#{$radio-prefix}-inner:not(:empty) {
     padding-left: 6px;
   }
 

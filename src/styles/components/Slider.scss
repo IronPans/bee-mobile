@@ -1,53 +1,55 @@
-.bm-Slider {
+$slider-prefix: bm-Slider;
+
+.#{$slider-prefix} {
   display: flex;
   align-items: center;
 
-  &.bm-Slider-disabled {
+  &.#{$slider-prefix}-disabled {
     opacity: .5;
   }
 
-  .bm-Slider-wrapper {
+  .#{$slider-prefix}-wrapper {
     position: relative;
     cursor: pointer;
     width: 100%;
     height: 100%;
   }
 
-  .bm-Slider-start,
-  .bm-Slider-end {
+  .#{$slider-prefix}-start,
+  .#{$slider-prefix}-end {
     display: flex;
     align-items: center;
   }
 
-  .bm-Slider-start {
+  .#{$slider-prefix}-start {
     padding-right: 10px;
   }
 
-  .bm-Slider-end {
+  .#{$slider-prefix}-end {
     padding-left: 10px;
   }
 
-  &.bm-Slider-vertical {
+  &.#{$slider-prefix}-vertical {
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
     width: 18px;
     height: 150px;
 
-    .bm-Slider-start,
-    .bm-Slider-end {
+    .#{$slider-prefix}-start,
+    .#{$slider-prefix}-end {
       padding: 0;
     }
 
-    .bm-Slider-start {
+    .#{$slider-prefix}-start {
       padding-bottom: 10px;
     }
 
-    .bm-Slider-end {
+    .#{$slider-prefix}-end {
       padding-top: 10px;
     }
 
-    .bm-Slider-bar {
+    .#{$slider-prefix}-bar {
       top: 0;
       left: 50%;
       width: 2px;
@@ -55,19 +57,19 @@
       transform: translate3d(-50%, 0, 0);
     }
 
-    .bm-Slider-bar-active {
+    .#{$slider-prefix}-bar-active {
       height: auto;
       top: 100%;
     }
 
-    .bm-Slider-knob-handle {
+    .#{$slider-prefix}-knob-handle {
       top: 100%;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
     }
   }
 
-  .bm-Slider-slider-tooltip {
+  .#{$slider-prefix}-slider-tooltip {
     font-size: 18px;
     position: absolute;
     top: 0;
@@ -85,7 +87,7 @@
     transform: translate3d(0, -100%, 0);
   }
 
-  .bm-Slider-bar {
+  .#{$slider-prefix}-bar {
     position: absolute;
     top: 50%;
     left: 0;
@@ -96,13 +98,13 @@
     pointer-events: none;
     transform: translate(0, -50%);
   }
-  .bm-Slider-bar-active {
+  .#{$slider-prefix}-bar-active {
     bottom: 0;
     width: auto;
     background: $sliderActiveColor;
   }
 
-  .bm-Slider-knob-handle {
+  .#{$slider-prefix}-knob-handle {
     position: absolute;
     top: 50%;
     left: 0;
@@ -112,7 +114,7 @@
     transform: translate(0, -50%);
   }
 
-  .bm-Slider-knob {
+  .#{$slider-prefix}-knob {
     position: absolute;
     top: 0;
     left: 0;

@@ -1,26 +1,27 @@
+$tab-prefix: bm-Tabs;
 
-.bm-TabsGroup {
+.#{$tab-prefix}Group {
   display: flex;
   flex-direction: column;
   background: $tabsBg;
 
-  .bm-Tabs {
+  .#{$tab-prefix} {
     position: relative;
     z-index: 2;
 
-    ~ .bm-TabsContainerBox .bm-TabContainer,
-    .bm-Tabs-nav {
+    ~ .#{$tab-prefix}ContainerBox .bm-TabContainer,
+    .#{$tab-prefix}-nav {
       box-shadow: none;
     }
 
-    .bm-Tabs-nav {
+    .#{$tab-prefix}-nav {
       top: 0;
       border-bottom: 1px solid $tabsBorderColor;
       background: transparent;
     }
   }
 
-  .bm-Tabs-nav {
+  .#{$tab-prefix}-nav {
     position: relative;
     display: flex;
     margin-bottom: 0;
@@ -30,7 +31,7 @@
     overflow: hidden;
     border-bottom: 1px solid $tabsBorderColor;
 
-    .bm-Tabs-nav-wrapper {
+    .#{$tab-prefix}-nav-wrapper {
       display: flex;
       position: relative;
     }
@@ -72,7 +73,7 @@
     }
   }
 
-  .bm-Tabs-indicator {
+  .#{$tab-prefix}-indicator {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -83,16 +84,16 @@
     will-change: left, width;
   }
 
-  .bm-TabsContainerBox {
+  .#{$tab-prefix}ContainerBox {
     flex: 1;
     overflow: hidden;
 
-    .bm-TabsContainerWrapper {
+    .#{$tab-prefix}ContainerWrapper {
       display: flex;
       flex: 1;
     }
 
-    .bm-Tabs-nav-wrapper,
+    .#{$tab-prefix}-nav-wrapper,
     .bm-TabContainer {
       width: 100%;
       box-sizing: border-box;
@@ -110,27 +111,27 @@
     }
   }
 
-  &.bm-TabsGroup-left,
-  &.bm-TabsGroup-right {
+  &.#{$tab-prefix}Group-left,
+  &.#{$tab-prefix}Group-right {
 
-    .bm-Tabs:not(.bm-Tabs-flat) {
+    .#{$tab-prefix}:not(.#{$tab-prefix}-flat) {
 
-      .bm-Tabs-nav {
+      .#{$tab-prefix}-nav {
         border: none;
       }
 
-      .bm-Tabs-nav-wrapper {
+      .#{$tab-prefix}-nav-wrapper {
         flex-direction: column;
       }
 
     }
 
-    .bm-TabsContainerWrapper {
+    .#{$tab-prefix}ContainerWrapper {
       flex-direction: column;
       height: 100%;
     }
 
-    .bm-Tabs-indicator {
+    .#{$tab-prefix}-indicator {
       width: 2px;
     }
 
@@ -140,53 +141,53 @@
     }
   }
 
-  &.bm-TabsGroup-bottom {
+  &.#{$tab-prefix}Group-bottom {
     flex-direction: column-reverse;
 
-    .bm-Tabs {
+    .#{$tab-prefix} {
 
-      .bm-Tabs-nav {
+      .#{$tab-prefix}-nav {
         border: none;
         border-top: 1px solid $tabsBorderColor;
         background: transparent;
       }
     }
 
-    .bm-Tabs-indicator {
+    .#{$tab-prefix}-indicator {
       top: 0;
       bottom: auto;
       left: 0;
     }
   }
 
-  &.bm-TabsGroup-right {
+  &.#{$tab-prefix}Group-right {
     flex-direction: row-reverse;
 
-    .bm-Tabs:not(.bm-Tabs-flat) {
+    .#{$tab-prefix}:not(.#{$tab-prefix}-flat) {
 
-      .bm-Tabs-nav {
+      .#{$tab-prefix}-nav {
         border-left: 1px solid $tabsBorderColor;
       }
 
     }
 
-    .bm-Tabs-indicator {
+    .#{$tab-prefix}-indicator {
       left: 0;
     }
   }
 
-  &.bm-TabsGroup-left {
+  &.#{$tab-prefix}Group-left {
     flex-direction: row;
 
-    .bm-Tabs:not(.bm-Tabs-flat) {
+    .#{$tab-prefix}:not(.#{$tab-prefix}-flat) {
 
-      .bm-Tabs-nav {
+      .#{$tab-prefix}-nav {
         border-right: 1px solid $tabsBorderColor;
       }
 
     }
 
-    .bm-Tabs-indicator {
+    .#{$tab-prefix}-indicator {
       left: auto;
       right: 0;
     }

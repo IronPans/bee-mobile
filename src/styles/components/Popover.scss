@@ -1,5 +1,6 @@
+$popover-prefix: bm-Popover;
 
-.bm-Popover {
+.#{$popover-prefix} {
   top: 0;
   left: 0;
   width: 100%;
@@ -8,7 +9,7 @@
   z-index: 10010;
   position: fixed;
 
-  .bm-Popover-inner {
+  .#{$popover-prefix}-inner {
     position: absolute;
     min-width: 16px;
     max-width: calc(100vw - 32px);
@@ -23,7 +24,7 @@
     @include boxShadow;
   }
 
-  .bm-Popover-mask {
+  .#{$popover-prefix}-mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -34,7 +35,7 @@
 }
 
 .bm-ios {
-  .bm-Popover {
+  .#{$popover-prefix} {
     position: absolute;
   }
 }

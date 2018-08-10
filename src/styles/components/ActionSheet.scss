@@ -1,4 +1,6 @@
-.bm-ActionSheet-group {
+$actionsheet-prefix: bm-ActionSheet;
+
+.#{$actionsheet-prefix}-group {
   &.Message {
     .MessageItem {
       .MessageItem-inner {
@@ -12,7 +14,7 @@
   }
 }
 
-.bm-ActionSheet {
+.#{$actionsheet-prefix} {
   position: absolute;
   left: 0;
   right: 0;
@@ -21,7 +23,7 @@
   font-weight: 400;
   cursor: default;
 
-  .bm-ActionSheet-title {
+  .#{$actionsheet-prefix}-title {
     box-sizing: border-box;
     height: 45px;
     line-height: 45px;
@@ -38,7 +40,7 @@
     background-image: linear-gradient(0deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1) 100%);
   }
 
-  .bm-ActionSheet-button {
+  .#{$actionsheet-prefix}-button {
     box-sizing: border-box;
     height: 45px;
     line-height: 45px;
@@ -58,7 +60,7 @@
     background-image: linear-gradient(0deg, rgba(0, 0, 0, .1), rgba(0, 0, 0, .1) 100%);
     transition: all .3s;
 
-    &.bm-ActionSheet-cancel {
+    &.#{$actionsheet-prefix}-cancel {
       margin: 8px 0 0 0;
       font-weight: 600;
       background-image: none;

@@ -1,43 +1,44 @@
+$fabbutton-prefix: bm-FabButton;
 
-.bm-FabButton {
+.#{$fabbutton-prefix} {
   position: relative;
   display: inline-flex;
 
-  &.bm-FabButton-top-left,
-  &.bm-FabButton-top-right,
-  &.bm-FabButton-bottom-left,
-  &.bm-FabButton-bottom-right,
-  &.bm-FabButton-center {
+  &.#{$fabbutton-prefix}-top-left,
+  &.#{$fabbutton-prefix}-top-right,
+  &.#{$fabbutton-prefix}-bottom-left,
+  &.#{$fabbutton-prefix}-bottom-right,
+  &.#{$fabbutton-prefix}-center {
     position: absolute;
   }
 
-  &.bm-FabButton-bottom-right {
+  &.#{$fabbutton-prefix}-bottom-right {
     right: 10px;
     bottom: 10px;
   }
 
-  &.bm-FabButton-top-left {
+  &.#{$fabbutton-prefix}-top-left {
     left: 10px;
     top: 10px;
   }
 
-  &.bm-FabButton-top-right {
+  &.#{$fabbutton-prefix}-top-right {
     right: 10px;
     top: 10px;
   }
 
-  &.bm-FabButton-bottom-left {
+  &.#{$fabbutton-prefix}-bottom-left {
     left: 10px;
     bottom: 10px;
   }
 
-  &.bm-FabButton-center {
+  &.#{$fabbutton-prefix}-center {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .bm-FabButton-btn {
+  .#{$fabbutton-prefix}-btn {
     position: relative;
     width: 48px;
     height: 48px;
@@ -46,8 +47,8 @@
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.16), 0 2px 10px rgba(0, 0, 0, 0.12);
   }
 
-  .bm-FabButton-btn,
-  .bm-FabButton-item {
+  .#{$fabbutton-prefix}-btn,
+  .#{$fabbutton-prefix}-item {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,7 +60,7 @@
     cursor: pointer;
   }
 
-  .bm-FabButton-item {
+  .#{$fabbutton-prefix}-item {
     position: absolute;
     top: 0;
     left: 0;
@@ -71,20 +72,20 @@
     transition: all .25s;
   }
 
-  &.bm-FabButton-open {
-    .bm-FabButton-inner {
+  &.#{$fabbutton-prefix}-open {
+    .#{$fabbutton-prefix}-inner {
       opacity: 0;
       transform: scale(.4) rotateZ(45deg);
     }
 
-    .bm-FabButton-close {
+    .#{$fabbutton-prefix}-close {
       opacity: 1;
       transform: scale(1) rotateZ(0);
     }
   }
 
-  .bm-FabButton-inner,
-  .bm-FabButton-close {
+  .#{$fabbutton-prefix}-inner,
+  .#{$fabbutton-prefix}-close {
     position: absolute;
     top: 0;
     left: 0;
@@ -96,14 +97,14 @@
     justify-content: center;
   }
 
-  .bm-FabButton-inner {
+  .#{$fabbutton-prefix}-inner {
     opacity: 1;
     transform: scale(1) rotateZ(0);
     transition: all ease-in-out .3s;
     transition-property: transform,opacity;
   }
 
-  .bm-FabButton-close {
+  .#{$fabbutton-prefix}-close {
     opacity: 0;
     transform: scale(.4) rotateZ(-45deg);
     transition: all ease-in-out .3s;

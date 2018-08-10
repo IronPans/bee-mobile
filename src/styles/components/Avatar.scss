@@ -1,4 +1,6 @@
-.bm-Avatar {
+$avatar-prefix: bm-Avatar;
+
+.#{$avatar-prefix} {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -8,7 +10,7 @@
     width: 100%;
   }
 
-  &.bm-Avatar-circle {
+  &.#{$avatar-prefix}-circle {
     border-radius: 50%;
     overflow: hidden;
   }

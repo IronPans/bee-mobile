@@ -1,7 +1,9 @@
-.bm-Autocomplete {
+$autocomplete-prefix: bm-Autocomplete;
+
+.#{$autocomplete-prefix} {
   position: relative;
 
-  .bm-Autocomplete-menus {
+  .#{$autocomplete-prefix}-menus {
     position: absolute;
     top: 100%;
     left: 0;
@@ -9,18 +11,18 @@
     display: none;
     @include boxShadow();
 
-    &.bm-Autocomplete-scroll {
+    &.#{$autocomplete-prefix}-scroll {
       overflow: hidden;
       overflow-y: auto;
     }
 
-    &.bm-Autocomplete-menus-active {
+    &.#{$autocomplete-prefix}-menus-active {
       display: block;
     }
   }
 
-  &.bm-Autocomplete-inline {
-    .bm-Autocomplete-menus {
+  &.#{$autocomplete-prefix}-inline {
+    .#{$autocomplete-prefix}-menus {
       position: relative;
       top: 0;
     }

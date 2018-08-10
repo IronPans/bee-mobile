@@ -1,4 +1,6 @@
-.bm-Badge {
+$badge-prefix: bm-Badge;
+
+.#{$badge-prefix} {
   font-size: 14px;
   color: $badgeColor;
   box-sizing: border-box;
@@ -7,8 +9,8 @@
   align-items: center;
   line-height: 1;
 
-  &.bm-Badge-sr-only {
-    .bm-Badge-count {
+  &.#{$badge-prefix}-sr-only {
+    .#{$badge-prefix}-count {
       position: relative;
       top: auto;
       left: 0;
@@ -16,17 +18,17 @@
     }
   }
 
-  &.bm-Badge-fixed {
-    .bm-Badge-count {
+  &.#{$badge-prefix}-fixed {
+    .#{$badge-prefix}-count {
       position: absolute;
-      &:not(.bm-Badge-dot) {
+      &:not(.#{$badge-prefix}-dot) {
         top: -10px;
         right: -10px;
       }
     }
   }
 
-  .bm-Badge-count {
+  .#{$badge-prefix}-count {
     display: flex;
     box-sizing: border-box;
     align-items: center;
@@ -40,7 +42,7 @@
     color: $badgeCountColor;
     box-shadow: 0 0 0 1px #fff;
 
-    &.bm-Badge-circle {
+    &.#{$badge-prefix}-circle {
       width: 24px;
       height: 24px;
       border-radius: 50%;
@@ -50,22 +52,22 @@
       margin-left: 6px;
     }
 
-    .bm-Badge-count-inner {
+    .#{$badge-prefix}-count-inner {
       position: relative;
       z-index: 10;
     }
 
     @each $name, $color in $theme {
-      &.bm-Badge-#{$name} {
+      &.#{$badge-prefix}-#{$name} {
         background: $color;
       }
     }
 
-    &.bm-Badge-default {
+    &.#{$badge-prefix}-default {
       background: #d9d9d9;
     }
 
-    &.bm-Badge-notify {
+    &.#{$badge-prefix}-notify {
       background: transparent !important;
 
       &:before {
@@ -78,7 +80,7 @@
     }
   }
 
-  span.bm-Badge-dot {
+  span.#{$badge-prefix}-dot {
     transform-origin: 0 center;
     top: 0;
     right: -1px;
@@ -90,17 +92,17 @@
     z-index: 10;
 
     @each $name, $color in $theme {
-      &.bm-Badge-#{$name} {
+      &.#{$badge-prefix}-#{$name} {
         background: $color;
       }
     }
 
-    &.bm-Badge-default {
+    &.#{$badge-prefix}-default {
       background: #d9d9d9;
     }
   }
 
-  .bm-BadgeItem {
+  .#{$badge-prefix}Item {
     display: inline-block;
     vertical-align: middle;
     height: 100%;

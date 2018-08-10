@@ -1,18 +1,20 @@
-.bm-SearchBar {
+$searchbar-prefix: bm-SearchBar;
+
+.#{$searchbar-prefix} {
   padding: 8px 0;
   overflow: hidden;
   align-items: center;
 
-  &.bm-SearchBar-active .bm-SearchBar-cancel {
+  &.#{$searchbar-prefix}-active .#{$searchbar-prefix}-cancel {
     margin-right: 0;
     opacity: 1;
   }
 
-  &.bm-SearchBar-active .bm-SearchBar-cancel + .bm-SearchBar-input {
+  &.#{$searchbar-prefix}-active .#{$searchbar-prefix}-cancel + .#{$searchbar-prefix}-input {
     margin-right: 50px;
   }
 
-  .bm-SearchBar-cancel {
+  .#{$searchbar-prefix}-cancel {
     margin-right: -60px;
     width: 44px;
     float: right;
@@ -24,7 +26,7 @@
     transform: translate3d(0, 0, 0);
   }
 
-  .bm-SearchBar-clear {
+  .#{$searchbar-prefix}-clear {
     position: absolute;
     top: 50%;
     right: 0;
@@ -43,12 +45,12 @@
     transform: translate(0, -50%);
     transition: all .3s;
 
-    &.bm-SearchBar-clear-show {
+    &.#{$searchbar-prefix}-clear-show {
       display: block !important;
     }
   }
 
-  .bm-SearchBar-input {
+  .#{$searchbar-prefix}-input {
     position: relative;
     transform: translate3d(0, 0, 0);
     margin-right: 0;

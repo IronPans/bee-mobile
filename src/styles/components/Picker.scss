@@ -1,7 +1,7 @@
+$picker-prefix: Picker;
+.#{$picker-prefix} {
 
-.Picker {
-
-  .Picker-input {
+  .#{$picker-prefix}-input {
     display: flex;
     align-items: center;
     box-sizing: border-box;
@@ -11,7 +11,7 @@
   }
 }
 
-.Picker-panel {
+.#{$picker-prefix}-panel {
     position: fixed;
     top: 0;
     left: 0;
@@ -19,7 +19,7 @@
     height: 100%;
     z-index: 10001;
 
-  .Picker-wrapper {
+  .#{$picker-prefix}-wrapper {
     position: absolute;
     bottom: 0;
     left: 0;
@@ -29,7 +29,7 @@
     z-index: 10;
   }
 
-  .Picker-mask {
+  .#{$picker-prefix}-mask {
     position: absolute;
     top: 0;
     left: 0;
@@ -39,20 +39,20 @@
     background: rgba(0, 0, 0, .5);
   }
 
-  .Picker-body,
-  .Picker-footer {
+  .#{$picker-prefix}-body,
+  .#{$picker-prefix}-footer {
     display: flex;
     background: #fff;
   }
 
-  .Picker-body {
+  .#{$picker-prefix}-body {
     position: relative;
     flex-wrap: wrap;
     margin: 10px 0;
     box-sizing: border-box;
 
-    .Picker-top-overlay,
-    .Picker-bottom-overlay {
+    .#{$picker-prefix}-top-overlay,
+    .#{$picker-prefix}-bottom-overlay {
       position: absolute;
       z-index: 10;
       left: 0;
@@ -62,14 +62,14 @@
       transform: translateZ(0)
     }
 
-    .Picker-top-overlay {
+    .#{$picker-prefix}-top-overlay {
       bottom: 0;
       background: -webkit-gradient(linear,left top,left bottom,from(hsla(0,0%,100%,.4)),to(hsla(0,0%,100%,.8)));
       background: -webkit-linear-gradient(top,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
       background: linear-gradient(180deg,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8))
     }
 
-    .Picker-bottom-overlay {
+    .#{$picker-prefix}-bottom-overlay {
       top: 0;
       background: -webkit-gradient(linear,left bottom,left top,from(hsla(0,0%,100%,.4)),to(hsla(0,0%,100%,.8)));
       background: -webkit-linear-gradient(bottom,hsla(0,0%,100%,.4),hsla(0,0%,100%,.8));
@@ -77,11 +77,11 @@
     }
   }
 
-  .Picker-footer {
+  .#{$picker-prefix}-footer {
     flex-wrap: nowrap;
   }
 
-  .PickerItem {
+  .#{$picker-prefix}Item {
     width: 33.333%;
     height: 100%;
     color: #333;
@@ -89,19 +89,19 @@
     box-sizing: border-box;
   }
 
-  .PickerItem:first-child {
+  .#{$picker-prefix}Item:first-child {
     padding-left: 5px;
   }
 
-  .PickerItem:last-child {
+  .#{$picker-prefix}Item:last-child {
     padding-right: 5px;
   }
 
-  .PickerItem:not(:first-child):not(:last-child) {
+  .#{$picker-prefix}Item:not(:first-child):not(:last-child) {
     padding: 0 5px;
   }
 
-  .Picker-body .PickerItem .PickerItem-wrapper {
+  .#{$picker-prefix}-body .#{$picker-prefix}Item .#{$picker-prefix}Item-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -111,7 +111,7 @@
     overflow: hidden;
   }
 
-  .Picker-body .PickerItem-wrapper .PickerItem-scroll .PickerItem-item {
+  .#{$picker-prefix}-body .#{$picker-prefix}Item-wrapper .#{$picker-prefix}Item-scroll .#{$picker-prefix}Item-item {
     height: 40px;
     line-height: 40px;
     white-space: nowrap;
@@ -120,15 +120,15 @@
     padding: 0 16px;
   }
 
-  .PickerItem-wrapper > .PickerItem-scroll,
-  .PickerItem-overlay {
+  .#{$picker-prefix}Item-wrapper > .#{$picker-prefix}Item-scroll,
+  .#{$picker-prefix}Item-overlay {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
   }
 
-  .PickerItem-wrapper > .PickerItem-scroll {
+  .#{$picker-prefix}Item-wrapper > .#{$picker-prefix}Item-scroll {
     z-index: 2;
     margin-top: 40px;
     transform: translate(0px, 0px);
@@ -136,14 +136,14 @@
     transition-duration: 0ms;
   }
 
-  .PickerItem-overlay {
+  .#{$picker-prefix}Item-overlay {
     height: 100%;
     z-index: 3;
     //background: -webkit-linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(44, 44, 44, 0), rgba(0, 0, 0, 1));
     //background: linear-gradient(0deg, rgba(0, 0, 0, 1), rgba(44, 44, 44, 0), rgba(0, 0, 0, 1));
   }
 
-  .Picker-line {
+  .#{$picker-prefix}-line {
     position: absolute;
     z-index: 1;
     top: 50%;
@@ -171,7 +171,7 @@
     }
   }
 
-  .PickerItem-label {
+  .#{$picker-prefix}Item-label {
     height: 29px;
     line-height: 29px;
     font-size: 17px;
@@ -179,7 +179,7 @@
     color: #333;
   }
 
-  .Picker-footer {
+  .#{$picker-prefix}-footer {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid $borderColor;
@@ -194,7 +194,7 @@
     }
   }
 
-  .Picker-header {
+  .#{$picker-prefix}-header {
     height: 40px;
     line-height: 40px;
     padding: 0 10px;
@@ -206,7 +206,7 @@
 }
 
 .bm-ios {
-  .Picker-panel {
+  .#{$picker-prefix}-panel {
     position: absolute;
   }
 }

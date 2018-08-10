@@ -1,11 +1,13 @@
-.bm-Segment {
+$segment-prefix: bm-Segment;
+
+.#{$segment-prefix} {
   display: flex;
   border-radius: 5px;
   overflow: hidden;
   min-height: 27px;
   opacity: 1;
 
-  .bm-Segment-item {
+  .#{$segment-prefix}-item {
     display: flex;
     flex: 1;
     justify-content: center;
@@ -30,12 +32,12 @@
       border-radius: 0 5px 5px 0;
     }
 
-    &.bm-Segment-item-selected {
+    &.#{$segment-prefix}-item-selected {
       background: $primary;
       color: #fff;
     }
 
-    &.bm-Segment-item-disabled {
+    &.#{$segment-prefix}-item-disabled {
       opacity: .5;
     }
   }

@@ -1,5 +1,6 @@
+$pagination-prefix: bm-Pagination;
 
-.bm-Pagination {
+.#{$pagination-prefix} {
   display: flex;
   justify-content: center;
 
@@ -15,21 +16,21 @@
     }
   }
 
-  &.bm-Pagination-circle {
-    .bm-PaginationItem {
-      > .bm-PaginationItem-btn {
+  &.#{$pagination-prefix}-circle {
+    .#{$pagination-prefix}Item {
+      > .#{$pagination-prefix}Item-btn {
         border-radius: 50%;
       }
     }
   }
 
-  .bm-PaginationItem {
+  .#{$pagination-prefix}Item {
     margin: 0 2px;
     position: relative;
     vertical-align: top;
     box-sizing: border-box;
 
-    .bm-Pagination-ellipsis {
+    .#{$pagination-prefix}-ellipsis {
       display: block;
       &:before {
         content: "\2022\2022\2022";
@@ -40,9 +41,9 @@
       }
     }
 
-    .bm-Pagination-backward,
-    .bm-Pagination-forward,
-    .bm-Pagination-arrow {
+    .#{$pagination-prefix}-backward,
+    .#{$pagination-prefix}-forward,
+    .#{$pagination-prefix}-arrow {
       display: block;
       width: 28px;
       height: 28px;
@@ -54,7 +55,7 @@
       }
     }
 
-    > .bm-PaginationItem-btn {
+    > .#{$pagination-prefix}Item-btn {
       display: flex;
       align-items: center;
       justify-content: center;
@@ -71,7 +72,7 @@
       cursor: pointer;
       transition: all .25s;
 
-      .bm-Pagination-number {
+      .#{$pagination-prefix}-number {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -81,7 +82,7 @@
       }
     }
 
-    &.bm-PaginationItem-active > span {
+    &.#{$pagination-prefix}Item-active > span {
       color: $paginationActiveColor;
       background: $paginationActiveBg;
 
@@ -90,13 +91,13 @@
       }
     }
 
-    &:not(.bm-PaginationItem-active) > span {
+    &:not(.#{$pagination-prefix}Item-active) > span {
       &:hover {
         background: #eee;
       }
     }
 
-    &.bm-PaginationItem-disabled > span {
+    &.#{$pagination-prefix}Item-disabled > span {
       opacity: 0.4;
       pointer-events: none;
     }

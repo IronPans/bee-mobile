@@ -1,28 +1,29 @@
+$accordion-prefix: bm-Accordion;
 
-.bm-AccordionGroup {
+.#{$accordion-prefix}Group {
   box-shadow: 0 2px 1px -1px rgba(0,0,0,.2), 0 1px 1px 0 rgba(0,0,0,.14), 0 1px 3px 0 rgba(0,0,0,.12);
   border-top: none;
 
-  .bm-Accordion {
+  .#{$accordion-prefix} {
     background: #fff;
 
-    .bm-AccordionHeader {
+    .#{$accordion-prefix}Header {
       position: relative;
       overflow: hidden;
     }
 
-    &.bm-accordion-disabled {
-      .bm-Accordion-toggle {
+    &.#{$accordion-prefix}-disabled {
+      .#{$accordion-prefix}-toggle {
         cursor: not-allowed;
       }
     }
 
-    &.bm-Accordion-expanded {
-      .bm-Accordion-content {
+    &.#{$accordion-prefix}-expanded {
+      .#{$accordion-prefix}-content {
         overflow: visible;
       }
 
-      .bm-AccordionHeader-toggle {
+      .#{$accordion-prefix}Header-toggle {
         color: $accordionHeaderActiveColor;
         &:after {
           transform: translate(0, -50%) rotate(180deg);
@@ -30,7 +31,7 @@
       }
     }
 
-    .bm-AccordionHeader-toggle {
+    .#{$accordion-prefix}Header-toggle {
       display: flex;
       align-items: center;
       position: relative;
@@ -59,12 +60,12 @@
       }
     }
 
-    .bm-AccordionContent {
+    .#{$accordion-prefix}Content {
       position: relative;
       overflow: hidden;
       transition: height 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-      .bm-AccordionContentInner {
+      .#{$accordion-prefix}ContentInner {
         padding: 10px;
         box-sizing: border-box;
       }

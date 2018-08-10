@@ -1,10 +1,12 @@
-.Message.Indicator-group {
+$indicator-prefix: Indicator;
+
+.Message.#{$indicator-prefix}-group {
   .Message-mask {
     background: transparent;
   }
 }
 
-.Indicator {
+.#{$indicator-prefix} {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -24,7 +26,7 @@
     background: transparent;
   }
 
-  .Indicator-item {
+  .#{$indicator-prefix}-item {
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -34,7 +36,7 @@
     color: #fff;
     box-sizing: border-box;
 
-    .Indicator-content:not(:empty) {
+    .#{$indicator-prefix}-content:not(:empty) {
       margin-top: 10px;
     }
 

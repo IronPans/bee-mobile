@@ -1,4 +1,6 @@
-.bm-Spin {
+$spin-prefix: bm-Spin;
+
+.#{$spin-prefix} {
   display: inline-flex;
 
   .loader {
@@ -7,15 +9,15 @@
     height: 100%;
   }
 
-  &.bm-Spin-lg {
+  &.#{$spin-prefix}-lg {
     transform: scale(1);
   }
 
-  &.bm-Spin-sm {
+  &.#{$spin-prefix}-sm {
     transform: scale(.5);
   }
 
-  &.bm-Spin-xs {
+  &.#{$spin-prefix}-xs {
     transform: scale(.25);
   }
 
@@ -576,7 +578,7 @@
     }
   }
 
-  .bm-Spin-snake {
+  .#{$spin-prefix}-snake {
     animation: circle-spin .8s infinite linear;
     border: 4px solid $spinColor;
     border-radius: 50%;

@@ -1,4 +1,5 @@
-.bm-Card {
+$card-prefix: bm-Card;
+.#{$card-prefix} {
   position: relative;
   width: 100%;
   display: flex;
@@ -10,10 +11,10 @@
   box-sizing: border-box;
   transition: all .4s cubic-bezier(.25,.8,.25,1);
 
-  &.bm-Card-horizontal {
+  &.#{$card-prefix}-horizontal {
     flex-direction: row;
 
-    .bm-CardHeader {
+    .#{$card-prefix}Header {
       flex: 1 1 auto;
     }
 
@@ -21,18 +22,18 @@
       margin-right: 0;
     }
 
-    .bm-CardContent {
+    .#{$card-prefix}Content {
       flex: 0 0 auto;
     }
   }
 
-  .bm-CardHeader {
+  .#{$card-prefix}Header {
     &:not(:empty) {
       padding: 10px;
     }
   }
 
-  .bm-CardHeader-avatar {
+  .#{$card-prefix}Header-avatar {
     flex: 0 0 auto;
     width: 40px;
     height: 40px;
@@ -44,21 +45,21 @@
     }
   }
 
-  .bm-CardHeader-title {
+  .#{$card-prefix}Header-title {
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
     line-height: 1.71429em;
   }
 
-  .bm-CardHeader-subtitle {
+  .#{$card-prefix}Header-subtitle {
     opacity: .54;
     font-size: 14px;
     letter-spacing: .01em;
     line-height: 20px;
   }
 
-  .bm-CardContent {
+  .#{$card-prefix}Content {
     flex: 1 1 auto;
     line-height: 22px;
     box-sizing: border-box;
@@ -68,16 +69,16 @@
     }
   }
 
-  .bm-CardFooter,
-  .bm-CardHeader {
+  .#{$card-prefix}Footer,
+  .#{$card-prefix}Header {
     box-sizing: border-box;
   }
 
-  .bm-CardContent + .bm-CardFooter {
+  .#{$card-prefix}Content + .#{$card-prefix}Footer {
     padding-top: 0;
   }
 
-  .bm-CardHeader, .bm-CardFooter {
+  .#{$card-prefix}Header, .#{$card-prefix}Footer {
     position: relative;
     box-sizing: border-box;
     display: flex;
@@ -85,7 +86,7 @@
     align-items: center;
   }
 
-  .bm-CardFooter-action {
+  .#{$card-prefix}Footer-action {
     border-top: 1px solid $borderColor;
     .bm-Button {
       box-shadow: none;
@@ -99,35 +100,35 @@
     }
   }
 
-  .bm-CardHeader-content {
+  .#{$card-prefix}Header-content {
     flex: 1 1 auto;
   }
 
-  .bm-CardHeader-action {
+  .#{$card-prefix}Header-action {
     flex: 0 0 auto;
     align-self: flex-start;
   }
 }
 
-.bm-CardStack {
+.#{$card-prefix}Stack {
   position: relative;
-  .bm-Card {
+  .#{$card-prefix} {
     position: absolute;
     top: 0;
     left: 0;
     transform-origin: 50% 50%;
 
-    &.bm-Card-first {
+    &.#{$card-prefix}-first {
       z-index: 4;
       transform: translate(0,0) scale(1);
     }
 
-    &.bm-Card-second {
+    &.#{$card-prefix}-second {
       z-index: 3;
       transform: translate(0,30px) scale3d(.95,.95,1.0);
     }
 
-    &.bm-Card-third {
+    &.#{$card-prefix}-third {
       z-index: 2;
       transform: translate(0,50px) scale3d(.9,.9,1.0);
 

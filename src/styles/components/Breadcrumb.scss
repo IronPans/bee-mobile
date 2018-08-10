@@ -1,6 +1,8 @@
 @import "../common/variables";
 @import "../common/mixin";
-.bm-Breadcrumb {
+$breadcrumb-prefix: bm-Breadcrumb;
+
+.#{$breadcrumb-prefix} {
   display: flex;
   align-items: center;
   padding: 0;
@@ -15,16 +17,16 @@
       padding-right: 5px;
     }
 
-    .bm-Breadcrumb-separator {
+    .#{$breadcrumb-prefix}-separator {
       padding: 0 5px;
     }
 
-    &:last-child .bm-Breadcrumb-title {
+    &:last-child .#{$breadcrumb-prefix}-title {
       color: #999;
       cursor: auto;
     }
 
-    &:not(:last-child) .bm-Breadcrumb-title {
+    &:not(:last-child) .#{$breadcrumb-prefix}-title {
       cursor: pointer;
 
       &:active,

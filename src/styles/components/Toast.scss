@@ -1,10 +1,12 @@
-.Message.Toast-group {
+$toast-prefix: Toast;
+
+.Message.#{$toast-prefix}-group {
   .Message-mask {
     background: transparent;
   }
 }
 
-.Toast {
+.#{$toast-prefix} {
   .MessageItem-inner {
     color: #fff;
     background: rgba(0, 0, 0, .6);
@@ -15,40 +17,40 @@
     font-size: 14px;
   }
 
-  .Toast-item {
-    &.Toast-info {
+  .#{$toast-prefix}-item {
+    &.#{$toast-prefix}-info {
       background: $info;
       color: #fff;
     }
-    &.Toast-success {
+    &.#{$toast-prefix}-success {
       background: $success;
       color: #fff;
     }
-    &.Toast-warning {
+    &.#{$toast-prefix}-warning {
       background: $warning;
       color: #fff;
     }
-    &.Toast-error {
+    &.#{$toast-prefix}-error {
       background: $error;
       color: #fff;
     }
   }
 }
 
-.Toast-group {
+.#{$toast-prefix}-group {
   .MessageItem {
     position: absolute;
     left: 50%;
   }
-  .Toast-center.MessageItem {
+  .#{$toast-prefix}-center.MessageItem {
     top: 50%;
     transform: translate3d(-50%, -50%, 0);
   }
-  .Toast-top.MessageItem {
+  .#{$toast-prefix}-top.MessageItem {
     top: 50px;
     transform: translate3d(-50%, 0, 0);
   }
-  .Toast-bottom.MessageItem {
+  .#{$toast-prefix}-bottom.MessageItem {
     bottom: 50px;
     transform: translate3d(-50%, 0, 0);
   }

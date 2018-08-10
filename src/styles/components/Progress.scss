@@ -1,19 +1,20 @@
+$progress-prefix: bm-Progress;
 
-.bm-Progress {
+.#{$progress-prefix} {
   width: 100%;
   height: 5px;
 
-  &.bm-Progress-striped .bm-Progress-bar {
+  &.#{$progress-prefix}-striped .#{$progress-prefix}-bar {
     background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     background-image: linear-gradient(-45deg, rgba(255, 255, 255, .15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, .15) 50%, rgba(255, 255, 255, .15) 75%, transparent 75%, transparent);
     background-size: 30px 30px;
   }
 
-  &.bm-Progress-striped.bm-Progress-animated .bm-Progress-bar {
+  &.#{$progress-prefix}-striped.#{$progress-prefix}-animated .#{$progress-prefix}-bar {
     animation: bm-Progress-bar-stripes 2s linear infinite;
   }
 
-  .bm-Progress-bar-infinite {
+  .#{$progress-prefix}-bar-infinite {
     width: 100%;
     overflow: hidden;
     position: relative;
@@ -41,7 +42,7 @@
     }
   }
 
-  .bm-Progress-inner {
+  .#{$progress-prefix}-inner {
     width: 100%;
     height: 100%;
     background: $progressTrackColor;
@@ -50,7 +51,7 @@
     border-radius: 20px;
     box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
 
-    .bm-Progress-bar {
+    .#{$progress-prefix}-bar {
       position: relative;
       width: 0;
       height: 100%;
@@ -65,10 +66,10 @@
     }
   }
 
-  &:not(.bm-Progress-big) {
-    .bm-Progress-inner {
-      .bm-Progress-bar {
-        .bm-Progress-text {
+  &:not(.#{$progress-prefix}-big) {
+    .#{$progress-prefix}-inner {
+      .#{$progress-prefix}-bar {
+        .#{$progress-prefix}-text {
           position: absolute;
           top: 0;
           right: 0;

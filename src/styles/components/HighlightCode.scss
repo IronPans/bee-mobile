@@ -1,11 +1,13 @@
-.bm-HighlightCode {
+$highlightcode-prefix: bm-HighlightCode;
+
+.#{$highlightcode-prefix} {
   position: relative;
 
   code {
     border-radius: 4px;
   }
 
-  .bm-HighlightCode-btn {
+  .#{$highlightcode-prefix}-btn {
     position: absolute;
     right: 20px;
     top: 10px;
@@ -19,7 +21,7 @@
     transition: opacity .3s;
   }
 
-  &:hover .bm-HighlightCode-btn {
+  &:hover .#{$highlightcode-prefix}-btn {
     opacity: .7;
     &:hover {
       opacity: 1;

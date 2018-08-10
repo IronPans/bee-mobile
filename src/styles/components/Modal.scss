@@ -1,4 +1,6 @@
-.bm-Modal {
+$modal-prefix: bm-Modal;
+
+.#{$modal-prefix} {
   position: fixed;
   display: flex;
   justify-content: center;
@@ -10,7 +12,7 @@
     z-index: 100;
   }
 
-  .bm-Modal-header {
+  .#{$modal-prefix}-header {
     position: relative;
     padding: 8px 14px;
     border-radius: 4px 4px 0 0;
@@ -19,7 +21,7 @@
     color: rgba(0, 0, 0, 0.65);
     border-bottom: 1px solid #e8e8e8;
 
-    .bm-Modal-close-x {
+    .#{$modal-prefix}-close-x {
       position: absolute;
       right: 0;
       top: 50%;
@@ -43,25 +45,25 @@
     }
   }
 
-  .bm-Modal-header:empty {
+  .#{$modal-prefix}-header:empty {
     display: none;
   }
 
   &,
-  & .bm-Modal-backdrop {
+  & .#{$modal-prefix}-backdrop {
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
   }
 
-  .bm-Modal-backdrop {
+  .#{$modal-prefix}-backdrop {
     position: absolute;
     background: rgba(0, 0, 0, .5);
     z-index: 10;
   }
 
-  .bm-Modal-content {
+  .#{$modal-prefix}-content {
     position: relative;
     top: 100px;
     left: 0;
@@ -72,15 +74,15 @@
     z-index: 11;
   }
 
-  &.bm-Modal-max {
-    .bm-Modal-panel {
+  &.#{$modal-prefix}-max {
+    .#{$modal-prefix}-panel {
       overflow: auto;
     }
   }
 }
 
 .bm-ios {
-  .bm-Modal {
+  .#{$modal-prefix} {
     position: absolute;
   }
 }

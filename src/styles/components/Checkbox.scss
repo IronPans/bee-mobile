@@ -1,5 +1,6 @@
+$checkbox-prefix: Checkbox;
 
-.Checkbox {
+.#{$checkbox-prefix} {
   position: relative;
   display: flex;
   padding: 10px 0;
@@ -25,15 +26,15 @@
     }
   }
 
-  &.Checkbox-active {
+  &.#{$checkbox-prefix}-active {
     color: $checkboxCheckedColor;
   }
 
-  &.Checkbox-disabled {
+  &.#{$checkbox-prefix}-disabled {
     color: $checkboxDisabledColor;
   }
 
-  .Checkbox-icon {
+  .#{$checkbox-prefix}-icon {
     position: relative;
     display: inline-flex;
     width: 24px;
@@ -48,7 +49,7 @@
     height: 100%;
     opacity: 0;
 
-    ~ .Checkbox-icon svg {
+    ~ .#{$checkbox-prefix}-icon svg {
       position: absolute;
       top: 0;
       left: 0;
@@ -59,45 +60,45 @@
       user-select: none;
       flex-shrink: 0;
 
-      &.Checkbox-checked {
+      &.#{$checkbox-prefix}-checked {
         transform: scale(0);
       }
     }
 
-    &:checked ~ .Checkbox-icon {
-      .Checkbox-noChecked {
+    &:checked ~ .#{$checkbox-prefix}-icon {
+      .#{$checkbox-prefix}-noChecked {
         transform: scale(0);
       }
 
-      .Checkbox-checked {
+      .#{$checkbox-prefix}-checked {
         transform: scale(1);
       }
     }
   }
 
-  &.Checkbox-disabled {
+  &.#{$checkbox-prefix}-disabled {
     cursor: not-allowed;
     input {
       cursor: not-allowed;
     }
   }
 
-  .Checkbox-inner {
+  .#{$checkbox-prefix}-inner {
     display: flex;
     align-items: center;
     color: $checkboxColor;
   }
 
-  .Checkbox-title {
+  .#{$checkbox-prefix}-title {
     max-width: 200px;
     white-space: nowrap;
   }
 
-  .sr-only .Checkbox-title {
+  .sr-only .#{$checkbox-prefix}-title {
     display: none;
   }
 
-  .Checkbox-inner:not(:empty) {
+  .#{$checkbox-prefix}-inner:not(:empty) {
     padding-left: 6px;
   }
 

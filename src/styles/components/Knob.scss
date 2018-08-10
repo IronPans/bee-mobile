@@ -1,10 +1,11 @@
+$knob-prefix: bm-Knob;
 
-.bm-Knob {
+.#{$knob-prefix} {
   position: relative;
   display: inline-flex;
   background: $knobBg;
 
-  .bm-Knob-wrapper {
+  .#{$knob-prefix}-wrapper {
     position: relative;
     width: 100%;
     height: 100%;
@@ -12,18 +13,18 @@
     box-sizing: border-box;
   }
 
-  .bm-Knob-inner {
+  .#{$knob-prefix}-inner {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
   }
 
-  .bm-Knob-circle-path {
+  .#{$knob-prefix}-circle-path {
     stroke: $knobPathColor;
   }
 
-  .bm-Knob-circle-trail {
+  .#{$knob-prefix}-circle-trail {
     stroke: $knobTrailColor;
   }
 }

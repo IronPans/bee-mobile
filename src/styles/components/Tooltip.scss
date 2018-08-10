@@ -1,8 +1,9 @@
+$tooltip-prefix: bm-Tooltip;
 
-.bm-Tooltip {
+.#{$tooltip-prefix} {
   position: relative;
   display: inline-flex;
-  .bm-Tooltip-content {
+  .#{$tooltip-prefix}-content {
     position: absolute;
     z-index: 10;
     font-size: 12px;
@@ -17,24 +18,24 @@
     transform: scale(0);
     transition: opacity 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 
-    &.bm-Tooltip-active {
+    &.#{$tooltip-prefix}-active {
       transform: scale(1);
       opacity: .9;
     }
 
-    &.bm-Tooltip-right {
+    &.#{$tooltip-prefix}-right {
       margin-left: 8px;
     }
 
-    &.bm-Tooltip-left {
+    &.#{$tooltip-prefix}-left {
       margin-left: -8px;
     }
 
-    &.bm-Tooltip-top {
+    &.#{$tooltip-prefix}-top {
       margin-top: -8px;
     }
 
-    &.bm-Tooltip-bottom {
+    &.#{$tooltip-prefix}-bottom {
       margin-top: 8px;
     }
   }

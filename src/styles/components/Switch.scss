@@ -1,5 +1,6 @@
+$switch-prefix: Switch;
 
-.Switch {
+.#{$switch-prefix} {
   position: relative;
   cursor: pointer;
   display: flex;
@@ -15,7 +16,7 @@
     opacity: 0;
   }
 
-  input[type='checkbox']:checked ~ .Switch-media .Switch-label {
+  input[type='checkbox']:checked ~ .#{$switch-prefix}-media .#{$switch-prefix}-label {
     background: $switchActiveColor;
 
     &:after {
@@ -27,16 +28,16 @@
     }
   }
 
-  .Switch-inner:not(:empty) {
+  .#{$switch-prefix}-inner:not(:empty) {
     flex: 1;
     padding: 10px;
   }
 
-  .Switch-inner:empty {
+  .#{$switch-prefix}-inner:empty {
     display: none;
   }
 
-  .Switch-label {
+  .#{$switch-prefix}-label {
     position: relative;
     display: block;
     width: 50px;
@@ -74,15 +75,15 @@
     }
   }
 
-  .Switch-media {
+  .#{$switch-prefix}-media {
     order: 2;
     display: flex;
     align-items: center;
     margin-left: 3px;
   }
 
-  &.Switch-2 {
-    .Switch-label {
+  &.#{$switch-prefix}-2 {
+    .#{$switch-prefix}-label {
       width: 40px;
       background: transparent !important;
 
@@ -103,7 +104,7 @@
       }
     }
 
-    input[type='checkbox']:checked~.Switch-media .Switch-label {
+    input[type='checkbox']:checked~.#{$switch-prefix}-media .#{$switch-prefix}-label {
       background: $switchBg;
 
       &:before {
@@ -117,8 +118,8 @@
     }
   }
 
-  &.Switch-3 {
-    .Switch-label {
+  &.#{$switch-prefix}-3 {
+    .#{$switch-prefix}-label {
       background: $switchBg;
 
       &:before {
@@ -132,7 +133,7 @@
       }
     }
 
-    input[type='checkbox']:checked~.Switch-media .Switch-label {
+    input[type='checkbox']:checked~.#{$switch-prefix}-media .#{$switch-prefix}-label {
       &:after {
         background: $switchBg;
         box-shadow: 0 2px 7px rgba(0, 0, 0, 0.35), 0 1px 1px rgba(0, 0, 0, 0.15);
@@ -144,7 +145,7 @@
     }
   }
 
-  input[type='checkbox']:disabled ~ .Switch-media .Switch-label {
+  input[type='checkbox']:disabled ~ .#{$switch-prefix}-media .#{$switch-prefix}-label {
     cursor: not-allowed;
     opacity: .5;
   }

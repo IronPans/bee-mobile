@@ -1,4 +1,6 @@
-.bm-ImageView {
+$imageview-prefix: bm-ImageView;
+
+.#{$imageview-prefix} {
   position: fixed;
   top: 0;
   left: 0;
@@ -7,12 +9,12 @@
   background: rgba(0,0,0,1);
   z-index: 9999;
 
-  .bm-ImageView-container,
-  .bm-ImageView-backdrop {
+  .#{$imageview-prefix}-container,
+  .#{$imageview-prefix}-backdrop {
     height: 100%;
   }
 
-  .bm-ImageView-backdrop {
+  .#{$imageview-prefix}-backdrop {
     position: absolute;
     top: 0;
     left: 0;
@@ -20,7 +22,7 @@
     bottom: 0;
   }
 
-  .bm-ImageView-label {
+  .#{$imageview-prefix}-label {
     padding: 15px 0;
     color: #fff;
     font-weight: 500;
@@ -43,7 +45,7 @@
 }
 
 .bm-ios {
-  .bm-ImageView {
+  .#{$imageview-prefix} {
     position: absolute;
   }
 }

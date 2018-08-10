@@ -1,5 +1,6 @@
+$inputnumber-prefix: bm-InputNumber;
 
-.bm-InputNumber {
+.#{$inputnumber-prefix} {
   position: relative;
   display: inline-flex;
   background: #fff;
@@ -7,13 +8,13 @@
   border-radius: 2px;
   overflow: hidden;
 
-  .bm-InputNumber-minus,
-  .bm-InputNumber-add {
+  .#{$inputnumber-prefix}-minus,
+  .#{$inputnumber-prefix}-add {
     position: relative;
     display: inline-flex;
   }
 
-  &.bm-InputNumber-2 {
+  &.#{$inputnumber-prefix}-2 {
     min-width: 100px;
     input {
       text-align: left;
@@ -21,7 +22,7 @@
     }
   }
 
-  .bm-InputNumber-step {
+  .#{$inputnumber-prefix}-step {
     display: flex;
     flex-direction: column;
     line-height: 1;
@@ -68,14 +69,14 @@
     &:focus {
       background-color: #fff;
       border: 1px solid $inputFocusBorderColor;
-      + .bm-InputNumber-step {
+      + .#{$inputnumber-prefix}-step {
         opacity: 1;
       }
     }
   }
 
-  .bm-InputNumber-minus,
-  .bm-InputNumber-add {
+  .#{$inputnumber-prefix}-minus,
+  .#{$inputnumber-prefix}-add {
     width: 38px;
     height: 38px;
     background: #f9f9f9;
@@ -83,7 +84,7 @@
     border: none;
   }
 
-  .bm-InputNumber-minus {
+  .#{$inputnumber-prefix}-minus {
     border-right: 1px solid $inputBorderColor;
     &:active {
       background: #ddd;
@@ -98,7 +99,7 @@
 
   }
 
-  .bm-InputNumber-add {
+  .#{$inputnumber-prefix}-add {
     border-left: 1px solid $inputBorderColor;
     &:active {
       background: #ddd;
@@ -117,9 +118,9 @@
     }
   }
 
-  .bm-InputNumber-minus:before,
-  .bm-InputNumber-add:before,
-  .bm-InputNumber-add:after {
+  .#{$inputnumber-prefix}-minus:before,
+  .#{$inputnumber-prefix}-add:before,
+  .#{$inputnumber-prefix}-add:after {
     content: "";
     position: absolute;
     top: 50%;
@@ -128,13 +129,13 @@
     transform: translate3d(-50%, -50%, 0);
   }
 
-  .bm-InputNumber-minus:before,
-  .bm-InputNumber-add:before {
+  .#{$inputnumber-prefix}-minus:before,
+  .#{$inputnumber-prefix}-add:before {
     width: 8px;
     height: 2px;
   }
 
-  .bm-InputNumber-add:after {
+  .#{$inputnumber-prefix}-add:after {
     height: 8px;
     width: .1em;
   }

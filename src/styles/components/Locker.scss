@@ -1,7 +1,9 @@
-.bm-Locker {
+$locker-prefix: bm-Locker;
+
+.#{$locker-prefix} {
   position: relative;
   border: 1px solid #ddd;
-  .bm-Locker-mask {
+  .#{$locker-prefix}-mask {
     position: absolute;
     top: 0;
     right: 0;

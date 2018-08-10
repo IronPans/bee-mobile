@@ -31,6 +31,14 @@ export default class ChangeLog extends React.PureComponent<ChangeLogProps, {}> {
                         <li>主版本号：每月发布一个带有新特性的向下兼容的版本。</li>
                     </ul>
                     <Timeline>
+                        <TimelineItem title={<h3>0.4.2 <span className="title-label">2018-08-11</span></h3>}>
+                            <h4>Features</h4>
+                            <ul>
+                                <li>
+                                    无障碍式优化组件样式
+                                </li>
+                            </ul>
+                        </TimelineItem>
                         <TimelineItem title={<h3>0.4.1 <span className="title-label">2018-07-28</span></h3>}>
                             <h4>Features</h4>
                             <ul>

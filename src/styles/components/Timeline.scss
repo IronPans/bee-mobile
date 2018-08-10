@@ -1,16 +1,18 @@
-.bm-Timeline {
+$timeline-prefix: bm-Timeline;
 
-  .bm-TimelineItem {
+.#{$timeline-prefix} {
+
+  .#{$timeline-prefix}Item {
     position: relative;
     display: flex;
     padding-bottom: 30px;
   }
 
-  .bm-TimelineItem-inner {
+  .#{$timeline-prefix}Item-inner {
     box-sizing: border-box;
   }
 
-  .bm-TimelineItem-line {
+  .#{$timeline-prefix}Item-line {
     position: relative;
     color: $timelineColor;
     text-align: right;
@@ -40,12 +42,12 @@
     }
   }
 
-  .bm-TimelineItem-body {
+  .#{$timeline-prefix}Item-body {
     flex: 1 0 auto;
     padding-left: 35px;
     max-width: calc(100% - 35px);
 
-    .bm-TimelineItem-title {
+    .#{$timeline-prefix}Item-title {
       font-size: 15px;
       font-weight: 400;
       margin-bottom: 10px;

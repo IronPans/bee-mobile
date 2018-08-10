@@ -1,4 +1,6 @@
-.bm-Notification-group {
+$notification-prefix: bm-Notification;
+
+.#{$notification-prefix}-group {
   &.Message {
     .Message-mask {
       background: transparent;
@@ -15,7 +17,7 @@
     }
   }
 
-  .bm-Notification-item {
+  .#{$notification-prefix}-item {
     position: relative;
     width: 100%;
     max-width: 100%;
@@ -32,16 +34,16 @@
     transition: all .25s;
 
     @each $name, $color in $theme {
-      &.bm-Notification-#{$name} {
+      &.#{$notification-prefix}-#{$name} {
         background: $color;
       }
     }
 
-    &:not(.bm-Notification-default) {
+    &:not(.#{$notification-prefix}-default) {
       color: #fff;
     }
 
-    .bm-Notification-avatar {
+    .#{$notification-prefix}-avatar {
       img {
         width: 40px;
         height: 40px;
@@ -53,19 +55,19 @@
       }
     }
 
-    .bm-Notification-item-content {
+    .#{$notification-prefix}-item-content {
       display: flex;
       flex-direction: column;
       flex: 1 0 auto;
       box-sizing: border-box;
       padding-left: 10px;
 
-      .bm-Notification-message {
+      .#{$notification-prefix}-message {
         display: block;
       }
     }
 
-    .bm-Notification-progress {
+    .#{$notification-prefix}-progress {
       position: absolute;
       bottom: 0;
       left: 0;
@@ -73,20 +75,20 @@
       height: 2px;
       background: hsla(0, 0%, 100%, .2);
 
-      .bm-Notification-progress-bar {
+      .#{$notification-prefix}-progress-bar {
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, .3);
         transition-delay: 100ms;
         transition-timing-function: linear;
 
-        &.bm-Notification-progress-hide {
+        &.#{$notification-prefix}-progress-hide {
           width: 0;
         }
       }
     }
 
-    .bm-Notification-close {
+    .#{$notification-prefix}-close {
       position: absolute;
       right: 16px;
       top: 10px;

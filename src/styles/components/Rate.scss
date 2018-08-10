@@ -1,10 +1,11 @@
+$rate-prefix: bm-Rate;
 
-.bm-Rate {
+.#{$rate-prefix} {
   display: flex;
   align-items: center;
   font-size: 20px;
 
-  .bm-Rate-item {
+  .#{$rate-prefix}-item {
     position: relative;
     cursor: pointer;
     line-height: 0;
@@ -18,7 +19,7 @@
       box-sizing: border-box;
     }
 
-    .bm-Rate-half {
+    .#{$rate-prefix}-half {
       position: absolute;
       top: 0;
       left: 0;
@@ -30,13 +31,13 @@
       padding-right: 0;
     }
 
-    .bm-Rate-active {
+    .#{$rate-prefix}-active {
       color: $rateActiveColor;
     }
   }
 
-  &.bm-Rate-readonly {
-    .bm-Rate-item {
+  &.#{$rate-prefix}-readonly {
+    .#{$rate-prefix}-item {
       cursor: not-allowed;
     }
   }

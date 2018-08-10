@@ -1,4 +1,6 @@
-.bm-NavBar {
+$navbar-prefix: bm-NavBar;
+
+.#{$navbar-prefix} {
   height: $NavBarHeight;
   width: 100%;
   box-sizing: border-box;
@@ -11,7 +13,7 @@
   background-color: $navBarBg;
   @include headerShadow();
 
-  &.bm-NavBar-fixed {
+  &.#{$navbar-prefix}-fixed {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,7 +27,7 @@
     }
   }
 
-  .bm-NavBar-inner {
+  .#{$navbar-prefix}-inner {
     position: absolute;
     left: 0;
     top: 0;
@@ -46,7 +48,7 @@
       font-size: 25px;
     }
 
-    .bm-NavBar-left, .bm-NavBar-right {
+    .#{$navbar-prefix}-left, .#{$navbar-prefix}-right {
       position: relative;
       z-index: 1;
       flex-shrink: 0;
@@ -64,15 +66,15 @@
       }
     }
 
-    .bm-NavBar-left {
+    .#{$navbar-prefix}-left {
       margin-right: 10px;
     }
 
-    .bm-NavBar-right {
+    .#{$navbar-prefix}-right {
       margin-left: 10px;
     }
 
-    .bm-NavBar-center {
+    .#{$navbar-prefix}-center {
       position: absolute;
       top: 0;
       left: 0;

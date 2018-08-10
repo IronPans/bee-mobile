@@ -1,4 +1,6 @@
-.bm-KeyBoard-group {
+$keyboard-prefix: bm-KeyBoard;
+
+.#{$keyboard-prefix}-group {
   &.Message .MessageItem .MessageItem-inner {
     display: flex;
     .bm-FadeInUp {
@@ -13,10 +15,10 @@
   }
 }
 
-.bm-KeyBoard {
+.#{$keyboard-prefix} {
   background: $keyBoardBg;
 
-  .bm-KeyBoard-header {
+  .#{$keyboard-prefix}-header {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,7 +42,7 @@
     }
   }
 
-  .bm-KeyBoard-toolbar {
+  .#{$keyboard-prefix}-toolbar {
     padding: 10px;
     text-align: right;
 
@@ -54,7 +56,7 @@
     }
   }
 
-  .bm-KeyBoard-password {
+  .#{$keyboard-prefix}-password {
     display: flex;
     width: calc(100% - 20px);
     position: relative;
@@ -91,7 +93,7 @@
     }
   }
 
-  .bm-KeyBoard-content {
+  .#{$keyboard-prefix}-content {
     &:before {
       content: '';
       position: absolute;
@@ -105,7 +107,7 @@
       transform-origin: 0 0;
     }
 
-    .bm-KeyBoard-numbers {
+    .#{$keyboard-prefix}-numbers {
       display: flex;
       flex-wrap: wrap;
       span {

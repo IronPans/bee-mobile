@@ -1,9 +1,10 @@
+$button-prefix: bm-Button;
 
 a, a:visited, a:link, a:active, a:hover {
   outline: none;
 }
 
-a:not(.bm-Button):visited, a:not(.bm-Button):link, a:not(.bm-Button):active {
+a:not(.#{$button-prefix}):visited, a:not(.#{$button-prefix}):link, a:not(.#{$button-prefix}):active {
   color: $primary;
   text-decoration: none; }
 
@@ -13,7 +14,7 @@ button {
 }
 
 
-.bm-Button {
+.#{$button-prefix} {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -58,26 +59,26 @@ button {
     appearance: none;
   }
 
-  &.bm-Button-float {
+  &.#{$button-prefix}-float {
     position: absolute;
     z-index: 9999;
 
-    &.bm-Button-bottom-right {
+    &.#{$button-prefix}-bottom-right {
       bottom: 20px;
       right: 20px;
     }
 
-    &.bm-Button-top-right {
+    &.#{$button-prefix}-top-right {
       top: 20px;
       right: 20px;
     }
 
-    &.bm-Button-bottom-left {
+    &.#{$button-prefix}-bottom-left {
       bottom: 20px;
       left: 20px;
     }
 
-    &.bm-Button-top-left {
+    &.#{$button-prefix}-top-left {
       top: 20px;
       left: 20px;
     }
@@ -95,22 +96,22 @@ button {
     }
   }
 
-  &.bm-Button-round {
+  &.#{$button-prefix}-round {
     border-radius: 20px;
   }
 
-  &.bm-Button-block {
+  &.#{$button-prefix}-block {
     display: flex;
     width: 100%;
   }
 
-  &.bm-Button-lg {
+  &.#{$button-prefix}-lg {
     padding: 8px 24px;
     min-width: 112px;
     font-size: 16px;
     min-height: 40px;
 
-    &.bm-Button-fab {
+    &.#{$button-prefix}-fab {
       padding: 0;
       width: 40px;
       height: 40px;
@@ -119,13 +120,13 @@ button {
     }
   }
 
-  &.bm-Button-sm {
+  &.#{$button-prefix}-sm {
     padding: 7px 8px;
     min-width: 64px;
     font-size: 13px;
     min-height: 32px;
 
-    &.bm-Button-fab {
+    &.#{$button-prefix}-fab {
       padding: 0;
       width: 32px;
       height: 32px;
@@ -135,17 +136,17 @@ button {
   }
 
 }
-.bm-Button,
-.bm-Button-group {
+.#{$button-prefix},
+.#{$button-prefix}-group {
   @include boxShadow();
 }
 
-.bm-Button.is-flat,
-.bm-Button-group.is-flat{
+.#{$button-prefix}.is-flat,
+.#{$button-prefix}-group.is-flat{
   box-shadow: none !important;
 }
 
-.bm-Button-fab {
+.#{$button-prefix}-fab {
   padding: 0;
   width: 36px;
   height: 36px;
@@ -157,56 +158,56 @@ button {
   align-items: center;
 }
 
-.bm-Button-default {
+.#{$button-prefix}-default {
   color: $dark;
   background-color: #fff;
 }
 
-.bm-Button-primary,
-.bm-Button-success,
-.bm-Button-info,
-.bm-Button-warning,
-.bm-Button-danger {
+.#{$button-prefix}-primary,
+.#{$button-prefix}-success,
+.#{$button-prefix}-info,
+.#{$button-prefix}-warning,
+.#{$button-prefix}-danger {
   color: white;
 }
 
 @each $name, $color in $theme {
-  .bm-Button.bm-Button-#{$name} {
+  .#{$button-prefix}.#{$button-prefix}-#{$name} {
     background-color: $color;
   }
 }
 
-.bm-Button.bm-Button-danger {
+.#{$button-prefix}.#{$button-prefix}-danger {
   background-color: $error;
 }
 
-.bm-Button-group {
+.#{$button-prefix}-group {
   position: relative;
   display: inline-flex;
   align-items: center;
 
-  > .bm-Button {
+  > .#{$button-prefix} {
     border-radius: 0;
     box-shadow: none;
   }
 
-  > .bm-Button:first-child {
+  > .#{$button-prefix}:first-child {
     border-top-left-radius: 2px;
     border-bottom-left-radius: 2px;
   }
 
-  > .bm-Button:last-child {
+  > .#{$button-prefix}:last-child {
     border-top-right-radius: 2px;
     border-bottom-right-radius: 2px;
   }
 }
 
-.bm-Button.bm-Button-block {
+.#{$button-prefix}.#{$button-prefix}-block {
   display: block;
 }
 
-.bm-Button.is-disabled,
-.bm-Button[disabled] {
+.#{$button-prefix}.is-disabled,
+.#{$button-prefix}[disabled] {
   border: 1px solid #d9d9d9;
   cursor: not-allowed;
   opacity: .65;
@@ -215,28 +216,28 @@ button {
   box-shadow: none;
 }
 
-.bm-Button i.bm-Button-left {
+.#{$button-prefix} i.#{$button-prefix}-left {
   padding-right: 5px;
 }
 
-.bm-Button i.bm-Button-right {
+.#{$button-prefix} i.#{$button-prefix}-right {
   padding-left: 5px;
 }
 
 .is-flat {
 
-  &.bm-Button {
+  &.#{$button-prefix} {
     border: 1px solid transparent;
   }
 
-  &.bm-Button-default {
+  &.#{$button-prefix}-default {
     color: $dark;
     background-color: transparent;
     border-color: $dark;
   }
 
   @each $name, $color in $theme {
-    &.bm-Button-#{$name} {
+    &.#{$button-prefix}-#{$name} {
       color: $color;
       background-color: transparent;
       border-color: $color;
