@@ -3,7 +3,7 @@ $inputtext-prefix: bm-Inputtext;
 .#{$inputtext-prefix} {
   display: flex;
   position: relative;
-
+  
   .#{$inputtext-prefix}-startAdorn,
   .#{$inputtext-prefix}-endAdorn {
     display: flex;
@@ -19,12 +19,9 @@ $inputtext-prefix: bm-Inputtext;
     }
   }
 
-  .#{$inputtext-prefix}-startAdorn {
-    padding: 0 0 0 5px;
-  }
-
+  .#{$inputtext-prefix}-startAdorn,
   .#{$inputtext-prefix}-endAdorn {
-    padding: 0 5px 0 0;
+    padding: 0 10px;
   }
 
   label {

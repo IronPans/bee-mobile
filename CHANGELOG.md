@@ -1,5 +1,15 @@
 # Change Log
 
+## 0.4.3(2018-08-25)
+
+**Features**
+
+- 优化Text Field前后标签的样式
+
+**Bug Fixes**
+
+- 修复Tooltip无法点击的问题
+
 ## 0.4.2(2018-08-11)
 
 **Features**

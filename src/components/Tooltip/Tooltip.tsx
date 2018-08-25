@@ -6,7 +6,7 @@ import {TooltipProps, TooltipState} from './PropsType';
 
 export default class Tooltip extends React.PureComponent<TooltipProps, TooltipState> {
     static defaultProps: TooltipProps = {
-        delay: 1000,
+        delay: 0,
         dir: 'bottom',
         title: '',
         prefixCls: 'bm-Tooltip',
@@ -72,20 +72,18 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
     }
 
     handleTouchStart = () => {
-        if (!this.touchEvent.mobile) {
-            return;
+        if (!this.state.open) {
+            if (this.timeoutId) {
+                this.close();
+                clearTimeout(this.timeoutId);
+            }
+            this.show();
+        } else {
+            this.handleTouchEnd();
         }
-        if (this.timeoutId) {
-            this.close();
-            clearTimeout(this.timeoutId);
-        }
-        this.show();
     }
 
     handleTouchEnd = () => {
-        if (!this.touchEvent.mobile) {
-            return;
-        }
         this.timeoutId = setTimeout(() => {
             this.close();
             this.timeoutId = null;
@@ -114,8 +112,7 @@ export default class Tooltip extends React.PureComponent<TooltipProps, TooltipSt
                         this.er = node;
                     }}
                     className={groupStyle}
-                    onTouchStart={this.handleTouchStart}
-                    onTouchEnd={this.handleTouchEnd}
+                    onClick={this.handleTouchStart}
                 >
                     {children}
                     <div
