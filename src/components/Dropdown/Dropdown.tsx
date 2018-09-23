@@ -83,9 +83,10 @@ export default class Dropdown extends React.PureComponent<DropdownProps, Dropdow
     }
 
     render() {
-        const {children, hover, data, direction, prefixCls}: any = this.props;
+        const {children, className, hover, data, direction, prefixCls}: any = this.props;
         const visible = this.state.visible;
         const styleClass = classNames(
+            className,
             prefixCls,
             {
                 [`${prefixCls}-expanded`]: visible,
